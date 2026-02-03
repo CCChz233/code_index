@@ -50,6 +50,10 @@ def _ast_timeout(timeout_sec: float):
 
 
 def _parse_ast_safe(text: str) -> Optional[ast.AST]:
+    # ast.parse 不接受含 null 字节的源码，直接跳过并避免刷屏日志
+    if "\x00" in text:
+        logging.debug("AST parse skipped: source contains null bytes")
+        return None
     old_limit = sys.getrecursionlimit()
     if _AST_MAX_RECURSION and _AST_MAX_RECURSION > old_limit:
         sys.setrecursionlimit(_AST_MAX_RECURSION)

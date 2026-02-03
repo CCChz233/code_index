@@ -49,7 +49,10 @@ def load_index(repo_name: str, index_dir: str) -> Tuple[torch.Tensor, List[dict]
     if not metadata_path.exists():
         raise FileNotFoundError(f"Metadata file not found: {metadata_path}")
 
-    embeddings = torch.load(index_path, map_location="cpu")
+    try:
+        embeddings = torch.load(index_path, map_location="cpu", weights_only=True)
+    except TypeError:
+        embeddings = torch.load(index_path, map_location="cpu")
 
     metadata: List[dict] = []
     with metadata_path.open("r", encoding="utf-8") as f:

@@ -7,6 +7,7 @@
 import ast
 import os
 import logging
+import warnings
 from typing import List, Dict, Any, Tuple, Optional
 from collections import defaultdict
 
@@ -47,7 +48,9 @@ def build_line_to_entity_map(file_path: str, repo_root: str) -> Dict[int, Tuple[
     try:
         with open(full_path, 'r', encoding='utf-8') as f:
             source_code = f.read()
-        tree = ast.parse(source_code, filename=full_path)
+        with warnings.catch_warnings():
+            warnings.simplefilter("ignore", SyntaxWarning)
+            tree = ast.parse(source_code, filename=full_path)
     except (SyntaxError, UnicodeDecodeError, FileNotFoundError) as e:
         logger.debug(f"Failed to parse {full_path}: {e}")
         return {}

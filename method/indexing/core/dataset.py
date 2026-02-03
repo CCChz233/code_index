@@ -60,7 +60,12 @@ class BlockDataset(Dataset):
         context_text = b.context_text or ""
         function_text = b.function_text or b.content
 
-        special_tokens = self.tokenizer.num_special_tokens_to_add(pair=False)
+        if hasattr(self.tokenizer, "num_special_tokens_to_add") and callable(
+            getattr(self.tokenizer, "num_special_tokens_to_add")
+        ):
+            special_tokens = self.tokenizer.num_special_tokens_to_add(pair=False)
+        else:
+            special_tokens = 2
         max_function_len = max(self.max_length - special_tokens, 0)
 
         context_ids = []
@@ -84,7 +89,24 @@ class BlockDataset(Dataset):
         remaining_context = max(self.max_length - special_tokens - len(function_ids), 0)
         context_ids = context_ids[:remaining_context]
 
-        input_ids = self.tokenizer.build_inputs_with_special_tokens(context_ids + function_ids)
+        combined_ids = context_ids + function_ids
+        if hasattr(self.tokenizer, "build_inputs_with_special_tokens") and callable(
+            getattr(self.tokenizer, "build_inputs_with_special_tokens")
+        ):
+            input_ids = self.tokenizer.build_inputs_with_special_tokens(combined_ids)
+        else:
+            # TokenizersBackend 等无此方法时，手动加 [CLS] + content + [SEP]
+            cls_id = getattr(self.tokenizer, "cls_token_id", None) or getattr(
+                self.tokenizer, "bos_token_id", None
+            )
+            sep_id = getattr(self.tokenizer, "sep_token_id", None) or getattr(
+                self.tokenizer, "eos_token_id", None
+            )
+            if cls_id is None:
+                cls_id = sep_id if sep_id is not None else 0
+            if sep_id is None:
+                sep_id = 0
+            input_ids = [cls_id] + combined_ids + [sep_id]
         attention_mask = [1] * len(input_ids)
 
         input_ids = torch.tensor(input_ids, dtype=torch.long)

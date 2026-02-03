@@ -285,16 +285,16 @@ def main():
             results.append({
                 "instance_id": instance_id,
                 "error": str(e),
-                "top_files": []
+                "found_files": []
             })
 
-    # 计算统计信息
+    # 计算统计信息（结果统一用 found_files，与 loc_outputs.jsonl 一致）
     total_instances = len(results)
-    successful_instances = sum(1 for r in results if r.get('top_files') and len(r['top_files']) > 0)
+    successful_instances = sum(1 for r in results if r.get('found_files') and len(r['found_files']) > 0)
     failed_instances = sum(1 for r in results if 'error' in r)
 
     if successful_instances > 0:
-        avg_files = sum(len(r.get('top_files', [])) for r in results) / successful_instances
+        avg_files = sum(len(r.get('found_files', [])) for r in results) / successful_instances
     else:
         avg_files = 0
 
