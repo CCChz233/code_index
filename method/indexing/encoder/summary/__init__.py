@@ -1,0 +1,1 @@
+"""Summary encoders (placeholder)."""

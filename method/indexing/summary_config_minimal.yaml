@@ -1,0 +1,24 @@
+# Minimal Summary-based Retrieval config.
+# CLI args override config values.
+#
+# Required env vars (do not commit secrets):
+# export OPENAI_API_BASE="https://api.chatanywhere.tech/v1"
+# export OPENAI_API_KEY="YOUR_API_KEY"
+
+strategy: "summary"
+summary_base_strategy: "llamaindex_code"
+llamaindex_language: "python"
+llamaindex_chunk_lines: 40
+llamaindex_chunk_lines_overlap: 15
+llamaindex_max_chars: 800
+summary_llm_provider: "openai"
+summary_llm_model: "deepseek-v3.2"
+summary_llm_api_base: "https://api.chatanywhere.tech/v1/chat/completions"
+summary_llm_api_key: "sk-RlDbbQ6OVAAdZi36Uxq4jHDwbK42zrg66krxiYJr6761Mqpg"
+summary_language: "Chinese"
+
+repo_path: "/Users/chz/code/locbench/locbench_repos"
+index_dir: "/Users/chz/code/locbench/locbench-ir-based/indexes"
+model_name: "/path/to/embedding_model"
+num_processes: 1
+force_cpu: true

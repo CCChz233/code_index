@@ -1,0 +1,68 @@
+# Summary-based Retrieval config template.
+# CLI args override config values.
+#
+# Export env vars before running (do not commit secrets):
+# export OPENAI_API_BASE="https://api.chatanywhere.tech/v1"
+# export OPENAI_API_KEY="YOUR_API_KEY"
+# export MSWEA_MODEL_NAME="openai/deepseek-v3.2"
+
+# Data source
+dataset: ""
+split: "test"
+repo_path: "/Users/chz/code/locbench/locbench_repos"
+index_dir: "/Users/chz/code/locbench/locbench-ir-based/indexes"
+instance_id_path: ""
+
+# Embedding model
+model_name: "/path/to/embedding_model"
+trust_remote_code: false
+
+# Chunking strategy
+strategy: "summary"
+block_size: 15
+window_size: 20
+slice_size: 2
+ir_function_context_tokens: 256
+
+# Summary strategy
+summary_base_strategy: "ir_function"
+summary_llm_provider: "openai"
+summary_llm_model: "gpt-4o-mini"
+summary_llm_api_key: ""          # Leave empty to read OPENAI_API_KEY
+summary_llm_api_base: ""         # e.g. http://localhost:8000/v1
+summary_llm_max_new_tokens: 512
+summary_llm_temperature: 0.1
+summary_prompt: ""
+summary_prompt_file: ""
+summary_language: "Chinese"
+summary_cache_dir: "/Users/chz/code/locbench/locbench-ir-based/summary_cache"
+summary_cache_policy: "read_write"
+summary_cache_miss: "empty"      # empty / skip / error
+summary_store_pure_summary: true
+summary_store_pure_code: false
+summary_max_tokens: null         # Deprecated alias for summary_llm_max_new_tokens
+summary_temperature: null        # Deprecated alias for summary_llm_temperature
+
+# LangChain splitters (for summary_base_strategy = langchain_*)
+langchain_chunk_size: 1000
+langchain_chunk_overlap: 200
+
+# LlamaIndex splitters (for summary_base_strategy = llamaindex_*)
+llamaindex_language: "python"
+llamaindex_chunk_lines: 40
+llamaindex_chunk_lines_overlap: 15
+llamaindex_max_chars: 1500
+llamaindex_chunk_size: 1024
+llamaindex_chunk_overlap: 200
+llamaindex_separator: " "
+llamaindex_buffer_size: 3
+llamaindex_embed_model: "sentence-transformers/all-MiniLM-L6-v2"
+
+# Embedding parameters
+max_length: 4096
+batch_size: 8
+
+# Parallel
+num_processes: 1
+gpu_ids: "0"
+force_cpu: true
