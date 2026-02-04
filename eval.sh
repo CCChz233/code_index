@@ -11,3 +11,13 @@ python method/retrieval/run_with_index.py \
   --top_k_files 20 \
   --top_k_modules 20 \
   --top_k_entities 50
+
+python method/retrieval/sparse_retriever.py \
+  --dataset_path /home/chaihongzheng/workspace/locbench/data/Loc-Bench_V1_dataset.jsonl \
+  --index_dir /home/chaihongzheng/workspace/locbench/code_index/index_v2/BM25_ir_function/sparse_index_ir_function \
+  --output_folder /home/chaihongzheng/workspace/locbench/code_index/output_eval/sparse_index \
+  --top_k_blocks 50 \
+  --top_k_files 20 \
+  --top_k_modules 20 \
+  --top_k_entities 50 \
+  --repos_root /home/chaihongzheng/workspace/locbench/repos/locbench_repos
