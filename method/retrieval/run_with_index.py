@@ -285,7 +285,9 @@ def main():
             results.append({
                 "instance_id": instance_id,
                 "error": str(e),
-                "found_files": []
+                "found_files": [],
+                "found_modules": [],
+                "found_entities": [],
             })
 
     # 计算统计信息（结果统一用 found_files，与 loc_outputs.jsonl 一致）
