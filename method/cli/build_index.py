@@ -20,7 +20,10 @@ def main() -> None:
         return
 
     if args.index_type == "summary":
-        raise NotImplementedError("summary index_type is not implemented yet")
+        from method.indexing import batch_build_summary_index
+        sys.argv = ["batch_build_summary_index.py"] + rest
+        batch_build_summary_index.main()
+        return
 
     raise NotImplementedError(f"index_type={args.index_type} is not implemented yet")
 
