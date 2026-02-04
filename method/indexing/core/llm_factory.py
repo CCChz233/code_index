@@ -5,6 +5,48 @@ from urllib.parse import urlparse
 
 logger = logging.getLogger(__name__)
 
+# Default context window for custom/unknown models (e.g., vLLM served models)
+_DEFAULT_CONTEXT_WINDOW = 131072
+
+
+def _patch_openai_model_validation():
+    """
+    Monkey-patch LlamaIndex's model name validation to support custom models.
+    
+    LlamaIndex's OpenAI class validates model names against a whitelist of official
+    OpenAI models. This fails for custom models served via vLLM or other OpenAI-compatible
+    APIs. We patch the validation function to return a default context size for unknown models.
+    """
+    try:
+        import llama_index.llms.openai.utils as openai_utils
+        
+        _original_contextsize = openai_utils.openai_modelname_to_contextsize
+        
+        def _patched_contextsize(modelname: str) -> int:
+            try:
+                return _original_contextsize(modelname)
+            except ValueError:
+                # Unknown model (e.g., GPT-OSS-120B from vLLM) - return default
+                logger.debug("Unknown model '%s', using default context window %d", 
+                           modelname, _DEFAULT_CONTEXT_WINDOW)
+                return _DEFAULT_CONTEXT_WINDOW
+        
+        openai_utils.openai_modelname_to_contextsize = _patched_contextsize
+        
+        # Also patch it in the base module if imported there
+        try:
+            import llama_index.llms.openai.base as openai_base
+            openai_base.openai_modelname_to_contextsize = _patched_contextsize
+        except (ImportError, AttributeError):
+            pass
+            
+    except ImportError:
+        pass  # llama_index not installed
+
+
+# Apply the patch when this module is loaded
+_patch_openai_model_validation()
+
 
 def get_llm(
     provider: str,
@@ -29,23 +71,14 @@ def get_llm(
         if not api_key:
             raise ValueError("OPENAI_API_KEY is required for provider=openai.")
 
-        def _should_force_chat() -> bool:
+        def _is_non_openai_api() -> bool:
+            """Check if api_base points to a non-OpenAI server (e.g., vLLM, local)."""
             if api_base:
                 parsed = urlparse(api_base)
                 host = (parsed.netloc or parsed.path or "").lower()
                 if host and "openai.com" not in host:
                     return True
-            if model_name:
-                name = model_name.lower()
-                if name.startswith(("gpt-", "deepseek", "qwen", "claude")):
-                    return True
             return False
-
-        force_chat = _should_force_chat()
-        if force_chat:
-            logger.info("Initializing OpenAI-compatible LLM (forced chat): %s", model_name)
-        else:
-            logger.info("Initializing OpenAI-compatible LLM: %s", model_name)
 
         kwargs = {
             "model": model_name,
@@ -55,28 +88,13 @@ def get_llm(
         }
         if api_base:
             kwargs["api_base"] = api_base
-        if not force_chat:
-            return OpenAI(**kwargs)
 
-        for extra in (
-            {"is_chat_model": True},
-            {"use_chat_completions": True},
-            {"model_kwargs": {"is_chat_model": True}},
-        ):
-            try:
-                return OpenAI(**kwargs, **extra)
-            except TypeError:
-                continue
+        if _is_non_openai_api():
+            logger.info("Initializing OpenAI-compatible LLM: %s @ %s", model_name, api_base)
+        else:
+            logger.info("Initializing OpenAI LLM: %s", model_name)
 
-        try:
-            from llama_index.llms.openai_like import OpenAILike
-        except ImportError:
-            return OpenAI(**kwargs)
-
-        try:
-            return OpenAILike(**kwargs, is_chat_model=True)
-        except TypeError:
-            return OpenAILike(**kwargs)
+        return OpenAI(**kwargs)
 
     if provider == "vllm":
         try:

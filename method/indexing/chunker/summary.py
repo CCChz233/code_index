@@ -327,6 +327,15 @@ def collect_summary_blocks(
             return [], {}
         _SUMMARY_LLM_CACHE[cache_key] = llm
 
+    # LlamaIndex IngestionPipeline/SummaryExtractor may fall back to Settings.llm.
+    # Set it to our configured LLM so requests use the correct model (e.g. GPT-OSS-120B),
+    # not the default gpt-4o-mini.
+    try:
+        from llama_index.core import Settings
+        Settings.llm = llm
+    except Exception:
+        pass
+
     try:
         summary_extractor = _build_summary_extractor(llm, prompt_template)
     except Exception as e:

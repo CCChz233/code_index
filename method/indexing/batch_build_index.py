@@ -63,6 +63,11 @@ class _QueueWriter:
     def flush(self) -> None:
         return
 
+    # Make this behave like a non-TTY stream to callers that check isatty()
+    # (e.g., summary.py::_emit_summary_stats).
+    def isatty(self) -> bool:
+        return False
+
 
 def _emit_log(message: str, use_tqdm: bool, log_queue=None) -> None:
     if log_queue is not None:

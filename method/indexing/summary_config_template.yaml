@@ -2,20 +2,20 @@
 # CLI args override config values.
 #
 # Export env vars before running (do not commit secrets):
-# export OPENAI_API_BASE="https://api.chatanywhere.tech/v1"
-# export OPENAI_API_KEY="YOUR_API_KEY"
-# export MSWEA_MODEL_NAME="openai/deepseek-v3.2"
+# For local vLLM (GPT-OSS-120B):
+#   export OPENAI_API_BASE="http://127.0.0.1:8000/v1"
+#   export OPENAI_API_KEY="dummy_key"
 
-# Data source
+# Data source (will be overridden by CLI in run_summary.sh)
 dataset: ""
 split: "test"
-repo_path: "/Users/chz/code/locbench/locbench_repos"
-index_dir: "/Users/chz/code/locbench/locbench-ir-based/indexes"
+repo_path: "/home/chaihongzheng/workspace/locbench/repos/locbench_repos"
+index_dir: "/home/chaihongzheng/workspace/locbench/code_index/index_v2/summary"
 instance_id_path: ""
 
-# Embedding model
-model_name: "/path/to/embedding_model"
-trust_remote_code: false
+# Embedding model (will be overridden by CLI in run_summary.sh)
+model_name: "/home/chaihongzheng/workspace/locbench/LocAgent/models/CodeRankEmbed"
+trust_remote_code: true
 
 # Chunking strategy
 strategy: "summary"
@@ -24,18 +24,18 @@ window_size: 20
 slice_size: 2
 ir_function_context_tokens: 256
 
-# Summary strategy
+# Summary strategy (use local vLLM via OpenAI-compatible API)
 summary_base_strategy: "ir_function"
 summary_llm_provider: "openai"
-summary_llm_model: "gpt-4o-mini"
-summary_llm_api_key: ""          # Leave empty to read OPENAI_API_KEY
-summary_llm_api_base: ""         # e.g. http://localhost:8000/v1
+summary_llm_model: "GPT-OSS-120B"   # must match --served-model-name
+summary_llm_api_key: ""             # Leave empty to read OPENAI_API_KEY
+summary_llm_api_base: "http://127.0.0.1:8000/v1"
 summary_llm_max_new_tokens: 512
 summary_llm_temperature: 0.1
 summary_prompt: ""
 summary_prompt_file: ""
 summary_language: "Chinese"
-summary_cache_dir: "/Users/chz/code/locbench/locbench-ir-based/summary_cache"
+summary_cache_dir: "/home/chaihongzheng/workspace/locbench/code_index/summary_cache"
 summary_cache_policy: "read_write"
 summary_cache_miss: "empty"      # empty / skip / error
 summary_store_pure_summary: true
@@ -63,6 +63,6 @@ max_length: 4096
 batch_size: 8
 
 # Parallel
-num_processes: 1
-gpu_ids: "0"
-force_cpu: true
+num_processes: 4
+gpu_ids: "0,1,2,3"   # use embedding GPUs; vLLM is on 4,5,6,7
+force_cpu: false
