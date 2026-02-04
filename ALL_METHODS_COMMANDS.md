@@ -1,6 +1,6 @@
 # 所有方法的命令清单（索引构建 + 测评）
 
-本清单覆盖 **当前已实现** 的索引构建方式与测评入口（Dense / Sparse / Hybrid），并列出所有可用的 **chunk 策略**。
+本清单覆盖 **当前已实现** 的索引构建方式与测评入口（Dense / Sparse / Hybrid），并列出所有可用的 **chunk 策略**。Dense / Sparse 共享同一套 chunk 策略（含 llamaindex / langchain / summary）。
 
 > 约定：以下命令均在 `IR-base/` 目录下执行。
 
@@ -162,11 +162,19 @@ fixed
 sliding
 rl_fixed
 rl_mini
-function_level
 ir_function
+function_level
+summary
+llamaindex_code
+llamaindex_sentence
+llamaindex_token
+llamaindex_semantic
+langchain_fixed
+langchain_recursive
+langchain_token
 epic
 ```
-> 注意：`summary / llamaindex / langchain` 暂不支持稀疏构建。
+注意：summary 需要 LLM 配置；llamaindex / langchain 需要安装对应依赖，否则会返回空块。
 
 ### 4.2 批量构建
 ```bash
@@ -177,9 +185,14 @@ python method/indexing/batch_build_sparse_index.py \
   --skip_existing
 ```
 
-### 4.3 跑完所有策略（批量）
+### 4.3 跑完所有策略（批量，不含 summary）
 ```bash
-for STRATEGY in fixed sliding rl_fixed rl_mini function_level ir_function epic; do
+for STRATEGY in \
+  fixed sliding rl_fixed rl_mini \
+  ir_function function_level \
+  llamaindex_code llamaindex_sentence llamaindex_token llamaindex_semantic \
+  langchain_fixed langchain_recursive langchain_token \
+  epic; do
 
   python method/indexing/batch_build_sparse_index.py \
     --repo_path $REPOS_ROOT \
@@ -188,6 +201,17 @@ for STRATEGY in fixed sliding rl_fixed rl_mini function_level ir_function epic; 
     --skip_existing
 
 done
+```
+
+### 4.4 Summary（BM25）
+Sparse 的 summary 需要 LLM 配置，且目前不支持 `--config`，请直接用 CLI 传参。示例：
+```bash
+python method/indexing/batch_build_sparse_index.py \
+  --repo_path $REPOS_ROOT \
+  --index_dir $INDEX_ROOT \
+  --strategy summary \
+  --summary_llm_api_key $OPENAI_API_KEY \
+  --summary_llm_api_base $OPENAI_API_BASE
 ```
 
 ---
@@ -211,6 +235,7 @@ python method/indexing/batch_build_index.py \
   --summary_llm_api_key $OPENAI_API_KEY \
   --summary_llm_api_base $OPENAI_API_BASE
 ```
+Sparse 的 summary 可用 `batch_build_sparse_index.py`，但不支持 `--config`，需把模板参数改为 CLI 传入。
 
 ---
 

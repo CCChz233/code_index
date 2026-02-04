@@ -84,6 +84,7 @@ python method/indexing/batch_build_sparse_index.py \
   --strategy ir_function \
   --skip_existing
 ```
+说明：Sparse 支持与 Dense 相同的分块策略（含 `llamaindex_*` / `langchain_*` / `summary`）。其中 summary 需要 LLM 配置，llamaindex/langchain 需要对应依赖。
 
 检查点：
 - 输出路径：`/path/to/index_root/sparse_index_ir_function/{repo_name}/index.npz`
@@ -104,6 +105,8 @@ python method/indexing/batch_build_index.py \
 - `index_dir` 中生成对应索引
 
 > 如果想覆盖配置文件，请在命令行追加同名参数（CLI 会覆盖 config）。
+
+Sparse 的 summary 可用 `batch_build_sparse_index.py`，但不支持 `--config`，需把模板参数改为 CLI 传入。
 
 ## 5. 检索评估（v2 run_with_index）
 

@@ -21,6 +21,7 @@ export HF_ENDPOINT=https://hf-mirror.com
 - Dense：`torch`, `transformers`
 - SFR：`sentence-transformers`
 - Sparse：`scipy`
+- Summary / LlamaIndex / LangChain：按策略安装对应依赖（summary 需可用 LLM 配置）
 
 ---
 
@@ -75,6 +76,8 @@ python method/indexing/build_sparse_index.py \
   --output_dir /path/to/output_index \
   --strategy ir_function
 ```
+
+说明：Sparse 支持与 Dense 相同的分块策略（含 `llamaindex_*` / `langchain_*` / `summary`），使用前确保依赖与 LLM 配置齐全。
 
 ---
 

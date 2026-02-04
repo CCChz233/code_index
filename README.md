@@ -13,9 +13,10 @@ IR-Base 是一个**面向 Python 代码仓库的索引与检索框架**，支持
 - **Sparse 索引**：BM25（`scipy.sparse` `.npz` + `vocab.json`）
 - **Hybrid 检索**：Dense + Sparse 融合（RRF / Weighted）
 - **多策略切块**：fixed / sliding / rl_fixed / rl_mini / ir_function / function_level / llamaindex / langchain / epic / summary
+  Dense / Sparse 共享同一套分块策略（包含 llamaindex / langchain / summary）
 
 ### 未实现（预留）
-- Summary 索引统一入口（当前仍使用 summary chunker 作为 dense 流程的一部分）
+- Summary 索引统一入口（当前通过 summary chunker 作为 dense / sparse 流程的一部分）
 
 ---
 
@@ -47,7 +48,7 @@ export TOKENIZERS_PARALLELISM=false
 - Dense：`torch`, `transformers`
 - SFR：`sentence-transformers`
 - Sparse：`scipy`
-- Summary / LlamaIndex / LangChain：按策略安装对应依赖
+- Summary / LlamaIndex / LangChain：按策略安装对应依赖（summary 需可用 LLM 配置）
 
 ---
 
@@ -89,6 +90,8 @@ python method/indexing/build_sparse_index.py \
   --output_dir /path/to/output_index \
   --strategy ir_function
 ```
+
+说明：Sparse 现在支持与 Dense 相同的分块策略（含 `llamaindex_*` / `langchain_*` / `summary`）。使用这些策略请确保安装对应依赖。
 
 ---
 
