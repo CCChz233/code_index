@@ -15,7 +15,7 @@ index_v2/
 output_eval/
 *.pt
 embeddings.pt
-
+summary_cache/
 # Graph / dependency index (if built under code_index)
 graph_index/
 
