@@ -18,6 +18,7 @@ export TOKENIZERS_PARALLELISM=false
 1. Dense embedding：`torch`, `transformers`
 2. Sparse BM25：`scipy`
 3. Summary LLM：`llama-index` + 对应 provider 包  
+4. 可视化（可选）：`rich`
 
 OpenAI 示例：
 ```
@@ -73,6 +74,7 @@ python method/indexing/build_summary_index.py \
 12. `--lang_allowlist .py`  
 13. `--skip_patterns "**/node_modules/**,**/.git/**"`  
 14. `--max_file_size_mb 5`  
+15. `--progress_style rich|tqdm|simple`（终端可视化）  
 
 ---
 
@@ -126,6 +128,7 @@ python method/indexing/batch_build_summary_index.py \
   --llm_timeout 300 \
   --max_retries 3 \
   --log_dir /path/to/logs \
+  --progress_style rich \
   --skip_existing
 ```
 
@@ -136,6 +139,13 @@ logs/summary_index/summary_worker_0.log
 logs/summary_index/summary_worker_1.log
 ...
 ```
+
+### Metrics 输出（JSONL）
+批量构建会生成结构化指标日志：
+```
+logs/summary_index/metrics.jsonl
+```
+包含 `run_start/run_end`、`repo_start/repo_end`、`llm_finish`（含 token 使用量）、`cache_hit/cache_miss`、`error` 等事件，便于离线汇总与排障。
 
 如需断点续跑：
 ```

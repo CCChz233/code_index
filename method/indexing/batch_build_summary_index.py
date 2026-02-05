@@ -8,6 +8,7 @@ import signal
 import sys
 import threading
 import time
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import List, Optional
 
@@ -15,6 +16,30 @@ try:
     from tqdm import tqdm
 except Exception:  # pragma: no cover
     tqdm = None
+
+try:
+    from rich.console import Console, Group
+    from rich.live import Live
+    from rich.panel import Panel
+    from rich.progress import (
+        BarColumn,
+        Progress,
+        SpinnerColumn,
+        TextColumn,
+        TimeRemainingColumn,
+    )
+    from rich.table import Table
+except Exception:  # pragma: no cover
+    Console = None
+    Group = None
+    Live = None
+    Panel = None
+    Progress = None
+    SpinnerColumn = None
+    TextColumn = None
+    BarColumn = None
+    TimeRemainingColumn = None
+    Table = None
 
 
 def _safe_print(message: str, use_tqdm: bool) -> None:
@@ -25,6 +50,10 @@ def _safe_print(message: str, use_tqdm: bool) -> None:
         except Exception:
             pass
     print(message, flush=True)
+
+
+def _now_iso() -> str:
+    return datetime.now(timezone.utc).replace(microsecond=0).isoformat()
 
 
 class _QueueWriter:
@@ -100,6 +129,88 @@ def _emit_log(message: str, use_tqdm: bool, log_queue=None) -> None:
         _safe_print(message, use_tqdm)
 
 
+class SimpleVisualizer:
+    def __init__(self, num_workers: int, total_repos: int):
+        self.num_workers = num_workers
+        self.worker_status = {
+            i: {"repo": "-", "status": "[dim]IDLE[/dim]", "tokens": 0, "last_error": ""}
+            for i in range(num_workers)
+        }
+        self.repo_tokens = {}
+        self.completed_repos = set()
+        self.progress = Progress(
+            SpinnerColumn(),
+            TextColumn("[bold blue]{task.description}"),
+            BarColumn(),
+            TextColumn("[progress.percentage]{task.percentage:>3.0f}%"),
+            TextColumn("{task.completed}/{task.total}"),
+            TimeRemainingColumn(),
+        )
+        self.task_id = self.progress.add_task("Global Progress", total=total_repos)
+
+    def generate_view(self):
+        table = Table(show_header=True, header_style="bold magenta", expand=True, box=None)
+        table.add_column("Worker", style="dim", width=8)
+        table.add_column("Status", width=14)
+        table.add_column("Current Repo", ratio=1)
+        table.add_column("Sess. Tokens", justify="right", width=14)
+
+        for i in range(self.num_workers):
+            ws = self.worker_status[i]
+            table.add_row(f"#{i}", ws["status"], ws["repo"], f"{ws['tokens']:,}")
+
+        return Group(Panel(self.progress, style="blue"), table)
+
+    def update(self, event: dict) -> Optional[str]:
+        wid = event.get("worker_id", event.get("worker"))
+        etype = event.get("event")
+        repo = event.get("repo", "-")
+        payload = event.get("payload", {}) or {}
+        log_msg = None
+
+        if wid is not None and wid in self.worker_status:
+            state = self.worker_status[wid]
+            if etype == "repo_start":
+                state["repo"] = repo
+                state["status"] = "[green]PROCESSING[/green]"
+            elif etype == "llm_call":
+                state["status"] = "[yellow]LLM GEN[/yellow]"
+            elif etype == "embedding_batch":
+                state["status"] = "[cyan]EMBEDDING[/cyan]"
+            elif etype == "error":
+                err_type = payload.get("error_type", "ERROR")
+                state["status"] = f"[bold red]{err_type}[/bold red]"
+                state["last_error"] = payload.get("error_msg", "")
+            elif etype == "status":
+                status = payload.get("state")
+                if status:
+                    state["status"] = f"[dim]{status}[/dim]" if status == "IDLE" else f"[green]{status}[/green]"
+                repo_name = payload.get("current_repo")
+                if repo_name:
+                    state["repo"] = repo_name
+            elif etype == "llm_finish":
+                usage = payload.get("usage", {}) or {}
+                tokens = int(usage.get("total_tokens", 0) or 0)
+                state["tokens"] += tokens
+                if repo and repo != "-":
+                    self.repo_tokens[repo] = self.repo_tokens.get(repo, 0) + tokens
+            elif etype == "repo_end":
+                state["status"] = "[dim]IDLE[/dim]"
+                state["repo"] = "-"
+                if repo not in self.completed_repos:
+                    self.completed_repos.add(repo)
+                    self.progress.update(self.task_id, advance=1)
+                repo_tok = self.repo_tokens.get(repo, 0)
+                log_msg = f"[bold green]✅ Finished[/bold green] {repo} (Worker #{wid}) • Tokens: {repo_tok:,}"
+
+        return log_msg
+
+
+def _silence_noisy_loggers() -> None:
+    for name in ("httpx", "httpcore", "openai", "urllib3", "llama_index"):
+        logging.getLogger(name).setLevel(logging.WARNING)
+
+
 def _list_repos(root: Path) -> List[Path]:
     return [p for p in root.iterdir() if p.is_dir()]
 
@@ -162,6 +273,13 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--force_cpu", action="store_true", help="Force CPU usage.")
     parser.add_argument("--log_dir", type=str, default="logs/summary_index", help="Log directory.")
     parser.add_argument("--log_level", type=str, default="INFO", help="Logging level (DEBUG/INFO/WARNING).")
+    parser.add_argument(
+        "--progress_style",
+        type=str,
+        default="rich",
+        choices=["rich", "tqdm", "simple"],
+        help="Progress UI style (rich requires rich package).",
+    )
 
     return parser.parse_args()
 
@@ -193,6 +311,8 @@ def run_worker(
     log_queue,
     failed_queue,
     stop_event,
+    metrics_queue,
+    run_id: str,
 ):
     if args.num_processes > 1:
         os.environ.setdefault("TQDM_DISABLE", "1")
@@ -219,6 +339,33 @@ def run_worker(
         format="%(asctime)s [%(levelname)s] %(message)s",
         force=True,
     )
+    _silence_noisy_loggers()
+
+    def _emit_metric(
+        event: str,
+        *,
+        repo_name: Optional[str] = None,
+        payload: Optional[dict] = None,
+        duration_ms: Optional[float] = None,
+        counts: Optional[dict] = None,
+    ) -> None:
+        if metrics_queue is None:
+            return
+        item = {
+            "ts": _now_iso(),
+            "event": event,
+            "run_id": run_id,
+            "worker_id": rank,
+        }
+        if repo_name:
+            item["repo"] = repo_name
+        if duration_ms is not None:
+            item["duration_ms"] = int(duration_ms)
+        if counts:
+            item["counts"] = counts
+        if payload:
+            item["payload"] = payload
+        metrics_queue.put(item)
 
     # Lazy imports inside worker
     import torch
@@ -239,11 +386,41 @@ def run_worker(
         if item is None:
             break
         repo_path, repo_name = item
+        repo_start_ts = time.time()
+        repo_end_emitted = False
+        _emit_metric("repo_start", repo_name=repo_name)
+        _emit_metric(
+            "status",
+            repo_name=repo_name,
+            payload={"state": "BUSY", "current_repo": repo_name, "stage": "Summary"},
+        )
+
+        def metrics_hook(event: dict) -> None:
+            if metrics_queue is None:
+                return
+            if "ts" not in event:
+                event["ts"] = _now_iso()
+            event.setdefault("repo", repo_name)
+            event.setdefault("worker_id", rank)
+            event["run_id"] = run_id
+            metrics_queue.put(event)
 
         try:
             output_dir = Path(args.index_dir) / "summary_index_function_level" / repo_name
             summary_jsonl = output_dir / "summary.jsonl"
             if args.skip_existing and summary_jsonl.exists():
+                _emit_metric(
+                    "repo_end",
+                    repo_name=repo_name,
+                    duration_ms=(time.time() - repo_start_ts) * 1000,
+                    payload={"skipped": True},
+                )
+                repo_end_emitted = True
+                _emit_metric(
+                    "status",
+                    repo_name=repo_name,
+                    payload={"state": "IDLE", "current_repo": "", "stage": ""},
+                )
                 with completed_repos.get_lock():
                     completed_repos.value += 1
                 continue
@@ -282,13 +459,42 @@ def run_worker(
                 skip_file_patterns=args.skip_patterns,
                 max_file_size_mb=args.max_file_size_mb,
                 show_progress=show_progress,
+                metrics_hook=metrics_hook,
             )
             elapsed = time.time() - start_ts
             _emit_log(f"[Process {rank}] Finished {repo_name} in {elapsed:.1f}s", use_tqdm, log_queue)
+            _emit_metric(
+                "repo_end",
+                repo_name=repo_name,
+                duration_ms=(time.time() - repo_start_ts) * 1000,
+            )
+            repo_end_emitted = True
+            _emit_metric(
+                "status",
+                repo_name=repo_name,
+                payload={"state": "IDLE", "current_repo": "", "stage": ""},
+            )
         except Exception as exc:
             failed_queue.put({"repo_name": repo_name, "error": str(exc)})
             _emit_log(f"[Process {rank}] Error processing {repo_name}: {exc}", use_tqdm, log_queue)
+            _emit_metric(
+                "error",
+                repo_name=repo_name,
+                payload={"error_type": "SYSTEM_ERROR", "error_msg": str(exc)},
+            )
         finally:
+            if not repo_end_emitted:
+                _emit_metric(
+                    "repo_end",
+                    repo_name=repo_name,
+                    duration_ms=(time.time() - repo_start_ts) * 1000,
+                    payload={"status": "failed"},
+                )
+                _emit_metric(
+                    "status",
+                    repo_name=repo_name,
+                    payload={"state": "IDLE", "current_repo": "", "stage": ""},
+                )
             with completed_repos.get_lock():
                 completed_repos.value += 1
             if torch.cuda.is_available():
@@ -305,11 +511,27 @@ def main() -> None:
         level=getattr(logging, args.log_level.upper(), logging.INFO),
         format="%(asctime)s [%(levelname)s] %(message)s",
     )
+    _silence_noisy_loggers()
 
     if args.summary_llm_provider == "vllm" and args.num_processes > 1:
         raise ValueError("summary_llm_provider=vllm requires num_processes=1. Use openai+vLLM server.")
 
-    use_tqdm = sys.stderr.isatty()
+    progress_style = args.progress_style
+    use_tty = sys.stderr.isatty()
+    use_rich = progress_style == "rich" and Console is not None and use_tty
+    use_tqdm = progress_style == "tqdm" and tqdm is not None and use_tty
+
+    if progress_style == "rich" and not use_rich:
+        if tqdm is not None and use_tty:
+            progress_style = "tqdm"
+            use_tqdm = True
+        else:
+            progress_style = "simple"
+        _safe_print(
+            "Rich not available or no TTY; falling back to %s progress." % progress_style,
+            use_tqdm,
+        )
+
     if not use_tqdm:
         os.environ.setdefault("TQDM_DISABLE", "1")
 
@@ -317,6 +539,8 @@ def main() -> None:
     log_dir = Path(args.log_dir)
     log_dir.mkdir(parents=True, exist_ok=True)
     failed_path = log_dir / "failed_repos.jsonl"
+    metrics_path = log_dir / "metrics.jsonl"
+    run_id = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
 
     repos: List[str] = []
     if args.resume_failed and failed_path.exists():
@@ -358,21 +582,26 @@ def main() -> None:
     completed_repos = ctx.Value("i", 0)
     repo_queue = ctx.Queue()
     failed_queue = ctx.Queue()
+    metrics_queue = ctx.Queue()
     stop_event = ctx.Event()
 
     for repo_name in repos:
         repo_queue.put((str(repo_root / repo_name), repo_name))
 
-    total_pbar = tqdm(
-        total=len(repos),
-        desc="Summary Index Total",
-        disable=not use_tqdm,
-        dynamic_ncols=True,
-        mininterval=1.0,
-        maxinterval=5.0,
-    ) if tqdm else None
+    total_pbar = None
+    if use_tqdm:
+        total_pbar = tqdm(
+            total=len(repos),
+            desc="Summary Index Total",
+            disable=not use_tqdm,
+            dynamic_ncols=True,
+            mininterval=1.0,
+            maxinterval=5.0,
+        )
 
-    log_queue = ctx.Queue() if use_tqdm and args.num_processes > 1 else None
+    log_queue = None
+    if use_rich or (use_tqdm and args.num_processes > 1):
+        log_queue = ctx.Queue()
     log_stop = threading.Event()
     log_thread = None
     if log_queue is not None:
@@ -384,7 +613,8 @@ def main() -> None:
                     continue
                 if msg is None:
                     break
-                _safe_print(msg, use_tqdm)
+                if use_tqdm:
+                    _safe_print(msg, use_tqdm)
         log_thread = threading.Thread(target=_log_worker, daemon=True)
         log_thread.start()
 
@@ -424,7 +654,8 @@ def main() -> None:
         monitor_thread.start()
 
     processes = []
-    if args.num_processes == 1:
+    spawn_workers = args.num_processes != 1 or use_rich
+    if not spawn_workers:
         run_worker(
             0,
             repo_queue,
@@ -435,17 +666,99 @@ def main() -> None:
             log_queue,
             failed_queue,
             stop_event,
+            metrics_queue,
+            run_id,
         )
     else:
         for rank in range(args.num_processes):
             p = ctx.Process(
                 target=run_worker,
-                args=(rank, repo_queue, args, gpu_ids, completed_repos, use_tqdm, log_queue, failed_queue, stop_event),
+                args=(
+                    rank,
+                    repo_queue,
+                    args,
+                    gpu_ids,
+                    completed_repos,
+                    use_tqdm,
+                    log_queue,
+                    failed_queue,
+                    stop_event,
+                    metrics_queue,
+                    run_id,
+                ),
             )
             p.start()
             processes.append(p)
-        for p in processes:
-            p.join()
+    visualizer = SimpleVisualizer(args.num_processes, len(repos)) if use_rich else None
+    console = Console() if use_rich else None
+
+    def _handle_metric(event: dict, metrics_file) -> None:
+        metrics_file.write(json.dumps(event, ensure_ascii=False) + "\n")
+        metrics_file.flush()
+        if visualizer is None:
+            return
+        log_msg = visualizer.update(event)
+        if log_msg:
+            console.print(log_msg)
+
+    def _drain_queue(metrics_file, live=None) -> None:
+        while True:
+            try:
+                payload = metrics_queue.get_nowait()
+            except queue.Empty:
+                break
+            _handle_metric(payload, metrics_file)
+            if live is not None:
+                live.update(visualizer.generate_view())
+
+    with metrics_path.open("a", encoding="utf-8") as metrics_file:
+        _handle_metric(
+            {
+                "ts": _now_iso(),
+                "event": "run_start",
+                "run_id": run_id,
+                "payload": {"total_repos": len(repos)},
+            },
+            metrics_file,
+        )
+
+        if use_rich:
+            with Live(visualizer.generate_view(), console=console, refresh_per_second=4, screen=False) as live:
+                while True:
+                    try:
+                        payload = metrics_queue.get(timeout=0.2)
+                    except queue.Empty:
+                        payload = None
+                    if payload is not None:
+                        _handle_metric(payload, metrics_file)
+                        live.update(visualizer.generate_view())
+                    if completed_repos.value >= len(repos) and not any(p.is_alive() for p in processes):
+                        _drain_queue(metrics_file, live)
+                        break
+        else:
+            while True:
+                try:
+                    payload = metrics_queue.get(timeout=0.2)
+                except queue.Empty:
+                    payload = None
+                if payload is not None:
+                    _handle_metric(payload, metrics_file)
+                if completed_repos.value >= len(repos) and not any(p.is_alive() for p in processes):
+                    _drain_queue(metrics_file, None)
+                    break
+
+        _handle_metric(
+            {
+                "ts": _now_iso(),
+                "event": "run_end",
+                "run_id": run_id,
+                "payload": {"completed_repos": completed_repos.value, "total_repos": len(repos)},
+            },
+            metrics_file,
+        )
+
+    for p in processes:
+        p.join()
 
     if total_pbar is not None:
         total_pbar.n = len(repos)

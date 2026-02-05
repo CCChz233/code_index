@@ -44,6 +44,7 @@ python method/indexing/batch_build_summary_index.py \
   --llm_timeout 300 \
   --max_retries 3 \
   --log_dir "$LOG_DIR" \
+  --progress_style rich \
   --show_progress \
   --log_level INFO \
   --skip_existing \

@@ -9,7 +9,7 @@ import re
 import time
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any, Dict, Iterable, List, Optional, Sequence, Tuple
+from typing import Any, Callable, Dict, Iterable, List, Optional, Sequence, Tuple
 
 import torch
 from transformers import AutoModel, AutoTokenizer
@@ -71,6 +71,128 @@ DEFAULT_FILE_PROMPT = (
 
 def _utc_now_iso() -> str:
     return datetime.now(timezone.utc).replace(microsecond=0).isoformat()
+
+
+def _emit_metric(
+    metrics_hook: Optional[Callable[[Dict[str, Any]], None]],
+    event: str,
+    *,
+    duration_ms: Optional[float] = None,
+    counts: Optional[Dict[str, Any]] = None,
+    payload: Optional[Dict[str, Any]] = None,
+) -> None:
+    if metrics_hook is None:
+        return
+    metric: Dict[str, Any] = {"ts": _utc_now_iso(), "event": event}
+    if duration_ms is not None:
+        metric["duration_ms"] = int(duration_ms)
+    if counts:
+        metric["counts"] = counts
+    if payload:
+        metric["payload"] = payload
+    try:
+        metrics_hook(metric)
+    except Exception:
+        return
+
+
+def _get_usage_value(usage: Any, key: str) -> Optional[int]:
+    if usage is None:
+        return None
+    if isinstance(usage, dict):
+        value = usage.get(key)
+        if value is not None:
+            try:
+                return int(value)
+            except Exception:
+                return None
+    if hasattr(usage, key):
+        try:
+            return int(getattr(usage, key))
+        except Exception:
+            return None
+    return None
+
+
+def _extract_usage_from_raw(raw: Any) -> Optional[Any]:
+    if raw is None:
+        return None
+    if isinstance(raw, dict):
+        if "usage" in raw:
+            return raw.get("usage")
+        if "data" in raw and isinstance(raw.get("data"), dict):
+            data_usage = raw["data"].get("usage")
+            if data_usage:
+                return data_usage
+    if hasattr(raw, "usage"):
+        return getattr(raw, "usage")
+    return None
+
+
+def _extract_usage(response: Any) -> Optional[Any]:
+    if response is None:
+        return None
+    if isinstance(response, dict):
+        if "usage" in response:
+            return response.get("usage")
+        if "data" in response and isinstance(response.get("data"), dict):
+            return response["data"].get("usage")
+    for attr in ("raw", "raw_response", "raw_output", "additional_kwargs"):
+        if hasattr(response, attr):
+            usage = _extract_usage_from_raw(getattr(response, attr))
+            if usage is not None:
+                return usage
+    if hasattr(response, "usage"):
+        return getattr(response, "usage")
+    return None
+
+
+def _extract_model_name(response: Any, fallback: Optional[str]) -> Optional[str]:
+    for attr in ("model", "model_name"):
+        if hasattr(response, attr):
+            value = getattr(response, attr)
+            if value:
+                return str(value)
+    if isinstance(response, dict):
+        if response.get("model"):
+            return str(response.get("model"))
+    for attr in ("raw", "raw_response", "raw_output"):
+        if hasattr(response, attr):
+            raw = getattr(response, attr)
+            if isinstance(raw, dict) and raw.get("model"):
+                return str(raw.get("model"))
+            if hasattr(raw, "model") and getattr(raw, "model", None):
+                return str(getattr(raw, "model"))
+    return fallback
+
+
+def _normalize_usage(usage: Any, model_name: Optional[str]) -> Dict[str, Any]:
+    prompt_tokens = _get_usage_value(usage, "prompt_tokens")
+    completion_tokens = _get_usage_value(usage, "completion_tokens")
+    total_tokens = _get_usage_value(usage, "total_tokens")
+    if total_tokens is None:
+        total_tokens = (prompt_tokens or 0) + (completion_tokens or 0)
+    return {
+        "prompt_tokens": int(prompt_tokens or 0),
+        "completion_tokens": int(completion_tokens or 0),
+        "total_tokens": int(total_tokens or 0),
+        "model": model_name or "",
+    }
+
+
+def _classify_llm_error(exc: Exception) -> str:
+    message = str(exc).lower()
+    if "context" in message and ("length" in message or "token" in message):
+        return "CONTEXT_LENGTH_ERROR"
+    if "maximum context" in message or "max context" in message:
+        return "CONTEXT_LENGTH_ERROR"
+    if "timeout" in message or "timed out" in message:
+        return "LLM_API_ERROR"
+    if any(code in message for code in ("429", "500", "502", "503", "504")):
+        return "LLM_API_ERROR"
+    if "rate limit" in message or "server error" in message:
+        return "LLM_API_ERROR"
+    return "SYSTEM_ERROR"
 
 
 def _sha1(text: str, *, length: int = 12) -> str:
@@ -150,20 +272,49 @@ def _load_prompt(
     return template
 
 
-def _call_llm(llm, prompt: str, *, max_retries: int, base_backoff: float) -> str:
+def _call_llm(
+    llm,
+    prompt: str,
+    *,
+    max_retries: int,
+    base_backoff: float,
+    metrics_hook: Optional[Callable[[Dict[str, Any]], None]] = None,
+    metrics_payload: Optional[Dict[str, Any]] = None,
+    model_name: Optional[str] = None,
+) -> str:
     last_exc: Optional[Exception] = None
     for attempt in range(max_retries + 1):
         try:
+            _emit_metric(metrics_hook, "llm_call", payload=dict(metrics_payload or {}))
+            start_ts = time.time()
             response = llm.complete(prompt)
+            duration_ms = (time.time() - start_ts) * 1000
+            usage = _normalize_usage(_extract_usage(response), _extract_model_name(response, model_name))
             if hasattr(response, "text") and response.text:
-                return str(response.text).strip()
-            if hasattr(response, "message") and getattr(response.message, "content", None):
-                return str(response.message.content).strip()
-            return str(response).strip()
+                text = str(response.text).strip()
+            elif hasattr(response, "message") and getattr(response.message, "content", None):
+                text = str(response.message.content).strip()
+            else:
+                text = str(response).strip()
+
+            payload = dict(metrics_payload or {})
+            payload.update({"latency_ms": int(duration_ms), "usage": usage})
+            _emit_metric(metrics_hook, "llm_finish", duration_ms=duration_ms, payload=payload)
+            return text
         except Exception as exc:
             last_exc = exc
+            payload = dict(metrics_payload or {})
+            payload.update(
+                {
+                    "error_type": _classify_llm_error(exc),
+                    "error_msg": str(exc),
+                    "attempt": attempt + 1,
+                }
+            )
             if attempt >= max_retries:
+                _emit_metric(metrics_hook, "error", payload=payload)
                 break
+            _emit_metric(metrics_hook, "llm_retry", payload=payload)
             sleep_s = base_backoff * (2**attempt) + random.uniform(0, 0.5)
             time.sleep(sleep_s)
     raise RuntimeError(f"LLM completion failed after retries: {last_exc}") from last_exc
@@ -194,7 +345,11 @@ def _apply_llm_timeout(llm, timeout: Optional[float]) -> None:
                     continue
 
 
-def _parse_summary_json(text: str) -> Dict[str, Any]:
+def _parse_summary_json(
+    text: str,
+    metrics_hook: Optional[Callable[[Dict[str, Any]], None]] = None,
+    metrics_payload: Optional[Dict[str, Any]] = None,
+) -> Dict[str, Any]:
     def _coerce_keywords(value: Any) -> List[str]:
         if value is None:
             return []
@@ -218,9 +373,18 @@ def _parse_summary_json(text: str) -> Dict[str, Any]:
             payload = None
 
     if not isinstance(payload, dict):
+        error_payload = dict(metrics_payload or {})
+        error_payload.update(
+            {
+                "error_type": "PARSING_ERROR",
+                "error_msg": "Failed to parse summary JSON",
+            }
+        )
+        _emit_metric(metrics_hook, "error", payload=error_payload)
+        summary_text = text.strip()
         return {
-            "summary": text.strip(),
-            "business_intent": text.strip(),
+            "summary": summary_text,
+            "business_intent": summary_text,
             "keywords": [],
         }
 
@@ -550,6 +714,8 @@ def _collect_function_docs(
     progress_desc: str,
     llm_max_retries: int,
     llm_backoff: float,
+    metrics_hook: Optional[Callable[[Dict[str, Any]], None]] = None,
+    summary_llm_model: Optional[str] = None,
 ) -> Tuple[List[Dict[str, Any]], Dict[str, Dict[str, Any]]]:
     blocks, metadata = collect_function_blocks(repo_path, block_size=15)
     docs: List[Dict[str, Any]] = []
@@ -581,6 +747,7 @@ def _collect_function_docs(
         file_path = block.file_path
         module_path = _module_path_for_file(file_path)
         doc_id = qualified_name
+        metric_payload = {"stage": "function", "doc_id": doc_id}
 
         raw_code = _extract_function_code(block.content)
         lines = [ln for ln in raw_code.splitlines() if ln.strip()]
@@ -644,6 +811,11 @@ def _collect_function_docs(
                         "keywords": existing.get("keywords", []),
                     }
                     reused_existing += 1
+                    _emit_metric(
+                        metrics_hook,
+                        "cache_hit",
+                        payload={**metric_payload, "source": "existing"},
+                    )
             if not summary_payload and summary_cache_policy != "disabled":
                 cache_key = _make_cache_key(doc_id, summary_hash)
                 cache_entry = _load_cache_entry(summary_cache_dir, cache_key)
@@ -654,15 +826,33 @@ def _collect_function_docs(
                         "keywords": cache_entry.get("keywords", []),
                     }
                     cache_hits += 1
+                    _emit_metric(
+                        metrics_hook,
+                        "cache_hit",
+                        payload={**metric_payload, "source": "cache"},
+                    )
                 else:
                     cache_misses += 1
+                    _emit_metric(metrics_hook, "cache_miss", payload=dict(metric_payload))
 
             if not summary_payload and summary_cache_policy != "read_only":
                 prompt = _render_prompt(summary_prompt, context_str)
                 try:
                     llm_calls += 1
-                    llm_text = _call_llm(llm, prompt, max_retries=llm_max_retries, base_backoff=llm_backoff)
-                    summary_payload = _parse_summary_json(llm_text)
+                    llm_text = _call_llm(
+                        llm,
+                        prompt,
+                        max_retries=llm_max_retries,
+                        base_backoff=llm_backoff,
+                        metrics_hook=metrics_hook,
+                        metrics_payload=metric_payload,
+                        model_name=summary_llm_model,
+                    )
+                    summary_payload = _parse_summary_json(
+                        llm_text,
+                        metrics_hook=metrics_hook,
+                        metrics_payload=metric_payload,
+                    )
                 except Exception as exc:
                     logging.warning("Summary generation failed for %s: %s", qualified_name, exc)
                     summary_payload = {}
@@ -746,6 +936,8 @@ def _aggregate_file_docs(
     existing_docs: Dict[str, Dict[str, Any]],
     llm_max_retries: int,
     llm_backoff: float,
+    metrics_hook: Optional[Callable[[Dict[str, Any]], None]] = None,
+    summary_llm_model: Optional[str] = None,
 ) -> List[Dict[str, Any]]:
     repo_root = Path(repo_path)
     docs_by_file: Dict[str, List[Dict[str, Any]]] = {}
@@ -797,6 +989,7 @@ def _aggregate_file_docs(
         doc_id = file_path
         module_path = _module_path_for_file(file_path)
         existing = existing_docs.get(doc_id)
+        metric_payload = {"stage": "file", "doc_id": doc_id}
 
         summary_payload: Dict[str, Any] = {}
         if existing and existing.get("content_hash") == content_hash and existing.get("summary_hash") == summary_hash:
@@ -805,6 +998,11 @@ def _aggregate_file_docs(
                 "business_intent": existing.get("business_intent", existing.get("summary", "")),
                 "keywords": existing.get("keywords", []),
             }
+            _emit_metric(
+                metrics_hook,
+                "cache_hit",
+                payload={**metric_payload, "source": "existing"},
+            )
 
         if not summary_payload and summary_cache_policy != "disabled":
             cache_key = _make_cache_key(doc_id, summary_hash)
@@ -815,12 +1013,31 @@ def _aggregate_file_docs(
                     "business_intent": cache_entry.get("business_intent", cache_entry.get("summary", "")),
                     "keywords": cache_entry.get("keywords", []),
                 }
+                _emit_metric(
+                    metrics_hook,
+                    "cache_hit",
+                    payload={**metric_payload, "source": "cache"},
+                )
+            else:
+                _emit_metric(metrics_hook, "cache_miss", payload=dict(metric_payload))
 
         if not summary_payload and summary_cache_policy != "read_only":
             prompt = _render_prompt(summary_prompt, context_str)
             try:
-                llm_text = _call_llm(llm, prompt, max_retries=llm_max_retries, base_backoff=llm_backoff)
-                summary_payload = _parse_summary_json(llm_text)
+                llm_text = _call_llm(
+                    llm,
+                    prompt,
+                    max_retries=llm_max_retries,
+                    base_backoff=llm_backoff,
+                    metrics_hook=metrics_hook,
+                    metrics_payload=metric_payload,
+                    model_name=summary_llm_model,
+                )
+                summary_payload = _parse_summary_json(
+                    llm_text,
+                    metrics_hook=metrics_hook,
+                    metrics_payload=metric_payload,
+                )
             except Exception as exc:
                 logging.warning("File summary generation failed for %s: %s", file_path, exc)
                 summary_payload = {}
@@ -887,6 +1104,8 @@ def _aggregate_module_docs(
     existing_docs: Dict[str, Dict[str, Any]],
     llm_max_retries: int,
     llm_backoff: float,
+    metrics_hook: Optional[Callable[[Dict[str, Any]], None]] = None,
+    summary_llm_model: Optional[str] = None,
 ) -> List[Dict[str, Any]]:
     repo_root = Path(repo_path)
     docs_by_module: Dict[str, List[Dict[str, Any]]] = {}
@@ -920,6 +1139,7 @@ def _aggregate_module_docs(
         summary_hash = _sha1(summary_prompt + normalized_source)
         doc_id = module_path
         existing = existing_docs.get(doc_id)
+        metric_payload = {"stage": "module", "doc_id": doc_id}
 
         summary_payload: Dict[str, Any] = {}
         if existing and existing.get("content_hash") == content_hash and existing.get("summary_hash") == summary_hash:
@@ -928,6 +1148,11 @@ def _aggregate_module_docs(
                 "business_intent": existing.get("business_intent", existing.get("summary", "")),
                 "keywords": existing.get("keywords", []),
             }
+            _emit_metric(
+                metrics_hook,
+                "cache_hit",
+                payload={**metric_payload, "source": "existing"},
+            )
 
         if not summary_payload and summary_cache_policy != "disabled":
             cache_key = _make_cache_key(doc_id, summary_hash)
@@ -938,12 +1163,31 @@ def _aggregate_module_docs(
                     "business_intent": cache_entry.get("business_intent", cache_entry.get("summary", "")),
                     "keywords": cache_entry.get("keywords", []),
                 }
+                _emit_metric(
+                    metrics_hook,
+                    "cache_hit",
+                    payload={**metric_payload, "source": "cache"},
+                )
+            else:
+                _emit_metric(metrics_hook, "cache_miss", payload=dict(metric_payload))
 
         if not summary_payload and summary_cache_policy != "read_only":
             prompt = _render_prompt(summary_prompt, context_str)
             try:
-                llm_text = _call_llm(llm, prompt, max_retries=llm_max_retries, base_backoff=llm_backoff)
-                summary_payload = _parse_summary_json(llm_text)
+                llm_text = _call_llm(
+                    llm,
+                    prompt,
+                    max_retries=llm_max_retries,
+                    base_backoff=llm_backoff,
+                    metrics_hook=metrics_hook,
+                    metrics_payload=metric_payload,
+                    model_name=summary_llm_model,
+                )
+                summary_payload = _parse_summary_json(
+                    llm_text,
+                    metrics_hook=metrics_hook,
+                    metrics_payload=metric_payload,
+                )
             except Exception as exc:
                 logging.warning("Module summary generation failed for %s: %s", module_path, exc)
                 summary_payload = {}
@@ -1011,6 +1255,8 @@ def _aggregate_class_docs(
     existing_docs: Dict[str, Dict[str, Any]],
     llm_max_retries: int,
     llm_backoff: float,
+    metrics_hook: Optional[Callable[[Dict[str, Any]], None]] = None,
+    summary_llm_model: Optional[str] = None,
 ) -> List[Dict[str, Any]]:
     repo_root = Path(repo_path)
     docs_by_file: Dict[str, List[Dict[str, Any]]] = {}
@@ -1065,6 +1311,7 @@ def _aggregate_class_docs(
             doc_id = f"{file_path}::{class_name}"
             module_path = _module_path_for_file(file_path)
             existing = existing_docs.get(doc_id)
+            metric_payload = {"stage": "class", "doc_id": doc_id}
 
             summary_payload: Dict[str, Any] = {}
             if existing and existing.get("content_hash") == content_hash and existing.get("summary_hash") == summary_hash:
@@ -1073,6 +1320,11 @@ def _aggregate_class_docs(
                     "business_intent": existing.get("business_intent", existing.get("summary", "")),
                     "keywords": existing.get("keywords", []),
                 }
+                _emit_metric(
+                    metrics_hook,
+                    "cache_hit",
+                    payload={**metric_payload, "source": "existing"},
+                )
 
             if not summary_payload and summary_cache_policy != "disabled":
                 cache_key = _make_cache_key(doc_id, summary_hash)
@@ -1083,12 +1335,31 @@ def _aggregate_class_docs(
                         "business_intent": cache_entry.get("business_intent", cache_entry.get("summary", "")),
                         "keywords": cache_entry.get("keywords", []),
                     }
+                    _emit_metric(
+                        metrics_hook,
+                        "cache_hit",
+                        payload={**metric_payload, "source": "cache"},
+                    )
+                else:
+                    _emit_metric(metrics_hook, "cache_miss", payload=dict(metric_payload))
 
             if not summary_payload and summary_cache_policy != "read_only":
                 prompt = _render_prompt(summary_prompt, context_str)
                 try:
-                    llm_text = _call_llm(llm, prompt, max_retries=llm_max_retries, base_backoff=llm_backoff)
-                    summary_payload = _parse_summary_json(llm_text)
+                    llm_text = _call_llm(
+                        llm,
+                        prompt,
+                        max_retries=llm_max_retries,
+                        base_backoff=llm_backoff,
+                        metrics_hook=metrics_hook,
+                        metrics_payload=metric_payload,
+                        model_name=summary_llm_model,
+                    )
+                    summary_payload = _parse_summary_json(
+                        llm_text,
+                        metrics_hook=metrics_hook,
+                        metrics_payload=metric_payload,
+                    )
                 except Exception as exc:
                     logging.warning("Class summary generation failed for %s: %s", doc_id, exc)
                     summary_payload = {}
@@ -1269,6 +1540,7 @@ def build_summary_index(
     skip_file_patterns: Optional[str],
     max_file_size_mb: Optional[float],
     show_progress: bool,
+    metrics_hook: Optional[Callable[[Dict[str, Any]], None]] = None,
 ) -> None:
     repo_root = Path(repo_path)
     repo_name = repo_root.name
@@ -1334,6 +1606,8 @@ def build_summary_index(
         progress_desc=f"{repo_name} functions",
         llm_max_retries=llm_max_retries,
         llm_backoff=1.0,
+        metrics_hook=metrics_hook,
+        summary_llm_model=summary_llm_model,
     )
 
     all_docs = list(function_docs)
@@ -1355,6 +1629,8 @@ def build_summary_index(
             existing_docs=existing_docs,
             llm_max_retries=llm_max_retries,
             llm_backoff=1.0,
+            metrics_hook=metrics_hook,
+            summary_llm_model=summary_llm_model,
         )
         all_docs.extend(class_docs)
 
@@ -1372,6 +1648,8 @@ def build_summary_index(
             existing_docs=existing_docs,
             llm_max_retries=llm_max_retries,
             llm_backoff=1.0,
+            metrics_hook=metrics_hook,
+            summary_llm_model=summary_llm_model,
         )
         all_docs.extend(file_docs)
 
@@ -1387,6 +1665,8 @@ def build_summary_index(
             existing_docs=existing_docs,
             llm_max_retries=llm_max_retries,
             llm_backoff=1.0,
+            metrics_hook=metrics_hook,
+            summary_llm_model=summary_llm_model,
         )
         all_docs.extend(module_docs)
 
@@ -1404,6 +1684,7 @@ def build_summary_index(
         device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         model.to(device)
 
+        embed_start = time.time()
         embeddings = _embed_texts(
             dense_texts,
             model=model,
@@ -1411,6 +1692,12 @@ def build_summary_index(
             max_length=summary_embed_max_tokens,
             batch_size=batch_size,
             device=device,
+        )
+        _emit_metric(
+            metrics_hook,
+            "embedding_batch",
+            duration_ms=(time.time() - embed_start) * 1000,
+            payload={"count": len(dense_texts)},
         )
         dense_dir = out_dir / "dense"
         dense_dir.mkdir(parents=True, exist_ok=True)
