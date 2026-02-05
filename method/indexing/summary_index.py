@@ -4,13 +4,20 @@ import hashlib
 import json
 import logging
 import os
+import random
 import re
+import time
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Optional, Sequence, Tuple
 
 import torch
 from transformers import AutoModel, AutoTokenizer
+
+try:
+    from tqdm import tqdm
+except Exception:  # pragma: no cover
+    tqdm = None
 
 from dependency_graph import RepoDependencySearcher
 from dependency_graph.build_graph import EDGE_TYPE_INVOKES, NODE_TYPE_CLASS, NODE_TYPE_FUNCTION
@@ -143,21 +150,48 @@ def _load_prompt(
     return template
 
 
-def _call_llm(llm, prompt: str) -> str:
-    try:
-        response = llm.complete(prompt)
-    except Exception as exc:
-        raise RuntimeError(f"LLM completion failed: {exc}") from exc
-
-    if hasattr(response, "text") and response.text:
-        return str(response.text).strip()
-    if hasattr(response, "message") and getattr(response.message, "content", None):
-        return str(response.message.content).strip()
-    return str(response).strip()
+def _call_llm(llm, prompt: str, *, max_retries: int, base_backoff: float) -> str:
+    last_exc: Optional[Exception] = None
+    for attempt in range(max_retries + 1):
+        try:
+            response = llm.complete(prompt)
+            if hasattr(response, "text") and response.text:
+                return str(response.text).strip()
+            if hasattr(response, "message") and getattr(response.message, "content", None):
+                return str(response.message.content).strip()
+            return str(response).strip()
+        except Exception as exc:
+            last_exc = exc
+            if attempt >= max_retries:
+                break
+            sleep_s = base_backoff * (2**attempt) + random.uniform(0, 0.5)
+            time.sleep(sleep_s)
+    raise RuntimeError(f"LLM completion failed after retries: {last_exc}") from last_exc
 
 
 def _render_prompt(template: str, context_str: str) -> str:
     return template.replace("{context_str}", context_str)
+
+
+def _apply_llm_timeout(llm, timeout: Optional[float]) -> None:
+    if timeout is None:
+        return
+    for attr in ("timeout", "request_timeout"):
+        if hasattr(llm, attr):
+            try:
+                setattr(llm, attr, timeout)
+                return
+            except Exception:
+                continue
+    if hasattr(llm, "llm") and getattr(llm, "llm", None) is not None:
+        inner = getattr(llm, "llm")
+        for attr in ("timeout", "request_timeout"):
+            if hasattr(inner, attr):
+                try:
+                    setattr(inner, attr, timeout)
+                    return
+                except Exception:
+                    continue
 
 
 def _parse_summary_json(text: str) -> Dict[str, Any]:
@@ -512,6 +546,10 @@ def _collect_function_docs(
     top_k_callees: int,
     context_similarity_threshold: float,
     existing_docs: Dict[str, Dict[str, Any]],
+    show_progress: bool,
+    progress_desc: str,
+    llm_max_retries: int,
+    llm_backoff: float,
 ) -> Tuple[List[Dict[str, Any]], Dict[str, Dict[str, Any]]]:
     blocks, metadata = collect_function_blocks(repo_path, block_size=15)
     docs: List[Dict[str, Any]] = []
@@ -519,7 +557,19 @@ def _collect_function_docs(
 
     searcher = RepoDependencySearcher(graph) if graph is not None else None
 
-    for idx, block in enumerate(blocks):
+    total_blocks = len(blocks)
+    placeholders = 0
+    cache_hits = 0
+    cache_misses = 0
+    llm_calls = 0
+    llm_fail = 0
+    reused_existing = 0
+
+    iterator = blocks
+    if show_progress and tqdm is not None:
+        iterator = tqdm(blocks, total=len(blocks), desc=progress_desc)
+
+    for idx, block in enumerate(iterator):
         if block.block_type != "function_level":
             continue
         meta = metadata.get(idx, {})
@@ -542,6 +592,8 @@ def _collect_function_docs(
             or complexity < min_complexity
             or _function_name_matches_skip(function_name, skip_patterns)
         )
+        if is_placeholder:
+            placeholders += 1
 
         graph_id = _qualified_to_graph_id(qualified_name)
         called_by: List[str] = []
@@ -591,6 +643,7 @@ def _collect_function_docs(
                         "business_intent": existing.get("business_intent", existing.get("summary", "")),
                         "keywords": existing.get("keywords", []),
                     }
+                    reused_existing += 1
             if not summary_payload and summary_cache_policy != "disabled":
                 cache_key = _make_cache_key(doc_id, summary_hash)
                 cache_entry = _load_cache_entry(summary_cache_dir, cache_key)
@@ -600,15 +653,20 @@ def _collect_function_docs(
                         "business_intent": cache_entry.get("business_intent", cache_entry.get("summary", "")),
                         "keywords": cache_entry.get("keywords", []),
                     }
+                    cache_hits += 1
+                else:
+                    cache_misses += 1
 
             if not summary_payload and summary_cache_policy != "read_only":
                 prompt = _render_prompt(summary_prompt, context_str)
                 try:
-                    llm_text = _call_llm(llm, prompt)
+                    llm_calls += 1
+                    llm_text = _call_llm(llm, prompt, max_retries=llm_max_retries, base_backoff=llm_backoff)
                     summary_payload = _parse_summary_json(llm_text)
                 except Exception as exc:
                     logging.warning("Summary generation failed for %s: %s", qualified_name, exc)
                     summary_payload = {}
+                    llm_fail += 1
 
                 if summary_payload and summary_cache_policy == "read_write":
                     cache_key = _make_cache_key(doc_id, summary_hash)
@@ -659,6 +717,18 @@ def _collect_function_docs(
         docs.append(doc)
         by_id[doc_id] = doc
 
+    logging.info(
+        "Function summaries: total=%d placeholders=%d cache_hit=%d cache_miss=%d "
+        "llm_calls=%d llm_fail=%d reused_existing=%d",
+        total_blocks,
+        placeholders,
+        cache_hits,
+        cache_misses,
+        llm_calls,
+        llm_fail,
+        reused_existing,
+    )
+
     return docs, by_id
 
 
@@ -674,6 +744,8 @@ def _aggregate_file_docs(
     summary_cache_policy: str,
     summary_cache_miss: str,
     existing_docs: Dict[str, Dict[str, Any]],
+    llm_max_retries: int,
+    llm_backoff: float,
 ) -> List[Dict[str, Any]]:
     repo_root = Path(repo_path)
     docs_by_file: Dict[str, List[Dict[str, Any]]] = {}
@@ -747,7 +819,7 @@ def _aggregate_file_docs(
         if not summary_payload and summary_cache_policy != "read_only":
             prompt = _render_prompt(summary_prompt, context_str)
             try:
-                llm_text = _call_llm(llm, prompt)
+                llm_text = _call_llm(llm, prompt, max_retries=llm_max_retries, base_backoff=llm_backoff)
                 summary_payload = _parse_summary_json(llm_text)
             except Exception as exc:
                 logging.warning("File summary generation failed for %s: %s", file_path, exc)
@@ -813,6 +885,8 @@ def _aggregate_module_docs(
     summary_cache_policy: str,
     summary_cache_miss: str,
     existing_docs: Dict[str, Dict[str, Any]],
+    llm_max_retries: int,
+    llm_backoff: float,
 ) -> List[Dict[str, Any]]:
     repo_root = Path(repo_path)
     docs_by_module: Dict[str, List[Dict[str, Any]]] = {}
@@ -868,7 +942,7 @@ def _aggregate_module_docs(
         if not summary_payload and summary_cache_policy != "read_only":
             prompt = _render_prompt(summary_prompt, context_str)
             try:
-                llm_text = _call_llm(llm, prompt)
+                llm_text = _call_llm(llm, prompt, max_retries=llm_max_retries, base_backoff=llm_backoff)
                 summary_payload = _parse_summary_json(llm_text)
             except Exception as exc:
                 logging.warning("Module summary generation failed for %s: %s", module_path, exc)
@@ -935,6 +1009,8 @@ def _aggregate_class_docs(
     summary_cache_policy: str,
     summary_cache_miss: str,
     existing_docs: Dict[str, Dict[str, Any]],
+    llm_max_retries: int,
+    llm_backoff: float,
 ) -> List[Dict[str, Any]]:
     repo_root = Path(repo_path)
     docs_by_file: Dict[str, List[Dict[str, Any]]] = {}
@@ -1011,7 +1087,7 @@ def _aggregate_class_docs(
             if not summary_payload and summary_cache_policy != "read_only":
                 prompt = _render_prompt(summary_prompt, context_str)
                 try:
-                    llm_text = _call_llm(llm, prompt)
+                    llm_text = _call_llm(llm, prompt, max_retries=llm_max_retries, base_backoff=llm_backoff)
                     summary_payload = _parse_summary_json(llm_text)
                 except Exception as exc:
                     logging.warning("Class summary generation failed for %s: %s", doc_id, exc)
@@ -1174,6 +1250,8 @@ def build_summary_index(
     summary_llm_api_base: Optional[str],
     summary_llm_max_new_tokens: int,
     summary_llm_temperature: float,
+    llm_timeout: Optional[float],
+    llm_max_retries: int,
     summary_prompt: Optional[str],
     summary_prompt_file: Optional[str],
     summary_language: str,
@@ -1190,6 +1268,7 @@ def build_summary_index(
     lang_allowlist: Optional[str],
     skip_file_patterns: Optional[str],
     max_file_size_mb: Optional[float],
+    show_progress: bool,
 ) -> None:
     repo_root = Path(repo_path)
     repo_name = repo_root.name
@@ -1220,6 +1299,7 @@ def build_summary_index(
         max_new_tokens=summary_llm_max_new_tokens,
         temperature=summary_llm_temperature,
     )
+    _apply_llm_timeout(llm, llm_timeout)
 
     existing_docs = _load_summary_jsonl(out_dir / "summary.jsonl")
 
@@ -1250,6 +1330,10 @@ def build_summary_index(
         top_k_callees=top_k_callees,
         context_similarity_threshold=context_similarity_threshold,
         existing_docs=existing_docs,
+        show_progress=show_progress,
+        progress_desc=f"{repo_name} functions",
+        llm_max_retries=llm_max_retries,
+        llm_backoff=1.0,
     )
 
     all_docs = list(function_docs)
@@ -1269,6 +1353,8 @@ def build_summary_index(
             summary_cache_policy=summary_cache_policy,
             summary_cache_miss=summary_cache_miss,
             existing_docs=existing_docs,
+            llm_max_retries=llm_max_retries,
+            llm_backoff=1.0,
         )
         all_docs.extend(class_docs)
 
@@ -1284,6 +1370,8 @@ def build_summary_index(
             summary_cache_policy=summary_cache_policy,
             summary_cache_miss=summary_cache_miss,
             existing_docs=existing_docs,
+            llm_max_retries=llm_max_retries,
+            llm_backoff=1.0,
         )
         all_docs.extend(file_docs)
 
@@ -1297,6 +1385,8 @@ def build_summary_index(
             summary_cache_policy=summary_cache_policy,
             summary_cache_miss=summary_cache_miss,
             existing_docs=existing_docs,
+            llm_max_retries=llm_max_retries,
+            llm_backoff=1.0,
         )
         all_docs.extend(module_docs)
 
@@ -1399,6 +1489,8 @@ def parse_args(argv: Optional[Sequence[str]] = None) -> argparse.Namespace:
     parser.add_argument("--summary_llm_api_base", type=str, default=None)
     parser.add_argument("--summary_llm_max_new_tokens", type=int, default=512)
     parser.add_argument("--summary_llm_temperature", type=float, default=0.1)
+    parser.add_argument("--llm_timeout", type=float, default=300, help="LLM request timeout in seconds")
+    parser.add_argument("--max_retries", type=int, default=3, help="Max retries for LLM requests")
     parser.add_argument("--summary_prompt", type=str, default=None)
     parser.add_argument("--summary_prompt_file", type=str, default=None)
     parser.add_argument("--summary_language", type=str, default="English")
@@ -1432,6 +1524,7 @@ def parse_args(argv: Optional[Sequence[str]] = None) -> argparse.Namespace:
     parser.add_argument("--lang_allowlist", type=str, default=".py")
     parser.add_argument("--skip_patterns", type=str, default="")
     parser.add_argument("--max_file_size_mb", type=float, default=None)
+    parser.add_argument("--show_progress", action="store_true", help="Show per-repo function summary progress.")
 
     return parser.parse_args(argv)
 
@@ -1456,6 +1549,8 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
         summary_llm_api_base=args.summary_llm_api_base,
         summary_llm_max_new_tokens=args.summary_llm_max_new_tokens,
         summary_llm_temperature=args.summary_llm_temperature,
+        llm_timeout=args.llm_timeout,
+        llm_max_retries=args.max_retries,
         summary_prompt=args.summary_prompt,
         summary_prompt_file=args.summary_prompt_file,
         summary_language=args.summary_language,
@@ -1472,6 +1567,7 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
         lang_allowlist=args.lang_allowlist,
         skip_file_patterns=args.skip_patterns,
         max_file_size_mb=args.max_file_size_mb,
+        show_progress=args.show_progress,
     )
 
 

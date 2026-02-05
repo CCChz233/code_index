@@ -104,6 +104,51 @@ python method/indexing/batch_build_summary_index.py \
   --summary_llm_model /path/to/local_vllm_model
 ```
 
+### 多进程构建（推荐 8 卡服务器）
+说明：
+1. vLLM 建议通过 OpenAI 兼容 server 提供服务
+2. embedding GPU 与 vLLM GPU 分开，使用 `--gpu_ids` 控制
+3. 失败断点续跑：将 `RESUME_FAILED=1` 或直接传 `--resume_failed`
+
+```
+python method/indexing/batch_build_summary_index.py \
+  --repo_path /path/to/repos_root \
+  --index_dir /path/to/index_root \
+  --summary_levels function,class,file,module \
+  --graph_index_dir /path/to/graph_index_dir \
+  --model_name /path/to/embedding_model \
+  --summary_llm_provider openai \
+  --summary_llm_model GPT-OSS-120B \
+  --summary_llm_api_base http://127.0.0.1:8000/v1 \
+  --summary_llm_api_key dummy_key \
+  --num_processes 4 \
+  --gpu_ids 4,5,6,7 \
+  --llm_timeout 300 \
+  --max_retries 3 \
+  --log_dir /path/to/logs \
+  --skip_existing
+```
+
+### Worker 日志文件
+每个进程会输出独立日志：
+```
+logs/summary_index/summary_worker_0.log
+logs/summary_index/summary_worker_1.log
+...
+```
+
+如需断点续跑：
+```
+python method/indexing/batch_build_summary_index.py \
+  --repo_path /path/to/repos_root \
+  --index_dir /path/to/index_root \
+  --summary_llm_provider openai \
+  --summary_llm_model GPT-OSS-120B \
+  --summary_llm_api_base http://127.0.0.1:8000/v1 \
+  --summary_llm_api_key dummy_key \
+  --resume_failed
+```
+
 输出目录结构（每个 repo）：
 ```
 summary_index_function_level/{repo}/
