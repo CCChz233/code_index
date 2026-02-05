@@ -725,6 +725,8 @@ def main() -> None:
         if use_rich:
             with Live(visualizer.generate_view(), console=console, refresh_per_second=4, screen=False) as live:
                 while True:
+                    if stop_event.is_set():
+                        break
                     try:
                         payload = metrics_queue.get(timeout=0.2)
                     except queue.Empty:
@@ -732,17 +734,23 @@ def main() -> None:
                     if payload is not None:
                         _handle_metric(payload, metrics_file)
                         live.update(visualizer.generate_view())
+                    if stop_event.is_set():
+                        break
                     if completed_repos.value >= len(repos) and not any(p.is_alive() for p in processes):
                         _drain_queue(metrics_file, live)
                         break
         else:
             while True:
+                if stop_event.is_set():
+                    break
                 try:
                     payload = metrics_queue.get(timeout=0.2)
                 except queue.Empty:
                     payload = None
                 if payload is not None:
                     _handle_metric(payload, metrics_file)
+                if stop_event.is_set():
+                    break
                 if completed_repos.value >= len(repos) and not any(p.is_alive() for p in processes):
                     _drain_queue(metrics_file, None)
                     break
@@ -757,8 +765,16 @@ def main() -> None:
             metrics_file,
         )
 
+    # Wait for workers to exit; if stop was requested, give them a short time then terminate
+    join_timeout = 5.0 if stop_event.is_set() else None
     for p in processes:
-        p.join()
+        if join_timeout is not None:
+            p.join(timeout=join_timeout)
+            if p.is_alive():
+                p.terminate()
+                p.join(timeout=2.0)
+        else:
+            p.join()
 
     if total_pbar is not None:
         total_pbar.n = len(repos)
