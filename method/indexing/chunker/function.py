@@ -422,7 +422,7 @@ def blocks_function_level_with_fallback(
     """
     function_blocks, function_metadata = blocks_by_function(text, rel)
     function_metadata_by_block = {
-        function_blocks[idx]: metadata for idx, metadata in function_metadata.items()
+        id(function_blocks[idx]): metadata for idx, metadata in function_metadata.items()
     }
 
     if not rel.endswith('.py') or not function_blocks:
@@ -483,7 +483,7 @@ def blocks_function_level_with_fallback(
 
     sorted_metadata: Dict[int, Dict[str, Optional[str]]] = {}
     for idx, block in enumerate(all_blocks):
-        metadata = function_metadata_by_block.get(block)
+        metadata = function_metadata_by_block.get(id(block))
         if metadata is not None:
             sorted_metadata[idx] = metadata
 

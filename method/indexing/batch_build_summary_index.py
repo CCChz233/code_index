@@ -2,6 +2,11 @@ import argparse
 from pathlib import Path
 from typing import List, Optional
 
+try:
+    from tqdm import tqdm
+except Exception:  # pragma: no cover
+    tqdm = None
+
 from method.indexing.summary_index import build_summary_index
 
 
@@ -69,13 +74,27 @@ def main() -> None:
     summary_levels = [s.strip() for s in args.summary_levels.split(",") if s.strip()]
     skip_patterns = [p.strip() for p in args.filter_skip_patterns.split(",") if p.strip()]
 
-    for repo_dir in _list_repos(repo_root):
+    repos = _list_repos(repo_root)
+    total = len(repos)
+    skipped = 0
+    processed = 0
+
+    iterator = tqdm(repos, total=total, desc="Summary Index Repos") if tqdm else repos
+    for repo_dir in iterator:
         repo_name = repo_dir.name
         output_dir = index_root / "summary_index_function_level" / repo_name
         summary_jsonl = output_dir / "summary.jsonl"
 
         if args.skip_existing and summary_jsonl.exists():
+            skipped += 1
+            if tqdm:
+                iterator.set_postfix_str(f"skipped={skipped}")
             continue
+
+        if tqdm:
+            iterator.set_postfix_str(f"repo={repo_name}")
+        else:
+            print(f"[Summary] Processing repo: {repo_name}", flush=True)
 
         build_summary_index(
             repo_path=str(repo_dir),
@@ -108,6 +127,15 @@ def main() -> None:
             skip_file_patterns=args.skip_patterns,
             max_file_size_mb=args.max_file_size_mb,
         )
+
+        processed += 1
+        if tqdm:
+            iterator.set_postfix_str(f"processed={processed} skipped={skipped}")
+        else:
+            print(f"[Summary] Done repo: {repo_name}", flush=True)
+
+    if not tqdm:
+        print(f"[Summary] Finished. processed={processed} skipped={skipped} total={total}", flush=True)
 
 
 if __name__ == "__main__":
