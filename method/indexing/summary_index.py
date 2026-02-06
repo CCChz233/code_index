@@ -789,7 +789,7 @@ def _collect_function_docs(
         normalized_source = _normalize_code(raw_code)
         content_hash = _sha1(normalized_source)
         graph_hash = _sha1(_normalize_context(called_by, calls))
-        summary_hash = _sha1(summary_prompt + normalized_source)
+        summary_hash = _sha1(summary_prompt + normalized_source + (summary_llm_model or ""))
 
         existing = existing_docs.get(doc_id)
         if existing:
@@ -984,7 +984,7 @@ def _aggregate_file_docs(
 
         normalized_source = _normalize_code(context_str)
         content_hash = _sha1(normalized_source)
-        summary_hash = _sha1(summary_prompt + normalized_source)
+        summary_hash = _sha1(summary_prompt + normalized_source + (summary_llm_model or ""))
 
         doc_id = file_path
         module_path = _module_path_for_file(file_path)
@@ -1136,7 +1136,7 @@ def _aggregate_module_docs(
 
         normalized_source = _normalize_code(context_str)
         content_hash = _sha1(normalized_source)
-        summary_hash = _sha1(summary_prompt + normalized_source)
+        summary_hash = _sha1(summary_prompt + normalized_source + (summary_llm_model or ""))
         doc_id = module_path
         existing = existing_docs.get(doc_id)
         metric_payload = {"stage": "module", "doc_id": doc_id}
@@ -1307,7 +1307,7 @@ def _aggregate_class_docs(
 
             normalized_source = _normalize_code(context_str)
             content_hash = _sha1(normalized_source)
-            summary_hash = _sha1(summary_prompt + normalized_source)
+            summary_hash = _sha1(summary_prompt + normalized_source + (summary_llm_model or ""))
             doc_id = f"{file_path}::{class_name}"
             module_path = _module_path_for_file(file_path)
             existing = existing_docs.get(doc_id)
@@ -1425,6 +1425,114 @@ def _save_summary_jsonl(path: Path, docs: Sequence[Dict[str, Any]]) -> None:
     with path.open("w", encoding="utf-8") as f:
         for doc in docs:
             f.write(json.dumps(doc, ensure_ascii=False) + "\n")
+
+
+def save_nodes_as_hierarchical_json(nodes: Sequence[Dict[str, Any]], output_root: Path) -> None:
+    output_root = Path(output_root)
+
+    def _infer_file_path(node: Dict[str, Any]) -> Optional[str]:
+        file_path = node.get("file_path") or ""
+        if file_path:
+            return file_path
+        for key in ("qualified_name", "id"):
+            value = node.get(key) or ""
+            if "::" in value:
+                return value.split("::", 1)[0]
+        return None
+
+    def _extract_class_name(node: Dict[str, Any]) -> str:
+        qname = node.get("qualified_name") or node.get("id") or ""
+        if "::" in qname:
+            parts = qname.split("::")
+            if len(parts) >= 2:
+                return parts[1]
+        return node.get("class_name") or "UnknownClass"
+
+    file_groups: Dict[str, List[Dict[str, Any]]] = {}
+    for node in nodes:
+        file_path = _infer_file_path(node)
+        if not file_path or file_path == ".":
+            continue
+        file_groups.setdefault(file_path, []).append(node)
+
+    for file_path, group in file_groups.items():
+        file_doc = next((d for d in group if d.get("type") == "file"), None)
+        file_payload: Dict[str, Any] = {
+            "type": "file",
+            "id": file_path,
+            "summary": file_doc.get("summary", "") if file_doc else "",
+            "business_intent": file_doc.get("business_intent", "") if file_doc else "",
+            "keywords": file_doc.get("keywords", []) if file_doc else [],
+            "classes": [],
+            "functions": [],
+        }
+
+        classes: Dict[str, Dict[str, Any]] = {}
+        functions: List[Dict[str, Any]] = []
+        chunks: List[Dict[str, Any]] = []
+
+        for node in group:
+            ntype = node.get("type")
+            if ntype == "file":
+                continue
+            if ntype == "class":
+                class_name = _extract_class_name(node)
+                entry = classes.get(class_name)
+                if entry is None:
+                    entry = {
+                        "name": class_name,
+                        "summary": node.get("summary", ""),
+                        "business_intent": node.get("business_intent", ""),
+                        "methods": [],
+                    }
+                    classes[class_name] = entry
+                else:
+                    if not entry.get("summary") and node.get("summary"):
+                        entry["summary"] = node.get("summary", "")
+                    if not entry.get("business_intent") and node.get("business_intent"):
+                        entry["business_intent"] = node.get("business_intent", "")
+                continue
+
+            if ntype == "function":
+                qualified = node.get("qualified_name") or node.get("id") or ""
+                parts = qualified.split("::") if qualified else []
+                func_name = parts[-1] if parts else node.get("function_name") or node.get("id") or "function"
+                signature = node.get("signature") or node.get("function_signature") or ""
+                method_payload = {
+                    "name": func_name,
+                    "summary": node.get("summary", ""),
+                    "signature": signature,
+                }
+                if len(parts) >= 3:
+                    class_name = parts[1]
+                    entry = classes.get(class_name)
+                    if entry is None:
+                        entry = {"name": class_name, "summary": "", "business_intent": "", "methods": []}
+                        classes[class_name] = entry
+                    entry["methods"].append(method_payload)
+                else:
+                    functions.append(method_payload)
+                continue
+
+            chunks.append(
+                {
+                    "id": node.get("id"),
+                    "type": ntype or "unknown",
+                    "summary": node.get("summary", ""),
+                }
+            )
+
+        file_payload["classes"] = list(classes.values())
+        file_payload["functions"] = functions
+        if chunks:
+            file_payload["chunks"] = chunks
+
+        target_path = output_root / f"{file_path}.json"
+        target_path.parent.mkdir(parents=True, exist_ok=True)
+        with target_path.open("w", encoding="utf-8") as f:
+            json.dump(file_payload, f, ensure_ascii=False, indent=2)
+        abs_path = os.path.abspath(target_path)
+        logging.debug("AST Saved: file://%s", abs_path)
 
 
 def _load_summary_jsonl(path: Path) -> Dict[str, Dict[str, Any]]:
@@ -1671,6 +1779,7 @@ def build_summary_index(
         all_docs.extend(module_docs)
 
     _save_summary_jsonl(out_dir / "summary.jsonl", all_docs)
+    save_nodes_as_hierarchical_json(all_docs, out_dir / "summary_ast")
 
     dense_docs = [doc for doc in all_docs if not doc.get("is_placeholder")]
     dense_texts = [
@@ -1737,7 +1846,7 @@ def build_summary_index(
         "hash_policy": {
             "content_hash": "sha1(normalized_source)",
             "graph_hash": "sha1(normalized_graph_context)",
-            "summary_hash": "sha1(prompt + normalized_source)",
+            "summary_hash": "sha1(prompt + normalized_source + model_name)",
         },
         "lang_allowlist": lang_allowlist or ".py",
         "skip_patterns": skip_file_patterns or "",

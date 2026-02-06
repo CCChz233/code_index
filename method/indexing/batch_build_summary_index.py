@@ -280,6 +280,13 @@ def parse_args() -> argparse.Namespace:
         choices=["rich", "tqdm", "simple"],
         help="Progress UI style (rich requires rich package).",
     )
+    parser.add_argument(
+        "--stage",
+        type=str,
+        default="both",
+        choices=["generator", "indexer", "both"],
+        help="Run stage: generator (SQLite only), indexer (build indexes), or both.",
+    )
 
     return parser.parse_args()
 
@@ -369,7 +376,10 @@ def run_worker(
 
     # Lazy imports inside worker
     import torch
-    from method.indexing.summary_index import build_summary_index
+    from transformers import AutoModel, AutoTokenizer
+    from method.indexing.summary_index import _embed_texts
+    from method.indexing.encoder.sparse.bm25 import tokenize as bm25_tokenize
+    from method.indexing.decoupled_pipeline import Generator, GeneratorConfig, Indexer, StorageManager
 
     device_label = f"GPU {actual_gpu_id}" if actual_gpu_id is not None else "CPU"
     _emit_log(f"[Process {rank}] Using {device_label}", use_tqdm, log_queue)
@@ -426,12 +436,20 @@ def run_worker(
                 continue
 
             start_ts = time.time()
-            build_summary_index(
-                repo_path=repo_path,
-                output_dir=str(output_dir),
-                model_name=args.model_name,
-                trust_remote_code=args.trust_remote_code,
-                batch_size=args.batch_size,
+
+            sqlite_path = output_dir / "sqlite" / "summary.db"
+            chroma_dir = output_dir / "chroma"
+            bm25_dir = output_dir / "bm25"
+            graph_path = output_dir / "graph" / "graph.gpickle"
+
+            storage = StorageManager(
+                sqlite_path=str(sqlite_path),
+                chroma_dir=str(chroma_dir),
+                bm25_dir=str(bm25_dir),
+                graph_path=str(graph_path),
+            )
+
+            gen_cfg = GeneratorConfig(
                 summary_levels=summary_levels,
                 graph_index_dir=args.graph_index_dir or None,
                 summary_llm_provider=args.summary_llm_provider,
@@ -442,25 +460,50 @@ def run_worker(
                 summary_llm_temperature=args.summary_llm_temperature,
                 llm_timeout=args.llm_timeout,
                 llm_max_retries=args.max_retries,
+                llm_backoff=1.0,
                 summary_prompt=args.summary_prompt,
                 summary_prompt_file=args.summary_prompt_file,
                 summary_language=args.summary_language,
                 summary_cache_dir=args.summary_cache_dir or None,
                 summary_cache_policy=args.summary_cache_policy,
                 summary_cache_miss=args.summary_cache_miss,
-                min_lines=args.filter_min_lines,
-                min_complexity=args.filter_min_complexity,
-                skip_patterns=skip_patterns,
+                filter_min_lines=args.filter_min_lines,
+                filter_min_complexity=args.filter_min_complexity,
+                filter_skip_patterns=skip_patterns,
                 top_k_callers=args.top_k_callers,
                 top_k_callees=args.top_k_callees,
                 context_similarity_threshold=args.context_similarity_threshold,
-                summary_embed_max_tokens=args.summary_embed_max_tokens,
                 lang_allowlist=args.lang_allowlist,
-                skip_file_patterns=args.skip_patterns,
+                skip_patterns=args.skip_patterns,
                 max_file_size_mb=args.max_file_size_mb,
-                show_progress=show_progress,
-                metrics_hook=metrics_hook,
             )
+
+            if args.stage in ("generator", "both"):
+                Generator(storage=storage, config=gen_cfg).run(repo_path)
+
+            device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+            tokenizer = AutoTokenizer.from_pretrained(args.model_name, trust_remote_code=args.trust_remote_code)
+            model = AutoModel.from_pretrained(args.model_name, trust_remote_code=args.trust_remote_code)
+            model.to(device)
+
+            def embedder(texts):
+                embeddings = _embed_texts(
+                    texts,
+                    model=model,
+                    tokenizer=tokenizer,
+                    max_length=args.summary_embed_max_tokens,
+                    batch_size=args.batch_size,
+                    device=device,
+                )
+                return embeddings.tolist()
+
+            if args.stage in ("indexer", "both"):
+                Indexer(
+                    storage=storage,
+                    embedder=embedder,
+                    tokenizer=bm25_tokenize,
+                    output_dir=str(output_dir),
+                ).run()
             elapsed = time.time() - start_ts
             _emit_log(f"[Process {rank}] Finished {repo_name} in {elapsed:.1f}s", use_tqdm, log_queue)
             _emit_metric(

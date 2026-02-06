@@ -111,6 +111,7 @@ python method/indexing/batch_build_summary_index.py \
 1. vLLM 建议通过 OpenAI 兼容 server 提供服务
 2. embedding GPU 与 vLLM GPU 分开，使用 `--gpu_ids` 控制
 3. 失败断点续跑：将 `RESUME_FAILED=1` 或直接传 `--resume_failed`
+4. 可选阶段控制：`--stage generator|indexer|both`（默认 both）
 
 ```
 python method/indexing/batch_build_summary_index.py \
@@ -129,6 +130,7 @@ python method/indexing/batch_build_summary_index.py \
   --max_retries 3 \
   --log_dir /path/to/logs \
   --progress_style rich \
+  --stage both \
   --skip_existing
 ```
 
@@ -168,8 +170,23 @@ summary_index_function_level/{repo}/
   bm25/index.npz
   bm25/vocab.json
   bm25/metadata.jsonl
+  summary_ast/<path>.json
   manifest.json
 ```
+
+---
+
+## 4. AST 摘要快速查看（调试/验收）
+```
+python scripts/inspect_summary.py \
+  --repo flask \
+  --file app.py \
+  --root summary_index_function_level
+```
+说明：
+1. 读取 `summary_ast/<file>.json` 并以树状结构展示  
+2. 若未安装 `rich`，自动降级为纯文本输出  
+3. 支持模糊搜索（输入 `app`、`app.py` 或完整路径均可）
 
 ---
 

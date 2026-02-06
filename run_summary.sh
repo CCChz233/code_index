@@ -18,6 +18,7 @@ SUMMARY_LLM_MODEL="GPT-OSS-120B"
 NUM_PROCESSES=4
 EMBED_GPU_IDS="0,1,2,3"
 RESUME_FAILED=0
+STAGE="${STAGE:-both}"
 
 EXTRA_FLAGS=""
 if [ "$RESUME_FAILED" = "1" ]; then
@@ -41,5 +42,6 @@ python method/indexing/batch_build_summary_index.py \
   --summary_language Chinese \
   --num_processes "4" \
   --gpu_ids "0,1,2,3" \
-  --log_dir "/home/chaihongzheng/workspace/locbench/code_index/logs/summary_index" 
+  --log_dir "/home/chaihongzheng/workspace/locbench/code_index/logs/summary_index" \
+  --stage "$STAGE"
  
