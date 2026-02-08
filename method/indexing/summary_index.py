@@ -96,6 +96,33 @@ def _emit_metric(
         return
 
 
+def _make_raw_log_hook(raw_log_path: Optional[str]) -> Optional[Callable[[Dict[str, Any]], None]]:
+    if not raw_log_path:
+        return None
+    raw_path = Path(raw_log_path)
+
+    def _hook(payload: Dict[str, Any]) -> None:
+        if "ts" not in payload:
+            payload["ts"] = _utc_now_iso()
+        try:
+            raw_path.parent.mkdir(parents=True, exist_ok=True)
+            with raw_path.open("a", encoding="utf-8") as f:
+                f.write(json.dumps(payload, ensure_ascii=False) + "\n")
+        except Exception as exc:
+            logging.warning("Failed to write raw log %s: %s", raw_path, exc)
+
+    return _hook
+
+
+def _emit_raw_log(raw_log_hook: Optional[Callable[[Dict[str, Any]], None]], payload: Dict[str, Any]) -> None:
+    if raw_log_hook is None:
+        return
+    try:
+        raw_log_hook(payload)
+    except Exception as exc:
+        logging.warning("Raw log hook failed: %s", exc)
+
+
 def _get_usage_value(usage: Any, key: str) -> Optional[int]:
     if usage is None:
         return None
@@ -716,10 +743,12 @@ def _collect_function_docs(
     llm_backoff: float,
     metrics_hook: Optional[Callable[[Dict[str, Any]], None]] = None,
     summary_llm_model: Optional[str] = None,
+    raw_log_hook: Optional[Callable[[Dict[str, Any]], None]] = None,
 ) -> Tuple[List[Dict[str, Any]], Dict[str, Dict[str, Any]]]:
     blocks, metadata = collect_function_blocks(repo_path, block_size=15)
     docs: List[Dict[str, Any]] = []
     by_id: Dict[str, Dict[str, Any]] = {}
+    repo_name = Path(repo_path).name
 
     searcher = RepoDependencySearcher(graph) if graph is not None else None
 
@@ -853,6 +882,23 @@ def _collect_function_docs(
                         metrics_hook=metrics_hook,
                         metrics_payload=metric_payload,
                     )
+                    _emit_raw_log(
+                        raw_log_hook,
+                        {
+                            "repo": repo_name,
+                            "stage": "function",
+                            "doc_id": doc_id,
+                            "file_path": file_path,
+                            "type": "function",
+                            "model": summary_llm_model,
+                            "raw_text": llm_text,
+                            "parsed": {
+                                "summary": summary_payload.get("summary", ""),
+                                "business_intent": summary_payload.get("business_intent", ""),
+                                "keywords": summary_payload.get("keywords", []),
+                            },
+                        },
+                    )
                 except Exception as exc:
                     logging.warning("Summary generation failed for %s: %s", qualified_name, exc)
                     summary_payload = {}
@@ -938,8 +984,10 @@ def _aggregate_file_docs(
     llm_backoff: float,
     metrics_hook: Optional[Callable[[Dict[str, Any]], None]] = None,
     summary_llm_model: Optional[str] = None,
+    raw_log_hook: Optional[Callable[[Dict[str, Any]], None]] = None,
 ) -> List[Dict[str, Any]]:
     repo_root = Path(repo_path)
+    repo_name = repo_root.name
     docs_by_file: Dict[str, List[Dict[str, Any]]] = {}
     for doc in function_docs:
         if doc.get("type") != "function":
@@ -1038,6 +1086,23 @@ def _aggregate_file_docs(
                     metrics_hook=metrics_hook,
                     metrics_payload=metric_payload,
                 )
+                _emit_raw_log(
+                    raw_log_hook,
+                    {
+                        "repo": repo_name,
+                        "stage": "file",
+                        "doc_id": doc_id,
+                        "file_path": file_path,
+                        "type": "file",
+                        "model": summary_llm_model,
+                        "raw_text": llm_text,
+                        "parsed": {
+                            "summary": summary_payload.get("summary", ""),
+                            "business_intent": summary_payload.get("business_intent", ""),
+                            "keywords": summary_payload.get("keywords", []),
+                        },
+                    },
+                )
             except Exception as exc:
                 logging.warning("File summary generation failed for %s: %s", file_path, exc)
                 summary_payload = {}
@@ -1106,8 +1171,10 @@ def _aggregate_module_docs(
     llm_backoff: float,
     metrics_hook: Optional[Callable[[Dict[str, Any]], None]] = None,
     summary_llm_model: Optional[str] = None,
+    raw_log_hook: Optional[Callable[[Dict[str, Any]], None]] = None,
 ) -> List[Dict[str, Any]]:
     repo_root = Path(repo_path)
+    repo_name = repo_root.name
     docs_by_module: Dict[str, List[Dict[str, Any]]] = {}
     for doc in file_docs:
         module_path = doc.get("module_path") or "."
@@ -1188,6 +1255,23 @@ def _aggregate_module_docs(
                     metrics_hook=metrics_hook,
                     metrics_payload=metric_payload,
                 )
+                _emit_raw_log(
+                    raw_log_hook,
+                    {
+                        "repo": repo_name,
+                        "stage": "module",
+                        "doc_id": doc_id,
+                        "file_path": module_path,
+                        "type": "module",
+                        "model": summary_llm_model,
+                        "raw_text": llm_text,
+                        "parsed": {
+                            "summary": summary_payload.get("summary", ""),
+                            "business_intent": summary_payload.get("business_intent", ""),
+                            "keywords": summary_payload.get("keywords", []),
+                        },
+                    },
+                )
             except Exception as exc:
                 logging.warning("Module summary generation failed for %s: %s", module_path, exc)
                 summary_payload = {}
@@ -1257,8 +1341,10 @@ def _aggregate_class_docs(
     llm_backoff: float,
     metrics_hook: Optional[Callable[[Dict[str, Any]], None]] = None,
     summary_llm_model: Optional[str] = None,
+    raw_log_hook: Optional[Callable[[Dict[str, Any]], None]] = None,
 ) -> List[Dict[str, Any]]:
     repo_root = Path(repo_path)
+    repo_name = repo_root.name
     docs_by_file: Dict[str, List[Dict[str, Any]]] = {}
     for doc in function_docs:
         if doc.get("type") != "function":
@@ -1345,24 +1431,41 @@ def _aggregate_class_docs(
 
             if not summary_payload and summary_cache_policy != "read_only":
                 prompt = _render_prompt(summary_prompt, context_str)
-                try:
-                    llm_text = _call_llm(
-                        llm,
-                        prompt,
+            try:
+                llm_text = _call_llm(
+                    llm,
+                    prompt,
                         max_retries=llm_max_retries,
                         base_backoff=llm_backoff,
                         metrics_hook=metrics_hook,
-                        metrics_payload=metric_payload,
-                        model_name=summary_llm_model,
-                    )
-                    summary_payload = _parse_summary_json(
-                        llm_text,
-                        metrics_hook=metrics_hook,
-                        metrics_payload=metric_payload,
-                    )
-                except Exception as exc:
-                    logging.warning("Class summary generation failed for %s: %s", doc_id, exc)
-                    summary_payload = {}
+                    metrics_payload=metric_payload,
+                    model_name=summary_llm_model,
+                )
+                summary_payload = _parse_summary_json(
+                    llm_text,
+                    metrics_hook=metrics_hook,
+                    metrics_payload=metric_payload,
+                )
+                _emit_raw_log(
+                    raw_log_hook,
+                    {
+                        "repo": repo_name,
+                        "stage": "class",
+                        "doc_id": doc_id,
+                        "file_path": file_path,
+                        "type": "class",
+                        "model": summary_llm_model,
+                        "raw_text": llm_text,
+                        "parsed": {
+                            "summary": summary_payload.get("summary", ""),
+                            "business_intent": summary_payload.get("business_intent", ""),
+                            "keywords": summary_payload.get("keywords", []),
+                        },
+                    },
+                )
+            except Exception as exc:
+                logging.warning("Class summary generation failed for %s: %s", doc_id, exc)
+                summary_payload = {}
 
                 if summary_payload and summary_cache_policy == "read_write":
                     cache_key = _make_cache_key(doc_id, summary_hash)
@@ -1681,6 +1784,8 @@ def build_summary_index(
     )
     _apply_llm_timeout(llm, llm_timeout)
 
+    raw_log_hook = _make_raw_log_hook(raw_log_path)
+
     existing_docs = _load_summary_jsonl(out_dir / "summary.jsonl")
 
     graph = _load_graph(graph_index_dir, repo_name)
@@ -1716,6 +1821,7 @@ def build_summary_index(
         llm_backoff=1.0,
         metrics_hook=metrics_hook,
         summary_llm_model=summary_llm_model,
+        raw_log_hook=raw_log_hook,
     )
 
     all_docs = list(function_docs)
@@ -1739,6 +1845,7 @@ def build_summary_index(
             llm_backoff=1.0,
             metrics_hook=metrics_hook,
             summary_llm_model=summary_llm_model,
+            raw_log_hook=raw_log_hook,
         )
         all_docs.extend(class_docs)
 
@@ -1758,6 +1865,7 @@ def build_summary_index(
             llm_backoff=1.0,
             metrics_hook=metrics_hook,
             summary_llm_model=summary_llm_model,
+            raw_log_hook=raw_log_hook,
         )
         all_docs.extend(file_docs)
 
@@ -1775,6 +1883,7 @@ def build_summary_index(
             llm_backoff=1.0,
             metrics_hook=metrics_hook,
             summary_llm_model=summary_llm_model,
+            raw_log_hook=raw_log_hook,
         )
         all_docs.extend(module_docs)
 
@@ -1903,6 +2012,7 @@ def parse_args(argv: Optional[Sequence[str]] = None) -> argparse.Namespace:
         default="empty",
         choices=["empty", "skip", "error"],
     )
+    parser.add_argument("--raw_log_path", type=str, default="", help="Append raw LLM outputs as JSONL.")
 
     parser.add_argument("--filter_min_lines", type=int, default=3)
     parser.add_argument("--filter_min_complexity", type=int, default=2)
@@ -1953,6 +2063,7 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
         summary_cache_dir=args.summary_cache_dir or None,
         summary_cache_policy=args.summary_cache_policy,
         summary_cache_miss=args.summary_cache_miss,
+        raw_log_path=args.raw_log_path or None,
         min_lines=args.filter_min_lines,
         min_complexity=args.filter_min_complexity,
         skip_patterns=skip_patterns,

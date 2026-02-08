@@ -103,6 +103,7 @@ python method/indexing/build_summary_index.py \
 13. `--skip_patterns "**/node_modules/**,**/.git/**"`  
 14. `--max_file_size_mb 5`  
 15. `--progress_style rich|tqdm|simple`（终端可视化）  
+16. `--raw_log_path /path/to/raw.jsonl`（实时写出 LLM 原始输出）  
 
 ---
 
@@ -140,6 +141,7 @@ python method/indexing/batch_build_summary_index.py \
 2. embedding GPU 与 vLLM GPU 分开，使用 `--gpu_ids` 控制
 3. 失败断点续跑：将 `RESUME_FAILED=1` 或直接传 `--resume_failed`
 4. 可选阶段控制：`--stage generator|indexer|both`（默认 both）
+5. 实时原始输出：`--raw_log_dir /path/to/raw_logs`（每个 worker 一个 `summary_worker_{i}_raw.jsonl`）
 
 ```
 python method/indexing/batch_build_summary_index.py \

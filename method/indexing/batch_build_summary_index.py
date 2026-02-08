@@ -272,6 +272,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--gpu_ids", type=str, default="0,1,2,3,4,5,6,7", help="Comma-separated GPU IDs.")
     parser.add_argument("--force_cpu", action="store_true", help="Force CPU usage.")
     parser.add_argument("--log_dir", type=str, default="logs/summary_index", help="Log directory.")
+    parser.add_argument("--raw_log_dir", type=str, default="", help="Append raw LLM outputs as JSONL (per worker).")
     parser.add_argument("--log_level", type=str, default="INFO", help="Logging level (DEBUG/INFO/WARNING).")
     parser.add_argument(
         "--progress_style",
@@ -333,6 +334,12 @@ def run_worker(
     log_path = Path(args.log_dir) / f"summary_worker_{rank}.log"
     log_path.parent.mkdir(parents=True, exist_ok=True)
     log_file = log_path.open("a", encoding="utf-8")
+
+    raw_log_path = None
+    if args.raw_log_dir:
+        raw_dir = Path(args.raw_log_dir)
+        raw_dir.mkdir(parents=True, exist_ok=True)
+        raw_log_path = raw_dir / f"summary_worker_{rank}_raw.jsonl"
 
     if log_queue is not None:
         sys.stdout = _QueueAndFileWriter(log_queue, log_file)
@@ -467,6 +474,7 @@ def run_worker(
                 summary_cache_dir=args.summary_cache_dir or None,
                 summary_cache_policy=args.summary_cache_policy,
                 summary_cache_miss=args.summary_cache_miss,
+                raw_log_path=str(raw_log_path) if raw_log_path else None,
                 filter_min_lines=args.filter_min_lines,
                 filter_min_complexity=args.filter_min_complexity,
                 filter_skip_patterns=skip_patterns,

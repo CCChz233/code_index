@@ -133,6 +133,7 @@ class GeneratorConfig(BaseModel):
     summary_cache_dir: Optional[str] = None
     summary_cache_policy: str = "read_write"
     summary_cache_miss: str = "empty"
+    raw_log_path: Optional[str] = None
 
     filter_min_lines: int = 3
     filter_min_complexity: int = 2
@@ -376,6 +377,7 @@ class Generator:
             temperature=cfg.summary_llm_temperature,
         )
         _apply_llm_timeout(llm, cfg.llm_timeout)
+        raw_log_hook = summary_impl._make_raw_log_hook(cfg.raw_log_path)
 
         # Build existing_docs mapping from SQLite for reuse
         existing_docs: Dict[str, Dict[str, Any]] = {}
@@ -417,6 +419,7 @@ class Generator:
             llm_backoff=cfg.llm_backoff,
             metrics_hook=None,
             summary_llm_model=cfg.summary_llm_model,
+            raw_log_hook=raw_log_hook,
         )
 
         all_docs: List[Dict[str, Any]] = list(function_docs)
@@ -439,6 +442,7 @@ class Generator:
                 llm_backoff=cfg.llm_backoff,
                 metrics_hook=None,
                 summary_llm_model=cfg.summary_llm_model,
+                raw_log_hook=raw_log_hook,
             )
             all_docs.extend(class_docs)
 
@@ -458,6 +462,7 @@ class Generator:
                 llm_backoff=cfg.llm_backoff,
                 metrics_hook=None,
                 summary_llm_model=cfg.summary_llm_model,
+                raw_log_hook=raw_log_hook,
             )
             all_docs.extend(file_docs)
 
@@ -475,6 +480,7 @@ class Generator:
                 llm_backoff=cfg.llm_backoff,
                 metrics_hook=None,
                 summary_llm_model=cfg.summary_llm_model,
+                raw_log_hook=raw_log_hook,
             )
             all_docs.extend(module_docs)
 
