@@ -16,9 +16,10 @@ export TOKENIZERS_PARALLELISM=false
 
 必要依赖（最小集合）：
 1. Dense embedding：`torch`, `transformers`
-2. Sparse BM25：`scipy`
-3. Summary LLM：`llama-index` + 对应 provider 包  
-4. 可视化（可选）：`rich`
+2. Summary LLM：`llama-index` + 对应 provider 包  
+3. 单仓库 BM25（build_summary_index.py）：`scipy`
+4. 批量索引器存储（batch/indexer 阶段）：`chromadb`, `rank_bm25`, `networkx`
+5. 可视化（可选）：`rich`
 
 OpenAI 示例：
 ```
@@ -28,7 +29,34 @@ export OPENAI_API_KEY="..."
 
 ---
 
-## 2. 构建 Summary Index（单仓库）
+## 2. 推荐脚本（批量）
+
+推荐使用 `run_summary.sh`（已内置参数校验与默认值）。  
+必填环境变量：
+1. `REPOS_ROOT`  
+2. `INDEX_ROOT`  
+3. `EMBED_MODEL`  
+
+示例（vLLM OpenAI 兼容服务）：
+```
+REPOS_ROOT=/path/to/repos_root \
+INDEX_ROOT=/path/to/index_root \
+GRAPH_INDEX_DIR=/path/to/graph_index \
+EMBED_MODEL=/path/to/embedding_model \
+OPENAI_API_BASE=http://127.0.0.1:8000/v1 \
+OPENAI_API_KEY=dummy_key \
+bash run_summary.sh
+```
+
+两阶段运行：
+```
+STAGE=generator bash run_summary.sh
+STAGE=indexer  bash run_summary.sh
+```
+
+---
+
+## 3. 构建 Summary Index（单仓库）
 
 命令：
 ```
@@ -78,7 +106,7 @@ python method/indexing/build_summary_index.py \
 
 ---
 
-## 3. 构建 Summary Index（批量）
+## 4. 构建 Summary Index（批量）
 
 命令：
 ```
@@ -161,22 +189,37 @@ python method/indexing/batch_build_summary_index.py \
   --resume_failed
 ```
 
-输出目录结构（每个 repo）：
+输出目录结构（每个 repo，批量管线）：
+```
+summary_index_function_level/{repo}/
+  sqlite/summary.db
+  chroma/
+  bm25/bm25.pkl
+  graph/graph.gpickle
+
+  # 兼容旧检索器的平面输出
+  summary.jsonl
+  summary_ast/<path>.json
+  dense/embeddings.pt
+  dense/index_map.json
+```
+
+输出目录结构（每个 repo，单仓库管线）：
 ```
 summary_index_function_level/{repo}/
   summary.jsonl
+  summary_ast/<path>.json
   dense/embeddings.pt
   dense/index_map.json
   bm25/index.npz
   bm25/vocab.json
   bm25/metadata.jsonl
-  summary_ast/<path>.json
   manifest.json
 ```
 
 ---
 
-## 4. AST 摘要快速查看（调试/验收）
+## 5. AST 摘要快速查看（调试/验收）
 ```
 python scripts/inspect_summary.py \
   --repo flask \
@@ -190,7 +233,7 @@ python scripts/inspect_summary.py \
 
 ---
 
-## 4. Summary 检索评估
+## 6. Summary 检索评估
 
 命令（使用统一 CLI）：
 ```
@@ -214,7 +257,7 @@ python method/cli/run_eval.py \
 
 ---
 
-## 5. 常见问题
+## 7. 常见问题
 
 1. embeddings.pt 与 summary.jsonl 行数不一致  
    - 正常现象，原因是 `is_placeholder=true` 的文档不进入 Dense Index  
