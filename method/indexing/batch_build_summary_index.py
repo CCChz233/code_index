@@ -487,7 +487,7 @@ def run_worker(
             )
 
             if args.stage in ("generator", "both"):
-                Generator(storage=storage, config=gen_cfg).run(repo_path)
+                Generator(storage=storage, config=gen_cfg, metrics_hook=metrics_hook).run(repo_path)
 
             device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
             tokenizer = AutoTokenizer.from_pretrained(args.model_name, trust_remote_code=args.trust_remote_code)
@@ -638,6 +638,9 @@ def main() -> None:
 
     for repo_name in repos:
         repo_queue.put((str(repo_root / repo_name), repo_name))
+    # Signal workers to exit after all repos are queued (each worker exits on receiving None)
+    for _ in range(args.num_processes):
+        repo_queue.put(None)
 
     total_pbar = None
     if use_tqdm:
@@ -706,6 +709,12 @@ def main() -> None:
 
     processes = []
     spawn_workers = args.num_processes != 1 or use_rich
+    if spawn_workers and len(repos) > 0:
+        _safe_print(
+            "[Main] Workers are loading the embed model (typically 1–3 min per worker); "
+            "progress will stay 0% until the first repo completes.",
+            use_tqdm,
+        )
     if not spawn_workers:
         run_worker(
             0,

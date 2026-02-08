@@ -68,3 +68,18 @@ python method/retrieval/sparse_retriever.py \
   --top_k_modules 20 \
   --top_k_entities 50 \
   --repos_root /home/chaihongzheng/workspace/locbench/repos/locbench_repos
+
+cd /home/chaihongzheng/workspace/locbench/code_index
+
+python method/cli/run_eval.py \
+  --index_type summary \
+  --dataset_path /home/chaihongzheng/workspace/locbench/data/Loc-Bench_V1_dataset.jsonl \
+  --index_dir /home/chaihongzheng/workspace/locbench/code_index/index_v2/summary/summary_index_function_level \
+  --output_folder /home/chaihongzheng/workspace/locbench/code_index/output_eval_summary \
+  --model_name /home/chaihongzheng/workspace/locbench/LocAgent/models/CodeRankEmbed \
+  --repos_root /home/chaihongzheng/workspace/locbench/repos/locbench_repos \
+  --trust_remote_code \
+  --top_k_docs 50 \
+  --top_k_files 20 \
+  --top_k_modules 20 \
+  --top_k_entities 50

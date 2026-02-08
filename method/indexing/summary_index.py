@@ -1431,41 +1431,41 @@ def _aggregate_class_docs(
 
             if not summary_payload and summary_cache_policy != "read_only":
                 prompt = _render_prompt(summary_prompt, context_str)
-            try:
-                llm_text = _call_llm(
-                    llm,
-                    prompt,
+                try:
+                    llm_text = _call_llm(
+                        llm,
+                        prompt,
                         max_retries=llm_max_retries,
                         base_backoff=llm_backoff,
                         metrics_hook=metrics_hook,
-                    metrics_payload=metric_payload,
-                    model_name=summary_llm_model,
-                )
-                summary_payload = _parse_summary_json(
-                    llm_text,
-                    metrics_hook=metrics_hook,
-                    metrics_payload=metric_payload,
-                )
-                _emit_raw_log(
-                    raw_log_hook,
-                    {
-                        "repo": repo_name,
-                        "stage": "class",
-                        "doc_id": doc_id,
-                        "file_path": file_path,
-                        "type": "class",
-                        "model": summary_llm_model,
-                        "raw_text": llm_text,
-                        "parsed": {
-                            "summary": summary_payload.get("summary", ""),
-                            "business_intent": summary_payload.get("business_intent", ""),
-                            "keywords": summary_payload.get("keywords", []),
+                        metrics_payload=metric_payload,
+                        model_name=summary_llm_model,
+                    )
+                    summary_payload = _parse_summary_json(
+                        llm_text,
+                        metrics_hook=metrics_hook,
+                        metrics_payload=metric_payload,
+                    )
+                    _emit_raw_log(
+                        raw_log_hook,
+                        {
+                            "repo": repo_name,
+                            "stage": "class",
+                            "doc_id": doc_id,
+                            "file_path": file_path,
+                            "type": "class",
+                            "model": summary_llm_model,
+                            "raw_text": llm_text,
+                            "parsed": {
+                                "summary": summary_payload.get("summary", ""),
+                                "business_intent": summary_payload.get("business_intent", ""),
+                                "keywords": summary_payload.get("keywords", []),
+                            },
                         },
-                    },
-                )
-            except Exception as exc:
-                logging.warning("Class summary generation failed for %s: %s", doc_id, exc)
-                summary_payload = {}
+                    )
+                except Exception as exc:
+                    logging.warning("Class summary generation failed for %s: %s", doc_id, exc)
+                    summary_payload = {}
 
                 if summary_payload and summary_cache_policy == "read_write":
                     cache_key = _make_cache_key(doc_id, summary_hash)

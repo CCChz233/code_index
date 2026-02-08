@@ -321,6 +321,7 @@ class StorageManager:
         if not self.graph_path:
             return
         try:
+            import pickle
             import networkx as nx
         except Exception as exc:  # pragma: no cover
             raise ImportError("networkx is required for graph storage") from exc
@@ -328,7 +329,9 @@ class StorageManager:
         for e in edges:
             g.add_edge(e.src_id, e.dst_id, type=e.edge_type)
         os.makedirs(os.path.dirname(self.graph_path), exist_ok=True)
-        nx.write_gpickle(g, self.graph_path)
+        # networkx 3.x 移除了 write_gpickle，用 pickle 替代
+        with open(self.graph_path, "wb") as f:
+            pickle.dump(g, f, pickle.HIGHEST_PROTOCOL)
 
 
 class Generator:
@@ -337,9 +340,15 @@ class Generator:
     Only writes nodes/edges to SQLite (gold).
     """
 
-    def __init__(self, storage: StorageManager, config: GeneratorConfig) -> None:
+    def __init__(
+        self,
+        storage: StorageManager,
+        config: GeneratorConfig,
+        metrics_hook: Optional[Callable[[Dict[str, Any]], None]] = None,
+    ) -> None:
         self.storage = storage
         self.config = config
+        self.metrics_hook = metrics_hook
 
     def run(self, repo_path: str) -> None:
         # NOTE: skeleton only. Implement actual AST parse + LLM later.
@@ -417,7 +426,7 @@ class Generator:
             progress_desc=f"{repo_name} functions",
             llm_max_retries=cfg.llm_max_retries,
             llm_backoff=cfg.llm_backoff,
-            metrics_hook=None,
+            metrics_hook=self.metrics_hook,
             summary_llm_model=cfg.summary_llm_model,
             raw_log_hook=raw_log_hook,
         )
@@ -440,7 +449,7 @@ class Generator:
                 existing_docs=existing_docs,
                 llm_max_retries=cfg.llm_max_retries,
                 llm_backoff=cfg.llm_backoff,
-                metrics_hook=None,
+                metrics_hook=self.metrics_hook,
                 summary_llm_model=cfg.summary_llm_model,
                 raw_log_hook=raw_log_hook,
             )
@@ -460,7 +469,7 @@ class Generator:
                 existing_docs=existing_docs,
                 llm_max_retries=cfg.llm_max_retries,
                 llm_backoff=cfg.llm_backoff,
-                metrics_hook=None,
+                metrics_hook=self.metrics_hook,
                 summary_llm_model=cfg.summary_llm_model,
                 raw_log_hook=raw_log_hook,
             )
@@ -478,7 +487,7 @@ class Generator:
                 existing_docs=existing_docs,
                 llm_max_retries=cfg.llm_max_retries,
                 llm_backoff=cfg.llm_backoff,
-                metrics_hook=None,
+                metrics_hook=self.metrics_hook,
                 summary_llm_model=cfg.summary_llm_model,
                 raw_log_hook=raw_log_hook,
             )
