@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 import argparse
+import hashlib
 import json
 import logging
 import os
@@ -11,6 +12,8 @@ import time
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import List, Optional
+
+from method.indexing.utils.file import iter_files
 
 try:
     from tqdm import tqdm
@@ -54,6 +57,60 @@ def _safe_print(message: str, use_tqdm: bool) -> None:
 
 def _now_iso() -> str:
     return datetime.now(timezone.utc).replace(microsecond=0).isoformat()
+
+
+def _compute_file_list_hash(
+    repo_path: str,
+    *,
+    lang_allowlist: str,
+    skip_patterns: str,
+    max_file_size_mb: Optional[float],
+) -> tuple[str, int]:
+    repo_root = Path(repo_path)
+    suffixes = {
+        p if p.startswith(".") else f".{p}"
+        for p in (lang_allowlist or ".py").split(",")
+        if p.strip()
+    }
+    patterns = [p.strip() for p in (skip_patterns or "").split(",") if p.strip()]
+    files = iter_files(
+        repo_root,
+        suffixes=suffixes,
+        skip_patterns=patterns or None,
+        max_file_size_mb=max_file_size_mb,
+    )
+    rels = [str(p.relative_to(repo_root)).replace("\\", "/") for p in files]
+    rels.sort()
+    digest = hashlib.sha1("\n".join(rels).encode("utf-8")).hexdigest()
+    return digest, len(rels)
+
+
+def _write_snapshot(
+    input_dir: Path,
+    *,
+    repo_path: str,
+    graph_index_dir: Optional[str],
+    lang_allowlist: str,
+    skip_patterns: str,
+    max_file_size_mb: Optional[float],
+    file_list_hash: str,
+    file_count: int,
+) -> None:
+    input_dir.mkdir(parents=True, exist_ok=True)
+    (input_dir / "repo_path.txt").write_text(os.path.abspath(repo_path) + "\n", encoding="utf-8")
+    if graph_index_dir:
+        (input_dir / "graph_index_dir.txt").write_text(os.path.abspath(graph_index_dir) + "\n", encoding="utf-8")
+    snapshot = {
+        "repo_path": os.path.abspath(repo_path),
+        "generated_at": _now_iso(),
+        "file_list_hash": file_list_hash,
+        "file_count": file_count,
+        "lang_allowlist": lang_allowlist,
+        "skip_patterns": skip_patterns,
+        "max_file_size_mb": max_file_size_mb,
+        "graph_index_dir": graph_index_dir or "",
+    }
+    (input_dir / "snapshot.txt").write_text(json.dumps(snapshot, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
 class _QueueWriter:
@@ -219,6 +276,7 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Build summary index for multiple repos (multiprocess).")
     parser.add_argument("--repo_path", required=True, help="Root directory containing repos.")
     parser.add_argument("--index_dir", required=True, help="Root output directory for indexes.")
+    parser.add_argument("--run_id", type=str, default="", help="Optional run id for output folder.")
     parser.add_argument("--skip_existing", action="store_true", help="Skip repos with existing summary.jsonl.")
     parser.add_argument("--resume_failed", action="store_true", help="Resume from failed_repos.jsonl.")
 
@@ -271,7 +329,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--num_processes", type=int, default=1, help="Number of parallel processes.")
     parser.add_argument("--gpu_ids", type=str, default="0,1,2,3,4,5,6,7", help="Comma-separated GPU IDs.")
     parser.add_argument("--force_cpu", action="store_true", help="Force CPU usage.")
-    parser.add_argument("--log_dir", type=str, default="logs/summary_index", help="Log directory.")
+    parser.add_argument("--log_dir", type=str, default="logs", help="Log directory (relative to run_id root if not absolute).")
     parser.add_argument("--raw_log_dir", type=str, default="", help="Append raw LLM outputs as JSONL (per worker).")
     parser.add_argument("--log_level", type=str, default="INFO", help="Logging level (DEBUG/INFO/WARNING).")
     parser.add_argument(
@@ -330,16 +388,11 @@ def run_worker(
         actual_gpu_id = gpu_ids[rank % len(gpu_ids)]
         os.environ["CUDA_VISIBLE_DEVICES"] = str(actual_gpu_id)
 
-    # Per-worker log file
-    log_path = Path(args.log_dir) / f"summary_worker_{rank}.log"
-    log_path.parent.mkdir(parents=True, exist_ok=True)
+    # Per-worker log file (global)
+    worker_log_dir = Path(args.log_dir) / "workers"
+    worker_log_dir.mkdir(parents=True, exist_ok=True)
+    log_path = worker_log_dir / f"summary_worker_{rank}.log"
     log_file = log_path.open("a", encoding="utf-8")
-
-    raw_log_path = None
-    if args.raw_log_dir:
-        raw_dir = Path(args.raw_log_dir)
-        raw_dir.mkdir(parents=True, exist_ok=True)
-        raw_log_path = raw_dir / f"summary_worker_{rank}_raw.jsonl"
 
     if log_queue is not None:
         sys.stdout = _QueueAndFileWriter(log_queue, log_file)
@@ -347,6 +400,8 @@ def run_worker(
     else:
         sys.stdout = _TeeWriter(sys.stdout, log_file)
         sys.stderr = _TeeWriter(sys.stderr, log_file)
+    base_stdout = sys.stdout
+    base_stderr = sys.stderr
 
     logging.basicConfig(
         level=getattr(logging, args.log_level.upper(), logging.INFO),
@@ -403,6 +458,17 @@ def run_worker(
         if item is None:
             break
         repo_path, repo_name = item
+        repo_root = Path(args.run_repo_root) / repo_name
+        input_dir = repo_root / "input"
+        logs_dir = repo_root / "logs"
+        intermediate_dir = repo_root / "intermediate"
+        output_dir = repo_root / "output"
+        for d in (input_dir, logs_dir, intermediate_dir, output_dir):
+            d.mkdir(parents=True, exist_ok=True)
+
+        repo_log_file = (logs_dir / "run.log").open("a", encoding="utf-8")
+        sys.stdout = _TeeWriter(base_stdout, repo_log_file)
+        sys.stderr = _TeeWriter(base_stderr, repo_log_file)
         repo_start_ts = time.time()
         repo_end_emitted = False
         _emit_metric("repo_start", repo_name=repo_name)
@@ -423,7 +489,6 @@ def run_worker(
             metrics_queue.put(event)
 
         try:
-            output_dir = Path(args.index_dir) / "summary_index_function_level" / repo_name
             summary_jsonl = output_dir / "summary.jsonl"
             if args.skip_existing and summary_jsonl.exists():
                 _emit_metric(
@@ -444,10 +509,31 @@ def run_worker(
 
             start_ts = time.time()
 
-            sqlite_path = output_dir / "sqlite" / "summary.db"
-            chroma_dir = output_dir / "chroma"
-            bm25_dir = output_dir / "bm25"
-            graph_path = output_dir / "graph" / "graph.gpickle"
+            # Snapshot input
+            try:
+                file_hash, file_count = _compute_file_list_hash(
+                    repo_path,
+                    lang_allowlist=args.lang_allowlist,
+                    skip_patterns=args.skip_patterns,
+                    max_file_size_mb=args.max_file_size_mb,
+                )
+                _write_snapshot(
+                    input_dir,
+                    repo_path=repo_path,
+                    graph_index_dir=args.graph_index_dir or None,
+                    lang_allowlist=args.lang_allowlist,
+                    skip_patterns=args.skip_patterns,
+                    max_file_size_mb=args.max_file_size_mb,
+                    file_list_hash=file_hash,
+                    file_count=file_count,
+                )
+            except Exception as exc:
+                _emit_log(f"[Process {rank}] Snapshot failed for {repo_name}: {exc}", use_tqdm, log_queue)
+
+            sqlite_path = intermediate_dir / "sqlite" / "summary.db"
+            chroma_dir = intermediate_dir / "chroma"
+            bm25_dir = intermediate_dir / "bm25"
+            graph_path = intermediate_dir / "graph" / "graph.gpickle"
 
             storage = StorageManager(
                 sqlite_path=str(sqlite_path),
@@ -455,6 +541,15 @@ def run_worker(
                 bm25_dir=str(bm25_dir),
                 graph_path=str(graph_path),
             )
+
+            raw_log_path = logs_dir / "raw_llm.jsonl"
+            if args.raw_log_dir:
+                raw_root = Path(args.raw_log_dir)
+                if not raw_root.is_absolute():
+                    raw_root = Path(args.run_root) / raw_root
+                raw_repo_dir = raw_root / repo_name
+                raw_repo_dir.mkdir(parents=True, exist_ok=True)
+                raw_log_path = raw_repo_dir / "raw_llm.jsonl"
 
             gen_cfg = GeneratorConfig(
                 summary_levels=summary_levels,
@@ -474,7 +569,7 @@ def run_worker(
                 summary_cache_dir=args.summary_cache_dir or None,
                 summary_cache_policy=args.summary_cache_policy,
                 summary_cache_miss=args.summary_cache_miss,
-                raw_log_path=str(raw_log_path) if raw_log_path else None,
+                raw_log_path=str(raw_log_path),
                 filter_min_lines=args.filter_min_lines,
                 filter_min_complexity=args.filter_min_complexity,
                 filter_skip_patterns=skip_patterns,
@@ -512,6 +607,20 @@ def run_worker(
                     tokenizer=bm25_tokenize,
                     output_dir=str(output_dir),
                 ).run()
+                # Compatibility view for existing retrievers
+                compat_root = Path(args.run_root) / "summary_index_function_level"
+                compat_root.mkdir(parents=True, exist_ok=True)
+                compat_repo = compat_root / repo_name
+                try:
+                    if compat_repo.is_symlink() or compat_repo.exists():
+                        compat_repo.unlink()
+                    os.symlink(output_dir, compat_repo)
+                except Exception as exc:
+                    _emit_log(
+                        f"[Process {rank}] Failed to create compat link for {repo_name}: {exc}",
+                        use_tqdm,
+                        log_queue,
+                    )
             elapsed = time.time() - start_ts
             _emit_log(f"[Process {rank}] Finished {repo_name} in {elapsed:.1f}s", use_tqdm, log_queue)
             _emit_metric(
@@ -550,6 +659,12 @@ def run_worker(
                 completed_repos.value += 1
             if torch.cuda.is_available():
                 torch.cuda.empty_cache()
+            sys.stdout = base_stdout
+            sys.stderr = base_stderr
+            try:
+                repo_log_file.close()
+            except Exception:
+                pass
     try:
         log_file.close()
     except Exception:
@@ -587,11 +702,68 @@ def main() -> None:
         os.environ.setdefault("TQDM_DISABLE", "1")
 
     repo_root = Path(args.repo_path)
-    log_dir = Path(args.log_dir)
+    run_id = args.run_id.strip() or datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+    runs_root = Path(args.index_dir) / "summary_runs"
+    run_root = runs_root / run_id
+    run_repo_root = run_root / "repos"
+    run_root.mkdir(parents=True, exist_ok=True)
+    run_repo_root.mkdir(parents=True, exist_ok=True)
+
+    log_dir = Path(args.log_dir) if args.log_dir else Path("logs")
+    if not log_dir.is_absolute():
+        log_dir = run_root / log_dir
     log_dir.mkdir(parents=True, exist_ok=True)
     failed_path = log_dir / "failed_repos.jsonl"
     metrics_path = log_dir / "metrics.jsonl"
-    run_id = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+
+    args.log_dir = str(log_dir)
+    args.run_root = str(run_root)
+    args.run_repo_root = str(run_repo_root)
+    args.run_id = run_id
+
+    # Write run manifest (redact secrets)
+    manifest = {
+        "run_id": run_id,
+        "started_at": _now_iso(),
+        "repo_root": str(repo_root),
+        "index_dir": str(args.index_dir),
+        "log_dir": str(log_dir),
+        "graph_index_dir": args.graph_index_dir or "",
+        "summary_levels": args.summary_levels,
+    }
+    args_payload = vars(args).copy()
+    for key in list(args_payload.keys()):
+        if any(token in key.lower() for token in ("key", "token", "password", "secret")):
+            if args_payload.get(key):
+                args_payload[key] = "***"
+    manifest["args"] = args_payload
+    with (run_root / "_run_manifest.json").open("w", encoding="utf-8") as f:
+        json.dump(manifest, f, ensure_ascii=False, indent=2)
+
+    # Update latest symlink
+    latest = runs_root / "latest"
+    try:
+        if latest.is_symlink() or latest.is_file():
+            latest.unlink()
+        elif latest.is_dir():
+            for child in latest.iterdir():
+                try:
+                    if child.is_dir():
+                        child.rmdir()
+                    else:
+                        child.unlink()
+                except Exception:
+                    pass
+            try:
+                latest.rmdir()
+            except Exception:
+                pass
+        os.symlink(run_root, latest)
+    except Exception:
+        try:
+            latest.write_text(str(run_root) + "\n", encoding="utf-8")
+        except Exception:
+            pass
 
     repos: List[str] = []
     if args.resume_failed and failed_path.exists():
@@ -624,7 +796,7 @@ def main() -> None:
     if args.skip_existing:
         filtered = []
         for repo_name in repos:
-            output_dir = Path(args.index_dir) / "summary_index_function_level" / repo_name
+            output_dir = Path(args.run_repo_root) / repo_name / "output"
             if not (output_dir / "summary.jsonl").exists():
                 filtered.append(repo_name)
         repos = filtered
@@ -752,9 +924,24 @@ def main() -> None:
     visualizer = SimpleVisualizer(args.num_processes, len(repos)) if use_rich else None
     console = Console() if use_rich else None
 
+    repo_metric_files = {}
+
+    def _write_repo_metric(event: dict) -> None:
+        repo = event.get("repo")
+        if not repo:
+            return
+        path = Path(args.run_repo_root) / repo / "logs" / "metrics.jsonl"
+        if repo not in repo_metric_files:
+            path.parent.mkdir(parents=True, exist_ok=True)
+            repo_metric_files[repo] = path.open("a", encoding="utf-8")
+        f = repo_metric_files[repo]
+        f.write(json.dumps(event, ensure_ascii=False) + "\n")
+        f.flush()
+
     def _handle_metric(event: dict, metrics_file) -> None:
         metrics_file.write(json.dumps(event, ensure_ascii=False) + "\n")
         metrics_file.flush()
+        _write_repo_metric(event)
         if visualizer is None:
             return
         log_msg = visualizer.update(event)
@@ -849,6 +1036,12 @@ def main() -> None:
 
     failed_queue.put(None)
     failed_thread.join(timeout=2.0)
+
+    for f in repo_metric_files.values():
+        try:
+            f.close()
+        except Exception:
+            pass
 
     _safe_print("All processes completed", use_tqdm)
 

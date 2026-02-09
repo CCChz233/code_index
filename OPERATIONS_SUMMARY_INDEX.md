@@ -141,7 +141,8 @@ python method/indexing/batch_build_summary_index.py \
 2. embedding GPU 与 vLLM GPU 分开，使用 `--gpu_ids` 控制
 3. 失败断点续跑：将 `RESUME_FAILED=1` 或直接传 `--resume_failed`
 4. 可选阶段控制：`--stage generator|indexer|both`（默认 both）
-5. 实时原始输出：`--raw_log_dir /path/to/raw_logs`（每个 worker 一个 `summary_worker_{i}_raw.jsonl`）
+5. 实时原始输出：`--raw_log_dir /path/to/raw_logs`（每个 repo 一个 `raw_llm.jsonl`）
+6. 可选：`--run_id <id>` 固定运行目录（用于断点续跑/对齐同一批次输出）
 
 ```
 python method/indexing/batch_build_summary_index.py \
@@ -191,19 +192,36 @@ python method/indexing/batch_build_summary_index.py \
   --resume_failed
 ```
 
-输出目录结构（每个 repo，批量管线）：
+输出目录结构（批量管线，按 run_id 归档）：
 ```
-summary_index_function_level/{repo}/
-  sqlite/summary.db
-  chroma/
-  bm25/bm25.pkl
-  graph/graph.gpickle
-
-  # 兼容旧检索器的平面输出
-  summary.jsonl
-  summary_ast/<path>.json
-  dense/embeddings.pt
-  dense/index_map.json
+summary_runs/{run_id}/
+  _run_manifest.json
+  logs/
+    metrics.jsonl
+    failed_repos.jsonl
+    workers/summary_worker_{i}.log
+  summary_index_function_level/   # 兼容旧检索器（软链到 output/）
+    {repo} -> repos/{repo}/output
+  repos/
+    {repo}/
+      input/
+        repo_path.txt
+        graph_index_dir.txt
+        snapshot.txt
+      logs/
+        run.log
+        metrics.jsonl
+        raw_llm.jsonl
+      intermediate/
+        sqlite/summary.db
+        chroma/
+        bm25/bm25.pkl
+        graph/graph.gpickle
+      output/
+        summary.jsonl
+        summary_ast/<path>.json
+        dense/embeddings.pt
+        dense/index_map.json
 ```
 
 输出目录结构（每个 repo，单仓库管线）：
