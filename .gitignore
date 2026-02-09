@@ -16,7 +16,10 @@ output_eval/
 output_eval_summary/
 *.pt
 embeddings.pt
+# Summary / method caches (do not commit)
 summary_cache/
+summary_cache_v2/
+summary_cache_*/
 # Graph / dependency index (if built under code_index)
 graph_index/
 
@@ -61,7 +64,5 @@ htmlcov/
 .dmypy.json
 dmypy.json
 
-# generated cache
-summary_cache/
-summary_cache_v2/
+# Generated cache & logs
 logs/
