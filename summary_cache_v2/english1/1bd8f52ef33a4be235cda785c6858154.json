@@ -1,0 +1,1 @@
+{"summary": "The component is a standalone unit with no callers, no callees, and is not exercised by tests.", "business_intent": "Provides isolated functionality that may be intended for future integration or manual use.", "keywords": ["standalone", "unused", "no dependencies", "isolated"], "summary_hash": "fb730c654e49", "cached_at": "2026-02-09T07:26:34+00:00"}

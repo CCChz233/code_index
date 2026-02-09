@@ -1,0 +1,1 @@
+{"summary": "The function is not called by any other code and is not exercised by tests, indicating it may be dead code or a placeholder.", "business_intent": "No specific business intent can be inferred from the available information.", "keywords": [], "summary_hash": "96bc8d90283d", "cached_at": "2026-02-08T18:07:56+00:00"}

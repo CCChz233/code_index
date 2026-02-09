@@ -1,0 +1,1 @@
+{"summary": "The code appears to be an isolated component with no callers, no callees, and not exercised by tests.", "business_intent": "Potentially unused utility or placeholder awaiting integration.", "keywords": ["isolated", "unused", "no callers", "no tests"], "summary_hash": "f9c96be12bf6", "cached_at": "2026-02-09T04:33:13+00:00"}

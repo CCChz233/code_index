@@ -1,0 +1,1 @@
+{"summary": "A standalone function defined in the codebase but not referenced by any other code or tests.", "business_intent": "Provides a utility operation that may be intended for future use or external integration.", "keywords": ["standalone", "unused", "utility", "potential", "future integration"], "summary_hash": "73723210603e", "cached_at": "2026-02-08T20:39:48+00:00"}

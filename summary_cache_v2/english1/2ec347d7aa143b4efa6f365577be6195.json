@@ -1,0 +1,1 @@
+{"summary": "No callers or callees are recorded for this code segment, and it is not exercised by tests.", "business_intent": "The purpose of the code cannot be determined from usage data; it may be a placeholder, utility, or dead code.", "keywords": ["unused", "no calls", "unknown purpose", "placeholder"], "summary_hash": "4cc2cfbd4394", "cached_at": "2026-02-08T10:36:30+00:00"}

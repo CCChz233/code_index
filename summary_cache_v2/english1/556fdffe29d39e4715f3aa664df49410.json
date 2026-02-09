@@ -1,0 +1,1 @@
+{"summary": "No callers or callees detected; the code element appears unused and is not exercised by tests.", "business_intent": "No business intent can be inferred as the element is not invoked in any workflow.", "keywords": [], "summary_hash": "7d1684d4ae86", "cached_at": "2026-02-08T07:30:22+00:00"}

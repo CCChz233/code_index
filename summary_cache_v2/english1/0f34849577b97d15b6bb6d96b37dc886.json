@@ -1,0 +1,1 @@
+{"summary": "Implements a helper to execute actions for an automation module.", "business_intent": "Enables automated tasks to be performed by encapsulating execution logic within a reusable component.", "keywords": ["action", "module", "execute", "automation", "helper", "task"], "summary_hash": "e0d2d30647cd", "cached_at": "2026-02-08T17:12:58+00:00"}

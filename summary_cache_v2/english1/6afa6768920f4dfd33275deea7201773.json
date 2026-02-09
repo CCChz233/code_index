@@ -1,0 +1,1 @@
+{"summary": "The component is a standalone piece of code with no callers or callees and is not exercised by any tests.", "business_intent": "Provides a self-contained utility that is currently unused within the codebase.", "keywords": ["unused", "orphan", "standalone", "no dependencies", "not tested"], "summary_hash": "a3c2793551d7", "cached_at": "2026-02-08T09:27:21+00:00"}

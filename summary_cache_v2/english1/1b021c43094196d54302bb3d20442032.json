@@ -1,0 +1,1 @@
+{"summary": "Provides functionality to filter deployment records based on their name attribute.", "business_intent": "Allows callers to retrieve or operate on deployments that match a specific name criteria.", "keywords": ["deployment", "filter", "name", "query", "helper"], "summary_hash": "707ef8e865b8", "cached_at": "2026-02-08T12:54:00+00:00"}

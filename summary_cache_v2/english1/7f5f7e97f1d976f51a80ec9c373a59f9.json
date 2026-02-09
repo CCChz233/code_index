@@ -1,0 +1,1 @@
+{"summary": "Encapsulates a filter that selects work pool entities based on their unique identifier.", "business_intent": "Allows callers to retrieve or operate on specific work pools by providing an ID-based filter for queries.", "keywords": ["filter", "work pool", "identifier", "query", "selection"], "summary_hash": "cf0287617c0b", "cached_at": "2026-02-08T12:55:35+00:00"}

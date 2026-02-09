@@ -1,0 +1,1 @@
+{"summary": "Provides a helper for testing whether values can be cast to a target type.", "business_intent": "Facilitates unit tests that need to verify type casting behavior.", "keywords": ["testing", "casting", "helper", "validation", "type conversion", "unit test"], "summary_hash": "ca92f071fc4b", "cached_at": "2026-02-08T19:37:37+00:00"}

@@ -1,0 +1,1 @@
+{"summary": "A custom exception that indicates configuration data is invalid.", "business_intent": "Used to signal and handle configuration validation failures, allowing callers to catch misconfiguration errors.", "keywords": ["exception", "configuration", "validation", "error handling", "custom error"], "summary_hash": "27555276ec60", "cached_at": "2026-02-09T01:45:36+00:00"}

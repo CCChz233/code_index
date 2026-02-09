@@ -1,0 +1,1 @@
+{"summary": "Provides utility methods to convert evaluation results into dictionary or JSON formats.", "business_intent": "Enable easy serialization of data for reporting, logging, or API responses.", "keywords": ["serialization", "dictionary", "JSON", "helper", "utility", "data conversion", "evaluation"], "summary_hash": "0708e449524e", "cached_at": "2026-02-08T05:15:50+00:00"}

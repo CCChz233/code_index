@@ -1,0 +1,1 @@
+{"summary": "The module/function has no callers, does not invoke other components, and is not covered by tests, indicating it is currently unused.", "business_intent": "No active business functionality; the code appears to be a placeholder or dead code.", "keywords": [], "summary_hash": "e97dfbb96bfd", "cached_at": "2026-02-08T18:58:21+00:00"}

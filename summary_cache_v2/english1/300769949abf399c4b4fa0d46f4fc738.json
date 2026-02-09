@@ -1,0 +1,1 @@
+{"summary": "The module is isolated with no callers or callees, indicating it is currently unused within the application.", "business_intent": "No active business functionality; likely a placeholder or dead code awaiting future integration.", "keywords": ["unused", "orphan", "placeholder", "dead code"], "summary_hash": "42d5d1fb41ca", "cached_at": "2026-02-08T20:02:35+00:00"}

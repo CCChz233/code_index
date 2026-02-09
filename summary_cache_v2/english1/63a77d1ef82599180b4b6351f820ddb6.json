@@ -1,0 +1,1 @@
+{"summary": "The code unit is not referenced by any other parts of the system and is not covered by tests, indicating it is currently unused.", "business_intent": "No active business functionality; the code appears to be dead or placeholder.", "keywords": ["unused", "orphan", "dead code"], "summary_hash": "a89b4e4e86dc", "cached_at": "2026-02-08T15:13:48+00:00"}

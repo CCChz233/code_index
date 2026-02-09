@@ -1,0 +1,1 @@
+{"summary": "The function is defined but not referenced anywhere in the codebase; it has no callers, no callees, and is not exercised by tests.", "business_intent": "Provides a utility that may be intended for future use or external integration", "keywords": ["standalone", "unused", "utility", "potential"], "summary_hash": "abcc5ab94899", "cached_at": "2026-02-08T16:09:52+00:00"}

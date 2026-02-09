@@ -1,0 +1,1 @@
+{"summary": "The module has no callers, does not invoke other modules, and is not covered by tests, indicating it is isolated and potentially dead code.", "business_intent": "No active business functionality is exercised; the code appears to be unused.", "keywords": ["unused", "orphan", "dead code"], "summary_hash": "d90236a97b5c", "cached_at": "2026-02-08T08:16:12+00:00"}

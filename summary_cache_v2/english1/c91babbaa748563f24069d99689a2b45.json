@@ -1,0 +1,1 @@
+{"summary": "Represents a simple warning object used as a test fixture.", "business_intent": "Enable testing of warning handling mechanisms by providing a mock warning instance.", "keywords": ["warning", "sample", "test", "mock", "placeholder", "diagnostic"], "summary_hash": "73cd6bb3d80a", "cached_at": "2026-02-08T09:58:34+00:00"}

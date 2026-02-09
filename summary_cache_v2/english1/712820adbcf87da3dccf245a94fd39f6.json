@@ -1,0 +1,1 @@
+{"summary": "The function is defined but not referenced by any other code and is not exercised by tests.", "business_intent": "No observable business intent can be determined because the function is not invoked anywhere.", "keywords": [], "summary_hash": "b4912336d79d", "cached_at": "2026-02-08T05:47:25+00:00"}

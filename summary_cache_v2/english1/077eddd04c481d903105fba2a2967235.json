@@ -1,0 +1,1 @@
+{"summary": "A lightweight class modeling a widget that provides a custom textual representation.", "business_intent": "Facilitate conversion of widget instances to readable strings for logging, debugging, or UI display.", "keywords": ["widget", "string representation", "toString", "object", "display"], "summary_hash": "d0580776c5ee", "cached_at": "2026-02-08T23:57:41+00:00"}

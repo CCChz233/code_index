@@ -1,0 +1,1 @@
+{"summary": "The component is defined but not invoked by any other part of the system and has no test coverage.", "business_intent": "Potentially a placeholder or utility that is currently unused.", "keywords": ["unused", "standalone", "no callers", "no callees", "unreferenced"], "summary_hash": "41e820efaefa", "cached_at": "2026-02-09T11:13:18+00:00"}

@@ -1,0 +1,1 @@
+{"summary": "Represents a tag entity and provides functionality to ensure its associated identifiers are valid.", "business_intent": "Maintain data integrity for tags by validating their IDs before they are used or persisted.", "keywords": ["tag", "validation", "identifier", "helper", "data integrity"], "summary_hash": "b811adb6a94d", "cached_at": "2026-02-09T06:32:01+00:00"}

@@ -1,0 +1,1 @@
+{"summary": "The component shows no interactions: it has no callers, no callees, and is not exercised by any tests.", "business_intent": "No observable business functionality; likely a placeholder or dead code.", "keywords": [], "summary_hash": "fcbe7a037693", "cached_at": "2026-02-08T20:44:49+00:00"}

@@ -1,0 +1,1 @@
+{"summary": "A standalone function with no callers or callees, not exercised by tests.", "business_intent": "Provides a utility that is currently not integrated into the application, possibly awaiting future use or refactoring.", "keywords": ["orphan", "unused", "standalone", "utility", "potential"], "summary_hash": "12a11fbe006a", "cached_at": "2026-02-08T14:39:42+00:00"}

@@ -1,0 +1,1 @@
+{"summary": "Provides helper methods to validate maximum and minimum value constraints in tests.", "business_intent": "Support unit testing by checking that values respect defined upper and lower bounds.", "keywords": ["validation", "max", "min", "testing", "helper", "boundary", "assertion"], "summary_hash": "a5727c7cf7ad", "cached_at": "2026-02-08T23:09:29+00:00"}

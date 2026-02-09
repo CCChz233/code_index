@@ -1,0 +1,1 @@
+{"summary": "A utility class offering a simple helper to execute and verify test scripts.", "business_intent": "Supports automated validation of script functionality within the Dints testing framework.", "keywords": ["testing", "helper", "automation", "validation", "script execution"], "summary_hash": "8c477da23b0a", "cached_at": "2026-02-08T10:26:03+00:00"}

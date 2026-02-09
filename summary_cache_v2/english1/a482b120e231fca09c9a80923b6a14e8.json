@@ -1,0 +1,1 @@
+{"summary": "The function is not called by any other code and does not invoke other functions. It is also not exercised by automated tests.", "business_intent": "No specific business intent can be determined from the available information.", "keywords": ["unused", "no tests", "isolated"], "summary_hash": "ad89e4daa856", "cached_at": "2026-02-08T16:10:59+00:00"}

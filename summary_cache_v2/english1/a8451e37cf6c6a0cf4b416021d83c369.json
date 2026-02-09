@@ -1,0 +1,1 @@
+{"summary": "The component is a standalone unit with no external callers or callees and is not exercised by tests.", "business_intent": "Provides a self-contained utility that is currently not integrated into any workflow.", "keywords": ["standalone", "unused", "utility", "no dependencies", "not tested"], "summary_hash": "4dedfbc4059a", "cached_at": "2026-02-08T22:57:28+00:00"}

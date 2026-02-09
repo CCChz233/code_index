@@ -1,0 +1,1 @@
+{"summary": "The unit is isolated with no incoming or outgoing calls and is not exercised by tests.", "business_intent": "Appears to be unused or placeholder functionality with no current business impact.", "keywords": ["isolated", "unused", "dead code", "standalone", "placeholder"], "summary_hash": "d4eac99fd8d4", "cached_at": "2026-02-09T01:47:54+00:00"}

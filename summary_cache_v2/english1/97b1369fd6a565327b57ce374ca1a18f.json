@@ -1,0 +1,1 @@
+{"summary": "The code executes internal logic without invoking or being invoked by other components.", "business_intent": "Carry out self-contained processing or calculations.", "keywords": ["internal", "self-contained", "no external calls", "processing", "computation"], "summary_hash": "d659979e6f6c", "cached_at": "2026-02-08T09:46:17+00:00"}

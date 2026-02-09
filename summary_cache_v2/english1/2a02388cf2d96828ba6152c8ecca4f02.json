@@ -1,0 +1,1 @@
+{"summary": "The function is defined but not referenced anywhere in the codebase, resulting in no callers or callees.", "business_intent": "Potential placeholder or dead code with no current business functionality.", "keywords": ["unused", "dead code", "no callers", "no callees"], "summary_hash": "4a91811f4ab4", "cached_at": "2026-02-08T05:12:12+00:00"}

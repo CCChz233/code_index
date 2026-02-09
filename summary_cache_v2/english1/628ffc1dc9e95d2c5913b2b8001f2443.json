@@ -1,0 +1,1 @@
+{"summary": "Encapsulates a mutable numeric value that can be increased to keep track of counts.", "business_intent": "Enable counting of events, occurrences, or items within a program.", "keywords": ["counter", "increment", "numeric", "state", "tracking"], "summary_hash": "dca5e1e05f1c", "cached_at": "2026-02-08T13:19:36+00:00"}

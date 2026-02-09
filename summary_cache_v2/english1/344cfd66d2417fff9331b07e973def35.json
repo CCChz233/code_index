@@ -1,0 +1,1 @@
+{"summary": "A self-contained routine that is not invoked by any other code and has no external dependencies.", "business_intent": "Provides a specific utility or calculation that may be intended for future use or manual execution.", "keywords": ["standalone", "unused", "utility", "no dependencies"], "summary_hash": "a0ba994c267a", "cached_at": "2026-02-08T20:10:47+00:00"}

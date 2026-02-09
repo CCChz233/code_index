@@ -1,0 +1,1 @@
+{"summary": "A lightweight thread class that encapsulates the execution of a helper routine.", "business_intent": "Enable background processing of simple tasks without blocking the main flow.", "keywords": ["thread", "background", "helper", "asynchronous", "concurrency"], "summary_hash": "a9a60f4c7529", "cached_at": "2026-02-09T01:31:29+00:00"}

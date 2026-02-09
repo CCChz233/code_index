@@ -1,0 +1,1 @@
+{"summary": "Encapsulates a filter that selects flow runs based on their name attribute.", "business_intent": "Provides a way to query or retrieve flow run records that match a specific name or naming pattern.", "keywords": ["flow run", "name", "filter", "query", "criteria", "selection"], "summary_hash": "0f26dffa319d", "cached_at": "2026-02-08T12:52:24+00:00"}

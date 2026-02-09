@@ -1,0 +1,1 @@
+{"summary": "The component contains no functionality; it has no callers, no callees, and is not exercised by tests.", "business_intent": "Acts as a placeholder or stub with no operational behavior.", "keywords": ["no-op", "placeholder", "stub", "unused"], "summary_hash": "288be9a995b3", "cached_at": "2026-02-08T06:46:59+00:00"}

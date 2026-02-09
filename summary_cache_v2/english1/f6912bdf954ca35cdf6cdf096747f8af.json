@@ -1,0 +1,1 @@
+{"summary": "The code defines a function that is not referenced by any other components and is not exercised by automated tests.", "business_intent": "Serves as a placeholder or future feature with no current operational impact.", "keywords": ["unused", "orphan", "placeholder", "no references", "no tests"], "summary_hash": "7771b39d3e62", "cached_at": "2026-02-09T02:41:26+00:00"}

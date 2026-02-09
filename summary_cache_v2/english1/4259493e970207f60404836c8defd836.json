@@ -1,0 +1,1 @@
+{"summary": "The function is defined but has no callers and is not exercised by any tests.", "business_intent": "Potential utility or helper function that is currently unused; may be dead code.", "keywords": ["unused", "dead code", "no callers", "no tests", "orphan function"], "summary_hash": "3797f4efdb0e", "cached_at": "2026-02-08T12:20:09+00:00"}

@@ -1,0 +1,1 @@
+{"summary": "Encapsulates a regular expression pattern, providing standard initialization and equality comparison.", "business_intent": "Allow consistent creation, storage, and comparison of regex patterns across the system.", "keywords": ["regex", "pattern", "object", "equality", "initialization"], "summary_hash": "3fc61c854614", "cached_at": "2026-02-08T21:27:44+00:00"}

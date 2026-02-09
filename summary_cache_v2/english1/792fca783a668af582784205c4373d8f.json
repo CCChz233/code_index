@@ -1,0 +1,1 @@
+{"summary": "The component defines a function that is not referenced anywhere in the codebase and has no external calls.", "business_intent": "Potential placeholder or dead code with no current business functionality.", "keywords": ["unused", "dead code", "no callers", "no callees", "placeholder"], "summary_hash": "ba43e4d5ea52", "cached_at": "2026-02-08T21:42:38+00:00"}

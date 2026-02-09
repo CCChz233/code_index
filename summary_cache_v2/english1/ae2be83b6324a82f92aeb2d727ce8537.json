@@ -1,0 +1,1 @@
+{"summary": "The code defines a function that currently has no callers and is not exercised by any tests.", "business_intent": "Provide a utility that may be integrated later, but currently remains unused.", "keywords": ["unused", "function", "no callers", "no tests", "utility"], "summary_hash": "87fb5ebd8fc4", "cached_at": "2026-02-08T22:55:39+00:00"}

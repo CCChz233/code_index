@@ -1,0 +1,1 @@
+{"summary": "The component appears to be a standalone piece of code with no external callers or callees and is not exercised by tests.", "business_intent": "No clear business purpose can be determined from the available information; it may be dead code or a utility awaiting integration.", "keywords": [], "summary_hash": "cccb2ed3f1fb", "cached_at": "2026-02-09T04:14:48+00:00"}

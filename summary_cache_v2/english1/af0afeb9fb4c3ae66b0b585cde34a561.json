@@ -1,0 +1,1 @@
+{"summary": "Provides a simple GET helper to retrieve the current status information.", "business_intent": "Expose a lightweight endpoint for checking system health or status via an HTTP GET request.", "keywords": ["status", "GET", "helper", "health check", "endpoint", "API"], "summary_hash": "4956785c0e49", "cached_at": "2026-02-09T07:42:55+00:00"}

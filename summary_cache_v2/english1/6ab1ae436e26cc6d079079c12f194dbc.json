@@ -1,0 +1,1 @@
+{"summary": "Manages user-related functionality, offering a helper to modify user information.", "business_intent": "Enable the application to change user records while maintaining encapsulation and data integrity.", "keywords": ["user", "modify", "component", "helper", "state", "business logic"], "summary_hash": "3752ee1a8573", "cached_at": "2026-02-08T08:36:51+00:00"}

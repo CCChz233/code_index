@@ -1,0 +1,1 @@
+{"summary": "The component defines a function that is not invoked by any other part of the system and is not covered by automated tests.", "business_intent": "Likely a placeholder or future feature with no current operational impact.", "keywords": ["unused", "orphan", "no callers", "no tests"], "summary_hash": "d913cd193a07", "cached_at": "2026-02-08T06:47:06+00:00"}

@@ -1,0 +1,1 @@
+{"summary": "A standalone function that is not called by any other code and does not invoke other functions.", "business_intent": "Provides a utility that appears to be unused in the current codebase, possibly dead code or placeholder.", "keywords": ["unused", "dead code", "isolated", "no dependencies"], "summary_hash": "7ea72f4ac3d4", "cached_at": "2026-02-08T12:22:50+00:00"}

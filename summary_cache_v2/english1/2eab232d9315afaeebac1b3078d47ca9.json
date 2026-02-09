@@ -1,0 +1,1 @@
+{"summary": "The function is defined but has no callers, no callees, and is not exercised by any tests, indicating it is currently unused.", "business_intent": "Unclear due to lack of usage; possibly a placeholder for future business logic or an incomplete implementation.", "keywords": [], "summary_hash": "81d8acc9d637", "cached_at": "2026-02-08T22:12:23+00:00"}

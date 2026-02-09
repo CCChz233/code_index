@@ -1,0 +1,1 @@
+{"summary": "The code appears to be an unused placeholder with no callers or callees and not exercised by tests.", "business_intent": "No functional business behavior; likely a stub or dead code awaiting implementation.", "keywords": ["unused", "placeholder", "dead code", "no callers", "no tests"], "summary_hash": "4e21fd15bbda", "cached_at": "2026-02-09T06:53:07+00:00"}

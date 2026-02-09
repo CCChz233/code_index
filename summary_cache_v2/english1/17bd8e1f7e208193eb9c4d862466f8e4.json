@@ -1,0 +1,1 @@
+{"summary": "Provides a utility function that returns the shared 'bar' value from the library.", "business_intent": "Expose a simple accessor to retrieve the bar component for use across the project.", "keywords": ["getter", "shared library", "utility", "accessor", "bar"], "summary_hash": "a0068bdf9dc4", "cached_at": "2026-02-08T13:18:24+00:00"}

@@ -1,0 +1,1 @@
+{"summary": "Encapsulates a source of arrow information and offers a utility to produce formatted output.", "business_intent": "Supply arrow-related data to other components and facilitate easy rendering or logging of that data.", "keywords": ["arrow", "source", "data", "output", "utility"], "summary_hash": "11d37fc5d8bb", "cached_at": "2026-02-08T15:48:45+00:00"}

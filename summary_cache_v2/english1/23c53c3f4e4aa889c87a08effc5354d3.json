@@ -1,0 +1,1 @@
+{"summary": "Encapsulates HTML markup and provides a string representation of the content.", "business_intent": "Facilitate creation and handling of HTML snippets for web pages or email templates.", "keywords": ["HTML", "markup", "representation", "web", "document", "serialization"], "summary_hash": "6cb3ac9d1916", "cached_at": "2026-02-09T07:47:15+00:00"}

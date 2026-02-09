@@ -1,0 +1,1 @@
+{"summary": "Encapsulates an issue entity, providing its data and a human‑readable string representation.", "business_intent": "Enable creation, manipulation, and display of issues within a tracking or reporting system.", "keywords": ["issue", "ticket", "bug", "entity", "model", "string representation"], "summary_hash": "cef5b6036eca", "cached_at": "2026-02-08T22:29:24+00:00"}

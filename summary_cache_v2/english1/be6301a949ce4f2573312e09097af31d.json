@@ -1,0 +1,1 @@
+{"summary": "Provides a utility method that increments a numeric value by one.", "business_intent": "Support simple arithmetic operations, such as incrementing counters or indices, within applications.", "keywords": ["increment", "add one", "utility", "static method", "arithmetic"], "summary_hash": "1df34bffa70d", "cached_at": "2026-02-08T20:29:57+00:00"}

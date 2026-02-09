@@ -1,0 +1,1 @@
+{"summary": "A test suite that validates the functionality fixed or introduced by ticket 23605.", "business_intent": "Confirm that the changes associated with ticket 23605 work as expected and prevent regressions.", "keywords": ["unit test", "ticket 23605", "regression", "validation", "bug fix"], "summary_hash": "1ee5e678e61f", "cached_at": "2026-02-08T23:54:21+00:00"}

@@ -1,0 +1,1 @@
+{"summary": "The component is not referenced anywhere in the codebase and has no test coverage.", "business_intent": "Currently provides no active business functionality; it appears to be dead code or a placeholder awaiting implementation.", "keywords": ["unused", "dead code", "no references", "no tests"], "summary_hash": "21f94a5b3ea0", "cached_at": "2026-02-09T02:31:11+00:00"}

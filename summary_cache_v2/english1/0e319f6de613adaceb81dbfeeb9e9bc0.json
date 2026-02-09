@@ -1,0 +1,1 @@
+{"summary": "The component is defined but currently has no callers and does not invoke any other components.", "business_intent": "It appears to be a standalone utility or feature that is not currently integrated into the application flow.", "keywords": ["unused", "orphan", "no callers", "no dependencies"], "summary_hash": "5fa2019a8a73", "cached_at": "2026-02-08T18:05:47+00:00"}

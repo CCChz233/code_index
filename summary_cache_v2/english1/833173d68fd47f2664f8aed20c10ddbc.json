@@ -1,0 +1,1 @@
+{"summary": "The function is defined but not invoked anywhere in the codebase and has no external dependencies.", "business_intent": "No active business behavior; the function currently does not contribute to any functionality.", "keywords": ["unused", "orphan", "standalone", "no callers", "no callees"], "summary_hash": "6badb43a42ed", "cached_at": "2026-02-08T22:13:45+00:00"}

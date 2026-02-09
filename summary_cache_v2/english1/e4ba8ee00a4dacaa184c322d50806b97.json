@@ -1,0 +1,1 @@
+{"summary": "The code defines a function that is not referenced by any other code and is not exercised by tests.", "business_intent": "Provides a utility or placeholder functionality that is currently unused within the application.", "keywords": ["unused", "isolated", "function", "no tests", "placeholder"], "summary_hash": "4780385aa4b1", "cached_at": "2026-02-08T07:32:35+00:00"}

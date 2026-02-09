@@ -1,0 +1,1 @@
+{"summary": "The component is not referenced by any other code and is not exercised by tests, indicating it is currently unused.", "business_intent": "No active business functionality; likely a placeholder or dead code.", "keywords": ["unused", "dead code", "placeholder"], "summary_hash": "cad58219e80f", "cached_at": "2026-02-08T14:03:02+00:00"}

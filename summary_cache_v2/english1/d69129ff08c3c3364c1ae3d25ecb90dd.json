@@ -1,0 +1,1 @@
+{"summary": "A test suite that validates the handling and retrieval of EC2 instance credentials.", "business_intent": "To verify that EC2 credential mechanisms work correctly and securely within the application.", "keywords": ["EC2", "credentials", "testing", "unit test", "AWS", "authentication"], "summary_hash": "8c256eeacb66", "cached_at": "2026-02-08T18:22:59+00:00"}

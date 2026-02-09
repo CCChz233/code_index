@@ -1,0 +1,1 @@
+{"summary": "Provides a collection of simple helper methods used in testing.", "business_intent": "Facilitate unit tests by offering reusable utility functions that perform basic operations or return predetermined values.", "keywords": ["testing", "helper", "utility", "reusability", "unit test"], "summary_hash": "ac06ef575d0f", "cached_at": "2026-02-08T20:01:01+00:00"}

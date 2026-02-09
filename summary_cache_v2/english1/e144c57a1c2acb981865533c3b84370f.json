@@ -1,0 +1,1 @@
+{"summary": "Encapsulates the data required to perform a name-based query operation.", "business_intent": "Facilitates sending a request to retrieve or search information associated with a specific name.", "keywords": ["name", "query", "request", "search", "parameters", "API"], "summary_hash": "160cc2e50c81", "cached_at": "2026-02-09T00:28:48+00:00"}

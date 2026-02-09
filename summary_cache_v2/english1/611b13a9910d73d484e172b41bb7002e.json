@@ -1,0 +1,1 @@
+{"summary": "A view that supplies a collection of author records for use in forms or other components.", "business_intent": "Fetch and present author data so that users can select or view authors within the application.", "keywords": ["author", "queryset", "view", "form", "retrieve", "list", "django"], "summary_hash": "c1a6356b7df0", "cached_at": "2026-02-08T22:35:36+00:00"}

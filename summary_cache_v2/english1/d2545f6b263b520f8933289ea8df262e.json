@@ -1,0 +1,1 @@
+{"summary": "Test suite that validates the behavior of a client with CSRF protection enabled.", "business_intent": "Ensure the client correctly manages CSRF tokens to maintain security for web requests.", "keywords": ["CSRF", "client", "testing", "security", "web requests", "unit test"], "summary_hash": "4a7a736ae696", "cached_at": "2026-02-08T22:55:41+00:00"}

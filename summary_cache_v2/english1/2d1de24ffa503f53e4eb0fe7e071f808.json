@@ -1,0 +1,1 @@
+{"summary": "A test suite that validates the correctness of the heat‑wave index calculations.", "business_intent": "To ensure reliable computation of heat‑wave metrics for climate data analysis.", "keywords": ["testing", "unit test", "heat wave index", "validation", "climate"], "summary_hash": "38249da9ee89", "cached_at": "2026-02-08T09:26:03+00:00"}

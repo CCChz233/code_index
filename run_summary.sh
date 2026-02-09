@@ -7,7 +7,7 @@ REPOS_ROOT="/home/chaihongzheng/workspace/locbench/repos/locbench_repos"
 INDEX_ROOT="/home/chaihongzheng/workspace/locbench/code_index/index_v2/summary_v2"
 GRAPH_INDEX_DIR="/home/chaihongzheng/workspace/locbench/code_index/graph_index"
 EMBED_MODEL="/home/chaihongzheng/workspace/locbench/LocAgent/models/CodeRankEmbed"
-SUMMARY_CACHE_DIR="/home/chaihongzheng/workspace/locbench/code_index/summary_cache_v2"
+SUMMARY_CACHE_DIR="/home/chaihongzheng/workspace/locbench/code_index/summary_cache_v2/english1"
 LOG_DIR="/home/chaihongzheng/workspace/locbench/code_index/logs/summary_index_v2"
 
 # vLLM OpenAI-compatible server

@@ -1,0 +1,1 @@
+{"summary": "Provides a lightweight sliceable class and a helper function to facilitate slice operation tests.", "business_intent": "Enable unit tests that validate slicing behavior on custom objects.", "keywords": ["slice", "test", "helper", "class", "iterable", "Python"], "summary_hash": "5cfdfec701fa", "cached_at": "2026-02-08T21:21:35+00:00"}

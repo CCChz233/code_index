@@ -1,0 +1,1 @@
+{"summary": "Provides a simple accessor to retrieve the current verbosity setting.", "business_intent": "Enables other parts of the system to query the configured level of output detail for logging or user feedback.", "keywords": ["verbosity", "configuration", "getter", "logging", "detail level"], "summary_hash": "10a329fd53db", "cached_at": "2026-02-08T15:42:17+00:00"}

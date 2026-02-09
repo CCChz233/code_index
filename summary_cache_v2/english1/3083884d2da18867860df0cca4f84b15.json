@@ -1,0 +1,1 @@
+{"summary": "The component is not referenced or invoked anywhere in the codebase.", "business_intent": "No functional behavior is exercised; the module appears to be dead code or placeholder.", "keywords": ["unused", "dead code", "no calls", "placeholder"], "summary_hash": "feccf5d706f8", "cached_at": "2026-02-08T23:02:02+00:00"}

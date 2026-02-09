@@ -1,0 +1,1 @@
+{"summary": "Represents persistent configuration data for an account using an ORM model.", "business_intent": "Store, retrieve, and manage account-related settings and credentials in a database.", "keywords": ["ORM", "configuration", "account", "settings", "persistence", "database model"], "summary_hash": "a0016a256f6e", "cached_at": "2026-02-08T13:00:35+00:00"}

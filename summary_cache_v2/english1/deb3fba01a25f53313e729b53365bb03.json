@@ -1,0 +1,1 @@
+{"summary": "The component is isolated, having no incoming or outgoing calls and is not invoked by any tests.", "business_intent": "No observable business behavior due to lack of usage; likely a placeholder or dead code.", "keywords": ["isolated", "unused", "no callers", "no callees", "not tested"], "summary_hash": "9e475347b829", "cached_at": "2026-02-08T07:43:35+00:00"}

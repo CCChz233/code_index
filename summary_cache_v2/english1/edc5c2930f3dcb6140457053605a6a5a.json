@@ -1,0 +1,1 @@
+{"summary": "The component has no callers and does not invoke other components; it is not exercised by tests, indicating it may be unused or isolated.", "business_intent": "Potentially dead code or a utility awaiting integration; no observable business behavior.", "keywords": [], "summary_hash": "811a7e63f4f6", "cached_at": "2026-02-08T07:23:49+00:00"}

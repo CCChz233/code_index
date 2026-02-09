@@ -1,0 +1,1 @@
+{"summary": "The component is isolated with no callers, no callees, and is not exercised by any tests.", "business_intent": "Identify and possibly remove or integrate unused code.", "keywords": ["unused", "orphan", "no dependencies", "dead code"], "summary_hash": "4671aafba164", "cached_at": "2026-02-08T10:33:52+00:00"}

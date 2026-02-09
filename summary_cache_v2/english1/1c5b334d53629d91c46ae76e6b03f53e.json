@@ -1,0 +1,1 @@
+{"summary": "Exception class representing configuration errors in DVC.", "business_intent": "Signal and handle misconfiguration issues within DVC, allowing callers to catch specific config-related problems.", "keywords": ["exception", "configuration", "DVC", "error handling", "config validation"], "summary_hash": "3eb632ab34ad", "cached_at": "2026-02-09T08:58:04+00:00"}

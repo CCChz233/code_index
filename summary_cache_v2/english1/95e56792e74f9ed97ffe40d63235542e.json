@@ -1,0 +1,1 @@
+{"summary": "Exception class indicating that an ABI type string could not be parsed.", "business_intent": "Provides a specific error type for callers to detect and handle invalid ABI type specifications during parsing.", "keywords": ["ABI", "parsing", "error", "exception", "type string", "validation"], "summary_hash": "dd87a0046c93", "cached_at": "2026-02-08T17:08:20+00:00"}

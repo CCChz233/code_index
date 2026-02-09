@@ -1,0 +1,1 @@
+{"summary": "Provides a utility for performing HTTP GET requests as a simple helper method.", "business_intent": "Facilitate outbound GET calls to external services or APIs.", "keywords": ["HTTP", "GET", "request", "helper", "client", "network"], "summary_hash": "7e35ce785231", "cached_at": "2026-02-09T07:48:10+00:00"}

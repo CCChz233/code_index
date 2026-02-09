@@ -1,0 +1,1 @@
+{"summary": "The unit is isolated with no callers or callees and is not invoked by any tests.", "business_intent": "Cannot be determined from the available information; the component appears unused.", "keywords": ["isolated", "no callers", "no callees", "not tested", "undetermined intent"], "summary_hash": "6cba3c4386e0", "cached_at": "2026-02-08T08:03:34+00:00"}

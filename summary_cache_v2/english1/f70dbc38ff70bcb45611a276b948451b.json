@@ -1,0 +1,1 @@
+{"summary": "The component is not referenced by any other code and is not exercised by tests, indicating it is currently unused.", "business_intent": "No active business behavior can be determined as the functionality is not invoked.", "keywords": [], "summary_hash": "1bac2c426480", "cached_at": "2026-02-09T07:59:41+00:00"}

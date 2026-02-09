@@ -1,0 +1,1 @@
+{"summary": "The component is isolated with no incoming or outgoing calls and is not exercised by any tests.", "business_intent": "Unclear due to lack of usage; likely intended for future functionality or leftover code.", "keywords": ["orphan", "unused", "no tests", "isolated"], "summary_hash": "6bd2ac57d4f0", "cached_at": "2026-02-09T10:02:23+00:00"}

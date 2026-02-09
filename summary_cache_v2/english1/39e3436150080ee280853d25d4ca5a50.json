@@ -1,0 +1,1 @@
+{"summary": "No callers or callees are recorded and the function is not exercised by tests, so its purpose cannot be determined from the available context.", "business_intent": "Unknown", "keywords": [], "summary_hash": "9ab55f2fdd51", "cached_at": "2026-02-08T15:10:28+00:00"}

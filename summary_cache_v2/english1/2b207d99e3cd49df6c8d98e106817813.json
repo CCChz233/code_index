@@ -1,0 +1,1 @@
+{"summary": "Provides a foundational view component for accessing mailbox information.", "business_intent": "Enable higher-level components to retrieve mailbox data through a standardized interface.", "keywords": ["mailbox", "view", "base class", "data access", "email", "abstraction", "getter"], "summary_hash": "c6970267e1ab", "cached_at": "2026-02-09T04:40:44+00:00"}

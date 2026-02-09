@@ -1,0 +1,1 @@
+{"summary": "The function is defined but not called by any other code and has no associated tests.", "business_intent": "Currently there is no active business logic as the function is orphaned and not exercised.", "keywords": ["unused", "orphan", "no tests", "dead code"], "summary_hash": "ddb158de9382", "cached_at": "2026-02-08T06:01:15+00:00"}

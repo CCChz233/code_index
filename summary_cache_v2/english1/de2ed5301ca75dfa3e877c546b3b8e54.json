@@ -1,0 +1,1 @@
+{"summary": "Handles prompting the user for an interval value and processing the returned response.", "business_intent": "Collects and validates a numeric interval input from a user through a prompt.", "keywords": ["prompt", "interval", "value", "user input", "response processing", "validation"], "summary_hash": "96975a70cb5e", "cached_at": "2026-02-08T12:26:54+00:00"}

@@ -1,0 +1,1 @@
+{"summary": "No callers or callees are recorded and the function is not exercised by tests, indicating it is currently unused.", "business_intent": "No observable business behavior; the function appears to be dormant or a placeholder.", "keywords": [], "summary_hash": "9bb039ea83c5", "cached_at": "2026-02-08T14:27:20+00:00"}

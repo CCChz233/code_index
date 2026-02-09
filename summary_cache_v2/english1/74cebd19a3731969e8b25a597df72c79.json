@@ -1,0 +1,1 @@
+{"summary": "Implements a default module adapter that simply forwards calls to the underlying module.", "business_intent": "Facilitate module integration by delegating operations without additional processing.", "keywords": ["adapter", "default", "module", "forwarding", "delegation", "integration"], "summary_hash": "127ab288d7c4", "cached_at": "2026-02-08T08:16:56+00:00"}

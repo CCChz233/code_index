@@ -1,0 +1,1 @@
+{"summary": "A test suite that verifies the behavior of dropping capabilities in the system.", "business_intent": "Ensures that removing specific capabilities works correctly and does not affect other functionality.", "keywords": ["test", "capabilities", "drop", "validation", "unit test"], "summary_hash": "68076d13e445", "cached_at": "2026-02-08T18:13:54+00:00"}

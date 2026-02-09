@@ -1,0 +1,1 @@
+{"summary": "The function is defined but not referenced or invoked, and contains no observable behavior.", "business_intent": "Currently serves as an unused placeholder with no active business purpose.", "keywords": ["unused", "placeholder", "no-op", "dead code"], "summary_hash": "b0a6c0de7b40", "cached_at": "2026-02-08T09:38:58+00:00"}

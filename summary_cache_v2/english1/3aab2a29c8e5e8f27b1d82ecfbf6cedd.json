@@ -1,0 +1,1 @@
+{"summary": "Encapsulates a resource's location using a URI string.", "business_intent": "Enables ACME components to reference and manage resources by their URI.", "keywords": ["resource", "uri", "location", "identifier", "reference", "acme"], "summary_hash": "3e93062beeab", "cached_at": "2026-02-08T16:38:38+00:00"}

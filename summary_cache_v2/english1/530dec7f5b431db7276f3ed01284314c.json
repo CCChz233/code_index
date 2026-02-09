@@ -1,0 +1,1 @@
+{"summary": "The component has no detected callers or callees and is not exercised by tests, indicating it is currently unused.", "business_intent": "No active business functionality is implemented or invoked.", "keywords": [], "summary_hash": "75c14f4ba247", "cached_at": "2026-02-09T09:38:49+00:00"}

@@ -1,0 +1,1 @@
+{"summary": "The function is defined but not referenced by any other code and is not exercised by tests.", "business_intent": "Identify and possibly remove or integrate unused code to improve maintainability.", "keywords": ["dead code", "unused function", "refactor", "code cleanup"], "summary_hash": "2795ca0f24af", "cached_at": "2026-02-08T22:43:42+00:00"}

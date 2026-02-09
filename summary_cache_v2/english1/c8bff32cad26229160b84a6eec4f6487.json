@@ -1,0 +1,1 @@
+{"summary": "The code defines internal functionality without external calls, indicating it operates independently within the system.", "business_intent": "Provide self-contained utilities or data structures for internal use", "keywords": ["utility", "internal", "standalone", "self-contained"], "summary_hash": "c5336121b7df", "cached_at": "2026-02-08T14:53:43+00:00"}

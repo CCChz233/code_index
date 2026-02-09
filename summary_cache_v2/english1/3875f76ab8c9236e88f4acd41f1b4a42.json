@@ -1,0 +1,1 @@
+{"summary": "The component appears to be isolated with no callers or callees, suggesting it may serve as a self-contained utility or entry point.", "business_intent": "Provide independent functionality without external dependencies.", "keywords": ["standalone", "utility", "no dependencies", "isolated"], "summary_hash": "a46a59796cd5", "cached_at": "2026-02-08T14:54:13+00:00"}

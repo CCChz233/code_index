@@ -1,0 +1,1 @@
+{"summary": "The component is not referenced by any other code and does not invoke other components.", "business_intent": "Provides a self‑contained utility with no external interactions.", "keywords": ["standalone", "unused", "no dependencies", "isolated"], "summary_hash": "93656b317165", "cached_at": "2026-02-09T01:36:30+00:00"}

@@ -1,0 +1,1 @@
+{"summary": "A test suite that validates the API token revocation process.", "business_intent": "To confirm that revoked tokens are correctly invalidated, maintaining authentication security.", "keywords": ["API", "token", "revocation", "test", "authentication", "security"], "summary_hash": "c1d8b7b1967d", "cached_at": "2026-02-08T19:11:38+00:00"}

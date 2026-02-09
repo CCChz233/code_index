@@ -1,0 +1,1 @@
+{"summary": "Provides a lightweight utility to retrieve stored information using a simple GET operation.", "business_intent": "Enable quick access to data held in memory or a cache by abstracting the GET request logic.", "keywords": ["memory", "GET", "retrieve", "helper", "data access"], "summary_hash": "b3a60a36b228", "cached_at": "2026-02-09T07:39:43+00:00"}

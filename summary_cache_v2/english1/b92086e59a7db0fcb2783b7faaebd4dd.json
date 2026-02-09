@@ -1,0 +1,1 @@
+{"summary": "Provides simple helper methods to perform HTTP GET and POST operations for managing spam word data.", "business_intent": "Enable retrieval and updating of spam word lists through web service calls.", "keywords": ["spam", "words", "HTTP", "GET", "POST", "helper", "API", "request", "management"], "summary_hash": "7865a57950d8", "cached_at": "2026-02-09T07:42:32+00:00"}

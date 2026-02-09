@@ -1,0 +1,1 @@
+{"summary": "Provides utilities for testing the authentication mechanisms of an application service.", "business_intent": "Validate that authentication flows function correctly and meet security requirements.", "keywords": ["authentication", "testing", "app service", "helper", "verification", "security"], "summary_hash": "c3f272e61222", "cached_at": "2026-02-08T18:34:03+00:00"}

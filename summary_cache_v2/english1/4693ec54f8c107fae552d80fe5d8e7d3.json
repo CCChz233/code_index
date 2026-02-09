@@ -1,0 +1,1 @@
+{"summary": "The component appears to have no callers, no callees, and is not exercised by tests, indicating it may be unused or placeholder code.", "business_intent": "No active business logic detected; likely a stub or dead code.", "keywords": [], "summary_hash": "0945b4cd5ae5", "cached_at": "2026-02-08T05:05:05+00:00"}

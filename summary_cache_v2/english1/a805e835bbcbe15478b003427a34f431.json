@@ -1,0 +1,1 @@
+{"summary": "Manages creation and execution of external processes.", "business_intent": "Provides a utility to start system commands or applications from within the application, abstracting process handling.", "keywords": ["process", "launch", "execution", "system", "utility", "helper"], "summary_hash": "57946c005343", "cached_at": "2026-02-09T02:28:04+00:00"}

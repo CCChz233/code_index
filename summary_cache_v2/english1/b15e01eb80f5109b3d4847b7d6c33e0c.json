@@ -1,0 +1,1 @@
+{"summary": "No callers or callees detected; the component appears isolated and not invoked by any other code or tests.", "business_intent": "None identified due to lack of usage; the component currently has no defined business purpose.", "keywords": ["orphan", "unused", "no-calls", "isolated"], "summary_hash": "76a776e6aca0", "cached_at": "2026-02-08T17:52:54+00:00"}

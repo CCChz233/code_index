@@ -1,0 +1,1 @@
+{"summary": "Provides helper functions for testing and verifying the Apple toolchain output.", "business_intent": "Validate that the Apple development toolchain is correctly configured and produces expected results.", "keywords": ["Apple", "toolchain", "testing", "verification", "helper", "output", "CI"], "summary_hash": "435ebb89f2d9", "cached_at": "2026-02-08T19:34:14+00:00"}

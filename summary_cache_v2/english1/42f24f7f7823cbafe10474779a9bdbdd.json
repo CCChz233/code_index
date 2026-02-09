@@ -1,0 +1,1 @@
+{"summary": "The code element has no callers, does not call other components, and is not exercised by any tests, indicating it is currently unused within the application.", "business_intent": "None (unused/placeholder)", "keywords": ["dead code", "unused", "no callers", "no tests", "orphan"], "summary_hash": "043f42c54d60", "cached_at": "2026-02-09T09:56:42+00:00"}

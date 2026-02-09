@@ -1,0 +1,1 @@
+{"summary": "The function is defined but not referenced by any other component and lacks test coverage.", "business_intent": "Provides a reusable utility that can be integrated into the system for future functionality.", "keywords": ["utility", "standalone", "unused", "unreferenced", "future integration"], "summary_hash": "fd5667cc803e", "cached_at": "2026-02-08T16:22:05+00:00"}

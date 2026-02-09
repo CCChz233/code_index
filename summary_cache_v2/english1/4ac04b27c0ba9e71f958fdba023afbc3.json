@@ -1,0 +1,1 @@
+{"summary": "Test suite that verifies whether a KMS encryption key is enabled.", "business_intent": "Validate that encryption keys are active to maintain data security and compliance.", "keywords": ["KMS", "encryption", "key enabled", "security", "compliance", "test", "AWS"], "summary_hash": "1460863089a0", "cached_at": "2026-02-08T18:48:17+00:00"}

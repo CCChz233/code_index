@@ -1,0 +1,1 @@
+{"summary": "Encapsulates API mapping data and provides JSON serialization capabilities.", "business_intent": "Enable easy conversion of internal mapping structures to JSON for API communication.", "keywords": ["api", "mapping", "serialization", "json", "data conversion", "helper"], "summary_hash": "49ab3717c11d", "cached_at": "2026-02-09T08:26:28+00:00"}

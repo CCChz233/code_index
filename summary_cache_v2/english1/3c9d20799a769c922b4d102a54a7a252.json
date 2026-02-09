@@ -1,0 +1,1 @@
+{"summary": "Utility class offering helper functionality to support tests that involve parsing double-precision numbers.", "business_intent": "Enable reliable unit testing of double value parsing and related tracing mechanisms.", "keywords": ["testing", "helper", "double parsing", "unit test", "parser"], "summary_hash": "7a00a90aa363", "cached_at": "2026-02-09T01:28:44+00:00"}

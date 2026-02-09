@@ -1,0 +1,1 @@
+{"summary": "The function has no incoming or outgoing calls and is not covered by automated tests.", "business_intent": "Specific business purpose cannot be determined due to lack of usage context.", "keywords": ["unused", "no callers", "no callees", "untested"], "summary_hash": "383722bee807", "cached_at": "2026-02-08T19:09:24+00:00"}

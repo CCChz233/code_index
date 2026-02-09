@@ -1,0 +1,1 @@
+{"summary": "Encapsulates a randomly generated mask and provides a getter to retrieve it.", "business_intent": "Supplies a random mask for data obfuscation, privacy, or security-related processing.", "keywords": ["random", "mask", "getter", "data obfuscation", "privacy", "security"], "summary_hash": "b10c6c907491", "cached_at": "2026-02-09T11:59:54+00:00"}

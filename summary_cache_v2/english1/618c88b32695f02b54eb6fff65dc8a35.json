@@ -1,0 +1,1 @@
+{"summary": "Handles HTTP POST requests to add a new author, providing a simple helper endpoint for author creation.", "business_intent": "Enable clients to create author entries in the system via a POST operation.", "keywords": ["author", "add", "create", "POST", "helper", "endpoint", "API", "record"], "summary_hash": "c7f9d9a961ba", "cached_at": "2026-02-09T07:39:02+00:00"}

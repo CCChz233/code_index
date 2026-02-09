@@ -1,0 +1,1 @@
+{"summary": "Encapsulates the logic for building and executing a search operation over system resources.", "business_intent": "Offer a straightforward way to query and retrieve resources that match given criteria.", "keywords": ["search", "resource", "query", "filter", "retrieval", "execution"], "summary_hash": "ad81e40513d2", "cached_at": "2026-02-08T19:01:03+00:00"}

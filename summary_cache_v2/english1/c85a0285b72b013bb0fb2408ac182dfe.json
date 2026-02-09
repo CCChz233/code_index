@@ -1,0 +1,1 @@
+{"summary": "The component is isolated with no incoming or outgoing calls and is not exercised by tests.", "business_intent": "No operational behavior; the code currently serves no functional purpose within the system.", "keywords": ["unused", "isolated", "no-calls", "no-tests"], "summary_hash": "f0b75c376302", "cached_at": "2026-02-08T06:15:15+00:00"}

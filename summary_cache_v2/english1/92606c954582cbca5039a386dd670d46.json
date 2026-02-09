@@ -1,0 +1,1 @@
+{"summary": "Provides an API view that serves information about Hassbian package suites.", "business_intent": "Expose Hassbian package suite data through a web endpoint so clients can retrieve available packages.", "keywords": ["Hassbian", "packages", "suite", "API", "endpoint", "view", "retrieval"], "summary_hash": "1a4acad43941", "cached_at": "2026-02-09T04:41:18+00:00"}

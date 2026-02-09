@@ -1,0 +1,1 @@
+{"summary": "Provides a helper for sending POST requests to perform full‑text search operations.", "business_intent": "Enable external components to submit search queries via HTTP POST and receive matching results.", "keywords": ["search", "full-text", "POST", "helper", "API", "query"], "summary_hash": "d51018bc43f0", "cached_at": "2026-02-09T07:43:34+00:00"}

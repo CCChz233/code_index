@@ -1,0 +1,1 @@
+{"summary": "Utility class that performs simple HTTP GET requests to retrieve data dumps from a remote service.", "business_intent": "Fetch and provide access to external data dump resources for downstream processing.", "keywords": ["GET", "HTTP", "data dump", "retrieval", "helper", "utility"], "summary_hash": "6efa1a95f2d8", "cached_at": "2026-02-09T07:44:50+00:00"}

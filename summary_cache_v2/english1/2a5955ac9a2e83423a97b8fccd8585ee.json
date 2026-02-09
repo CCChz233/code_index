@@ -1,0 +1,1 @@
+{"summary": "No callers or callees are detected, indicating the code is currently unused or isolated.", "business_intent": "Identify potential dead code or placeholder functionality that may need implementation or removal.", "keywords": ["unused", "no-calls", "dead-code", "placeholder"], "summary_hash": "5349375893e6", "cached_at": "2026-02-08T06:08:56+00:00"}

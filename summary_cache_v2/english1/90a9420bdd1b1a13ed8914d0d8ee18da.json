@@ -1,0 +1,1 @@
+{"summary": "A standalone function with no callers or callees, indicating it is not integrated into other code paths.", "business_intent": "Offers a self-contained operation that can be invoked directly for its specific purpose.", "keywords": ["standalone", "utility", "no dependencies", "isolated"], "summary_hash": "da0bfe7fcc29", "cached_at": "2026-02-09T10:47:38+00:00"}

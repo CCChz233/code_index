@@ -1,0 +1,1 @@
+{"summary": "The function is defined but never invoked, indicating it may be a placeholder or dead code.", "business_intent": "No operational behavior; serves as a stub or unused utility.", "keywords": ["unused", "placeholder", "dead code", "stub", "no-op"], "summary_hash": "aa2e46ba9f2c", "cached_at": "2026-02-09T09:41:28+00:00"}

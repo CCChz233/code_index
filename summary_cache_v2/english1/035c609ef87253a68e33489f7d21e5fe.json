@@ -1,0 +1,1 @@
+{"summary": "The component is defined but not referenced by any other code and lacks test coverage.", "business_intent": "It appears to be a placeholder or utility awaiting integration into the application.", "keywords": ["unused", "unreferenced", "no tests", "standalone"], "summary_hash": "c5b60f1e6f72", "cached_at": "2026-02-09T09:29:23+00:00"}

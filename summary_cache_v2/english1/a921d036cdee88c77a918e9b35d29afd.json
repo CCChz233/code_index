@@ -1,0 +1,1 @@
+{"summary": "Provides foundational utilities for test cases, including a representation helper.", "business_intent": "Enable consistent testing and easier debugging by supplying common test utilities in a base class.", "keywords": ["testing", "utility", "base class", "representation", "helper"], "summary_hash": "2659098327f2", "cached_at": "2026-02-08T12:20:42+00:00"}

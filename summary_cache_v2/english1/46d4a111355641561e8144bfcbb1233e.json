@@ -1,0 +1,1 @@
+{"summary": "The code element is not referenced by any other code and does not invoke other functions, and it is not exercised by tests.", "business_intent": "No apparent business functionality; appears to be dead or placeholder code.", "keywords": ["unused", "orphan", "no-calls", "dead-code"], "summary_hash": "2599df380cd6", "cached_at": "2026-02-08T19:06:56+00:00"}

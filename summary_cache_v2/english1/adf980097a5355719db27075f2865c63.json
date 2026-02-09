@@ -1,0 +1,1 @@
+{"summary": "The function is defined but has no callers, does not invoke other functions, and is not exercised by tests.", "business_intent": "Provides a specific utility that is currently unused within the codebase.", "keywords": ["standalone", "unused", "utility", "no callers", "no tests"], "summary_hash": "6d0588fcd055", "cached_at": "2026-02-08T16:31:36+00:00"}

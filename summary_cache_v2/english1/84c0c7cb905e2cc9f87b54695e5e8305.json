@@ -1,0 +1,1 @@
+{"summary": "A test suite that validates transport encryption settings for storage accounts.", "business_intent": "Ensure storage accounts are configured to enforce secure transport encryption.", "keywords": ["storage", "encryption", "transport", "test", "Azure", "compliance"], "summary_hash": "146e43cda52a", "cached_at": "2026-02-08T18:39:20+00:00"}

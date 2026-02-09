@@ -1,0 +1,1 @@
+{"summary": "The function has no callers, does not invoke other functions, and is not exercised by tests, so its purpose cannot be inferred from the available information.", "business_intent": "Unable to determine business intent due to lack of usage context.", "keywords": [], "summary_hash": "d9b83c0ee3c7", "cached_at": "2026-02-08T14:58:03+00:00"}

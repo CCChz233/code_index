@@ -1,0 +1,1 @@
+{"summary": "Provides a lightweight helper for handling HTTP GET operations.", "business_intent": "Enable clients to perform simple GET requests to retrieve resources without additional processing.", "keywords": ["GET", "helper", "HTTP", "request", "retrieval", "API"], "summary_hash": "4f12ea6ffa44", "cached_at": "2026-02-09T07:44:05+00:00"}

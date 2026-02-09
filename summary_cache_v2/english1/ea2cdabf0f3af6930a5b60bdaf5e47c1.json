@@ -1,0 +1,1 @@
+{"summary": "The code defines a function that currently has no callers and does not invoke any other functions.", "business_intent": "Provides a standalone utility that is not yet integrated into the application flow.", "keywords": ["unused function", "no callers", "standalone utility", "dead code"], "summary_hash": "0f8982166b11", "cached_at": "2026-02-09T06:44:00+00:00"}

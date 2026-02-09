@@ -1,0 +1,1 @@
+{"summary": "Provides functionality to convert regular expression objects into a serializable string format.", "business_intent": "Enable persistence or transmission of regex patterns by serializing them.", "keywords": ["regex", "serialization", "pattern", "string conversion", "helper"], "summary_hash": "59fda61eeba1", "cached_at": "2026-02-08T21:26:24+00:00"}

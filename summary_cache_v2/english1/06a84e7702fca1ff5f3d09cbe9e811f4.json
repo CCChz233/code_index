@@ -1,0 +1,1 @@
+{"summary": "A standalone utility function that is not referenced by any other code and does not invoke other functions.", "business_intent": "Offer an independent piece of functionality that can be used directly without integration.", "keywords": ["standalone", "utility", "no dependencies", "isolated"], "summary_hash": "630eeb50bbae", "cached_at": "2026-02-08T14:52:41+00:00"}

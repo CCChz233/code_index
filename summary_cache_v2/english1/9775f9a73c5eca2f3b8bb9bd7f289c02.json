@@ -1,0 +1,1 @@
+{"summary": "A test suite that validates the behavior of Azure instance extension utilities.", "business_intent": "Ensure Azure instance extensions work correctly by running automated unit tests.", "keywords": ["Azure", "instance extensions", "unit testing", "test suite", "validation"], "summary_hash": "1f8a21a25e46", "cached_at": "2026-02-08T19:09:16+00:00"}

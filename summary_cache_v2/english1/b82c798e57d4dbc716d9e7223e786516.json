@@ -1,0 +1,1 @@
+{"summary": "Test suite that validates the fix for issue tracked by ticket 21410.", "business_intent": "Confirm that the bug addressed in ticket 21410 is correctly resolved and remains stable across future changes.", "keywords": ["unit test", "bug verification", "regression", "ticket 21410", "setup"], "summary_hash": "13d9ef0c72ed", "cached_at": "2026-02-08T22:40:52+00:00"}

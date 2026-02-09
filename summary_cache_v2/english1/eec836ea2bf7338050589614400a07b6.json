@@ -1,0 +1,1 @@
+{"summary": "An internal utility class that groups simple helper functions used by surrounding components.", "business_intent": "Encapsulate private helper logic to keep higher-level code clean and maintainable.", "keywords": ["helper", "utility", "internal", "private", "nested", "underscore"], "summary_hash": "3e86820df8a4", "cached_at": "2026-02-08T20:31:44+00:00"}

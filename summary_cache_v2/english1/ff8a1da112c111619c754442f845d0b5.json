@@ -1,0 +1,1 @@
+{"summary": "No usage information available; the component appears isolated with no callers or callees and is not exercised by tests.", "business_intent": "No specific business intent could be determined due to lack of interactions.", "keywords": ["isolated", "unused", "no tests"], "summary_hash": "f9f96a53e8b0", "cached_at": "2026-02-08T05:08:45+00:00"}

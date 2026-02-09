@@ -1,0 +1,1 @@
+{"summary": "Provides utility functions to extract the bucket identifier and object key from S3-style URLs.", "business_intent": "Facilitates correct handling of S3 bucket paths within the mock AWS environment.", "keywords": ["S3", "bucket", "URL parsing", "object key", "utility"], "summary_hash": "790e4dc07a02", "cached_at": "2026-02-09T09:45:33+00:00"}

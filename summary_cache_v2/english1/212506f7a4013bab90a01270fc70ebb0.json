@@ -1,0 +1,1 @@
+{"summary": "The component has no callers or callees, indicating it is isolated and possibly unused within the codebase.", "business_intent": "Identify and assess unused or dead code for potential removal or future integration.", "keywords": ["dead code", "unused", "isolated", "refactor"], "summary_hash": "0a718d468ce6", "cached_at": "2026-02-09T07:00:31+00:00"}

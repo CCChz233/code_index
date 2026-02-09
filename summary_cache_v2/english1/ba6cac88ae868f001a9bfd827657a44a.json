@@ -1,0 +1,1 @@
+{"summary": "This function is not referenced anywhere in the codebase; it has no callers or callees and is not exercised by tests.", "business_intent": "None (dead code)", "keywords": ["unused", "dead code", "no references"], "summary_hash": "c4b4f943a1ac", "cached_at": "2026-02-08T08:19:56+00:00"}

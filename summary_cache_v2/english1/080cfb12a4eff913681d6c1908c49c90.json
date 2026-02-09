@@ -1,0 +1,1 @@
+{"summary": "A standalone function that is not referenced by other code and is not exercised by tests.", "business_intent": "Provides a specific capability that can be invoked directly when needed, without relying on other components.", "keywords": ["standalone", "utility", "no dependencies", "unused"], "summary_hash": "9e8d04c89a8a", "cached_at": "2026-02-09T03:15:04+00:00"}

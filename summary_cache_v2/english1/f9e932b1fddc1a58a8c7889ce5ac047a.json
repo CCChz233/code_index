@@ -1,0 +1,1 @@
+{"summary": "Custom exception that indicates a requested profile name cannot be found.", "business_intent": "Notify callers that a specific profile does not exist so they can handle the missing configuration appropriately.", "keywords": ["exception", "profile", "missing", "error handling", "validation"], "summary_hash": "3036b4aa9a60", "cached_at": "2026-02-08T12:23:54+00:00"}

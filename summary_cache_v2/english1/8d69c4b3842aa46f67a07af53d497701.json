@@ -1,0 +1,1 @@
+{"summary": "Encapsulates role information and provides functionality to persist or output role details.", "business_intent": "Manage role definitions within the system, enabling creation and storage of role data.", "keywords": ["role", "entity", "write", "persistence", "helper", "initialization"], "summary_hash": "2868df2c9dcb", "cached_at": "2026-02-08T17:11:51+00:00"}

@@ -1,0 +1,1 @@
+{"summary": "The component defines a function that is not invoked by any other code and lacks test coverage.", "business_intent": "It appears to be a utility or placeholder awaiting integration into the application.", "keywords": ["unused", "orphan", "no callers", "no tests", "placeholder"], "summary_hash": "3324cad43977", "cached_at": "2026-02-08T10:37:18+00:00"}

@@ -1,0 +1,1 @@
+{"summary": "A Django test case class providing simple helper methods for unit testing.", "business_intent": "Facilitate automated testing of Django application components by offering reusable test helpers.", "keywords": ["Django", "testing", "unit test", "helper methods", "test case"], "summary_hash": "1258ecd151dd", "cached_at": "2026-02-08T23:57:14+00:00"}

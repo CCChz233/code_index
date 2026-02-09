@@ -1,0 +1,1 @@
+{"summary": "The component is not invoked anywhere in the codebase and is not exercised by any tests, indicating it is currently unused.", "business_intent": "No observable business intent as the component is not utilized.", "keywords": ["unused", "orphan", "no tests", "dead code"], "summary_hash": "a728bcbbda13", "cached_at": "2026-02-09T06:11:03+00:00"}

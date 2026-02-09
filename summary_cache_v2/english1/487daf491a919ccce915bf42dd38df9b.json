@@ -1,0 +1,1 @@
+{"summary": "The component shows no interactions: it has no callers, no callees, and is not exercised by any tests.", "business_intent": "No observable business functionality is currently utilized.", "keywords": ["unused", "orphan", "no calls", "no tests"], "summary_hash": "a35a57827479", "cached_at": "2026-02-08T14:55:49+00:00"}

@@ -1,0 +1,1 @@
+{"summary": "The component is defined but not referenced anywhere in the codebase, indicating it is currently unused.", "business_intent": "Provides a utility that may be integrated in future development.", "keywords": ["unused", "orphan", "placeholder", "no callers", "no callees"], "summary_hash": "4ed11010d2d1", "cached_at": "2026-02-09T02:50:40+00:00"}

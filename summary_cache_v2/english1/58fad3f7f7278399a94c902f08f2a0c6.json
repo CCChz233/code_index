@@ -1,0 +1,1 @@
+{"summary": "Manages the authentication process and provides utility functions for handling authentication data.", "business_intent": "Facilitates user login, token management, and related helper operations within the system.", "keywords": ["authentication", "login", "token", "helper", "utility", "flow"], "summary_hash": "8dff1ce7e4eb", "cached_at": "2026-02-09T08:15:05+00:00"}

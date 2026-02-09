@@ -1,0 +1,1 @@
+{"summary": "Provides a simple helper method used in tests for the identity daemon component.", "business_intent": "Facilitate automated testing of identity-related services by offering reusable test utilities.", "keywords": ["test", "helper", "identity", "daemon", "utility", "automation", "verification"], "summary_hash": "fe6330631cb3", "cached_at": "2026-02-08T10:10:33+00:00"}

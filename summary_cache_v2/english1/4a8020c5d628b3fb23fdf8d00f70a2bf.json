@@ -1,0 +1,1 @@
+{"summary": "The component shows no activity: it has no callers, no callees, and is not exercised by any tests, indicating it is currently unused.", "business_intent": "None (no functional behavior detected)", "keywords": [], "summary_hash": "53823c4d400e", "cached_at": "2026-02-09T10:26:34+00:00"}

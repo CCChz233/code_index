@@ -1,0 +1,1 @@
+{"summary": "Provides functionality to enforce or compute uniqueness within array-like collections.", "business_intent": "Deduplicate data structures and ensure that elements in an array are distinct.", "keywords": ["array", "unique", "deduplication", "collection", "helper", "evaluation"], "summary_hash": "62dbbc2cadd9", "cached_at": "2026-02-09T09:22:11+00:00"}

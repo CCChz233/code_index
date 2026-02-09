@@ -1,0 +1,1 @@
+{"summary": "Contains unit tests that verify the behavior of the argwhere utility function.", "business_intent": "Ensures the argwhere helper works correctly, preventing regressions in data indexing operations.", "keywords": ["testing", "argwhere", "unit test", "validation", "data indexing"], "summary_hash": "b31e3751c0f3", "cached_at": "2026-02-08T19:42:27+00:00"}

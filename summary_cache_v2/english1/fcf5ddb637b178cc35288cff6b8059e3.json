@@ -1,0 +1,1 @@
+{"summary": "Encapsulates a subgraph request, providing serialization support and a helper to process the request.", "business_intent": "Enable the system to receive, persist, and execute subgraph queries or operations.", "keywords": ["subgraph", "request", "serialization", "state", "processing", "helper"], "summary_hash": "208dc9f8fb88", "cached_at": "2026-02-08T23:42:15+00:00"}

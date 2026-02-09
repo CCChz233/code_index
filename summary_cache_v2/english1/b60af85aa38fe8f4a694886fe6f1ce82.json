@@ -1,0 +1,1 @@
+{"summary": "A utility class that groups a set of simple helper functions for internal use.", "business_intent": "Provide lightweight, reusable operations that assist other parts of the system without exposing complex logic.", "keywords": ["helper", "utility", "simple functions", "internal", "reusable"], "summary_hash": "7a862f7d38cb", "cached_at": "2026-02-08T20:34:10+00:00"}

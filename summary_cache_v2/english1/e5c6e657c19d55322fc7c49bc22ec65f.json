@@ -1,0 +1,1 @@
+{"summary": "Represents a circular entity and provides a simple natural key helper for unique identification.", "business_intent": "Enable consistent identification and retrieval of circle records across systems.", "keywords": ["circle", "natural key", "identifier", "helper", "model", "unique"], "summary_hash": "ae5ed0306c96", "cached_at": "2026-02-08T23:58:13+00:00"}

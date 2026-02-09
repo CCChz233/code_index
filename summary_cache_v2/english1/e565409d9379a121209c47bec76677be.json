@@ -1,0 +1,1 @@
+{"summary": "Exception class indicating that a requested schedule could not be located.", "business_intent": "Provides a specific error type for callers to detect and handle missing schedule scenarios.", "keywords": ["exception", "schedule", "not found", "error handling", "missing resource"], "summary_hash": "526f441817fc", "cached_at": "2026-02-09T08:09:09+00:00"}

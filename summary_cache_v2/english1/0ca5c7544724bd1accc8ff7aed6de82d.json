@@ -1,0 +1,1 @@
+{"summary": "Exception class that signals failures occurring during replication processes.", "business_intent": "Enables the system to detect, propagate, and manage replication-related errors in a structured manner.", "keywords": ["replication", "error", "exception", "failure", "handling"], "summary_hash": "d4f2c985ae8a", "cached_at": "2026-02-08T06:56:35+00:00"}

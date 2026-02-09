@@ -1,0 +1,1 @@
+{"summary": "The function has no callers, does not call other functions, and is not exercised by tests.", "business_intent": "Unused function with no observable behavior", "keywords": [], "summary_hash": "5e3713bc1db3", "cached_at": "2026-02-08T06:32:34+00:00"}

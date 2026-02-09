@@ -1,0 +1,1 @@
+{"summary": "Provides helper methods for testing selection states such as selected, unselected, and undefined.", "business_intent": "Facilitate unit testing of selection logic within the application.", "keywords": ["test", "selection", "helper", "unit test", "state"], "summary_hash": "ec57be3c1233", "cached_at": "2026-02-08T15:43:12+00:00"}

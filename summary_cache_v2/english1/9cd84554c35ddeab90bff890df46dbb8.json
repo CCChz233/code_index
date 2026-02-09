@@ -1,0 +1,1 @@
+{"summary": "Compiles abstract query structures into executable SQL strings.", "business_intent": "Transform high-level query representations into concrete SQL statements for database execution.", "keywords": ["SQL", "compiler", "query translation", "string generation", "helper"], "summary_hash": "4bf2aa49772f", "cached_at": "2026-02-08T21:32:39+00:00"}

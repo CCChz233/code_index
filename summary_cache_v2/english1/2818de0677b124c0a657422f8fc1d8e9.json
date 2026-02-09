@@ -1,0 +1,1 @@
+{"summary": "A lightweight utility class offering simple helper functionality to aid testing of the CLP2 component.", "business_intent": "Facilitate automated tests by supplying reusable helper logic for the CLP2 module.", "keywords": ["testing", "helper", "utility", "CLP2", "support"], "summary_hash": "d002cd19026c", "cached_at": "2026-02-08T19:53:18+00:00"}

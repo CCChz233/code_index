@@ -1,0 +1,1 @@
+{"summary": "No functional code is provided; only metadata indicating zero callers and zero callees and that the function is not exercised by tests.", "business_intent": "There is no observable business behavior to analyze.", "keywords": ["metadata", "no callers", "no callees", "untested"], "summary_hash": "4145c3da8c0b", "cached_at": "2026-02-09T06:59:05+00:00"}

@@ -1,0 +1,1 @@
+{"summary": "A function defined in the codebase but not referenced by any other code or tests.", "business_intent": "Potential utility or placeholder function; currently unused.", "keywords": ["unused", "standalone", "no callers", "no callees", "dead code"], "summary_hash": "32787250dde0", "cached_at": "2026-02-08T09:18:14+00:00"}

@@ -1,0 +1,1 @@
+{"summary": "A helper class that runs lookup operations to retrieve data from external sources or variables.", "business_intent": "Enable dynamic data fetching during execution by providing a simple run method for lookup functionality.", "keywords": ["lookup", "helper", "run", "data retrieval", "plugin"], "summary_hash": "0d93e32950eb", "cached_at": "2026-02-08T16:38:27+00:00"}

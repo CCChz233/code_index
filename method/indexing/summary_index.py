@@ -33,38 +33,47 @@ except ImportError as exc:  # pragma: no cover
 
 
 DEFAULT_SUMMARY_PROMPT = (
-    "You are a senior code analyst. Given the context below, output a JSON object with keys: "
+    "You are a senior code analyst. Given the context below, output ONLY a JSON object with keys: "
     "`summary`, `business_intent`, `keywords` (list).\n"
     "Constraints:\n"
     "- Do NOT mention any specific caller/callee names.\n"
     "- Focus on business intent and behavior.\n"
-    "- Use {language}.\n\n"
+    "- Use {language}.\n"
+    "- Output ONLY the raw JSON object. Do NOT include any explanation, reasoning, or markdown formatting.\n\n"
     "Context:\n"
     "{context_str}\n\n"
+    'Output ONLY valid JSON starting with {{ and ending with }}. Example:\n'
+    '{{"summary": "...", "business_intent": "...", "keywords": ["k1", "k2"]}}\n\n'
     "JSON:\n"
 )
 
 DEFAULT_CLASS_PROMPT = (
-    "You are a senior code analyst. Given class-level metadata and method summaries, output a JSON object "
+    "You are a senior code analyst. Given class-level metadata and method summaries, output ONLY a JSON object "
     "with keys: `summary`, `business_intent`, `keywords` (list).\n"
     "Constraints:\n"
     "- Do NOT list method names verbatim.\n"
     "- Focus on the class responsibility and state/behavior.\n"
-    "- Use {language}.\n\n"
+    "- Use {language}.\n"
+    "- Output ONLY the raw JSON object. Do NOT include any explanation, reasoning, or markdown formatting.\n\n"
     "Context:\n"
     "{context_str}\n\n"
+    'Output ONLY valid JSON starting with {{ and ending with }}. Example:\n'
+    '{{"summary": "...", "business_intent": "...", "keywords": ["k1", "k2"]}}\n\n'
     "JSON:\n"
 )
 
 DEFAULT_FILE_PROMPT = (
-    "You are a senior code analyst. Given file-level metadata and function summaries, output a JSON object "
+    "You are a senior code analyst. Given file-level metadata and function summaries, output ONLY a JSON object "
     "with keys: `summary`, `business_intent`, `keywords` (list).\n"
     "Constraints:\n"
     "- Do NOT list function names verbatim.\n"
     "- Focus on the file/module responsibility.\n"
-    "- Use {language}.\n\n"
+    "- Use {language}.\n"
+    "- Output ONLY the raw JSON object. Do NOT include any explanation, reasoning, or markdown formatting.\n\n"
     "Context:\n"
     "{context_str}\n\n"
+    'Output ONLY valid JSON starting with {{ and ending with }}. Example:\n'
+    '{{"summary": "...", "business_intent": "...", "keywords": ["k1", "k2"]}}\n\n'
     "JSON:\n"
 )
 
@@ -372,6 +381,73 @@ def _apply_llm_timeout(llm, timeout: Optional[float]) -> None:
                     continue
 
 
+def _extract_json_from_text(text: str) -> Optional[dict]:
+    """Try multiple strategies to extract a JSON dict from potentially noisy LLM output."""
+    if not text or not text.strip():
+        return None
+
+    # Strategy 1: direct parse
+    try:
+        obj = json.loads(text)
+        if isinstance(obj, dict):
+            return obj
+    except Exception:
+        pass
+
+    # Strategy 2: strip markdown code fences (```json ... ``` or ``` ... ```)
+    stripped = text.strip()
+    fence_pattern = re.compile(
+        r"```(?:json|JSON)?\s*\n?(.*?)\n?\s*```", re.DOTALL
+    )
+    m = fence_pattern.search(stripped)
+    if m:
+        try:
+            obj = json.loads(m.group(1).strip())
+            if isinstance(obj, dict):
+                return obj
+        except Exception:
+            pass
+
+    # Strategy 3: search backwards for the last valid JSON object
+    # Many models output thinking/reasoning first, then the actual JSON at the end.
+    brace_positions = [i for i, ch in enumerate(text) if ch == "}"]
+    for end_pos in reversed(brace_positions):
+        # Find matching opening brace by scanning backwards
+        depth = 0
+        start_pos = -1
+        for i in range(end_pos, -1, -1):
+            if text[i] == "}":
+                depth += 1
+            elif text[i] == "{":
+                depth -= 1
+                if depth == 0:
+                    start_pos = i
+                    break
+        if start_pos >= 0:
+            candidate = text[start_pos : end_pos + 1]
+            try:
+                obj = json.loads(candidate)
+                if isinstance(obj, dict):
+                    # Prefer objects that have the expected keys
+                    if obj.get("summary") is not None or obj.get("business_intent") is not None:
+                        return obj
+            except Exception:
+                continue
+
+    # Strategy 4: first-{ to last-} fallback (original logic)
+    first_brace = text.find("{")
+    last_brace = text.rfind("}")
+    if first_brace >= 0 and last_brace > first_brace:
+        try:
+            obj = json.loads(text[first_brace : last_brace + 1])
+            if isinstance(obj, dict):
+                return obj
+        except Exception:
+            pass
+
+    return None
+
+
 def _parse_summary_json(
     text: str,
     metrics_hook: Optional[Callable[[Dict[str, Any]], None]] = None,
@@ -387,17 +463,7 @@ def _parse_summary_json(
             return [p.strip() for p in parts if p.strip()]
         return [str(value).strip()]
 
-    payload = None
-    try:
-        payload = json.loads(text)
-    except Exception:
-        try:
-            start = text.find("{")
-            end = text.rfind("}")
-            if start >= 0 and end > start:
-                payload = json.loads(text[start : end + 1])
-        except Exception:
-            payload = None
+    payload = _extract_json_from_text(text)
 
     if not isinstance(payload, dict):
         error_payload = dict(metrics_payload or {})

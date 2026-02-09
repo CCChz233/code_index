@@ -1,0 +1,1 @@
+{"summary": "The component has no observed usage; it is not invoked by any callers, nor does it call other components, and it is not exercised by tests.", "business_intent": "Undetermined due to lack of usage information.", "keywords": [], "summary_hash": "2bb295fcb11c", "cached_at": "2026-02-08T08:01:52+00:00"}

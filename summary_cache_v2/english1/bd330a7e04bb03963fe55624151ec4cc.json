@@ -1,0 +1,1 @@
+{"summary": "The function is not referenced anywhere in the codebase and is not exercised by tests, indicating it is currently unused.", "business_intent": "No active business logic is performed as the function is orphaned and not invoked.", "keywords": ["unused", "orphan", "no calls", "dead code"], "summary_hash": "af1ac06b4680", "cached_at": "2026-02-08T09:35:23+00:00"}

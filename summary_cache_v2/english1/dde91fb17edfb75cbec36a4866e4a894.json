@@ -1,0 +1,1 @@
+{"summary": "The function is defined but never invoked or referenced in the codebase, and it is not exercised by tests.", "business_intent": "No observable business intent can be determined as the function is unused.", "keywords": [], "summary_hash": "13f90bbf1893", "cached_at": "2026-02-08T05:19:36+00:00"}

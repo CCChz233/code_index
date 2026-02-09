@@ -1,0 +1,1 @@
+{"summary": "Encapsulates the settings required to run the coverage tool's XML generation command.", "business_intent": "Provide a structured way to specify and manage options for producing an XML coverage report.", "keywords": ["coverage", "XML", "configuration", "command", "report", "options", "tool"], "summary_hash": "a21384209a99", "cached_at": "2026-02-08T17:05:24+00:00"}

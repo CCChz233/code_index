@@ -1,0 +1,1 @@
+{"summary": "The component is not referenced or invoked anywhere in the codebase, indicating it is currently unused.", "business_intent": "Identify and possibly remove or repurpose dead code to reduce maintenance overhead.", "keywords": ["unused", "orphan", "dead code", "code cleanup", "maintenance"], "summary_hash": "64b2309e62a7", "cached_at": "2026-02-09T02:35:51+00:00"}

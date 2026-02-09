@@ -1,0 +1,1 @@
+{"summary": "The component defines a function that currently has no callers and is not exercised by any tests.", "business_intent": "Potential utility function awaiting integration; currently no business behavior is exercised.", "keywords": ["unused function", "no callers", "not tested", "placeholder"], "summary_hash": "e97844a121da", "cached_at": "2026-02-09T08:34:40+00:00"}

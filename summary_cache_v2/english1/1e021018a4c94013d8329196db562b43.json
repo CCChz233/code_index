@@ -1,0 +1,1 @@
+{"summary": "Provides simple helper utilities employed in exception backtrace test scenarios.", "business_intent": "Support unit tests that verify correct exception handling and backtrace generation.", "keywords": ["exception", "backtrace", "testing", "helper", "logger", "sys"], "summary_hash": "aaecc8adc0bb", "cached_at": "2026-02-08T06:08:42+00:00"}

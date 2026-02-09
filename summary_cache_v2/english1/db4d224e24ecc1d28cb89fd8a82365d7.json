@@ -1,0 +1,1 @@
+{"summary": "The function is isolated with no callers, no callees, and is not exercised by any tests.", "business_intent": "Appears to be dead or placeholder code with no active business behavior.", "keywords": ["unused", "orphan", "dead code", "no callers", "no callees", "untested"], "summary_hash": "e48e2e095cd0", "cached_at": "2026-02-08T22:05:58+00:00"}

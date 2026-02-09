@@ -1,0 +1,1 @@
+{"summary": "The function is not invoked by any other code and is not exercised by tests, indicating it is currently unused.", "business_intent": "No observable business intent can be determined from the available context.", "keywords": [], "summary_hash": "ce9116bce198", "cached_at": "2026-02-08T15:07:02+00:00"}

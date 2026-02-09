@@ -1,0 +1,1 @@
+{"summary": "The component is not referenced by any callers or callees and is not exercised by tests, indicating it is currently unused within the codebase.", "business_intent": "None (unused code)", "keywords": [], "summary_hash": "db5f1732b685", "cached_at": "2026-02-08T05:54:32+00:00"}

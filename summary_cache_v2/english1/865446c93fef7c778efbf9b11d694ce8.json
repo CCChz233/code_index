@@ -1,0 +1,1 @@
+{"summary": "Contains unit tests that verify the functionality of the cmake.test() helper.", "business_intent": "Ensure the cmake.test() helper operates correctly and reliably across different scenarios.", "keywords": ["unit testing", "cmake", "helper validation", "test suite", "software quality"], "summary_hash": "8e05894db126", "cached_at": "2026-02-08T19:34:20+00:00"}

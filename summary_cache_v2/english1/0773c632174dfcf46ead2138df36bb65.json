@@ -1,0 +1,1 @@
+{"summary": "No functional information is available for this component; it has no callers, no callees, and is not exercised by tests.", "business_intent": "The component appears to be dead code with no identified purpose.", "keywords": ["unused", "dead code", "no callers", "no tests"], "summary_hash": "ee53da78cc95", "cached_at": "2026-02-09T07:23:55+00:00"}

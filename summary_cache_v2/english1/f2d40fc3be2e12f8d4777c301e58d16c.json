@@ -1,0 +1,1 @@
+{"summary": "No callers or callees are recorded and the function is not exercised by tests, indicating it is currently unused or isolated.", "business_intent": "Undetermined due to lack of usage context.", "keywords": [], "summary_hash": "6dfd5b9a6bc5", "cached_at": "2026-02-09T02:13:43+00:00"}

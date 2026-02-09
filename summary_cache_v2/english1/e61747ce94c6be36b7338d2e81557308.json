@@ -1,0 +1,1 @@
+{"summary": "The function is a standalone utility that is not invoked by any other code and lacks test coverage.", "business_intent": "Offer a specific helper operation that may be intended for future integration or manual use.", "keywords": ["utility", "standalone", "unused", "no tests", "helper"], "summary_hash": "96e918c1b069", "cached_at": "2026-02-08T06:43:48+00:00"}

@@ -1,0 +1,1 @@
+{"summary": "A standalone function that is not invoked by any other code and does not call other functions.", "business_intent": "No specific business purpose as it is currently unused within the codebase.", "keywords": ["standalone", "unused", "no dependencies", "isolated"], "summary_hash": "e5364f2782e8", "cached_at": "2026-02-08T06:55:15+00:00"}

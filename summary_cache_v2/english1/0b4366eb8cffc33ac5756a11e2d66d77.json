@@ -1,0 +1,1 @@
+{"summary": "The function is defined but not referenced anywhere and is not exercised by any tests.", "business_intent": "Provides a utility that could be used by other components, but currently has no integration or test coverage.", "keywords": ["unused", "orphan", "utility", "no test coverage"], "summary_hash": "58a08e459d50", "cached_at": "2026-02-09T07:13:38+00:00"}

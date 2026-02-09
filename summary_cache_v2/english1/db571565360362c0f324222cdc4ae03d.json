@@ -1,0 +1,1 @@
+{"summary": "A self-contained function that is not referenced by any other code and has no external callers.", "business_intent": "Encapsulates a specific operation that can be invoked directly without relying on other components.", "keywords": ["standalone", "utility", "isolated", "no dependencies"], "summary_hash": "118eb9d8eb88", "cached_at": "2026-02-09T07:05:36+00:00"}

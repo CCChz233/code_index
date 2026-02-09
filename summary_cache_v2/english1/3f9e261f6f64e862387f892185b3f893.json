@@ -1,0 +1,1 @@
+{"summary": "Manages test handling functionality and provides a simple emit utility for test events.", "business_intent": "Support automated testing by handling test operations and emitting relevant data or signals.", "keywords": ["test", "handler", "emit", "utility", "testing", "event"], "summary_hash": "6f95dd8f39fc", "cached_at": "2026-02-08T22:54:35+00:00"}

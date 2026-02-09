@@ -1,0 +1,1 @@
+{"summary": "Provides a lightweight helper used in test suites to read variable values.", "business_intent": "Supports automated testing by abstracting variable retrieval, enabling verification of data handling logic.", "keywords": ["testing", "helper", "variable access", "unit test", "utility"], "summary_hash": "ce298b26492a", "cached_at": "2026-02-08T12:15:31+00:00"}

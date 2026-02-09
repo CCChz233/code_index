@@ -1,0 +1,1 @@
+{"summary": "The function is defined but not referenced anywhere in the codebase and is not exercised by tests.", "business_intent": "Potentially dead or placeholder code with no current business impact.", "keywords": ["unused", "dead code", "orphan function", "no callers", "not tested"], "summary_hash": "563bba56a330", "cached_at": "2026-02-09T10:40:31+00:00"}

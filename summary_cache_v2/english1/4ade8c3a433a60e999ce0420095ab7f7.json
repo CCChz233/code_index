@@ -1,0 +1,1 @@
+{"summary": "The function is defined but not called anywhere in the codebase and has no associated tests.", "business_intent": "Identify and possibly remove or integrate the unused code to improve maintainability.", "keywords": ["unused", "dead code", "no tests", "refactor"], "summary_hash": "1ab7d4c0d0ba", "cached_at": "2026-02-08T17:43:38+00:00"}

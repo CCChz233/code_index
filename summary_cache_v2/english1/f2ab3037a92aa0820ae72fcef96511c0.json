@@ -1,0 +1,1 @@
+{"summary": "Offers simple boolean helper methods for evaluating true, false, or error-like conditions.", "business_intent": "Facilitates quick truthiness checks in testing or validation code.", "keywords": ["boolean", "helper", "utility", "predicate", "validation", "testing"], "summary_hash": "63f4b3b635bb", "cached_at": "2026-02-08T22:54:20+00:00"}

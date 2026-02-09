@@ -1,0 +1,1 @@
+{"summary": "The function is not referenced by any callers and is not exercised by tests, indicating it may be dead code or a placeholder.", "business_intent": "None identified", "keywords": [], "summary_hash": "2aae0face411", "cached_at": "2026-02-09T11:34:19+00:00"}

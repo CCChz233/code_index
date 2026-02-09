@@ -1,0 +1,1 @@
+{"summary": "The function is defined but currently has no callers or callees and is not exercised by tests.", "business_intent": "Potential utility function awaiting integration; its purpose cannot be determined from usage data.", "keywords": ["unused", "orphan", "standalone", "unreferenced"], "summary_hash": "8d8089f055df", "cached_at": "2026-02-09T07:19:01+00:00"}

@@ -1,0 +1,1 @@
+{"summary": "This is a standalone function with no callers or callees and is not exercised by tests.", "business_intent": "Implements a self‑contained operation that can be invoked directly without relying on other components.", "keywords": ["standalone", "utility", "no dependencies", "isolated"], "summary_hash": "911f9b0bc6c3", "cached_at": "2026-02-09T06:59:35+00:00"}

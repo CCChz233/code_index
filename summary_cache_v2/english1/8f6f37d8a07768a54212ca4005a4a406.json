@@ -1,0 +1,1 @@
+{"summary": "No callers or callees detected; the function appears unused and not exercised by tests.", "business_intent": "Potential utility or placeholder code with unknown purpose, likely intended for future integration.", "keywords": ["unused", "orphan", "standalone", "placeholder", "unreferenced"], "summary_hash": "ab4f0ad69d38", "cached_at": "2026-02-08T14:15:18+00:00"}

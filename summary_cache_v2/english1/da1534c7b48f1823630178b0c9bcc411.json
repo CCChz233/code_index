@@ -1,0 +1,1 @@
+{"summary": "Represents a generic error type for issues that occur while encoding or decoding data payloads.", "business_intent": "Offer a common exception base to capture and handle payload encoding failures across the system.", "keywords": ["payload", "encoding", "error", "exception", "base class"], "summary_hash": "544e5010b197", "cached_at": "2026-02-08T15:55:38+00:00"}

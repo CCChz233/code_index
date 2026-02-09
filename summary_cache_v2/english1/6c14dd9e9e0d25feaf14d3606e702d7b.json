@@ -1,0 +1,1 @@
+{"summary": "No callers or callees detected; the function appears unused in the codebase.", "business_intent": "The function currently has no observable business behavior as it is not invoked by any other component.", "keywords": ["unused", "dead code", "no dependencies"], "summary_hash": "385c7744de6f", "cached_at": "2026-02-08T14:33:07+00:00"}

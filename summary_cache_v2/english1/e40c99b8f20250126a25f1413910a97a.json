@@ -1,0 +1,1 @@
+{"summary": "Manages a collection of variables and provides a method to retrieve them.", "business_intent": "Expose stored variables to other components for configuration or runtime data sharing.", "keywords": ["variables", "getter", "accessor", "state management", "configuration", "module"], "summary_hash": "0444ecae1d1e", "cached_at": "2026-02-08T17:17:08+00:00"}

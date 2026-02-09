@@ -1,0 +1,1 @@
+{"summary": "Provides test utilities for verifying ndarray-related functionality.", "business_intent": "Ensures that ndarray helper methods work correctly by running simple validation tests.", "keywords": ["test", "ndarray", "helper", "validation", "unit test"], "summary_hash": "8432f5ce8a67", "cached_at": "2026-02-08T19:50:13+00:00"}

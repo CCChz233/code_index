@@ -1,0 +1,1 @@
+{"summary": "The function is defined but never invoked, resulting in dead code.", "business_intent": "No operational behavior; the code currently has no effect on the application.", "keywords": ["unused", "dead code", "no calls", "placeholder"], "summary_hash": "7455d4973689", "cached_at": "2026-02-08T22:40:23+00:00"}

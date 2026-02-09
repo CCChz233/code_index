@@ -1,0 +1,1 @@
+{"summary": "No callers or callees are detected for this function, indicating it is currently unused within the codebase.", "business_intent": "The function appears to be orphaned or reserved for future implementation, with no active business logic tied to it.", "keywords": [], "summary_hash": "8b10f6e21ee9", "cached_at": "2026-02-09T03:34:50+00:00"}

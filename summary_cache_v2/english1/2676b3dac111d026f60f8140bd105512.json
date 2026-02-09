@@ -1,0 +1,1 @@
+{"summary": "A test suite that validates error state management functions for notifications.", "business_intent": "Verify that the notification system can set, retrieve, and handle error states correctly.", "keywords": ["testing", "error handling", "notifications", "unit test", "set error", "get error"], "summary_hash": "000aa41b24fb", "cached_at": "2026-02-08T20:10:41+00:00"}

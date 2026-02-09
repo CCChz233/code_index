@@ -1,0 +1,1 @@
+{"summary": "Provides a simple helper to trigger garbage collection operations.", "business_intent": "Enable the application to perform memory cleanup by invoking garbage collection when needed.", "keywords": ["garbage collection", "command", "helper", "run", "memory management"], "summary_hash": "59f63cb9250e", "cached_at": "2026-02-09T09:05:47+00:00"}

@@ -1,0 +1,1 @@
+{"summary": "The component is isolated: it does not call any other code and is not called by any part of the system.", "business_intent": "No specific business intent can be determined from the available information; the component appears unused.", "keywords": [], "summary_hash": "e575ce293195", "cached_at": "2026-02-08T06:20:48+00:00"}

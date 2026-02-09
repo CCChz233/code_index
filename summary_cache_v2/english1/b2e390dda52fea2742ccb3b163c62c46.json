@@ -1,0 +1,1 @@
+{"summary": "The code element has no callers and is not exercised by any tests, indicating it is currently unused within the codebase.", "business_intent": "None (dead or placeholder code with no active business functionality)", "keywords": ["unused", "dead code", "no callers", "not tested", "orphaned"], "summary_hash": "b8008ca3fa52", "cached_at": "2026-02-08T08:01:39+00:00"}

@@ -1,0 +1,1 @@
+{"summary": "No callers or callees detected; function appears unused.", "business_intent": "Potential dead code with no observable business behavior.", "keywords": [], "summary_hash": "bfa0e2634dfd", "cached_at": "2026-02-08T05:41:27+00:00"}

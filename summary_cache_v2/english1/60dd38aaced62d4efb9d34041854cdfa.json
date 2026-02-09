@@ -1,0 +1,1 @@
+{"summary": "The function is isolated with no incoming or outgoing calls and is not covered by automated tests.", "business_intent": "Specific business purpose cannot be determined from the available information.", "keywords": ["standalone", "unused", "no tests", "isolated"], "summary_hash": "da8a7774d34d", "cached_at": "2026-02-08T09:56:00+00:00"}

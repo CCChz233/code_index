@@ -1,0 +1,1 @@
+{"summary": "No callers or callees detected; the function appears isolated and not invoked by any tests.", "business_intent": "The purpose of the function cannot be determined from usage data; it may be unused or pending integration.", "keywords": ["unused", "orphan", "no references", "isolated"], "summary_hash": "189589c13ce7", "cached_at": "2026-02-08T15:37:18+00:00"}

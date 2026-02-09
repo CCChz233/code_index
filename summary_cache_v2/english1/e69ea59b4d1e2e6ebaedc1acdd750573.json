@@ -1,0 +1,1 @@
+{"summary": "The code defines a component that is not referenced anywhere and has no test coverage.", "business_intent": "It appears to be an unused or placeholder utility that may need to be integrated, documented, or removed.", "keywords": ["unused", "dead code", "no callers", "no tests", "refactor"], "summary_hash": "6dbf69881cd7", "cached_at": "2026-02-08T15:22:28+00:00"}

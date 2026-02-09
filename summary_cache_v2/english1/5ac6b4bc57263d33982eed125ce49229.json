@@ -1,0 +1,1 @@
+{"summary": "The component appears to be unused; no callers or callees are detected and it is not exercised by tests.", "business_intent": "None identified due to lack of usage information.", "keywords": ["unused", "orphan", "no references"], "summary_hash": "602d6f7506c4", "cached_at": "2026-02-09T03:33:41+00:00"}

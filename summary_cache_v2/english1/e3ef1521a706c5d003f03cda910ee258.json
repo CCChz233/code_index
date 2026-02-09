@@ -1,0 +1,1 @@
+{"summary": "Provides a utility for performing HTTP GET requests to retrieve web resources.", "business_intent": "Simplify fetching data from external services or APIs via GET operations.", "keywords": ["HTTP", "GET", "request", "helper", "network", "client", "fetch"], "summary_hash": "3bfc5d408b00", "cached_at": "2026-02-09T07:39:53+00:00"}

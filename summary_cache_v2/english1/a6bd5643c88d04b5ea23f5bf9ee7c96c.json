@@ -1,0 +1,1 @@
+{"summary": "Provides a simple GET handler for the lists home endpoint, returning the appropriate response for the home view.", "business_intent": "Serve the home page of the list feature via an HTTP GET request.", "keywords": ["GET", "HTTP", "endpoint", "home", "list", "handler", "view"], "summary_hash": "2c77df35f24c", "cached_at": "2026-02-09T07:40:20+00:00"}

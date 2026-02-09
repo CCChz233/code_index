@@ -1,0 +1,1 @@
+{"summary": "The function appears to be isolated with no callers or callees and is not exercised by tests, indicating it is currently unused within the codebase.", "business_intent": "Unclear due to lack of integration; likely intended for a specific feature that has not been wired up yet.", "keywords": [], "summary_hash": "2da9c89a130b", "cached_at": "2026-02-08T14:55:31+00:00"}

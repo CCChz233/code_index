@@ -1,0 +1,1 @@
+{"summary": "The function is isolated with no callers and does not call other functions, indicating it is currently unused within the codebase.", "business_intent": "No active business logic is exercised because the function is not invoked anywhere.", "keywords": ["unused", "orphan", "no-calls"], "summary_hash": "bb88c05bfd4c", "cached_at": "2026-02-08T09:41:17+00:00"}

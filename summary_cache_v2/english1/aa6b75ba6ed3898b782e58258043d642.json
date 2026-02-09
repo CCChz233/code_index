@@ -1,0 +1,1 @@
+{"summary": "Encapsulates a callable normalizer that transforms input data into a standardized scale.", "business_intent": "Prepare raw data for downstream analytics or machine learning by applying normalization.", "keywords": ["normalization", "scaling", "preprocessing", "callable", "data transformation"], "summary_hash": "956c12848f7d", "cached_at": "2026-02-09T06:19:10+00:00"}

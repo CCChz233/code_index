@@ -1,0 +1,1 @@
+{"summary": "The function has no callers, no callees, and is not exercised by tests, indicating it is currently unused within the codebase.", "business_intent": "Potential utility or placeholder awaiting integration into business logic.", "keywords": ["unused", "utility", "placeholder", "orphan"], "summary_hash": "880679beef94", "cached_at": "2026-02-08T10:23:12+00:00"}

@@ -1,0 +1,1 @@
+{"summary": "The function is not called by any other code and does not call other functions, indicating it is currently unused.", "business_intent": "No observable business intent as the function is isolated and not invoked.", "keywords": ["unused", "orphan", "no references"], "summary_hash": "ad269440b835", "cached_at": "2026-02-08T13:41:36+00:00"}

@@ -1,0 +1,1 @@
+{"summary": "A lightweight utility class that groups simple helper functionality for reuse across the codebase.", "business_intent": "Provide concise, reusable helper operations to support other components without embedding logic directly.", "keywords": ["helper", "utility", "simple", "reusable", "common"], "summary_hash": "1267cb4929ef", "cached_at": "2026-02-08T20:34:43+00:00"}

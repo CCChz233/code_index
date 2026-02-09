@@ -1,0 +1,1 @@
+{"summary": "Manages creation and storage of log entries, providing a utility to record actions.", "business_intent": "Enable auditing, debugging, and monitoring by capturing system or user actions in a structured log.", "keywords": ["logging", "audit", "traceability", "event recording", "helper"], "summary_hash": "1cc8b957419a", "cached_at": "2026-02-08T21:48:36+00:00"}

@@ -1,0 +1,1 @@
+{"summary": "A callable utility that resizes input data to the desired dimensions.", "business_intent": "Offer a simple, reusable component for scaling images or other dimensional data within an application.", "keywords": ["resize", "callable", "scaling", "dimensions", "utility"], "summary_hash": "0bd218cf418c", "cached_at": "2026-02-09T06:18:38+00:00"}

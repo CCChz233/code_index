@@ -1,0 +1,1 @@
+{"summary": "The component appears to be unused within the codebase, with no callers or callees and not exercised by tests.", "business_intent": "No observable business behavior due to lack of integration; its purpose cannot be determined from the available information.", "keywords": [], "summary_hash": "7ca5d1e8b8b9", "cached_at": "2026-02-09T10:25:53+00:00"}

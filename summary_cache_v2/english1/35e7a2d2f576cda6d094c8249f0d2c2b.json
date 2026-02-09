@@ -1,0 +1,1 @@
+{"summary": "Defines a custom exception type for representing errors returned by the Palm service.", "business_intent": "Allow client code to catch and handle Palm-specific failures uniformly.", "keywords": ["exception", "error handling", "Palm API", "custom error", "service failure"], "summary_hash": "54f8ffd6f33c", "cached_at": "2026-02-08T06:55:35+00:00"}

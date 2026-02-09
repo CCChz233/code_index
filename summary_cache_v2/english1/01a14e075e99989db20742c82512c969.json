@@ -1,0 +1,1 @@
+{"summary": "Offers a simple helper method to support testing of NumPy ndarray items.", "business_intent": "Enable concise and reusable unit tests for ndarray elements by providing a dedicated test utility.", "keywords": ["ndarray", "test helper", "unit testing", "numpy", "utility"], "summary_hash": "6e5f459d1be8", "cached_at": "2026-02-08T19:50:04+00:00"}

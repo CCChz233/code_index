@@ -1,0 +1,1 @@
+{"summary": "A self-contained function that implements a specific operation without external calls or dependencies.", "business_intent": "Encapsulate a reusable computation or transformation that can be invoked independently when needed.", "keywords": ["utility", "standalone", "self-contained", "function"], "summary_hash": "3c6b013c6ce4", "cached_at": "2026-02-08T07:13:36+00:00"}

@@ -1,0 +1,1 @@
+{"summary": "The code defines a self-contained function that is not called by any other part of the system.", "business_intent": "Offers an independent utility operation that can be invoked directly when needed.", "keywords": ["utility", "standalone", "no callers", "independent"], "summary_hash": "25cb554a7ea2", "cached_at": "2026-02-08T19:34:21+00:00"}

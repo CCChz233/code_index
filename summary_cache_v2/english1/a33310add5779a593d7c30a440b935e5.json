@@ -1,0 +1,1 @@
+{"summary": "Executes removal operations as a helper component.", "business_intent": "Provides a simple execution mechanism to delete or clean up resources within the application.", "keywords": ["remove", "executor", "execute", "helper", "deletion", "cleanup"], "summary_hash": "33a0b989a7ba", "cached_at": "2026-02-09T08:59:53+00:00"}

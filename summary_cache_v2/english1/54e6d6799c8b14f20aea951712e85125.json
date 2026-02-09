@@ -1,0 +1,1 @@
+{"summary": "The component is defined but has no callers, no callees, and is not covered by tests, indicating it is currently unused within the codebase.", "business_intent": "No observable business intent can be inferred due to the lack of any invocation or test coverage.", "keywords": [], "summary_hash": "fe2b9f30ccca", "cached_at": "2026-02-09T01:44:03+00:00"}

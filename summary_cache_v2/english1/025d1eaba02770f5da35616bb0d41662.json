@@ -1,0 +1,1 @@
+{"summary": "A utility class offering a set of straightforward helper operations.", "business_intent": "Encapsulate reusable simple functions to support other components without exposing implementation details.", "keywords": ["helper", "utility", "simple", "reusable", "functions"], "summary_hash": "601248de8d80", "cached_at": "2026-02-08T20:34:54+00:00"}

@@ -1,0 +1,1 @@
+{"summary": "Provides a simple helper to execute error-related test cases.", "business_intent": "Facilitates validation of error handling logic within the system by running predefined test scenarios.", "keywords": ["testing", "error handling", "helper", "validation", "unit test"], "summary_hash": "55bbde552a41", "cached_at": "2026-02-08T22:42:54+00:00"}

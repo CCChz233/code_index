@@ -1,0 +1,1 @@
+{"summary": "The code has no defined callers or callees and is not exercised by tests, indicating no observable behavior.", "business_intent": "No business functionality is implemented or invoked.", "keywords": ["no-implementation", "unused", "unreferenced"], "summary_hash": "fcff4186e1f0", "cached_at": "2026-02-09T03:11:13+00:00"}

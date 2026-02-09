@@ -1,0 +1,1 @@
+{"summary": "The component appears to be a standalone utility with no callers or callees, and it is not exercised by tests.", "business_intent": "None identified; the function is isolated and its purpose cannot be determined from the available information.", "keywords": [], "summary_hash": "ac22fa4c7bb7", "cached_at": "2026-02-08T15:39:13+00:00"}

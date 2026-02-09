@@ -1,0 +1,1 @@
+{"summary": "Provides a health-check endpoint that returns the service's operational status.", "business_intent": "Enable external systems and monitoring tools to verify that the application is running correctly.", "keywords": ["health", "status", "monitoring", "endpoint", "service", "healthcheck"], "summary_hash": "7274a07052cb", "cached_at": "2026-02-09T07:39:14+00:00"}

@@ -1,0 +1,1 @@
+{"summary": "A test suite that validates the behavior of a coarse random shuffling utility.", "business_intent": "Ensure the shuffling algorithm produces a correctly randomized order without errors.", "keywords": ["shuffle", "random", "unit test", "coarse", "verification", "algorithm", "testing"], "summary_hash": "bab5788498e7", "cached_at": "2026-02-08T10:21:41+00:00"}

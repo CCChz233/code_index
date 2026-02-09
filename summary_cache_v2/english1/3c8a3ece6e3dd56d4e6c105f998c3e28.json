@@ -1,0 +1,1 @@
+{"summary": "Exception class representing a missing Certbot installation.", "business_intent": "Used to signal and handle the condition where Certbot is not installed on the system.", "keywords": ["exception", "error", "certbot", "installation", "missing", "no installation"], "summary_hash": "8c42ad96c789", "cached_at": "2026-02-08T16:45:43+00:00"}

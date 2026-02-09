@@ -1,0 +1,1 @@
+{"summary": "Provides a lightweight helper to execute actions within a module context.", "business_intent": "Enables consistent execution of Ansible actions by encapsulating common logic for running modules.", "keywords": ["action", "module", "execute", "helper", "ansible", "automation"], "summary_hash": "e0d2d30647cd", "cached_at": "2026-02-08T17:16:33+00:00"}

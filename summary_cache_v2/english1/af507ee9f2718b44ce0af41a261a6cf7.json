@@ -1,0 +1,1 @@
+{"summary": "The component appears unused with no callers or callees and is not exercised by tests.", "business_intent": "No business functionality detected as the code is isolated and not invoked.", "keywords": [], "summary_hash": "788ee364e927", "cached_at": "2026-02-09T02:11:04+00:00"}

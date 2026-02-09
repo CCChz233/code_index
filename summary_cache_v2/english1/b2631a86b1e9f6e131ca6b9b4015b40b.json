@@ -1,0 +1,1 @@
+{"summary": "The code element has no callers, does not call other functions, and is not exercised by tests, indicating it is currently unused.", "business_intent": "None (unused)", "keywords": [], "summary_hash": "9a33257b0a06", "cached_at": "2026-02-08T05:25:36+00:00"}

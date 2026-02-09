@@ -1,0 +1,1 @@
+{"summary": "Provides utility functions to send HTTP requests for adding a book via a web service.", "business_intent": "Enable client code to create new book entries by communicating with an external API.", "keywords": ["add book", "HTTP request", "API client", "utility", "create record"], "summary_hash": "f1cb197e4b86", "cached_at": "2026-02-09T07:38:59+00:00"}

@@ -1,0 +1,1 @@
+{"summary": "Manages the configuration and sending of email alerts to administrators in the security center.", "business_intent": "Provide automated email notifications of security incidents to admin users.", "keywords": ["security", "email", "alert", "admin", "notification", "monitoring", "configuration"], "summary_hash": "82ac35769c88", "cached_at": "2026-02-08T17:28:01+00:00"}

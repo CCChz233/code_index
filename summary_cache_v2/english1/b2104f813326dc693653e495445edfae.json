@@ -1,0 +1,1 @@
+{"summary": "A test suite that validates batch jobs are not granted privileged status.", "business_intent": "Ensure security compliance by confirming that batch processing jobs do not run with elevated privileges.", "keywords": ["test", "batch job", "privilege", "security", "validation", "compliance"], "summary_hash": "f4cf97cd9a94", "cached_at": "2026-02-08T19:03:32+00:00"}

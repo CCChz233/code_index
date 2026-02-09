@@ -1,0 +1,1 @@
+{"summary": "The module is isolated with no external callers or callees and is not exercised by tests.", "business_intent": "Currently provides no active business functionality within the system.", "keywords": ["isolated", "unused", "no dependencies", "no tests"], "summary_hash": "538d34df6728", "cached_at": "2026-02-09T01:58:36+00:00"}

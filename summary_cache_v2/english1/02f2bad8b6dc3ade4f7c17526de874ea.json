@@ -1,0 +1,1 @@
+{"summary": "Offers a simple helper to verify boolean negation behavior.", "business_intent": "Supports unit testing by providing a utility that checks the correctness of logical NOT operations.", "keywords": ["boolean", "negation", "testing", "helper", "unit test"], "summary_hash": "15b89349acef", "cached_at": "2026-02-08T19:50:57+00:00"}

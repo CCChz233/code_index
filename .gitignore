@@ -13,6 +13,7 @@ ENV/
 # Index & evaluation outputs (large, machine-generated)
 index_v2/
 output_eval/
+output_eval_summary/
 *.pt
 embeddings.pt
 summary_cache/
@@ -62,4 +63,5 @@ dmypy.json
 
 # generated cache
 summary_cache/
+summary_cache_v2/
 logs/

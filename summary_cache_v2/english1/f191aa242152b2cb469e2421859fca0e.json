@@ -1,0 +1,1 @@
+{"summary": "A test suite that validates the encryption functionality used with DAX.", "business_intent": "Automatically verify that DAX encryption utilities operate correctly and detect regressions.", "keywords": ["testing", "encryption", "DAX", "unit test", "validation", "helper"], "summary_hash": "cbb54c2fd4a3", "cached_at": "2026-02-08T18:52:46+00:00"}

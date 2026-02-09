@@ -1,0 +1,1 @@
+{"summary": "Defines a minimal Django URL configuration used in test cases, mapping a simple view to a URL pattern.", "business_intent": "Supply URL patterns for unit tests that validate Django's URL resolution mechanisms.", "keywords": ["Django", "URLconf", "url", "view", "testing", "resolve", "patterns"], "summary_hash": "cbaf1a086472", "cached_at": "2026-02-09T00:48:11+00:00"}

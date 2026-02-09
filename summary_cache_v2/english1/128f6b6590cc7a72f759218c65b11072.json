@@ -1,0 +1,1 @@
+{"summary": "Provides utility functions to verify and enforce data formatting rules.", "business_intent": "Ensures that input data conforms to expected formats, supporting downstream processing and validation.", "keywords": ["format validation", "utility", "helper", "data integrity", "checks"], "summary_hash": "673d067d820a", "cached_at": "2026-02-08T14:37:51+00:00"}

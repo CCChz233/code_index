@@ -1,0 +1,1 @@
+{"summary": "No business logic detected; the component has no callers, no callees, and is not exercised by tests.", "business_intent": "None", "keywords": [], "summary_hash": "8f71b8fca445", "cached_at": "2026-02-08T15:08:21+00:00"}

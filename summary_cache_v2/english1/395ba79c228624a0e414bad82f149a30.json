@@ -1,0 +1,1 @@
+{"summary": "Processes incoming HTTP GET requests and generates appropriate HTML responses.", "business_intent": "Serve web pages to clients as part of a web application or API.", "keywords": ["HTTP", "GET", "HTML", "request handling", "web server", "response generation"], "summary_hash": "b2f4546a5673", "cached_at": "2026-02-09T01:31:52+00:00"}

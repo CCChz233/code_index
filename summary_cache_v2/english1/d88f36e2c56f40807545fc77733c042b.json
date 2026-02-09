@@ -1,0 +1,1 @@
+{"summary": "No functional details are provided; the component has no callers or callees and is not exercised by tests.", "business_intent": "None identified due to lack of usage information.", "keywords": ["unused", "orphan", "no dependencies"], "summary_hash": "cea8f9fdd338", "cached_at": "2026-02-09T03:21:24+00:00"}

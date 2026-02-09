@@ -1,0 +1,1 @@
+{"summary": "The component has no callers, no callees, and is not exercised by tests, indicating it is currently unused.", "business_intent": "No observable business behavior due to lack of usage; likely a placeholder or dead code.", "keywords": [], "summary_hash": "cf7ce2992c65", "cached_at": "2026-02-08T13:46:14+00:00"}

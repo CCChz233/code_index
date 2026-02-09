@@ -1,0 +1,1 @@
+{"summary": "Encapsulates a fault indicating that a requested resource could not be located.", "business_intent": "Provides a specific error type for callers to detect and handle missing resources in services or APIs.", "keywords": ["resource", "not found", "error", "exception", "fault", "missing", "API"], "summary_hash": "32c8af806c00", "cached_at": "2026-02-09T08:33:26+00:00"}

@@ -1,0 +1,1 @@
+{"summary": "Exception type that signals a missing file or directory.", "business_intent": "Allows calling code to detect and handle situations where a required file or folder cannot be located.", "keywords": ["exception", "not found", "file", "folder", "missing", "error handling"], "summary_hash": "fb36ea0ceacb", "cached_at": "2026-02-08T08:21:05+00:00"}

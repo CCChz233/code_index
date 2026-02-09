@@ -1,0 +1,1 @@
+{"summary": "The component is not referenced anywhere and has no callers or callees, indicating it is currently unused in the application.", "business_intent": "No active business functionality; serves as a placeholder or dead code.", "keywords": ["unused", "no calls", "placeholder", "dead code"], "summary_hash": "ecbee48b2b76", "cached_at": "2026-02-09T06:50:40+00:00"}

@@ -1,0 +1,1 @@
+{"summary": "A standalone function that currently has no callers and is not exercised by any tests.", "business_intent": "Potential utility or helper that is defined but not yet integrated into the application workflow.", "keywords": ["unused", "dead code", "no callers", "no tests", "utility function"], "summary_hash": "1ca9bb51b897", "cached_at": "2026-02-08T10:09:51+00:00"}

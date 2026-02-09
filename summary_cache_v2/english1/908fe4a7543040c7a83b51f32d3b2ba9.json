@@ -1,0 +1,1 @@
+{"summary": "A test suite that validates the correct handling and fixing of image tags within content.", "business_intent": "To verify that image tag processing logic works as expected and to catch regressions.", "keywords": ["test", "image", "tag", "validation", "unit test", "helper"], "summary_hash": "4f4fecdb05c1", "cached_at": "2026-02-08T18:46:18+00:00"}

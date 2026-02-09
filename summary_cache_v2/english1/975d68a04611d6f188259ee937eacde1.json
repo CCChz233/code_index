@@ -1,0 +1,1 @@
+{"summary": "A test suite that validates the behavior of a read‑only filesystem implementation.", "business_intent": "Ensure that the filesystem correctly enforces read‑only constraints and does not allow modifications.", "keywords": ["filesystem", "read‑only", "testing", "unit test", "validation"], "summary_hash": "2924f7dc5f60", "cached_at": "2026-02-08T18:17:25+00:00"}

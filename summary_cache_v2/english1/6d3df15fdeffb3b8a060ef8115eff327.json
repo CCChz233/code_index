@@ -1,0 +1,1 @@
+{"summary": "Provides an email backend that handles the dispatch of email messages through a simple helper method.", "business_intent": "Enable applications to send email communications reliably to recipients.", "keywords": ["email", "backend", "send", "messages", "dispatch", "communication", "SMTP"], "summary_hash": "939b25b5a078", "cached_at": "2026-02-08T23:34:10+00:00"}

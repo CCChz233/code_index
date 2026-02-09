@@ -1,0 +1,1 @@
+{"summary": "Encapsulates a ranking entity and provides a human‑readable string representation of its state.", "business_intent": "Enable easy display and logging of ranking information within the application.", "keywords": ["ranking", "string representation", "toString", "display", "model"], "summary_hash": "6c6edfe419b1", "cached_at": "2026-02-08T23:49:50+00:00"}

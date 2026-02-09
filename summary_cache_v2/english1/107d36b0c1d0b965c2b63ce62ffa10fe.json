@@ -1,0 +1,1 @@
+{"summary": "The function is not referenced by any other code and does not call other functions.", "business_intent": "No active business behavior; the function appears to be unused or a placeholder.", "keywords": ["unused", "orphan", "no calls", "placeholder"], "summary_hash": "a5624ea0755d", "cached_at": "2026-02-09T06:55:33+00:00"}

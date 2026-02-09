@@ -1,0 +1,1 @@
+{"summary": "Provides a simple GET endpoint that returns information for display purposes.", "business_intent": "Expose data through a lightweight HTTP GET operation for client consumption.", "keywords": ["GET", "endpoint", "API", "retrieve", "helper", "display", "information"], "summary_hash": "8e9ba65dbc27", "cached_at": "2026-02-09T07:33:57+00:00"}

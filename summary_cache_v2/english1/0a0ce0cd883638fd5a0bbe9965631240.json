@@ -1,0 +1,1 @@
+{"summary": "Function has no callers or callees and is not invoked by tests, indicating it may be unused.", "business_intent": "No business intent identified due to lack of usage context.", "keywords": [], "summary_hash": "84a0fcd8ac66", "cached_at": "2026-02-08T13:31:41+00:00"}

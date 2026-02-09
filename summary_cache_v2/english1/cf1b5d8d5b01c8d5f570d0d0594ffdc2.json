@@ -1,0 +1,1 @@
+{"summary": "The component has no callers or callees and is not exercised by tests, indicating it is currently unused or isolated.", "business_intent": "Potential placeholder or internal utility without external integration.", "keywords": ["unused", "isolated", "no-calls", "internal", "placeholder"], "summary_hash": "82960f5fd3bc", "cached_at": "2026-02-08T15:27:00+00:00"}

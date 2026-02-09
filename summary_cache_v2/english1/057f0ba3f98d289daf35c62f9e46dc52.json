@@ -1,0 +1,1 @@
+{"summary": "A logging handler that intercepts log records and processes them through a simple emit helper.", "business_intent": "Capture and forward application log messages for custom handling or redirection.", "keywords": ["logging", "handler", "emit", "intercept", "log records"], "summary_hash": "a49bff9600e9", "cached_at": "2026-02-08T06:01:43+00:00"}

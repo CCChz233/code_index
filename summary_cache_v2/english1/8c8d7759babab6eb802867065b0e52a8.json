@@ -1,0 +1,1 @@
+{"summary": "The component appears to be isolated with no callers and does not interact with other parts of the system.", "business_intent": "Potentially dead code or a placeholder awaiting integration; currently has no functional impact.", "keywords": ["unused", "orphan", "dead code", "placeholder"], "summary_hash": "724c85677e9d", "cached_at": "2026-02-08T16:13:48+00:00"}

@@ -1,0 +1,1 @@
+{"summary": "Provides a view that returns the contents of the Z-Wave log file to the caller.", "business_intent": "Enable operators or support tools to access Z-Wave system logs for troubleshooting and monitoring.", "keywords": ["Z-Wave", "log", "view", "read", "debugging", "monitoring", "API", "support"], "summary_hash": "f075c36a433a", "cached_at": "2026-02-09T04:41:35+00:00"}

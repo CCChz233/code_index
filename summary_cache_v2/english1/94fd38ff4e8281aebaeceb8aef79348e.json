@@ -1,0 +1,1 @@
+{"summary": "The component is not referenced or invoked anywhere in the codebase and lacks test coverage.", "business_intent": "It appears to be an unused or placeholder module with no functional impact on the system.", "keywords": ["unused", "orphan", "no calls", "no tests", "dead code"], "summary_hash": "a599dd0acaf0", "cached_at": "2026-02-08T21:26:27+00:00"}

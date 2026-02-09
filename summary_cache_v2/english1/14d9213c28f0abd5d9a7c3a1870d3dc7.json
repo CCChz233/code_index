@@ -1,0 +1,1 @@
+{"summary": "No callers or callees detected; the function appears isolated and not exercised by tests.", "business_intent": "None (function is not invoked within the codebase)", "keywords": [], "summary_hash": "b1494a630c12", "cached_at": "2026-02-08T15:19:44+00:00"}

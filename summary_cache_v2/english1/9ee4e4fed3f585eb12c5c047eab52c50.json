@@ -1,0 +1,1 @@
+{"summary": "The module does not have any callers or callees and is not exercised by tests, indicating it is currently isolated with no observable behavior.", "business_intent": "No active business functionality detected; the component appears unused.", "keywords": [], "summary_hash": "6d1913cee0a7", "cached_at": "2026-02-08T14:29:19+00:00"}

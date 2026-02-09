@@ -1,0 +1,1 @@
+{"summary": "Provides pytest fixtures and helper utilities for the GitLab CI test suite.", "business_intent": "Enable reusable test setup and common definitions to simplify and standardize testing of GitLab CI related functionality.", "keywords": ["pytest", "fixtures", "GitLab CI", "testing", "helpers"], "summary_hash": "209882704cb5", "cached_at": "2026-02-08T20:57:13+00:00"}

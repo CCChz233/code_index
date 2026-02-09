@@ -1,0 +1,1 @@
+{"summary": "The code consists of internal functions that operate independently without being invoked by other components or tests.", "business_intent": "Offer self-contained utility logic for internal use within the application.", "keywords": ["utility", "internal", "standalone", "no external calls"], "summary_hash": "aeef2546e2c6", "cached_at": "2026-02-08T23:29:24+00:00"}

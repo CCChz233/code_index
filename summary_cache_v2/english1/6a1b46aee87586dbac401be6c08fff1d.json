@@ -1,0 +1,1 @@
+{"summary": "The component has no recorded callers or callees and is not exercised by tests, indicating it is currently unused within the codebase.", "business_intent": "No identifiable business purpose due to lack of integration; likely dead code or placeholder.", "keywords": [], "summary_hash": "10c9b571d0e9", "cached_at": "2026-02-09T04:35:57+00:00"}

@@ -1,0 +1,1 @@
+{"summary": "The component has no callers, does not call other components, and is not covered by tests, indicating it is currently unused.", "business_intent": "None (unused component)", "keywords": [], "summary_hash": "893ae09906f8", "cached_at": "2026-02-08T08:02:54+00:00"}

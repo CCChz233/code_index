@@ -1,0 +1,1 @@
+{"summary": "Exception class representing errors caused by invalid tags.", "business_intent": "Used to signal validation failures for tag inputs within the system.", "keywords": ["exception", "invalid tags", "validation", "error handling", "custom exception"], "summary_hash": "06f9c34ef19c", "cached_at": "2026-02-09T08:25:16+00:00"}

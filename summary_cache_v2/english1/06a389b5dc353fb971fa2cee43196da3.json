@@ -1,0 +1,1 @@
+{"summary": "The function is defined but never called or referenced, indicating dead or orphan code.", "business_intent": "No active business behavior; the code appears unused and can be removed or integrated.", "keywords": ["dead code", "unused function", "orphan"], "summary_hash": "e7d4a51d10f7", "cached_at": "2026-02-08T18:18:13+00:00"}

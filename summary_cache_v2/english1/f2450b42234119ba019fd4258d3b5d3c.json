@@ -1,0 +1,1 @@
+{"summary": "A self-contained function with no external callers or callees and not exercised by tests.", "business_intent": "Encapsulates a specific piece of logic that can be invoked directly, serving as an isolated utility.", "keywords": ["standalone", "utility", "no dependencies", "unused", "isolated"], "summary_hash": "a9b8176e8b2e", "cached_at": "2026-02-09T05:31:30+00:00"}

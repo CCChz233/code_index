@@ -1,0 +1,1 @@
+{"summary": "A callable test helper that encapsulates simple behavior for use in composition-related unit tests.", "business_intent": "Provides a lightweight, invocable object to verify function composition logic within test suites.", "keywords": ["callable", "test", "composition", "utility", "mock"], "summary_hash": "09c569ecf0d5", "cached_at": "2026-02-08T10:37:29+00:00"}

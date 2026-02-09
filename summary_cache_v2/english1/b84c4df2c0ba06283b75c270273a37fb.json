@@ -1,0 +1,1 @@
+{"summary": "A test suite that validates the process of constructing dependency data used in builds.", "business_intent": "Confirm that the dependency data generation logic functions correctly to support reliable build pipelines.", "keywords": ["test", "dependency", "build", "validation", "helper"], "summary_hash": "5ccf425896bf", "cached_at": "2026-02-08T17:27:54+00:00"}

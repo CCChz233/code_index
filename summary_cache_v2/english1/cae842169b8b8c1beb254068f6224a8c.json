@@ -1,0 +1,1 @@
+{"summary": "Represents an error raised when a provided resource type does not meet expected criteria.", "business_intent": "To signal and handle invalid resource type conditions during validation or processing of resources.", "keywords": ["exception", "validation", "resource", "type", "error handling"], "summary_hash": "844b8338774f", "cached_at": "2026-02-09T07:57:32+00:00"}

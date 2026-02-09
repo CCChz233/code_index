@@ -1,0 +1,1 @@
+{"summary": "The function is not referenced anywhere and has no test coverage.", "business_intent": "No business intent can be determined as the function is unused.", "keywords": ["unused", "no tests", "unreferenced"], "summary_hash": "5a461bc44a6d", "cached_at": "2026-02-08T07:28:49+00:00"}

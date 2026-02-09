@@ -1,0 +1,1 @@
+{"summary": "The component appears to be isolated with no callers or callees, indicating it is not currently integrated into the system.", "business_intent": "Provides a standalone utility that is currently unused within the application.", "keywords": ["unused", "orphan", "standalone", "no dependencies"], "summary_hash": "256e9001a6e3", "cached_at": "2026-02-09T10:47:22+00:00"}

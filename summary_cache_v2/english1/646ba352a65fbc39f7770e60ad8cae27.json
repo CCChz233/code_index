@@ -1,0 +1,1 @@
+{"summary": "The function is defined but not referenced anywhere in the codebase and is not exercised by tests.", "business_intent": "Serves as a potential utility or placeholder with no current impact on the application.", "keywords": ["unused", "orphan", "standalone", "no callers", "not tested"], "summary_hash": "5cf86aeb163a", "cached_at": "2026-02-08T22:39:21+00:00"}

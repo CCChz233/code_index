@@ -1,0 +1,1 @@
+{"summary": "The code defines a component that is not invoked by any other part of the system and is not covered by automated tests.", "business_intent": "No observable business functionality; appears to be dead or placeholder code.", "keywords": ["unused", "orphan", "no callers", "no tests", "dead code"], "summary_hash": "eae2cff56bc9", "cached_at": "2026-02-08T22:03:49+00:00"}

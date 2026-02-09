@@ -1,0 +1,1 @@
+{"summary": "Provides a simple test helper for evaluating extra join filter queries.", "business_intent": "Validates the correct behavior of extra join filter logic within the query processing component.", "keywords": ["test", "extra join", "filter", "query", "helper", "validation"], "summary_hash": "836ddfa9dcfb", "cached_at": "2026-02-08T23:54:50+00:00"}

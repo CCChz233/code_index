@@ -1,0 +1,1 @@
+{"summary": "No callers or callees are detected and the function is not exercised by tests, indicating it is currently isolated with no observable business behavior.", "business_intent": "Undetermined due to lack of usage context.", "keywords": [], "summary_hash": "92d74114cf6c", "cached_at": "2026-02-09T02:52:43+00:00"}

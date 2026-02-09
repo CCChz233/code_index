@@ -1,0 +1,1 @@
+{"summary": "Encapsulates a collection of parameters and provides a utility to evaluate a body expression.", "business_intent": "Manage configuration data and support runtime evaluation of parameterized content.", "keywords": ["parameters", "configuration", "evaluation", "helper", "state", "behavior"], "summary_hash": "445dd8577214", "cached_at": "2026-02-09T09:13:19+00:00"}

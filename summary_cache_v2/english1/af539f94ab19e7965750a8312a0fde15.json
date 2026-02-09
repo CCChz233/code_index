@@ -1,0 +1,1 @@
+{"summary": "The component is an isolated piece of code with no callers, no callees, and not exercised by tests.", "business_intent": "No specific business intent identified; the code appears unused and untested.", "keywords": [], "summary_hash": "821b567e0ae2", "cached_at": "2026-02-09T09:46:23+00:00"}

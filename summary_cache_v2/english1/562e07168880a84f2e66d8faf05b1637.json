@@ -1,0 +1,1 @@
+{"summary": "The component appears isolated with no callers, no callees, and is not exercised by tests.", "business_intent": "Unclear due to lack of usage; likely intended for future integration or optional functionality.", "keywords": [], "summary_hash": "f6ebc5d00e14", "cached_at": "2026-02-09T02:37:26+00:00"}

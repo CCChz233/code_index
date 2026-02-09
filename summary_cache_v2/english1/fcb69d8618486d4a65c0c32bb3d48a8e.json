@@ -1,0 +1,1 @@
+{"summary": "No callers or callees are recorded for this code element, and it is not exercised by tests.", "business_intent": "The function appears to be unused or isolated, indicating no current business functionality is tied to it.", "keywords": ["unused", "orphan", "no calls", "no tests"], "summary_hash": "995a31968402", "cached_at": "2026-02-09T03:23:19+00:00"}

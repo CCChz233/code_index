@@ -1,0 +1,1 @@
+{"summary": "A test utility class that supports verification of secret handling logic.", "business_intent": "Enable automated testing of secret management components by providing simple helper functionality.", "keywords": ["testing", "secrets", "utility", "helper", "verification"], "summary_hash": "5449c99ba652", "cached_at": "2026-02-08T18:45:36+00:00"}

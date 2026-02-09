@@ -1,0 +1,1 @@
+{"summary": "The component is not referenced by any other code and is not exercised by automated tests.", "business_intent": "Serves as an isolated utility or placeholder awaiting integration into the application.", "keywords": ["unused", "orphan", "no callers", "no tests", "isolated"], "summary_hash": "b7a511dc0e7c", "cached_at": "2026-02-09T07:03:42+00:00"}

@@ -1,0 +1,1 @@
+{"summary": "The code element is isolated with no callers, no callees, and is not exercised by tests.", "business_intent": "No observable business functionality can be determined because the element is not invoked or referenced.", "keywords": [], "summary_hash": "feed62610615", "cached_at": "2026-02-08T21:06:46+00:00"}

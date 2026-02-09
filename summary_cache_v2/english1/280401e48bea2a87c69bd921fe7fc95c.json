@@ -1,0 +1,1 @@
+{"summary": "The code has no callers or callees and is not invoked by tests.", "business_intent": "No actionable behavior detected.", "keywords": ["no callers", "no callees", "unused"], "summary_hash": "e150f0ab319f", "cached_at": "2026-02-08T15:07:30+00:00"}

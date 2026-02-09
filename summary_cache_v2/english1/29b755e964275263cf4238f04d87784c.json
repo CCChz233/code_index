@@ -1,0 +1,1 @@
+{"summary": "A lightweight utility class offering a simple helper function for internal use.", "business_intent": "Encapsulate reusable helper logic to streamline other components and reduce code duplication.", "keywords": ["helper", "utility", "simple", "convenience", "reusable"], "summary_hash": "1267cb4929ef", "cached_at": "2026-02-08T20:33:51+00:00"}

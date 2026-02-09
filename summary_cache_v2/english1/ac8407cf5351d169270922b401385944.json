@@ -1,0 +1,1 @@
+{"summary": "Provides helper utilities for testing three‑dimensional cell structures.", "business_intent": "Enables unit tests to verify cell behavior and geometry in 3D simulations or models.", "keywords": ["test", "cell", "3D", "helper", "utility", "validation"], "summary_hash": "71b6821286f1", "cached_at": "2026-02-08T10:20:51+00:00"}

@@ -1,0 +1,1 @@
+{"summary": "The function or module is not referenced anywhere in the codebase and is not exercised by any tests.", "business_intent": "No active business functionality; appears to be dead code or placeholder.", "keywords": ["unused", "dead code", "no callers", "not tested"], "summary_hash": "a19c0bae814b", "cached_at": "2026-02-08T11:00:51+00:00"}

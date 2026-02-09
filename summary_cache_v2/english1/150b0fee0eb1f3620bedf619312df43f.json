@@ -1,0 +1,1 @@
+{"summary": "Provides simple helper functions for rounding values used in test scenarios.", "business_intent": "Enable test code to perform consistent rounding operations through reusable helper methods.", "keywords": ["rounding", "helper", "test", "utility", "numeric", "validation"], "summary_hash": "41ec31165936", "cached_at": "2026-02-08T19:39:59+00:00"}

@@ -1,0 +1,1 @@
+{"summary": "Exception class representing a misconfiguration error within Certbot.", "business_intent": "Provides a specific error type to signal and handle configuration problems in Certbot operations.", "keywords": ["exception", "misconfiguration", "certbot", "error handling", "configuration validation"], "summary_hash": "0b0883b6db4d", "cached_at": "2026-02-08T16:45:44+00:00"}

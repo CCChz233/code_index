@@ -1,0 +1,1 @@
+{"summary": "Encapsulates a command-line operation, managing its argument definitions and execution flow.", "business_intent": "Enable developers to define and run reusable CLI commands for automation or tooling purposes.", "keywords": ["command", "CLI", "arguments", "handler", "execution", "utility"], "summary_hash": "ad29092e1f86", "cached_at": "2026-02-08T22:06:55+00:00"}

@@ -1,0 +1,1 @@
+{"summary": "Utility class that provides helper functions for testing state caching behavior.", "business_intent": "Supports developers in verifying that state caching mechanisms work correctly during automated tests.", "keywords": ["test", "state", "cache", "helper", "utility", "verification"], "summary_hash": "05d0ef42ea95", "cached_at": "2026-02-08T10:41:19+00:00"}

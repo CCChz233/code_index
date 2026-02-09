@@ -1,0 +1,1 @@
+{"summary": "No callers or callees detected; the function appears isolated and not invoked within the codebase.", "business_intent": "The function's purpose cannot be determined due to lack of usage; it may be dead code or a placeholder.", "keywords": ["unused", "orphan", "no references", "dead code"], "summary_hash": "013b91170aa3", "cached_at": "2026-02-08T18:52:44+00:00"}

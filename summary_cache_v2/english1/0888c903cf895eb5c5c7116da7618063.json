@@ -1,0 +1,1 @@
+{"summary": "The component is not referenced by any other code and is not covered by tests, indicating it is currently unused.", "business_intent": "No discernible business intent can be determined from the lack of interactions.", "keywords": ["unused", "orphan", "dead code"], "summary_hash": "9486f9fe0f42", "cached_at": "2026-02-08T21:01:23+00:00"}

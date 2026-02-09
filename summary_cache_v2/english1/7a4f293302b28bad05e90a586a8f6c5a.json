@@ -1,0 +1,1 @@
+{"summary": "A standalone function that currently has no callers and is not exercised by any tests.", "business_intent": "Provides a utility that may be intended for future use but is presently unused within the codebase.", "keywords": ["unused", "dead code", "no callers", "no tests", "utility function"], "summary_hash": "7275770dc1ce", "cached_at": "2026-02-08T15:08:53+00:00"}

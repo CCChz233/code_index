@@ -1,0 +1,1 @@
+{"summary": "Provides simple helper functions used in testing issue 160.", "business_intent": "Support unit tests for issue 160 by offering utility methods that perform basic checks.", "keywords": ["test", "helper", "issue160", "utility", "validation"], "summary_hash": "bea90661f0c4", "cached_at": "2026-02-09T01:29:44+00:00"}

@@ -1,0 +1,1 @@
+{"summary": "The code has no callers or callees and is not exercised by tests, indicating no functional behavior is defined.", "business_intent": "No business logic is implemented; the component currently serves no purpose.", "keywords": [], "summary_hash": "2daf5befd5ec", "cached_at": "2026-02-09T07:15:38+00:00"}

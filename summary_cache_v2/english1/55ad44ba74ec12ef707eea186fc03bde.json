@@ -1,0 +1,1 @@
+{"summary": "The code defines a function that is never invoked within the project.", "business_intent": "Identify and possibly remove or integrate unused functionality to improve codebase maintainability.", "keywords": ["dead code", "unused function", "refactor", "code cleanup", "maintainability"], "summary_hash": "f6553d95134d", "cached_at": "2026-02-08T18:16:39+00:00"}

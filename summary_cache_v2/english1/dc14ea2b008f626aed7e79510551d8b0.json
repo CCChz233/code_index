@@ -1,0 +1,1 @@
+{"summary": "A test suite providing helper utilities to validate repeat operations on NumPy ndarrays.", "business_intent": "Ensure that repeat functionality for multidimensional arrays works correctly within the codebase.", "keywords": ["testing", "repeat", "ndarray", "helper", "unit test", "numpy"], "summary_hash": "3604500034f7", "cached_at": "2026-02-08T20:02:21+00:00"}

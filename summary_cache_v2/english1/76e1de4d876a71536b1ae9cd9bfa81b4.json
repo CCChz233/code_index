@@ -1,0 +1,1 @@
+{"summary": "Provides a temporary utility function that assists with asynchronous logging during tests.", "business_intent": "Enable developers to verify logging behavior in asynchronous code paths within test suites.", "keywords": ["async", "logging", "test helper", "utility", "temporary function"], "summary_hash": "3f4a90783151", "cached_at": "2026-02-08T06:41:05+00:00"}

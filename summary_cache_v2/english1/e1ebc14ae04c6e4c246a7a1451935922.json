@@ -1,0 +1,1 @@
+{"summary": "Contains unit tests that verify sysroot functionality using simple helper checks.", "business_intent": "Ensure that sysroot operations behave correctly by running automated validation tests.", "keywords": ["sysroot", "unit test", "validation", "helper", "automation"], "summary_hash": "3bad5ec0d6a1", "cached_at": "2026-02-08T19:32:22+00:00"}

@@ -1,0 +1,1 @@
+{"summary": "Aggregates DNS configuration and status information from the host environment.", "business_intent": "Provides up-to-date DNS data for inventory, compliance checks, and troubleshooting processes.", "keywords": ["DNS", "configuration", "system facts", "network information", "data aggregation"], "summary_hash": "7dc977359bbd", "cached_at": "2026-02-08T16:44:00+00:00"}

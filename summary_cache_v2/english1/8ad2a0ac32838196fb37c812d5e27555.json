@@ -1,0 +1,1 @@
+{"summary": "Test suite that verifies API Management enforces a minimum TLS 1.2 configuration.", "business_intent": "Validate that API Management services meet security compliance by ensuring only TLS 1.2 or higher is allowed.", "keywords": ["API Management", "TLS 1.2", "security", "compliance", "testing"], "summary_hash": "5b8fe3c3b07c", "cached_at": "2026-02-08T18:37:31+00:00"}

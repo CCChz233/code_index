@@ -1,0 +1,1 @@
+{"summary": "The code element has no callers or callees and is not exercised by tests, indicating it is currently unused.", "business_intent": "Serves as a placeholder or stub with no functional impact in the application.", "keywords": ["unused", "placeholder", "no callers", "no callees", "unreferenced"], "summary_hash": "26ddbd1cde42", "cached_at": "2026-02-09T09:47:53+00:00"}

@@ -1,0 +1,1 @@
+{"summary": "A standalone function with no callers or callees, not exercised by tests.", "business_intent": "Implements a specific utility that is currently unused within the codebase.", "keywords": ["utility", "unused", "standalone"], "summary_hash": "e8d5d1093675", "cached_at": "2026-02-09T10:54:36+00:00"}

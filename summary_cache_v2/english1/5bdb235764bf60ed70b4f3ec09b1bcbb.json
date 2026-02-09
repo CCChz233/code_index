@@ -1,0 +1,1 @@
+{"summary": "Provides a pytest-based benchmark test for the DVC command-line import functionality.", "business_intent": "Ensures the import command works correctly and measures its performance within DVC's test suite.", "keywords": ["DVC", "CLI", "import", "benchmark", "pytest", "testing"], "summary_hash": "5b2a5b193f00", "cached_at": "2026-02-09T09:29:06+00:00"}

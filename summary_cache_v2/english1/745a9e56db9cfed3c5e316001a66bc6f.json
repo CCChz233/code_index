@@ -1,0 +1,1 @@
+{"summary": "The function has no callers and does not call any other functions, indicating it is isolated and possibly unused.", "business_intent": "Standalone utility with no external interactions", "keywords": ["standalone", "isolated", "no-calls"], "summary_hash": "14bb7e823021", "cached_at": "2026-02-08T13:45:27+00:00"}

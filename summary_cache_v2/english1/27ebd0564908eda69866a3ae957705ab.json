@@ -1,0 +1,1 @@
+{"summary": "Provides simple helper functionality for testing TAS components.", "business_intent": "Facilitates unit testing by offering utility methods that set up or verify TAS behavior.", "keywords": ["test", "helper", "TAS", "utility", "unit testing"], "summary_hash": "36d024e40cc8", "cached_at": "2026-02-08T09:26:55+00:00"}

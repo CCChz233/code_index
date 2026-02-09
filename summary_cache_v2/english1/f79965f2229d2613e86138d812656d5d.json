@@ -1,0 +1,1 @@
+{"summary": "The component is not referenced by any other parts of the system and has no callers, indicating it is currently unused.", "business_intent": "No observable business intent can be determined because the component is not invoked anywhere.", "keywords": [], "summary_hash": "556d5889f40b", "cached_at": "2026-02-08T21:25:54+00:00"}

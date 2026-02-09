@@ -1,0 +1,1 @@
+{"summary": "A standalone function or module that operates independently without being invoked by other code or tests.", "business_intent": "Provide a specific utility or entry‑point capability without external dependencies.", "keywords": ["standalone", "utility", "independent", "no callers", "no tests"], "summary_hash": "a5851a78e04f", "cached_at": "2026-02-08T21:28:58+00:00"}

@@ -1,0 +1,1 @@
+{"summary": "Encapsulates a definition entity, holding its attributes and providing basic initialization.", "business_intent": "Model and manage definition data within the system for storage, retrieval, and processing.", "keywords": ["definition", "entity", "model", "initialization", "data"], "summary_hash": "3c5b65c41cc1", "cached_at": "2026-02-08T17:01:14+00:00"}

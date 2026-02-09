@@ -1,0 +1,1 @@
+{"summary": "The code segment is isolated with no incoming or outgoing calls, suggesting it is not currently used within the application.", "business_intent": "No active business behavior; likely leftover or placeholder functionality.", "keywords": ["unused", "orphan", "dead code"], "summary_hash": "b9df6548ef03", "cached_at": "2026-02-08T06:47:45+00:00"}

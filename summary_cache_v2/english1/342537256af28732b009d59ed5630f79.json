@@ -1,0 +1,1 @@
+{"summary": "The component is isolated with no callers or callees and is not exercised by tests, indicating it is currently unused within the codebase.", "business_intent": "No observable business intent due to lack of usage and testing.", "keywords": [], "summary_hash": "3bb5f8529c7f", "cached_at": "2026-02-08T19:51:59+00:00"}

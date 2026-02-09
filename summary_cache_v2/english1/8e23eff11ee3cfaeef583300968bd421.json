@@ -1,0 +1,1 @@
+{"summary": "A function defined in the codebase that has no callers and is not exercised by any tests.", "business_intent": "Provides a utility or feature that is currently unused, indicating dead or placeholder code.", "keywords": ["unused", "dead code", "no callers", "not tested"], "summary_hash": "fcffa6183d48", "cached_at": "2026-02-08T21:58:43+00:00"}

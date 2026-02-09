@@ -1,0 +1,1 @@
+{"summary": "Utility class offering an internal helper function that is not intended for external use.", "business_intent": "Encapsulate restricted helper logic to keep it hidden from public APIs.", "keywords": ["utility", "internal", "helper", "restricted", "encapsulation"], "summary_hash": "4be2d167182f", "cached_at": "2026-02-08T06:03:58+00:00"}

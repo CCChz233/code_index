@@ -1,0 +1,1 @@
+{"summary": "The function is not invoked by any other code and does not call other functions, indicating it is currently unused.", "business_intent": "Potential dead code that may be removed or needs integration.", "keywords": ["unused", "orphan", "no callers", "no callees", "dead code"], "summary_hash": "21dd1b5257fb", "cached_at": "2026-02-09T02:00:15+00:00"}

@@ -1,0 +1,1 @@
+{"summary": "Offers helper functionality to create sample values for testing CSV dataset handling.", "business_intent": "Enable reliable unit tests of CSV dataset processing by supplying predefined test data.", "keywords": ["CSV", "dataset", "testing", "helper", "test data", "unit test"], "summary_hash": "909f2d97b0e7", "cached_at": "2026-02-08T10:42:05+00:00"}

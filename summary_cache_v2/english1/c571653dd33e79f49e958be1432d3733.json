@@ -1,0 +1,1 @@
+{"summary": "A test suite that validates the behavior of a simulated gateway component.", "business_intent": "Ensure the fake gateway functions correctly to support reliable development and integration testing.", "keywords": ["testing", "fake gateway", "unit test", "verification", "helper"], "summary_hash": "21acd1336816", "cached_at": "2026-02-09T09:35:52+00:00"}

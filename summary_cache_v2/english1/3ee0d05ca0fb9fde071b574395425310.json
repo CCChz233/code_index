@@ -1,0 +1,1 @@
+{"summary": "Provides a simple helper function for testing universal functions (ufuncs).", "business_intent": "Facilitate unit testing of mathematical operations by offering a lightweight utility to verify ufunc behavior.", "keywords": ["ufunc", "test", "helper", "utility", "numpy", "unit testing"], "summary_hash": "6a04aaa1fba7", "cached_at": "2026-02-08T20:13:35+00:00"}

@@ -1,0 +1,1 @@
+{"summary": "The component is not referenced or invoked anywhere in the codebase.", "business_intent": "No functional behavior is exercised; the code appears unused.", "keywords": [], "summary_hash": "256c2bf07b91", "cached_at": "2026-02-08T11:21:18+00:00"}

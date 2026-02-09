@@ -1,0 +1,1 @@
+{"summary": "The function has no callers and does not call other functions, and it is not exercised by tests.", "business_intent": "Standalone utility with no external interactions.", "keywords": ["isolated", "unused", "no dependencies"], "summary_hash": "1c2528e34d89", "cached_at": "2026-02-09T01:50:10+00:00"}

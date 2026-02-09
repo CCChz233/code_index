@@ -1,0 +1,1 @@
+{"summary": "The code defines a standalone utility that is not referenced by any other components or tests.", "business_intent": "Offer a reusable operation that can be invoked directly by external systems when needed.", "keywords": ["utility", "standalone", "unused", "reusability", "independent"], "summary_hash": "d40806caca4b", "cached_at": "2026-02-08T22:15:36+00:00"}

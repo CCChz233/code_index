@@ -1,0 +1,1 @@
+{"summary": "A test suite that validates the allocation of a public IP address to a cloud virtual machine.", "business_intent": "Confirm that public IP allocation to CVM instances functions correctly within the cloud platform.", "keywords": ["public IP", "CVM", "allocation", "test", "cloud", "validation"], "summary_hash": "02ab56f59f90", "cached_at": "2026-02-08T18:46:57+00:00"}

@@ -1,0 +1,1 @@
+{"summary": "The code defines a standalone component that is not referenced elsewhere and lacks test coverage.", "business_intent": "Potential utility or feature awaiting integration; currently no active business behavior.", "keywords": ["unused", "orphan", "no tests", "standalone", "potential"], "summary_hash": "6a891ae41676", "cached_at": "2026-02-09T06:11:26+00:00"}

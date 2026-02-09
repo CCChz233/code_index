@@ -1,0 +1,1 @@
+{"summary": "A standalone utility function that is not invoked by any other code and does not call other functions.", "business_intent": "Performs an isolated computation or transformation without interacting with external components.", "keywords": ["utility", "standalone", "isolated", "no external calls"], "summary_hash": "f5f0724323ed", "cached_at": "2026-02-09T08:39:31+00:00"}

@@ -1,0 +1,1 @@
+{"summary": "Function is defined but not referenced in the codebase.", "business_intent": "Unable to determine due to lack of callers or tests.", "keywords": [], "summary_hash": "feb60e618c90", "cached_at": "2026-02-09T02:26:13+00:00"}

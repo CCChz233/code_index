@@ -1,0 +1,1 @@
+{"summary": "Defines a minimal Prefect flow used as a hello‑world example in the test suite.", "business_intent": "Demonstrates how to declare and run a Prefect flow for basic CLI testing and documentation purposes.", "keywords": ["prefect", "flow", "example", "hello world", "cli", "test"], "summary_hash": "ece0175c2e6b", "cached_at": "2026-02-08T13:17:44+00:00"}

@@ -1,0 +1,1 @@
+{"summary": "Contains unit tests that validate the functionality of a helper used to detect Fortran code.", "business_intent": "Ensure the Fortran detection utility works correctly by running simple verification scenarios.", "keywords": ["testing", "unit test", "Fortran detection", "validation", "helper"], "summary_hash": "3119c507f52d", "cached_at": "2026-02-08T20:00:16+00:00"}

@@ -1,0 +1,1 @@
+{"summary": "The component is currently isolated with no incoming or outgoing calls and is not exercised by any tests.", "business_intent": "Potential utility or helper awaiting integration into the application workflow.", "keywords": ["orphan", "unused", "no callers", "no callees", "not tested"], "summary_hash": "c92d4f390ce1", "cached_at": "2026-02-09T06:13:23+00:00"}

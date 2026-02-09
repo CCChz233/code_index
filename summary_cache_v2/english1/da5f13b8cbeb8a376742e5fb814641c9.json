@@ -1,0 +1,1 @@
+{"summary": "A standalone routine that is not invoked by any other code and does not call other components.", "business_intent": "Provides a self‑contained capability that currently appears unused within the application.", "keywords": ["unused", "dead code", "isolated", "no dependencies"], "summary_hash": "320d20f603bd", "cached_at": "2026-02-08T22:21:36+00:00"}

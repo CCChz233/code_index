@@ -1,0 +1,1 @@
+{"summary": "Provides a simple helper used in automated tests for ticket 24605.", "business_intent": "Enable repeatable verification of the fix for issue 24605 by supplying reusable test functionality.", "keywords": ["test", "helper", "ticket", "automation", "unit test", "validation"], "summary_hash": "c2691c711623", "cached_at": "2026-02-08T23:54:31+00:00"}

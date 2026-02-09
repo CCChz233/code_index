@@ -1,0 +1,1 @@
+{"summary": "Provides simple helper functions for test suites.", "business_intent": "Enable developers to write concise and maintainable tests by offering reusable utilities such as assertions and test data generators.", "keywords": ["testing", "helpers", "utilities", "unit tests", "test suite"], "summary_hash": "22c5e8a47f5c", "cached_at": "2026-02-08T17:14:08+00:00"}

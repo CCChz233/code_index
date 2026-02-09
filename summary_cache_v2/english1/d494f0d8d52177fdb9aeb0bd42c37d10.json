@@ -1,0 +1,1 @@
+{"summary": "A defined function that is not invoked anywhere and has no test coverage.", "business_intent": "Provides a placeholder or potential future functionality but currently does nothing in the application.", "keywords": ["unused", "placeholder", "no-op", "unreferenced", "no tests"], "summary_hash": "f4972002f7ae", "cached_at": "2026-02-08T06:37:09+00:00"}

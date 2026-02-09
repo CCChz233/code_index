@@ -1,0 +1,1 @@
+{"summary": "No callers or callees detected; the function appears isolated with no test coverage.", "business_intent": "Unclear; likely a utility or placeholder function not currently integrated into business workflows.", "keywords": ["unused", "orphan", "standalone", "no-test-coverage"], "summary_hash": "0dcac74e188a", "cached_at": "2026-02-08T10:20:18+00:00"}

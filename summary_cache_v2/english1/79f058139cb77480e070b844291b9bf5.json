@@ -1,0 +1,1 @@
+{"summary": "Provides a test fixture that creates a domain and assigns appropriate permissions for each user.", "business_intent": "Automates the setup of domain and user permission data for testing scenarios.", "keywords": ["domain", "permissions", "user", "fixture", "test setup", "helper"], "summary_hash": "4ef63b1c3d8d", "cached_at": "2026-02-08T17:21:21+00:00"}

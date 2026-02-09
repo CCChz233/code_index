@@ -1,0 +1,1 @@
+{"summary": "The component is not referenced or invoked anywhere and lacks test coverage.", "business_intent": "Currently unused; no functional behavior is exercised in the application.", "keywords": ["unused", "dead code", "no calls", "no tests"], "summary_hash": "3e8616656b36", "cached_at": "2026-02-08T16:07:10+00:00"}

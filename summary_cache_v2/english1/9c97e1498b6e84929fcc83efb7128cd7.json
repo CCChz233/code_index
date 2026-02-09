@@ -1,0 +1,1 @@
+{"summary": "The component appears to have no interactions: it is not called by any other code, does not call other components, and is not exercised by tests.", "business_intent": "None (no observable behavior)", "keywords": [], "summary_hash": "1f76f40dfda1", "cached_at": "2026-02-08T15:35:30+00:00"}

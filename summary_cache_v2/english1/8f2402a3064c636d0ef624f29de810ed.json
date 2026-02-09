@@ -1,0 +1,1 @@
+{"summary": "The function is isolated with no callers or callees, indicating it operates independently.", "business_intent": "Provides a self-contained utility or feature without external dependencies.", "keywords": ["standalone", "utility", "independent", "no dependencies"], "summary_hash": "2cb0fce71331", "cached_at": "2026-02-09T01:57:22+00:00"}

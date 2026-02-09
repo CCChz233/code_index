@@ -1,0 +1,1 @@
+{"summary": "Encapsulates encryption handling for DAX, maintaining an inspected key and providing access to it.", "business_intent": "Securely manage and expose the inspected encryption key used in DAX operations.", "keywords": ["encryption", "DAX", "key management", "inspected key", "security"], "summary_hash": "31cb78a7c336", "cached_at": "2026-02-08T17:50:07+00:00"}

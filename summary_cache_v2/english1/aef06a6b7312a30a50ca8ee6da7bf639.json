@@ -1,0 +1,1 @@
+{"summary": "The function appears to be isolated with no callers or callees and is not exercised by tests.", "business_intent": "Potentially a utility or placeholder function whose purpose cannot be determined from current usage.", "keywords": ["orphan", "unused", "standalone", "utility"], "summary_hash": "d04157dcb52d", "cached_at": "2026-02-08T19:19:27+00:00"}

@@ -1,0 +1,1 @@
+{"summary": "The function is defined but not referenced by any other code and is not exercised by tests.", "business_intent": "Provides a self‑contained capability that is currently unused within the codebase.", "keywords": ["standalone", "unused", "no callers", "not tested"], "summary_hash": "b3c10e15df6d", "cached_at": "2026-02-09T07:46:31+00:00"}

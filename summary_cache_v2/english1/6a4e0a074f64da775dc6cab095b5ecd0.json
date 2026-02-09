@@ -1,0 +1,1 @@
+{"summary": "No callers or callees were detected and the function is not exercised by tests, indicating it is currently unused.", "business_intent": "The code has no observable business purpose in the current system; it may be dead code or a placeholder awaiting implementation.", "keywords": [], "summary_hash": "ce7d70ef7242", "cached_at": "2026-02-08T14:18:56+00:00"}

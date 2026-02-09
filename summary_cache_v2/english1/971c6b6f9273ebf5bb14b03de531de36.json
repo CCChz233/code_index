@@ -1,0 +1,1 @@
+{"summary": "The component is not referenced by any other code and is not exercised by tests, indicating it is currently unused.", "business_intent": "No active business functionality; likely dead code that can be removed or repurposed.", "keywords": ["unused", "dead code", "refactor", "cleanup"], "summary_hash": "f69775b9b5c8", "cached_at": "2026-02-08T09:33:23+00:00"}

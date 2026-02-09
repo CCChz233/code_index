@@ -1,0 +1,1 @@
+{"summary": "A self-contained utility function with no external callers or tests.", "business_intent": "Encapsulates internal logic to support other components without being directly invoked by external code.", "keywords": ["utility", "helper", "internal", "standalone"], "summary_hash": "3679a54ae0ad", "cached_at": "2026-02-08T15:54:57+00:00"}

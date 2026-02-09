@@ -1,0 +1,1 @@
+{"summary": "Provides a read‑only endpoint that returns arc data through a simple GET helper.", "business_intent": "Allow external clients to retrieve arc information via a lightweight HTTP GET request.", "keywords": ["GET", "HTTP", "endpoint", "arc", "view", "read‑only", "API", "retrieve", "helper"], "summary_hash": "1de1641e25b4", "cached_at": "2026-02-09T07:51:26+00:00"}

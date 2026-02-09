@@ -1,0 +1,1 @@
+{"summary": "The code defines a self-contained utility that is not invoked by any other component and has no test coverage.", "business_intent": "Offer a specific helper capability while currently remaining unused in the application.", "keywords": ["utility", "unused", "standalone", "no dependencies"], "summary_hash": "1c9dad5e8816", "cached_at": "2026-02-08T15:12:45+00:00"}

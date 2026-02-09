@@ -1,0 +1,1 @@
+{"summary": "Provides helper functionality for testing host and port configurations.", "business_intent": "Validate that network endpoints (host and port) are correctly specified and reachable.", "keywords": ["host", "port", "test", "validation", "network", "helper"], "summary_hash": "1df1f30cdaea", "cached_at": "2026-02-08T18:14:46+00:00"}

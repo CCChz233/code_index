@@ -1,0 +1,1 @@
+{"summary": "The function is defined but currently has no callers and does not invoke any other functions.", "business_intent": "Potentially a utility or placeholder awaiting integration; currently no business behavior is exercised.", "keywords": ["unused", "standalone", "no dependencies", "placeholder"], "summary_hash": "ef3f1033ca5c", "cached_at": "2026-02-08T09:16:16+00:00"}

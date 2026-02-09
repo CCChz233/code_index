@@ -1,0 +1,1 @@
+{"summary": "The function is not invoked by any other code and is not covered by tests, suggesting it may be dead code, a placeholder, or an unused utility.", "business_intent": "No specific business intent can be determined from the available information.", "keywords": [], "summary_hash": "eaec8e022398", "cached_at": "2026-02-09T01:59:51+00:00"}

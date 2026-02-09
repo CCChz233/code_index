@@ -1,0 +1,1 @@
+{"summary": "A test suite that validates the string representation of edge pretty‑printing utilities.", "business_intent": "Verify that edge data is formatted correctly for debugging and logging purposes.", "keywords": ["testing", "pretty printing", "edges", "string representation", "unit test"], "summary_hash": "eea35b2e9a16", "cached_at": "2026-02-08T10:27:19+00:00"}

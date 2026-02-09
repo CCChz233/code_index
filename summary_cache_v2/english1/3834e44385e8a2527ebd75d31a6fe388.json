@@ -1,0 +1,1 @@
+{"summary": "The function has no callers, does not invoke other functions, and is not exercised by tests, indicating it is currently unused or isolated.", "business_intent": "No specific business intent could be determined due to lack of usage context.", "keywords": [], "summary_hash": "134ebb4dbf31", "cached_at": "2026-02-08T22:29:56+00:00"}

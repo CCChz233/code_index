@@ -1,0 +1,1 @@
+{"summary": "The code is isolated with no incoming or outgoing calls and is not covered by tests.", "business_intent": "No active role; likely dead code or placeholder awaiting implementation.", "keywords": ["unused", "orphan", "no-calls", "untested", "dead-code"], "summary_hash": "34d03495d54e", "cached_at": "2026-02-08T18:57:20+00:00"}

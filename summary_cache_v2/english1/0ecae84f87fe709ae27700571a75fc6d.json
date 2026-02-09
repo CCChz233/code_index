@@ -1,0 +1,1 @@
+{"summary": "Utility class providing a simple GET helper for interacting with graph-related endpoints.", "business_intent": "Enable easy retrieval of graph data through HTTP GET requests.", "keywords": ["GET", "helper", "graph", "API", "request"], "summary_hash": "d4a3d773b16d", "cached_at": "2026-02-09T07:42:33+00:00"}

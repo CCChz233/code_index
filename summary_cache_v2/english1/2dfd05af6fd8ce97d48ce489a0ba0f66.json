@@ -1,0 +1,1 @@
+{"summary": "The component has no callers and is not exercised by any tests, indicating it is currently unused in the codebase.", "business_intent": "No active business functionality; the code appears to be dead or placeholder logic.", "keywords": ["unused", "dead code", "no callers", "uncovered"], "summary_hash": "c3e496c0c443", "cached_at": "2026-02-09T10:53:39+00:00"}

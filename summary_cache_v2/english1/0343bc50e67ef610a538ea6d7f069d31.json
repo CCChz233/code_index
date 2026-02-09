@@ -1,0 +1,1 @@
+{"summary": "The code defines a function that is not called anywhere and has no test coverage.", "business_intent": "Provides a utility that may be intended for future integration but is currently unused.", "keywords": ["unused", "function", "no tests", "dead code"], "summary_hash": "d5df69767102", "cached_at": "2026-02-09T04:17:27+00:00"}

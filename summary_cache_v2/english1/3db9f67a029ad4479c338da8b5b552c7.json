@@ -1,0 +1,1 @@
+{"summary": "The function is not referenced by any other code and lacks test coverage, indicating it is currently unused.", "business_intent": "No observable business behavior because the function is isolated and not invoked.", "keywords": ["unused", "orphan", "no tests", "dead code"], "summary_hash": "159a959e3291", "cached_at": "2026-02-09T03:55:22+00:00"}

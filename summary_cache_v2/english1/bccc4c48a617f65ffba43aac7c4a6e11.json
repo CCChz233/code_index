@@ -1,0 +1,1 @@
+{"summary": "The code defines a function that is not referenced or invoked by any other part of the program.", "business_intent": "Provides a utility that may be intended for future use, but currently remains unused.", "keywords": ["unused", "dead code", "function definition", "no callers"], "summary_hash": "321a3269ad1f", "cached_at": "2026-02-09T10:50:07+00:00"}

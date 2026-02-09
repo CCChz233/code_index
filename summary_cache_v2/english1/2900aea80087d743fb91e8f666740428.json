@@ -1,0 +1,1 @@
+{"summary": "Provides functionality to retrieve historical records via a simple GET operation.", "business_intent": "Expose an endpoint that returns past data for auditing, reporting, or analytical purposes.", "keywords": ["history", "GET", "data retrieval", "records", "audit", "endpoint", "analytics"], "summary_hash": "8cd4a50567bb", "cached_at": "2026-02-09T07:44:20+00:00"}

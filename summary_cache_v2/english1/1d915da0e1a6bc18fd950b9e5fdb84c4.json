@@ -1,0 +1,1 @@
+{"summary": "A test utility class that supports uploading group data during automated testing.", "business_intent": "Ensures the group upload feature works correctly by providing helper methods for test cases.", "keywords": ["test", "upload", "group", "validation", "helper"], "summary_hash": "f91e728843e6", "cached_at": "2026-02-08T19:04:56+00:00"}

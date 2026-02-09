@@ -1,0 +1,1 @@
+{"summary": "The component is not referenced by any other parts of the system and is not exercised by automated tests.", "business_intent": "Potential dead code that may be removed or needs integration", "keywords": ["unused", "orphan", "no-calls", "no-tests"], "summary_hash": "19ab18c20578", "cached_at": "2026-02-08T22:32:26+00:00"}

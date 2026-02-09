@@ -1,0 +1,1 @@
+{"summary": "Test suite that validates the JSON response helper function.", "business_intent": "Ensure the helper generates correctly formatted JSON responses for API endpoints.", "keywords": ["json", "response", "test", "unit test", "helper", "verification", "api"], "summary_hash": "e723dc1b0a9c", "cached_at": "2026-02-08T23:59:19+00:00"}

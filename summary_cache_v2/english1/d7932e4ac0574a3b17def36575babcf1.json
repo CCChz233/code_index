@@ -1,0 +1,1 @@
+{"summary": "The component appears to be isolated with no callers or callees and is not exercised by tests, indicating it may be unused or a placeholder.", "business_intent": "Potentially intended for future functionality or as a stub; currently no business behavior is observable.", "keywords": [], "summary_hash": "276ad9522cdf", "cached_at": "2026-02-09T02:12:45+00:00"}

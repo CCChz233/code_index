@@ -1,0 +1,1 @@
+{"summary": "The function is defined but not referenced anywhere in the codebase, indicating it is currently unused.", "business_intent": "Provides a standalone utility that could be invoked for a specific operation when needed.", "keywords": ["utility", "standalone", "unused", "orphan"], "summary_hash": "022a249c74d9", "cached_at": "2026-02-08T09:43:05+00:00"}

@@ -1,0 +1,1 @@
+{"summary": "A self-contained function that executes a specific operation without interacting with other components.", "business_intent": "Provides an isolated utility to perform a particular calculation or transformation.", "keywords": ["standalone", "utility", "isolated", "no external calls"], "summary_hash": "a9df693fe697", "cached_at": "2026-02-08T09:54:58+00:00"}

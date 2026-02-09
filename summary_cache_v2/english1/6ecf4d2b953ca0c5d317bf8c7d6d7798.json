@@ -1,0 +1,1 @@
+{"summary": "Mock implementation of the 1Q backend used for testing and development.", "business_intent": "Provide a fake 1Q service layer that mimics the real backend, allowing code to run without external dependencies.", "keywords": ["mock", "backend", "1Q", "testing", "simulation", "development"], "summary_hash": "6eae40848403", "cached_at": "2026-02-08T11:52:03+00:00"}

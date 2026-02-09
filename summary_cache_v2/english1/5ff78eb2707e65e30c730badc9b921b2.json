@@ -1,0 +1,1 @@
+{"summary": "The component appears to be isolated with no callers or callees and is not exercised by tests, indicating it is currently unused within the system.", "business_intent": "None (dead or placeholder code)", "keywords": [], "summary_hash": "3b07ccb81aed", "cached_at": "2026-02-08T07:53:41+00:00"}

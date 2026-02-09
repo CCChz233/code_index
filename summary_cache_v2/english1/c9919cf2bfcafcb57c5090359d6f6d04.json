@@ -1,0 +1,1 @@
+{"summary": "Utility module offering helper functions to retrieve output data.", "business_intent": "Encapsulate output access behind a simple interface to simplify downstream code.", "keywords": ["utility", "helper", "output retrieval", "getter", "module"], "summary_hash": "300eb8a5aa38", "cached_at": "2026-02-08T13:23:42+00:00"}

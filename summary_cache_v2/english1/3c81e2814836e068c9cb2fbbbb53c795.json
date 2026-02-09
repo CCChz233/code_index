@@ -1,0 +1,1 @@
+{"summary": "Offers utilities to halt or cancel ongoing operations in an application.", "business_intent": "Allows controlled termination of processes, tasks, or workflows to ensure graceful shutdown and resource cleanup.", "keywords": ["stop", "cancel", "termination", "control", "helper"], "summary_hash": "b44e6e233852", "cached_at": "2026-02-09T05:40:24+00:00"}

@@ -1,0 +1,1 @@
+{"summary": "Encapsulates a callable scheduler that triggers predefined actions at specified times.", "business_intent": "Provide a simple interface to schedule and execute provocation tasks within an application.", "keywords": ["scheduler", "callable", "task", "timing", "trigger", "event"], "summary_hash": "64a39ea02a70", "cached_at": "2026-02-09T03:33:39+00:00"}

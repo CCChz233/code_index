@@ -1,0 +1,1 @@
+{"summary": "The module is isolated with no callers or callees and is not exercised by tests, indicating it may be unused or a placeholder.", "business_intent": "No specific business intent could be determined as the code is not invoked anywhere.", "keywords": [], "summary_hash": "3fe645366fdb", "cached_at": "2026-02-09T06:52:10+00:00"}

@@ -1,0 +1,1 @@
+{"summary": "Provides functionality to convert input data into its Base64 encoded form.", "business_intent": "Enables safe transmission and storage of binary or textual data by encoding it as Base64.", "keywords": ["base64", "encoding", "data conversion", "utility", "transformation"], "summary_hash": "8d52b3c02033", "cached_at": "2026-02-09T09:22:35+00:00"}

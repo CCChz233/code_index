@@ -1,0 +1,1 @@
+{"summary": "The function is isolated with no callers or callees and is not exercised by tests.", "business_intent": "No specific business intent can be determined as the code is not invoked within the application.", "keywords": ["standalone", "unused", "no callers", "no callees", "not tested"], "summary_hash": "19bc3300c3bf", "cached_at": "2026-02-08T23:31:54+00:00"}

@@ -1,0 +1,1 @@
+{"summary": "The component is not referenced by any other parts of the system and is not exercised by tests.", "business_intent": "Currently an isolated piece of code with no integration, indicating it may be a placeholder or dead code.", "keywords": ["orphan", "unused", "no tests", "isolated"], "summary_hash": "38c498bf6131", "cached_at": "2026-02-09T07:52:44+00:00"}

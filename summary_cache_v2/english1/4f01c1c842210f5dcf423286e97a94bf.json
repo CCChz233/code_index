@@ -1,0 +1,1 @@
+{"summary": "The component does not interact with any other parts of the system; it has no callers, no callees, and is not exercised by tests, indicating it is currently isolated with no defined behavior.", "business_intent": "No business functionality is implemented or exposed.", "keywords": [], "summary_hash": "2c701645ec6a", "cached_at": "2026-02-09T05:23:27+00:00"}

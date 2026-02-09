@@ -1,0 +1,1 @@
+{"summary": "The component has no callers and does not invoke any other components, and it is not exercised by tests, so its purpose cannot be inferred from usage.", "business_intent": "Unable to determine the business intent due to lack of interaction data.", "keywords": [], "summary_hash": "dad53435dc22", "cached_at": "2026-02-08T21:43:43+00:00"}

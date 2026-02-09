@@ -1,0 +1,1 @@
+{"summary": "Provides test utilities for validating the naive prediction algorithm.", "business_intent": "Ensures the correctness of a simple predictor used in the application by running automated checks.", "keywords": ["test", "predictor", "naive", "validation", "unit test"], "summary_hash": "98c4bf2f72f2", "cached_at": "2026-02-08T10:43:29+00:00"}

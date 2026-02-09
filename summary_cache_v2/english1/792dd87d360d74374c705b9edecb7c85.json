@@ -1,0 +1,1 @@
+{"summary": "The code defines a function that is not referenced anywhere and has no implementation details, effectively dead or placeholder code.", "business_intent": "None – the function currently serves no operational purpose within the application.", "keywords": ["unused", "dead code", "placeholder"], "summary_hash": "9058065f7be9", "cached_at": "2026-02-09T07:49:46+00:00"}

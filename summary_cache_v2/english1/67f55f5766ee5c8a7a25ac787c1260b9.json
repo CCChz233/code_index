@@ -1,0 +1,1 @@
+{"summary": "The component has no callers, does not call other components, and is not exercised by tests.", "business_intent": "Standalone utility with no current integration or usage", "keywords": ["unused", "standalone", "no dependencies", "not tested"], "summary_hash": "e879478d5a64", "cached_at": "2026-02-08T16:20:11+00:00"}

@@ -1,0 +1,1 @@
+{"summary": "The function appears to be standalone with no callers or callees and is not exercised by tests.", "business_intent": "Currently unused code that may be dead or pending future integration.", "keywords": ["unused", "orphan", "dead code", "no references"], "summary_hash": "f8001090b1ec", "cached_at": "2026-02-09T02:16:34+00:00"}

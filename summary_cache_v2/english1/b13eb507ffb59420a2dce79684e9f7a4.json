@@ -1,0 +1,1 @@
+{"summary": "No callers or callees are recorded for this code element, and it is not exercised by tests.", "business_intent": "The purpose of the code cannot be determined from usage data; it appears to be unused or isolated.", "keywords": ["unused", "orphan", "no references", "untested"], "summary_hash": "77ca0d7bbf44", "cached_at": "2026-02-09T02:07:48+00:00"}

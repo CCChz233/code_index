@@ -1,0 +1,1 @@
+{"summary": "The component is a standalone piece of code that is not referenced by any other parts of the system.", "business_intent": "Implements an isolated functionality that may be intended for future integration or as a utility module.", "keywords": ["standalone", "unused", "utility", "isolated"], "summary_hash": "1f5dc781fbaa", "cached_at": "2026-02-08T21:35:27+00:00"}

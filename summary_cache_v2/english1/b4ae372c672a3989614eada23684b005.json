@@ -1,0 +1,1 @@
+{"summary": "Manages the initialization and startup of a server instance.", "business_intent": "Provides a simple helper to launch a server quickly for development, testing, or deployment purposes.", "keywords": ["server", "launch", "startup", "initialization", "helper", "deployment", "automation"], "summary_hash": "7d7f34a3424b", "cached_at": "2026-02-08T19:17:50+00:00"}

@@ -1,0 +1,1 @@
+{"summary": "Base exception class for all Qiskit-related errors.", "business_intent": "Establishes a common superclass for Qiskit exceptions to allow uniform error handling and identification throughout the framework.", "keywords": ["exception", "error handling", "Qiskit", "base class", "inheritance"], "summary_hash": "4be1f8934968", "cached_at": "2026-02-08T10:58:24+00:00"}

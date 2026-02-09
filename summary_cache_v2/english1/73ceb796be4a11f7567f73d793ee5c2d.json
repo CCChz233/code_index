@@ -1,0 +1,1 @@
+{"summary": "The function has no callers and is not covered by tests, suggesting it is currently unused or dead code.", "business_intent": "None (function appears to be unused)", "keywords": ["unused", "dead code", "no callers", "no test coverage"], "summary_hash": "c4c1d8bdec21", "cached_at": "2026-02-08T15:43:41+00:00"}

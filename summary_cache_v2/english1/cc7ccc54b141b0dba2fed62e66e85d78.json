@@ -1,0 +1,1 @@
+{"summary": "A UI widget that displays a label and detects user click interactions.", "business_intent": "Enable developers to attach click‑based actions to a label element within graphical applications.", "keywords": ["label", "clickable", "widget", "mouse event", "GUI", "Qt", "interactive", "signal"], "summary_hash": "6a22fab613c9", "cached_at": "2026-02-08T13:00:34+00:00"}

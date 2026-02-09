@@ -1,0 +1,1 @@
+{"summary": "A standalone utility function that is not invoked by any other code and has no test coverage.", "business_intent": "Provides a helper capability that may be used for future features but currently remains unused.", "keywords": ["utility", "standalone", "unused", "no callers", "no tests"], "summary_hash": "244f519d12c6", "cached_at": "2026-02-09T06:46:59+00:00"}

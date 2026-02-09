@@ -1,0 +1,1 @@
+{"summary": "No callers or callees detected; the function appears unused in the codebase.", "business_intent": "The function currently has no identified usage, suggesting it may be dead code or a utility awaiting integration.", "keywords": ["unused", "dead code", "orphan function"], "summary_hash": "3c0fd512fc6f", "cached_at": "2026-02-08T15:29:16+00:00"}

@@ -1,0 +1,1 @@
+{"summary": "Provides a filter that selects BlockDocument records based on their name attribute.", "business_intent": "Enable clients to query or retrieve block documents that match a specific name or name pattern.", "keywords": ["filter", "name", "block document", "query", "selection", "helper"], "summary_hash": "c8cf93139a06", "cached_at": "2026-02-08T12:55:17+00:00"}
