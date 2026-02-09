@@ -1,1 +1,0 @@
-{"summary": "A mock class that simulates a PyFido error for testing purposes.", "business_intent": "Enable unit tests to trigger and handle PyFido error scenarios without relying on the actual PyFido library.", "keywords": ["mock", "error", "testing", "PyFido", "simulation", "placeholder"], "summary_hash": "3b64bc2763c3", "cached_at": "2026-02-09T05:30:40+00:00"}

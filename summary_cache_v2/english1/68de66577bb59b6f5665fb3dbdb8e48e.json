@@ -1,1 +1,0 @@
-{"summary": "The function/module is not referenced anywhere in the codebase and is not exercised by tests.", "business_intent": "No business intent can be determined as the component is currently orphaned.", "keywords": ["unused", "orphan", "no callers", "no tests"], "summary_hash": "f84968d24894", "cached_at": "2026-02-08T13:41:15+00:00"}

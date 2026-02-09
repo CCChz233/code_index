@@ -1,1 +1,0 @@
-{"summary": "The function appears to be unused and not covered by tests.", "business_intent": "No clear business intent can be determined as the function is not invoked anywhere.", "keywords": ["unused", "no tests", "orphan"], "summary_hash": "060752624103", "cached_at": "2026-02-08T18:48:31+00:00"}

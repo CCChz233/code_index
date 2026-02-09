@@ -1,1 +1,0 @@
-{"summary": "The function is not referenced by any other code and is not exercised by tests, indicating it is currently unused.", "business_intent": "Potentially provides a utility or feature that is not yet integrated into the application.", "keywords": ["unused", "standalone", "no callers", "no tests"], "summary_hash": "3cc0ddec9b65", "cached_at": "2026-02-09T08:40:41+00:00"}

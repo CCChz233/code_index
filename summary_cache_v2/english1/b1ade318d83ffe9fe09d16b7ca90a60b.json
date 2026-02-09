@@ -1,1 +1,0 @@
-{"summary": "Provides utilities to gather and expose environment facts used in testing scenarios.", "business_intent": "Collects and makes available system or configuration information to support automated tests.", "keywords": ["test", "environment", "facts", "collection", "utility", "helper"], "summary_hash": "2a857d7d4890", "cached_at": "2026-02-08T17:28:22+00:00"}

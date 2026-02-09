@@ -1,1 +1,0 @@
-{"summary": "Implements a lookup helper that performs a straightforward operation and returns the computed values.", "business_intent": "Allows automation scripts to fetch or compute data on demand within a workflow.", "keywords": ["lookup", "helper", "automation", "plugin", "data retrieval"], "summary_hash": "0d93e32950eb", "cached_at": "2026-02-08T16:39:03+00:00"}

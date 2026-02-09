@@ -1,1 +1,0 @@
-{"summary": "No callers or callees are recorded and the function is not exercised by tests, indicating it is currently unused.", "business_intent": "The function appears to be orphaned with no identified business purpose in the current codebase.", "keywords": ["unused", "orphan", "no calls", "isolated"], "summary_hash": "67ff1418d639", "cached_at": "2026-02-08T16:33:59+00:00"}

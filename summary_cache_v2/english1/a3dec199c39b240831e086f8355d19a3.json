@@ -1,1 +1,0 @@
-{"summary": "Represents a child entity with a custom string representation.", "business_intent": "Provides a readable string form of child objects for logging, debugging, and UI display.", "keywords": ["child", "entity", "string representation", "object display", "debugging"], "summary_hash": "f814711d6eb1", "cached_at": "2026-02-08T23:25:49+00:00"}

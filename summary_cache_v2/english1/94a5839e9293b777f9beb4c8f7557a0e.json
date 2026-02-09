@@ -1,1 +1,0 @@
-{"summary": "The function is standalone with no callers, no callees, and is not exercised by any tests.", "business_intent": "Provides a utility or placeholder capability that is currently not integrated into the application flow.", "keywords": ["standalone", "unused", "no callers", "no tests"], "summary_hash": "11fc1340e95b", "cached_at": "2026-02-08T18:37:25+00:00"}

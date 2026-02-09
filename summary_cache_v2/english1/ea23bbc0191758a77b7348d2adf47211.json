@@ -1,1 +1,0 @@
-{"summary": "The function has no callers and is not invoked by any tests, indicating it is currently unused in the codebase.", "business_intent": "No functional impact as the code is dead/unreferenced.", "keywords": ["unused", "dead code", "no callers", "not tested"], "summary_hash": "937ee1a76cb8", "cached_at": "2026-02-08T19:31:08+00:00"}

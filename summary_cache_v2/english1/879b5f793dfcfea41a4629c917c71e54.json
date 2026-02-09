@@ -1,1 +1,0 @@
-{"summary": "Custom exception class representing errors related to I2C HAT hardware interactions.", "business_intent": "Enable precise error handling and reporting for I2C HAT operations within applications.", "keywords": ["exception", "I2C", "HAT", "hardware", "error handling", "custom exception"], "summary_hash": "76807205934b", "cached_at": "2026-02-09T03:56:03+00:00"}

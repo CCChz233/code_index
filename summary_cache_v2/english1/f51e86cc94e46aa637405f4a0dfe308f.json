@@ -1,1 +1,0 @@
-{"summary": "No callers or callees detected; the function appears unused and is not exercised by tests.", "business_intent": "The function currently has no observable business impact and may be dead code.", "keywords": ["unused", "dead code", "no callers", "no callees"], "summary_hash": "4ed7de2c620e", "cached_at": "2026-02-08T17:47:53+00:00"}

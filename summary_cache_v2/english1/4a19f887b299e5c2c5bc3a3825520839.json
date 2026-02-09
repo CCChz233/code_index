@@ -1,1 +1,0 @@
-{"summary": "The component is defined but never invoked within the codebase and is not exercised by any tests.", "business_intent": "Potential dead or placeholder functionality that currently has no impact on the application.", "keywords": ["unused", "dead code", "no callers", "not tested", "placeholder"], "summary_hash": "c6c9f486380f", "cached_at": "2026-02-08T09:55:38+00:00"}

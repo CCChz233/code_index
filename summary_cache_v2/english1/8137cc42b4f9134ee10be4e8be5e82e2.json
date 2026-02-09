@@ -1,1 +1,0 @@
-{"summary": "The function is defined but not invoked anywhere in the codebase.", "business_intent": "No active business behavior; appears to be dead code or a placeholder awaiting implementation.", "keywords": ["unused", "orphan", "dead code", "placeholder"], "summary_hash": "e1f1cb9271d4", "cached_at": "2026-02-09T02:36:33+00:00"}

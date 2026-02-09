@@ -1,1 +1,0 @@
-{"summary": "The function is defined but not referenced anywhere in the codebase and is not exercised by tests.", "business_intent": "Potentially unused utility; could be removed or integrated if needed.", "keywords": ["dead code", "unused function", "refactoring", "code cleanup"], "summary_hash": "f5d951a2eb7b", "cached_at": "2026-02-08T07:41:32+00:00"}

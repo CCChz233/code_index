@@ -1,1 +1,0 @@
-{"summary": "The code defines a function that is not referenced by any other code and is not exercised by tests.", "business_intent": "No specific business intent can be determined as the function is currently unused.", "keywords": ["unused", "orphan", "no tests"], "summary_hash": "f11f158dfd65", "cached_at": "2026-02-08T22:44:50+00:00"}

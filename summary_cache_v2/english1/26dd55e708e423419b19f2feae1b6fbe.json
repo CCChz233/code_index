@@ -1,1 +1,0 @@
-{"summary": "Implements a loader that creates and executes modules during import.", "business_intent": "Facilitates dynamic loading of original modules within a custom import mechanism.", "keywords": ["module loader", "module creation", "module execution", "dynamic import", "custom import system"], "summary_hash": "83688de552d8", "cached_at": "2026-02-08T08:20:18+00:00"}

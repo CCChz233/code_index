@@ -1,1 +1,0 @@
-{"summary": "Provides unit tests to verify that image rotation operations using OpenCV behave as expected.", "business_intent": "Validate the correctness of OpenCV-based image rotation functionality through automated testing.", "keywords": ["OpenCV", "image rotation", "unit test", "verification", "helper"], "summary_hash": "e79dab5fbd31", "cached_at": "2026-02-08T20:16:09+00:00"}

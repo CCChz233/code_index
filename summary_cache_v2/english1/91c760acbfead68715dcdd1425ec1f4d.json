@@ -1,1 +1,0 @@
-{"summary": "The code defines a function that is not referenced by any other parts of the system and is not exercised by tests.", "business_intent": "Potentially a placeholder or unused utility with no current business impact.", "keywords": ["unused", "standalone", "placeholder", "no references"], "summary_hash": "1eb0e5fd0f25", "cached_at": "2026-02-08T21:43:19+00:00"}

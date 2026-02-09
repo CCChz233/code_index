@@ -1,1 +1,0 @@
-{"summary": "A self-contained function that implements a specific operation without relying on other parts of the codebase.", "business_intent": "Provides a reusable utility that can be called by external components when needed.", "keywords": ["utility", "standalone", "reusable", "independent"], "summary_hash": "32f76a5e1c73", "cached_at": "2026-02-08T07:08:44+00:00"}

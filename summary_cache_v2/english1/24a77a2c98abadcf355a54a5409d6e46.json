@@ -1,1 +1,0 @@
-{"summary": "A standalone function defined in the codebase but not referenced by any other code or tests.", "business_intent": "Potential utility or helper functionality that is currently unused and may be dead code.", "keywords": ["unused", "orphan function", "dead code", "no callers", "no tests"], "summary_hash": "0feb267338fb", "cached_at": "2026-02-09T09:12:10+00:00"}

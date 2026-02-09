@@ -1,1 +1,0 @@
-{"summary": "The function is not called by any other code and has no test coverage, indicating it may be dead or unused code.", "business_intent": "Potentially leftover utility that is currently not utilized in the application.", "keywords": ["unused", "dead code", "orphan function", "no test coverage"], "summary_hash": "1f0402843ea0", "cached_at": "2026-02-09T02:31:08+00:00"}

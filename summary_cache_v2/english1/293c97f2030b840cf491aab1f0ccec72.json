@@ -1,1 +1,0 @@
-{"summary": "The function is currently isolated with no incoming calls and does not appear in any test suites.", "business_intent": "It seems to be an unused or placeholder component without active business relevance at this time.", "keywords": ["unused", "orphan", "dead code", "no callers", "no tests"], "summary_hash": "c100f58b6af2", "cached_at": "2026-02-08T15:30:02+00:00"}

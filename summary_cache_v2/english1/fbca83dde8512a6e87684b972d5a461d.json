@@ -1,1 +1,0 @@
-{"summary": "The component is isolated with no callers, no callees, and is not exercised by tests, indicating it is currently unused.", "business_intent": "No active business logic is being invoked; the code serves no functional purpose in the present system.", "keywords": [], "summary_hash": "7c642037b136", "cached_at": "2026-02-08T15:12:31+00:00"}

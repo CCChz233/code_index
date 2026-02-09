@@ -1,1 +1,0 @@
-{"summary": "Represents an ACME resource, encapsulating its body data.", "business_intent": "Provide a domain object that holds the resource's payload for use in ACME services and API communication.", "keywords": ["resource", "body", "data model", "ACME", "entity", "encapsulation"], "summary_hash": "1467e1102067", "cached_at": "2026-02-08T16:38:36+00:00"}

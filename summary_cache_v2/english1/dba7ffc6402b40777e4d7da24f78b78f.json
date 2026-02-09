@@ -1,1 +1,0 @@
-{"summary": "Encapsulates an error condition indicating that a supplied parameter has an invalid value.", "business_intent": "Used to signal and handle validation failures for input parameters within business logic.", "keywords": ["exception", "validation", "parameter", "error handling", "invalid value"], "summary_hash": "e4f8d1206b86", "cached_at": "2026-02-09T08:05:37+00:00"}

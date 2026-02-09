@@ -1,1 +1,0 @@
-{"summary": "A standalone utility function that operates independently without being called by other code or invoking other functions.", "business_intent": "Execute a specific task in isolation, providing a self-contained piece of functionality.", "keywords": [], "summary_hash": "63783e12379e", "cached_at": "2026-02-08T05:48:47+00:00"}

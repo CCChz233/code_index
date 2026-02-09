@@ -1,1 +1,0 @@
-{"summary": "The function is defined but not referenced by any other code and has no associated tests.", "business_intent": "Provides a utility that is currently unused within the codebase.", "keywords": ["unused", "dead code", "no callers", "no tests"], "summary_hash": "d4274b2ac799", "cached_at": "2026-02-08T14:28:10+00:00"}

@@ -1,1 +1,0 @@
-{"summary": "The function has no callers and is not exercised by any tests, suggesting it may be dead code or an unused utility.", "business_intent": "Potentially a placeholder or deprecated functionality with no current business impact.", "keywords": ["unused", "dead code", "no callers", "not tested"], "summary_hash": "17925aa7c260", "cached_at": "2026-02-09T07:58:17+00:00"}

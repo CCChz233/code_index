@@ -1,1 +1,0 @@
-{"summary": "Encapsulates a lightweight thread that executes a helper routine.", "business_intent": "Enable asynchronous execution of a simple task within the application.", "keywords": ["thread", "asynchronous", "helper", "concurrency", "execute"], "summary_hash": "a9a60f4c7529", "cached_at": "2026-02-09T01:28:22+00:00"}

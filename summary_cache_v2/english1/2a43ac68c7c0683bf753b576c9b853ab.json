@@ -1,1 +1,0 @@
-{"summary": "The function is defined but not referenced by any other code and does not call other functions.", "business_intent": "It appears to be a utility or placeholder that is currently unused in the application.", "keywords": ["unused", "dead code", "standalone", "no callers", "no callees"], "summary_hash": "ee1528ed0659", "cached_at": "2026-02-09T06:05:31+00:00"}

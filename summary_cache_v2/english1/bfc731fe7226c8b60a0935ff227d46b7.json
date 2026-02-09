@@ -1,1 +1,0 @@
-{"summary": "No callers or callees are detected and the function is not exercised by tests, indicating it is currently unused.", "business_intent": "None (function appears to be orphaned or placeholder)", "keywords": [], "summary_hash": "26dd2c85dc75", "cached_at": "2026-02-09T05:26:36+00:00"}

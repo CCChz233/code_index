@@ -1,1 +1,0 @@
-{"summary": "A test suite class that provides unit tests for verifying the behavior of wildcard entity handling.", "business_intent": "Ensure that wildcard entities are correctly recognized, processed, and validated within the system.", "keywords": ["test", "wildcard", "entity", "validation", "unit test"], "summary_hash": "bd87348bfedc", "cached_at": "2026-02-08T19:10:02+00:00"}

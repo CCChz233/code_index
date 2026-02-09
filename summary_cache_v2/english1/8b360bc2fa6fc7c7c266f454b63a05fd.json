@@ -1,1 +1,0 @@
-{"summary": "A no‑operation collector used in test scenarios that deliberately returns no data.", "business_intent": "Provides a stub implementation to satisfy collector interfaces during testing without performing any collection logic.", "keywords": ["collector", "test", "no-op", "stub", "placeholder"], "summary_hash": "8500ac669078", "cached_at": "2026-02-08T17:27:27+00:00"}

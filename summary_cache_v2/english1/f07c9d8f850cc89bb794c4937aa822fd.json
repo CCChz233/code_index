@@ -1,1 +1,0 @@
-{"summary": "A standalone utility function that does not interact with other components, having no callers or callees.", "business_intent": "Encapsulate internal logic without external dependencies.", "keywords": ["utility", "standalone", "no external calls", "internal logic"], "summary_hash": "11f73a4bff29", "cached_at": "2026-02-08T14:06:54+00:00"}

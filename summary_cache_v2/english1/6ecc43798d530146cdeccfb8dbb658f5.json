@@ -1,1 +1,0 @@
-{"summary": "The component has no callers or callees and is not exercised by tests, indicating it is currently unused or a placeholder.", "business_intent": "No operational behavior; likely intended as a stub or future implementation.", "keywords": ["unused", "placeholder", "no-op", "dead code"], "summary_hash": "4dfbc069b4e7", "cached_at": "2026-02-08T09:44:01+00:00"}

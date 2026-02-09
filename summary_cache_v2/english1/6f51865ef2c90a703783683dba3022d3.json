@@ -1,1 +1,0 @@
-{"summary": "The module/function is currently isolated with no callers, no callees, and is not exercised by any tests.", "business_intent": "None (the code is not integrated into any workflow)", "keywords": ["unused", "orphan", "no-calls", "not-tested"], "summary_hash": "f4b5b2c3558f", "cached_at": "2026-02-08T21:05:25+00:00"}

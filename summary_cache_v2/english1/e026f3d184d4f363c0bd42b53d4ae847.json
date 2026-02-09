@@ -1,1 +1,0 @@
-{"summary": "The function is defined but never invoked, resulting in dead code with no observable business behavior.", "business_intent": "None (the code is unused and has no functional impact)", "keywords": ["dead code", "unused function", "no callers", "no side effects"], "summary_hash": "e0005de0ae12", "cached_at": "2026-02-08T06:23:00+00:00"}

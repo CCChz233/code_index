@@ -1,1 +1,0 @@
-{"summary": "The module has no callers or callees and is not covered by tests, indicating it is isolated or unused.", "business_intent": "No functional behavior is exercised; the code appears to be a placeholder or dead code.", "keywords": ["isolated", "unused", "no-calls", "untested"], "summary_hash": "dc06adc44bdd", "cached_at": "2026-02-08T14:24:54+00:00"}

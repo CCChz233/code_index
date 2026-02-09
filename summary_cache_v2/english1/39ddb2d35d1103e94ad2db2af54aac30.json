@@ -1,1 +1,0 @@
-{"summary": "A specialized exception class representing errors that occur while processing or validating aliases.", "business_intent": "Enable precise error handling and reporting for alias-related failures within the system.", "keywords": ["alias", "error", "exception", "validation", "naming", "handling"], "summary_hash": "597ccd266851", "cached_at": "2026-02-08T16:23:37+00:00"}

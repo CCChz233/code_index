@@ -1,1 +1,0 @@
-{"summary": "A test suite that validates the behavior of the serializer API's stream class.", "business_intent": "Ensure the serializer's streaming functionality operates correctly and meets expected specifications.", "keywords": ["serializer", "API", "stream", "unit test", "validation", "test suite"], "summary_hash": "c6956b1e9175", "cached_at": "2026-02-08T23:45:41+00:00"}

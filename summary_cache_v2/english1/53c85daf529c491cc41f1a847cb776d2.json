@@ -1,1 +1,0 @@
-{"summary": "The function is defined but not referenced by any other code and is not exercised by tests.", "business_intent": "No observable business behavior due to lack of usage; the function may be a placeholder or dead code.", "keywords": [], "summary_hash": "fe91d52aea4c", "cached_at": "2026-02-08T14:57:18+00:00"}

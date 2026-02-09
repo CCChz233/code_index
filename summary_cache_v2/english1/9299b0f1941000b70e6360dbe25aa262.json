@@ -1,1 +1,0 @@
-{"summary": "The module has no callers, no callees, and is not invoked by tests, indicating it is currently unused.", "business_intent": "Provides a standalone functionality that is not integrated into the system yet.", "keywords": ["standalone", "unused", "no-calls", "no-tests"], "summary_hash": "82ef765961eb", "cached_at": "2026-02-08T18:02:27+00:00"}

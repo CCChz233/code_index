@@ -1,1 +1,0 @@
-{"summary": "Provides functionality to retrieve an element from an array or list based on a specified index.", "business_intent": "Enable array indexing to obtain a single item for further processing or evaluation.", "keywords": ["array", "list", "indexing", "item retrieval", "evaluation", "helper"], "summary_hash": "dbaed2ec98db", "cached_at": "2026-02-09T09:22:17+00:00"}

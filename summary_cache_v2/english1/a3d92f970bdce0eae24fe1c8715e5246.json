@@ -1,1 +1,0 @@
-{"summary": "A test suite that validates the behavior of Lambda service permission handling.", "business_intent": "Ensure that AWS Lambda permissions are correctly set and enforced through automated tests.", "keywords": ["testing", "AWS Lambda", "service permission", "unit test", "permission validation"], "summary_hash": "96042b5e53c0", "cached_at": "2026-02-08T18:24:23+00:00"}

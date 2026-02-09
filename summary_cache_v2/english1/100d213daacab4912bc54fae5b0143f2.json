@@ -1,1 +1,0 @@
-{"summary": "The function is defined but never invoked within the codebase and is not exercised by any tests.", "business_intent": "Potential dead or placeholder code that may be removed or completed to serve a specific purpose.", "keywords": ["unused", "dead code", "orphan function", "refactor", "remove"], "summary_hash": "03c677e24302", "cached_at": "2026-02-09T02:39:46+00:00"}

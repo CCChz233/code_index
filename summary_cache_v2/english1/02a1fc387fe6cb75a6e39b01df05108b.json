@@ -1,1 +1,0 @@
-{"summary": "The code defines a function that is not referenced by any other part of the codebase and lacks test coverage.", "business_intent": "Serves as a potential utility or placeholder awaiting integration or implementation.", "keywords": ["unused", "orphan", "placeholder", "no callers", "no tests"], "summary_hash": "afedffda9dbe", "cached_at": "2026-02-08T05:43:55+00:00"}

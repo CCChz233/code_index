@@ -1,1 +1,0 @@
-{"summary": "Manages execution and validation of remote commands.", "business_intent": "Facilitates interaction with remote systems by sending commands and verifying target availability.", "keywords": ["remote", "command", "execution", "validation", "existence check"], "summary_hash": "ac966ef98e33", "cached_at": "2026-02-09T09:03:57+00:00"}

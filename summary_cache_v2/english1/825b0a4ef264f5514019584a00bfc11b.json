@@ -1,1 +1,0 @@
-{"summary": "The function is defined but never invoked, indicating it is currently unused or a placeholder.", "business_intent": "No active business behavior; the code exists without being called, possibly awaiting future implementation.", "keywords": ["unused", "dead code", "placeholder", "no calls"], "summary_hash": "c7b120006481", "cached_at": "2026-02-09T01:56:54+00:00"}

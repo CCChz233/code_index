@@ -1,1 +1,0 @@
-{"summary": "The function is defined but not referenced by any other code and is not exercised by tests.", "business_intent": "No observable business behavior can be inferred because the function is isolated and unused.", "keywords": [], "summary_hash": "9793e1cc2162", "cached_at": "2026-02-08T19:14:26+00:00"}

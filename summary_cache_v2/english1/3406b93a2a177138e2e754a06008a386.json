@@ -1,1 +1,0 @@
-{"summary": "The function is defined but not referenced by any other code or tests, making it an isolated piece of logic.", "business_intent": "It appears to be an unused utility or leftover code with no current business impact.", "keywords": ["unused", "orphan", "dead code", "isolated"], "summary_hash": "42bd1ad1a8f7", "cached_at": "2026-02-09T08:27:00+00:00"}

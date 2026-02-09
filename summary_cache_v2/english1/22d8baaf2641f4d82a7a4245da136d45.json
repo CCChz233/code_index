@@ -1,1 +1,0 @@
-{"summary": "Provides API helpers to retrieve the books associated with a user's account.", "business_intent": "Enable the application to fetch and display a user's personal book collection.", "keywords": ["account", "books", "user", "retrieve", "GET", "helper", "API", "library", "collection"], "summary_hash": "f7777baefc18", "cached_at": "2026-02-09T07:45:51+00:00"}

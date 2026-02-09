@@ -1,1 +1,0 @@
-{"summary": "Tests that an API token is invalidated after being used a second time in the plugin.", "business_intent": "Validate token expiration logic to prevent reuse and enhance security.", "keywords": ["API", "token", "expiration", "plugin", "test", "security", "invalidated", "reuse prevention"], "summary_hash": "87da4d67994c", "cached_at": "2026-02-08T18:47:00+00:00"}

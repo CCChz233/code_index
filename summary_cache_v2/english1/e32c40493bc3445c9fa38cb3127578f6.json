@@ -1,1 +1,0 @@
-{"summary": "The code segment is currently orphaned, with no callers, no callees, and not covered by tests.", "business_intent": "There is no active business logic associated with this component; it is effectively unused.", "keywords": ["orphan", "unused", "no callers", "no tests"], "summary_hash": "1024fa9204be", "cached_at": "2026-02-08T10:56:03+00:00"}

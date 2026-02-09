@@ -1,1 +1,0 @@
-{"summary": "A test utility class that supplies helper functionality for verifying root user behavior.", "business_intent": "Enable automated validation of root user features within the test suite.", "keywords": ["testing", "root user", "helper", "automation", "validation"], "summary_hash": "8b42e38e27bd", "cached_at": "2026-02-08T18:17:35+00:00"}

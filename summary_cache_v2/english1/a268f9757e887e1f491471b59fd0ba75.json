@@ -1,1 +1,0 @@
-{"summary": "The function is not referenced by any callers and is not exercised by tests, indicating it is currently unused.", "business_intent": "No active business functionality; the code appears dormant.", "keywords": [], "summary_hash": "4f4ad8c9df47", "cached_at": "2026-02-09T10:27:25+00:00"}

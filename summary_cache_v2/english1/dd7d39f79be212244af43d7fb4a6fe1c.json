@@ -1,1 +1,0 @@
-{"summary": "The component is not referenced by any other parts of the system and is not exercised by tests, indicating it is currently unused.", "business_intent": "No discernible business intent can be determined because the functionality is not invoked within the application.", "keywords": [], "summary_hash": "2e03b431eb6c", "cached_at": "2026-02-09T02:51:56+00:00"}

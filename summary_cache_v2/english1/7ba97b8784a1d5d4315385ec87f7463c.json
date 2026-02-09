@@ -1,1 +1,0 @@
-{"summary": "Custom exception class representing errors specific to Metaflow operations.", "business_intent": "Enable callers to catch and handle Metaflow-related failures distinctly from generic exceptions.", "keywords": ["exception", "custom", "Metaflow", "error handling", "workflow"], "summary_hash": "99170dc2f8b7", "cached_at": "2026-02-08T08:09:05+00:00"}

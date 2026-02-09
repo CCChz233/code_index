@@ -1,1 +1,0 @@
-{"summary": "A callable object that encapsulates the logic for dumping or serializing data when invoked.", "business_intent": "Enable reusable, on-demand data export to a target format or storage medium.", "keywords": ["callable", "serialization", "dump", "export", "function object"], "summary_hash": "971beed2c942", "cached_at": "2026-02-09T09:05:59+00:00"}

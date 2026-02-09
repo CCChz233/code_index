@@ -1,1 +1,0 @@
-{"summary": "The function appears to be unused within the codebase, with no callers and not exercised by tests.", "business_intent": "Potential dead code that may be removed or integrated if needed.", "keywords": ["dead code", "unused function", "refactor", "cleanup"], "summary_hash": "c20f7af412cb", "cached_at": "2026-02-08T18:35:29+00:00"}

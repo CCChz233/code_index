@@ -1,1 +1,0 @@
-{"summary": "Test suite for the EMR server mock, using Moto to simulate AWS EMR endpoints.", "business_intent": "Validate that the mocked EMR server correctly processes job flow description requests.", "keywords": ["EMR", "Moto", "mock server", "unit testing", "AWS", "describe job flows", "test suite"], "summary_hash": "820cd3329388", "cached_at": "2026-02-09T10:42:48+00:00"}

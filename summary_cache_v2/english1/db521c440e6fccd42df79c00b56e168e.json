@@ -1,1 +1,0 @@
-{"summary": "Provides unit tests to verify that a floating‑point field correctly validates input values.", "business_intent": "Ensures the reliability of float field validation logic within the application.", "keywords": ["float", "validation", "unit test", "field", "test helper", "data integrity"], "summary_hash": "5910e2f41e5e", "cached_at": "2026-02-08T23:07:57+00:00"}

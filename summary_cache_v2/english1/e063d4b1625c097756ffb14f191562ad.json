@@ -1,1 +1,0 @@
-{"summary": "The code unit has no callers, does not call other functions, and is not covered by tests, indicating it is currently unused.", "business_intent": "No active business purpose; appears to be a placeholder or dead code.", "keywords": [], "summary_hash": "67dfe90bdff1", "cached_at": "2026-02-08T11:11:38+00:00"}

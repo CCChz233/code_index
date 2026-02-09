@@ -1,1 +1,0 @@
-{"summary": "No callers or callees are detected, and the function is not exercised by tests, indicating it is currently unused.", "business_intent": "No business intent can be inferred from the available information.", "keywords": [], "summary_hash": "ad11183795d1", "cached_at": "2026-02-09T10:09:57+00:00"}

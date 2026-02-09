@@ -1,1 +1,0 @@
-{"summary": "A test suite for TCP-related functionality, providing setup and a basic test case.", "business_intent": "Validate that TCP components behave as expected during automated testing.", "keywords": ["unit test", "TCP", "setup", "test case", "validation"], "summary_hash": "50d7e5717772", "cached_at": "2026-02-09T01:03:36+00:00"}

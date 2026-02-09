@@ -1,1 +1,0 @@
-{"summary": "Provides a simple helper to perform HTTP GET requests for retrieving statistical data.", "business_intent": "Fetch statistical information from a remote service or API using a straightforward GET operation.", "keywords": ["GET", "HTTP", "statistics", "helper", "fetch", "data", "request"], "summary_hash": "386a64cf4eb4", "cached_at": "2026-02-09T07:33:50+00:00"}

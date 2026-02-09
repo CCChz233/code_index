@@ -1,1 +1,0 @@
-{"summary": "Provides simple helper functions used in unit tests for generating watershed masks.", "business_intent": "Facilitate testing of watershed mask generation logic in image processing workflows.", "keywords": ["testing", "helper", "watershed", "mask", "image segmentation", "unit test", "utility"], "summary_hash": "48ea32a2eb96", "cached_at": "2026-02-08T10:54:33+00:00"}

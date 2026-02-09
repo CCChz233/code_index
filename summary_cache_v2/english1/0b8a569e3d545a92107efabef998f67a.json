@@ -1,1 +1,0 @@
-{"summary": "A standalone utility function that is not invoked by any other code or tests.", "business_intent": "Offers internal helper functionality without external dependencies or integration points.", "keywords": ["utility", "helper", "standalone", "isolated", "internal"], "summary_hash": "536f5ea63402", "cached_at": "2026-02-08T05:38:26+00:00"}

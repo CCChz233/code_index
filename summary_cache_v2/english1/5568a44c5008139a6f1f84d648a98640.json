@@ -1,1 +1,0 @@
-{"summary": "Provides basic test utilities for verifying visualization event handling.", "business_intent": "Validate that visualization events are generated and processed correctly during development and quality assurance.", "keywords": ["testing", "visualization", "events", "helper", "basic"], "summary_hash": "7d4bddb34f77", "cached_at": "2026-02-09T01:28:41+00:00"}

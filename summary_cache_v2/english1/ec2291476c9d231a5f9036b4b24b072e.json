@@ -1,1 +1,0 @@
-{"summary": "The component has no callers, no callees, and is not invoked by tests, suggesting it is currently unused or isolated within the codebase.", "business_intent": "No active business functionality is exercised as the code is not referenced or tested.", "keywords": [], "summary_hash": "02343b8bf7b0", "cached_at": "2026-02-09T07:35:58+00:00"}

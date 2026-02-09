@@ -1,1 +1,0 @@
-{"summary": "Represents a specific child entity and provides a way to retrieve its canonical URL.", "business_intent": "Allows other parts of the system to reference the child object through a stable web address.", "keywords": ["model", "child entity", "URL generation", "absolute link", "web routing"], "summary_hash": "01cc5b6f4f3f", "cached_at": "2026-02-08T23:25:56+00:00"}

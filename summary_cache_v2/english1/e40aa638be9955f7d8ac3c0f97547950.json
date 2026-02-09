@@ -1,1 +1,0 @@
-{"summary": "Encapsulates an input document and manages its initialization process.", "business_intent": "Provide a ready-to-use document object for downstream processing pipelines.", "keywords": ["document", "input", "initialization", "data model", "processing", "helper"], "summary_hash": "97d5c01864df", "cached_at": "2026-02-08T05:35:55+00:00"}

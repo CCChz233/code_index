@@ -1,1 +1,0 @@
-{"summary": "A self-contained function that is not invoked by any other code and is not covered by automated tests.", "business_intent": "Provide a reusable utility operation that can be called manually when needed.", "keywords": ["utility", "standalone", "unused", "no callers", "not tested"], "summary_hash": "35f52b710c60", "cached_at": "2026-02-09T02:58:38+00:00"}

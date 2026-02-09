@@ -1,1 +1,0 @@
-{"summary": "No callers or callees are recorded for this function, and it is not exercised by tests.", "business_intent": "The function appears to be unused or orphaned, with no identified business purpose from the available data.", "keywords": ["unused", "orphan", "no calls", "isolated"], "summary_hash": "d887b822c011", "cached_at": "2026-02-08T16:35:31+00:00"}

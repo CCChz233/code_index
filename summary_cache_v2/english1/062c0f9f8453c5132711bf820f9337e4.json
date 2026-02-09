@@ -1,1 +1,0 @@
-{"summary": "The component is not referenced by any other parts of the system and is not exercised by tests, indicating it is currently unused.", "business_intent": "No observable business intent due to lack of invocation or testing.", "keywords": [], "summary_hash": "a1c949051e64", "cached_at": "2026-02-08T18:37:48+00:00"}

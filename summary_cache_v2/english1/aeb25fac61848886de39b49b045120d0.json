@@ -1,1 +1,0 @@
-{"summary": "The function is defined but not referenced or invoked anywhere in the codebase.", "business_intent": "Potential utility awaiting integration or removal as dead code.", "keywords": ["unused", "orphan", "dead code", "refactor", "unused function"], "summary_hash": "addb98b724bb", "cached_at": "2026-02-08T06:55:48+00:00"}

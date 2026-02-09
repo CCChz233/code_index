@@ -1,1 +1,0 @@
-{"summary": "Encapsulates a result path and provides methods to evaluate its associated body.", "business_intent": "Enables structured access and computation of result values within a workflow or data processing pipeline.", "keywords": ["result", "path", "evaluation", "helper", "pipeline"], "summary_hash": "2d136ce3cbbd", "cached_at": "2026-02-09T09:13:52+00:00"}

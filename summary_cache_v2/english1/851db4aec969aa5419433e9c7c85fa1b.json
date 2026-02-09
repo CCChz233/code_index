@@ -1,1 +1,0 @@
-{"summary": "The component defines functionality that is not referenced by any other code and is not exercised by automated tests.", "business_intent": "No active business purpose; the code appears to be dead or placeholder logic.", "keywords": ["unused", "dead code", "no callers", "not tested"], "summary_hash": "1ca9d97c7a06", "cached_at": "2026-02-09T01:53:31+00:00"}

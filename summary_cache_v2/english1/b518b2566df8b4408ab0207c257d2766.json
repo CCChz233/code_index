@@ -1,1 +1,0 @@
-{"summary": "The component is a standalone unit with no incoming or outgoing calls and is not exercised by tests.", "business_intent": "It appears to be unused code that may be safe to deprecate or remove.", "keywords": ["unused", "dead code", "no callers", "no callees", "unreferenced"], "summary_hash": "0029b4440b5d", "cached_at": "2026-02-08T09:45:14+00:00"}

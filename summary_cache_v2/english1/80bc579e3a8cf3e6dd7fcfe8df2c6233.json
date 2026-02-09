@@ -1,1 +1,0 @@
-{"summary": "The function is defined but never invoked and does not call any other functions.", "business_intent": "There is no observable business behavior; the code appears to be dead or unused.", "keywords": ["dead code", "unused", "no callers", "no callees", "orphan function"], "summary_hash": "e4589732bef0", "cached_at": "2026-02-08T15:32:48+00:00"}

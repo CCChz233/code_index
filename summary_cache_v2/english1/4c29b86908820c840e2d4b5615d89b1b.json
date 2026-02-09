@@ -1,1 +1,0 @@
-{"summary": "A self-contained piece of code that does not call or get called by any other components.", "business_intent": "Provides independent functionality without external dependencies.", "keywords": ["standalone", "self-contained", "no external calls"], "summary_hash": "a48011c08009", "cached_at": "2026-02-08T22:12:03+00:00"}

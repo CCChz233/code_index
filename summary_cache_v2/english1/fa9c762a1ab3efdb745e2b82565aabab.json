@@ -1,1 +1,0 @@
-{"summary": "The component has no external callers or callees and is not exercised by tests, indicating it may be unused or isolated.", "business_intent": "No business logic is currently invoked; the module appears dormant.", "keywords": ["unused", "isolated", "no callers", "no callees", "untested"], "summary_hash": "3a159f8a651e", "cached_at": "2026-02-08T16:10:41+00:00"}

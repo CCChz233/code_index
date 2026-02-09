@@ -1,1 +1,0 @@
-{"summary": "The code defines a component that is not invoked by any other part of the system and has no associated tests.", "business_intent": "Potential placeholder or unused functionality with no current business impact.", "keywords": ["unused", "dead code", "no callers", "no tests", "placeholder"], "summary_hash": "be46da53b05f", "cached_at": "2026-02-08T05:05:59+00:00"}

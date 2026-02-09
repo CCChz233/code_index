@@ -1,1 +1,0 @@
-{"summary": "The function is currently unused with no callers or callees, indicating it is not integrated into the application flow.", "business_intent": "None, as the function is not invoked anywhere and has no defined purpose in the current codebase.", "keywords": ["unused", "no callers", "no callees"], "summary_hash": "041fb2888588", "cached_at": "2026-02-08T21:45:01+00:00"}

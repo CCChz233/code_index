@@ -1,1 +1,0 @@
-{"summary": "The function has no callers and is not referenced in tests, indicating it is currently unused within the codebase.", "business_intent": "No active business functionality; the function appears to be orphaned or placeholder code.", "keywords": ["unused", "orphan", "no callers", "dead code"], "summary_hash": "a6b9b1f33099", "cached_at": "2026-02-08T22:52:56+00:00"}

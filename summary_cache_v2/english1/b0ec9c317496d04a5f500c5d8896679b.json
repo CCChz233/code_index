@@ -1,1 +1,0 @@
-{"summary": "Provides a GET endpoint that returns a simple response for displaying BWB information.", "business_intent": "Expose a read‑only API to retrieve BWB data for client applications.", "keywords": ["GET", "endpoint", "read‑only", "API", "BWB", "display"], "summary_hash": "e6e56ca97a59", "cached_at": "2026-02-09T07:34:01+00:00"}

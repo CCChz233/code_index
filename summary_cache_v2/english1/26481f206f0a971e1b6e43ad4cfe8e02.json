@@ -1,1 +1,0 @@
-{"summary": "Utility class offering simple helper functions to support testing of alias application.", "business_intent": "Facilitate unit tests that verify alias behavior by providing reusable helper methods.", "keywords": ["testing", "alias", "helper", "utility", "unit test"], "summary_hash": "b95a52313e81", "cached_at": "2026-02-08T11:03:38+00:00"}

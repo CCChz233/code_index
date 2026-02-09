@@ -1,1 +1,0 @@
-{"summary": "A custom exception type that signals failures occurring during data export operations.", "business_intent": "Enable precise detection and handling of export-related errors by providing a dedicated exception class.", "keywords": ["export", "error", "exception", "failure", "handling"], "summary_hash": "b80cf2d865d1", "cached_at": "2026-02-09T01:18:39+00:00"}

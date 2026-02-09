@@ -1,1 +1,0 @@
-{"summary": "The function is not referenced by any other code or tests, indicating it is currently unused.", "business_intent": "Identify and handle dead or orphan code that may need removal or integration into the application.", "keywords": ["unused", "orphan", "dead code", "refactoring", "code cleanup"], "summary_hash": "4d042184ce64", "cached_at": "2026-02-08T16:02:59+00:00"}

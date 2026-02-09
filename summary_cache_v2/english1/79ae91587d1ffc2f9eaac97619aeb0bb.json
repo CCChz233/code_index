@@ -1,1 +1,0 @@
-{"summary": "A test suite that validates the behavior of a JSON file cache when using key prefixes.", "business_intent": "Ensure that cached entries are correctly stored, retrieved, and isolated based on their prefixes.", "keywords": ["testing", "json", "file cache", "prefix", "keys", "unit test"], "summary_hash": "963b4d0c31e9", "cached_at": "2026-02-08T17:24:25+00:00"}

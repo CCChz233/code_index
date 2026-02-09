@@ -1,1 +1,0 @@
-{"summary": "The code defines a function or module that currently has no callers and is not exercised by any tests.", "business_intent": "Provide a utility or feature that is currently unused within the codebase.", "keywords": ["unused", "no callers", "uncovered", "potential utility", "dead code"], "summary_hash": "c7e66eafe5af", "cached_at": "2026-02-08T10:25:10+00:00"}

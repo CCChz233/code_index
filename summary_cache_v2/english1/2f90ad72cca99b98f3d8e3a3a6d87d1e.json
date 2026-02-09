@@ -1,1 +1,0 @@
-{"summary": "Utility class that encapsulates a simple helper for performing HTTP GET requests.", "business_intent": "Facilitate making GET calls to external services or APIs in a streamlined manner.", "keywords": ["GET", "HTTP", "request", "helper", "utility", "network"], "summary_hash": "bfebb6eb2b4e", "cached_at": "2026-02-09T07:39:00+00:00"}

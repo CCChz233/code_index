@@ -1,1 +1,0 @@
-{"summary": "Provides helper functions for creating and managing mock objects used in tests.", "business_intent": "Enable developers to simplify test setup by supplying reusable mock utilities within a plugin architecture.", "keywords": ["testing", "mock", "helper", "plugin", "utility", "test setup"], "summary_hash": "8f7586ae1d2c", "cached_at": "2026-02-08T15:37:24+00:00"}

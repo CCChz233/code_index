@@ -1,1 +1,0 @@
-{"summary": "Encapsulates an encoded piece of data and provides a simple accessor to retrieve that value.", "business_intent": "Expose stored encoded information to callers that need to read or further process the data.", "keywords": ["encoded", "value", "accessor", "helper", "retrieval"], "summary_hash": "84f939f36cbb", "cached_at": "2026-02-09T00:58:18+00:00"}

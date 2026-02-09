@@ -1,1 +1,0 @@
-{"summary": "Provides a simple GET helper to retrieve loan information for an account.", "business_intent": "Allows clients to fetch loan details associated with a user's account from an external service or API.", "keywords": ["account", "loan", "retrieve", "GET", "API", "helper"], "summary_hash": "4471734e57f5", "cached_at": "2026-02-09T07:45:56+00:00"}

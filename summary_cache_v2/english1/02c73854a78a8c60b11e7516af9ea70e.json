@@ -1,1 +1,0 @@
-{"summary": "Encapsulates a GraphQL API key, offering storage, JSON serialization, and mutable updates.", "business_intent": "Manage and persist authentication credentials for GraphQL services.", "keywords": ["graphql", "api key", "authentication", "serialization", "update", "configuration"], "summary_hash": "2e6eb02afce8", "cached_at": "2026-02-09T07:46:50+00:00"}

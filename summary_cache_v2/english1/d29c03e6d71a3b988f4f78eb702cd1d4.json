@@ -1,1 +1,0 @@
-{"summary": "The function is isolated with no callers, no callees, and is not exercised by tests, indicating it is currently unused within the codebase.", "business_intent": "No discernible business intent can be determined as the function is not integrated or invoked.", "keywords": [], "summary_hash": "01e183bc9274", "cached_at": "2026-02-08T20:10:56+00:00"}

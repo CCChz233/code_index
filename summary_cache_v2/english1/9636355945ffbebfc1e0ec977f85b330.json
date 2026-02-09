@@ -1,1 +1,0 @@
-{"summary": "Represents a component responsible for constructing or compiling source code into executable artifacts.", "business_intent": "Automate the code compilation/build process within a development or CI/CD pipeline.", "keywords": ["build", "compile", "code generation", "automation", "CI/CD"], "summary_hash": "2cd3968a6af2", "cached_at": "2026-02-09T07:32:34+00:00"}

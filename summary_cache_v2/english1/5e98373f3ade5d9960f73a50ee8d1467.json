@@ -1,1 +1,0 @@
-{"summary": "The function is defined but not referenced anywhere in the codebase.", "business_intent": "No business intent can be determined as the function has no callers and is not used by tests.", "keywords": ["unused", "orphan function", "no callers", "no callees"], "summary_hash": "a1e6803df3ca", "cached_at": "2026-02-08T06:45:49+00:00"}

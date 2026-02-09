@@ -1,1 +1,0 @@
-{"summary": "Encapsulates simple helper functionality, exposing a method that takes a numeric argument and returns a derived value.", "business_intent": "Supply lightweight utility operations for basic numeric processing.", "keywords": ["helper", "utility", "numeric", "simple", "method"], "summary_hash": "0b572a5a5577", "cached_at": "2026-02-08T20:33:25+00:00"}

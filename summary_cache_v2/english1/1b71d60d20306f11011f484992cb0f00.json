@@ -1,1 +1,0 @@
-{"summary": "Exception class that signals a tag key exceeds the permitted length.", "business_intent": "Used to enforce tag key size constraints and notify callers when a tag key is too large.", "keywords": ["exception", "validation", "tag", "key length", "limit", "error handling"], "summary_hash": "469cd2f56559", "cached_at": "2026-02-09T07:52:25+00:00"}

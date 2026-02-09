@@ -1,1 +1,0 @@
-{"summary": "The function is defined but not referenced anywhere and has no callers or callees.", "business_intent": "Provides a placeholder or stub that currently has no effect within the application.", "keywords": ["placeholder", "unused", "no-op", "stub", "dead code"], "summary_hash": "e95eafefbed8", "cached_at": "2026-02-09T01:40:05+00:00"}

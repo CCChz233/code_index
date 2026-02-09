@@ -1,1 +1,0 @@
-{"summary": "Represents an exception raised when the server connection is lost.", "business_intent": "Enable callers to detect and handle server disconnection scenarios in networked applications.", "keywords": ["server", "disconnected", "error", "exception", "network", "connection loss", "handling"], "summary_hash": "feb482632f3d", "cached_at": "2026-02-08T15:58:22+00:00"}

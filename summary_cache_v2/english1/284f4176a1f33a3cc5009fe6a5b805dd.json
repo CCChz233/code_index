@@ -1,1 +1,0 @@
-{"summary": "The component is a standalone unit with no external calls or being called, indicating isolated functionality.", "business_intent": "Provide internal processing without external dependencies.", "keywords": ["isolated", "standalone", "no dependencies", "utility"], "summary_hash": "79eb6089b52e", "cached_at": "2026-02-09T09:12:51+00:00"}

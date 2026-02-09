@@ -1,1 +1,0 @@
-{"summary": "A lightweight class that encapsulates data and offers a simple helper method for testing purposes.", "business_intent": "Expose stored data through a getter and provide a basic utility for test scenarios.", "keywords": ["data getter", "test helper", "utility", "simple test", "encapsulation"], "summary_hash": "bc31042b0247", "cached_at": "2026-02-08T09:27:30+00:00"}

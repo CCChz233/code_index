@@ -1,1 +1,0 @@
-{"summary": "The code element has no callers, no callees, and is not exercised by tests, indicating it is currently unused.", "business_intent": "No business intent can be determined from the available information.", "keywords": ["unused", "orphan"], "summary_hash": "09115bb1a9d5", "cached_at": "2026-02-08T22:08:06+00:00"}

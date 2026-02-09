@@ -1,1 +1,0 @@
-{"summary": "Test suite that validates the deletion functionality of a resource.", "business_intent": "Confirm that the delete operation correctly removes the target resource and behaves as expected in the system.", "keywords": ["delete", "resource", "test", "validation", "API"], "summary_hash": "d7a59ac28bd1", "cached_at": "2026-02-08T19:11:06+00:00"}

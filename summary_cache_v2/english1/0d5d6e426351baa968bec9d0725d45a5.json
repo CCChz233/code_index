@@ -1,1 +1,0 @@
-{"summary": "The code element has no callers or callees and is not exercised by tests, indicating it is currently unused.", "business_intent": "No observable business intent due to lack of usage.", "keywords": ["unused", "orphan", "dead code"], "summary_hash": "da877f2eaf80", "cached_at": "2026-02-08T05:50:33+00:00"}

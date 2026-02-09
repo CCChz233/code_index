@@ -1,1 +1,0 @@
-{"summary": "The component defines a function that is never invoked and is not covered by any tests.", "business_intent": "Serves as a placeholder or legacy code with no current impact on the application's behavior.", "keywords": ["unused", "dead code", "placeholder", "no callers", "not tested"], "summary_hash": "9e10c09745a6", "cached_at": "2026-02-08T17:45:11+00:00"}

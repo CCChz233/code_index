@@ -1,1 +1,0 @@
-{"summary": "The function is not called by any other code and is not exercised by tests, so its purpose cannot be determined from the available information.", "business_intent": "No business intent identified", "keywords": [], "summary_hash": "91d66d1ef88d", "cached_at": "2026-02-08T16:22:07+00:00"}

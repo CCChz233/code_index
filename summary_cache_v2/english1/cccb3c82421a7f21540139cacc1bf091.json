@@ -1,1 +1,0 @@
-{"summary": "The function is defined but not invoked anywhere and does not call other functions.", "business_intent": "Currently unused; likely intended as a helper or placeholder for future functionality.", "keywords": ["unused", "placeholder", "no external calls", "no internal calls"], "summary_hash": "d1b2c3d30d2e", "cached_at": "2026-02-08T22:15:25+00:00"}

@@ -1,1 +1,0 @@
-{"summary": "A utility class that groups simple helper functionality for reuse across the codebase.", "business_intent": "Offer concise, reusable helper methods to streamline common operations and reduce duplication.", "keywords": ["helper", "utility", "simple", "reusable", "function"], "summary_hash": "a4e9fa1ed394", "cached_at": "2026-02-08T20:36:01+00:00"}

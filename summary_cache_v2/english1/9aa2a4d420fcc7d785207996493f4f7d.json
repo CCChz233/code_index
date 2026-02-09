@@ -1,1 +1,0 @@
-{"summary": "No callers or callees are recorded for this component, and it is not exercised by tests.", "business_intent": "The purpose of the component cannot be determined from usage data; it appears to be unused or isolated.", "keywords": ["unused", "orphan", "standalone", "no-usage"], "summary_hash": "cf6b3fb4ae40", "cached_at": "2026-02-08T22:26:18+00:00"}

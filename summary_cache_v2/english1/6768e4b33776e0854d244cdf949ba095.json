@@ -1,1 +1,0 @@
-{"summary": "This function is a standalone utility that is not invoked by any other code and has no associated unit tests.", "business_intent": "Provide a specific operation or calculation without external dependencies.", "keywords": ["utility", "standalone", "unused", "untested"], "summary_hash": "bb19d667f8c4", "cached_at": "2026-02-08T07:06:47+00:00"}

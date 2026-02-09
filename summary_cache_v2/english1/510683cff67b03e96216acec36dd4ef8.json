@@ -1,1 +1,0 @@
-{"summary": "No callers or callees are detected for this component, indicating it is currently unused within the codebase.", "business_intent": "The function appears to be orphaned or placeholder code without an active role in the application logic.", "keywords": ["unused", "orphan", "dead code"], "summary_hash": "c49667d282c5", "cached_at": "2026-02-08T06:25:42+00:00"}

@@ -1,1 +1,0 @@
-{"summary": "A standalone function that is not invoked by any other code and has no external callers.", "business_intent": "Provides an internal utility that is currently unused within the system.", "keywords": ["utility", "standalone", "unused", "internal"], "summary_hash": "dee11f0c9749", "cached_at": "2026-02-08T16:37:13+00:00"}

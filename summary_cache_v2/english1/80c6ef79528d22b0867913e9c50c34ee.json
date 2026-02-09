@@ -1,1 +1,0 @@
-{"summary": "Utility class that offers a simple helper for testing name-value pairs in unit tests.", "business_intent": "Facilitate verification of expected names and corresponding values during automated testing.", "keywords": ["testing", "helper", "name-value", "verification", "utility"], "summary_hash": "4d40ee6d0fc5", "cached_at": "2026-02-09T09:32:51+00:00"}

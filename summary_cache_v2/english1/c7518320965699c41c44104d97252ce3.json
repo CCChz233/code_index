@@ -1,1 +1,0 @@
-{"summary": "The component has no callers, no callees, and is not covered by any tests, indicating it is currently unused within the codebase.", "business_intent": "Identify and possibly remove or implement the unused functionality.", "keywords": ["unused", "orphan", "no tests", "dead code"], "summary_hash": "e8ef751befea", "cached_at": "2026-02-08T05:37:57+00:00"}

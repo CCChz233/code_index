@@ -1,1 +1,0 @@
-{"summary": "The code is a standalone component with no callers, no callees, and is not exercised by any tests.", "business_intent": "Provides a specific utility or functionality that is currently unused within the codebase.", "keywords": ["standalone", "unused", "no callers", "no callees", "not tested"], "summary_hash": "aa1d18812fc6", "cached_at": "2026-02-09T07:27:49+00:00"}

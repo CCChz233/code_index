@@ -1,1 +1,0 @@
-{"summary": "A custom exception that indicates a failure when pushing a Docker image to a registry.", "business_intent": "Allows calling code to detect and handle Docker image push failures in a structured way.", "keywords": ["Docker", "image", "push", "error", "exception", "failure", "registry"], "summary_hash": "1d2e138eb31b", "cached_at": "2026-02-08T12:29:35+00:00"}

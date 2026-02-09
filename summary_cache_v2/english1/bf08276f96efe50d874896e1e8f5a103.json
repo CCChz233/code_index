@@ -1,1 +1,0 @@
-{"summary": "Provides a helper to asynchronously terminate resources, ensuring proper cleanup.", "business_intent": "Enable graceful shutdown of components by offering a simple asynchronous close operation.", "keywords": ["async", "resource cleanup", "shutdown", "termination", "helper"], "summary_hash": "32e38ed764f5", "cached_at": "2026-02-08T12:39:16+00:00"}

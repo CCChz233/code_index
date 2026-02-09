@@ -1,1 +1,0 @@
-{"summary": "Provides utility functions used in tests for Django template tag implementations.", "business_intent": "Facilitates unit testing of custom template tags by offering simple helper behavior.", "keywords": ["Django", "template", "testing", "helper", "utility"], "summary_hash": "e22e90091ceb", "cached_at": "2026-02-09T01:28:32+00:00"}

@@ -1,1 +1,0 @@
-{"summary": "A lightweight utility class that groups simple helper functions for internal use.", "business_intent": "Provide reusable, low‑complexity helper operations to support other components without exposing implementation details.", "keywords": ["helper", "utility", "simple", "support", "reusable"], "summary_hash": "daacb49940a7", "cached_at": "2026-02-08T20:27:31+00:00"}

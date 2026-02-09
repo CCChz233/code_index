@@ -1,1 +1,0 @@
-{"summary": "Provides functionality to retrieve lending statistics through a simple GET helper method.", "business_intent": "Expose lending statistical data to callers, enabling them to query current lending metrics.", "keywords": ["lending", "statistics", "GET", "helper", "data retrieval", "API"], "summary_hash": "9d4f8b7bed53", "cached_at": "2026-02-09T07:33:52+00:00"}

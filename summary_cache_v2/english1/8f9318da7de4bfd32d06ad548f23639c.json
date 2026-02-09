@@ -1,1 +1,0 @@
-{"summary": "The component is a self-contained unit with no external callers or callees and is not exercised by tests.", "business_intent": "Provides isolated functionality without integration or external interaction.", "keywords": ["isolated", "standalone", "no external calls", "untested"], "summary_hash": "698435eb6b53", "cached_at": "2026-02-08T05:33:16+00:00"}

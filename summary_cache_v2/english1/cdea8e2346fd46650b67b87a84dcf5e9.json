@@ -1,1 +1,0 @@
-{"summary": "The component appears to be an unused placeholder with no callers, no callees, and is not exercised by tests.", "business_intent": "No functional business logic; likely intended as a stub or future implementation.", "keywords": ["placeholder", "unused", "no-op", "stub", "unimplemented"], "summary_hash": "19d0ebd1a1bd", "cached_at": "2026-02-09T02:41:49+00:00"}

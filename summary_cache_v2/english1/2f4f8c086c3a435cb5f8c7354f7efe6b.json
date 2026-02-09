@@ -1,1 +1,0 @@
-{"summary": "Processes user intents for adding items to a list, providing asynchronous handling of the request.", "business_intent": "Enable users to add new entries to their lists via natural language commands.", "keywords": ["add", "item", "intent", "asynchronous", "handler", "list management"], "summary_hash": "addef779cca7", "cached_at": "2026-02-09T03:52:54+00:00"}

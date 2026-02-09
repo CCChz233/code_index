@@ -1,1 +1,0 @@
-{"summary": "The code is currently not invoked by any other components and is not exercised by automated tests, indicating it may be dead or unused functionality.", "business_intent": "No active business purpose; appears to be dead code.", "keywords": ["unused", "dead code", "no callers", "no tests"], "summary_hash": "8188cbd82fdd", "cached_at": "2026-02-09T03:17:29+00:00"}

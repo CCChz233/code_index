@@ -1,1 +1,0 @@
-{"summary": "A lightweight class that defines a custom string representation for its instances.", "business_intent": "Enable clear, human‑readable output of the object for logging, debugging, or display purposes.", "keywords": ["string representation", "__str__", "object display", "debugging", "logging"], "summary_hash": "94ab8b7df3e0", "cached_at": "2026-02-08T23:50:36+00:00"}

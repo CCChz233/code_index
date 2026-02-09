@@ -1,1 +1,0 @@
-{"summary": "The function is defined but never invoked within the codebase, indicating it is currently unused or a placeholder.", "business_intent": "Potential future utility or leftover code without current business impact.", "keywords": ["unused", "dead code", "placeholder", "orphan function"], "summary_hash": "e26804a79f39", "cached_at": "2026-02-09T08:55:11+00:00"}

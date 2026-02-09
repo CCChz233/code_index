@@ -1,1 +1,0 @@
-{"summary": "The function has no callers or callees and is not referenced by tests, indicating it is currently unused.", "business_intent": "No active business behavior; the function appears to be dead code or placeholder.", "keywords": [], "summary_hash": "76e61da4721c", "cached_at": "2026-02-09T01:19:22+00:00"}

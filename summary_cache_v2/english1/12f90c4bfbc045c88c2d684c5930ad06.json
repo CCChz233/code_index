@@ -1,1 +1,0 @@
-{"summary": "No callers or callees detected; the function appears unused in the current codebase.", "business_intent": "None (function is not invoked and has no observable behavior)", "keywords": [], "summary_hash": "afc3f961de88", "cached_at": "2026-02-08T22:41:10+00:00"}

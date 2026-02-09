@@ -1,1 +1,0 @@
-{"summary": "A test case class that provides a simple helper test to validate basic behavior.", "business_intent": "To serve as a lightweight unit test ensuring core functionality works as expected within the Zimple codebase.", "keywords": ["unit testing", "test case", "helper", "validation", "zimple"], "summary_hash": "cdf949e31a07", "cached_at": "2026-02-08T23:26:56+00:00"}

@@ -1,1 +1,0 @@
-{"summary": "The component is defined but never invoked within the codebase, indicating it is currently unused.", "business_intent": "Potential placeholder or deprecated functionality with no active role in the application.", "keywords": ["unused", "dead code", "orphan", "placeholder", "no callers"], "summary_hash": "2b81b28ed9a4", "cached_at": "2026-02-09T02:01:24+00:00"}

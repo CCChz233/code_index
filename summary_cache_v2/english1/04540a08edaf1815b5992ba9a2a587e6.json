@@ -1,1 +1,0 @@
-{"summary": "Provides a simple helper method to populate data or state, typically used in testing scenarios.", "business_intent": "Facilitate test setup by generating or inserting required data structures.", "keywords": ["test", "helper", "populate", "data", "setup"], "summary_hash": "de7faa5b249c", "cached_at": "2026-02-09T01:05:54+00:00"}

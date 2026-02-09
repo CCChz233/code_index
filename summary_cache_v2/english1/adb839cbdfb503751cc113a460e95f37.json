@@ -1,1 +1,0 @@
-{"summary": "Represents a collection of payload elements and provides evaluation of its body.", "business_intent": "Facilitates handling and processing of grouped payload data within an application.", "keywords": ["payload", "array", "collection", "evaluation", "helper"], "summary_hash": "69c746c3e8bf", "cached_at": "2026-02-09T09:15:29+00:00"}

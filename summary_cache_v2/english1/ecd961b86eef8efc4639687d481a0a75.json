@@ -1,1 +1,0 @@
-{"summary": "Provides a simple helper value for use throughout the application.", "business_intent": "Expose a reusable utility value to simplify other components' logic.", "keywords": ["helper", "utility", "value", "simple", "accessor", "constant"], "summary_hash": "1e0a35a550f0", "cached_at": "2026-02-08T06:03:51+00:00"}

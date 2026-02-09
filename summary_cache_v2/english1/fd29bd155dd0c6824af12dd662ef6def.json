@@ -1,1 +1,0 @@
-{"summary": "The component is not invoked by any other parts of the system and does not invoke any external functionality.", "business_intent": "No active business behavior; the code appears to be dead or placeholder logic.", "keywords": ["unused", "dead code", "no calls", "inactive", "placeholder"], "summary_hash": "523b3c35d8a6", "cached_at": "2026-02-08T06:11:54+00:00"}

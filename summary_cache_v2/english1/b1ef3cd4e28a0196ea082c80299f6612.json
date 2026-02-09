@@ -1,1 +1,0 @@
-{"summary": "The function has no callers, does not invoke other functions, and is not exercised by any tests.", "business_intent": "Standalone utility with no current integration, likely intended for isolated use or future implementation.", "keywords": ["unused", "isolated", "no-dependencies", "no-tests"], "summary_hash": "a9041df8b926", "cached_at": "2026-02-08T06:13:51+00:00"}

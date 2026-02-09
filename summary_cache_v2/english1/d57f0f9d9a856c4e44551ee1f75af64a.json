@@ -1,1 +1,0 @@
-{"summary": "The code unit has no callers, no callees, and is not invoked by any tests, indicating it is isolated with no observable external behavior.", "business_intent": "No functional intent can be determined due to lack of interactions; the component appears unused.", "keywords": [], "summary_hash": "e1ecbd5bc8a8", "cached_at": "2026-02-08T20:59:13+00:00"}

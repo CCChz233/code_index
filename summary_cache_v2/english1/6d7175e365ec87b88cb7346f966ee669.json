@@ -1,1 +1,0 @@
-{"summary": "The component is currently unused; it has no callers, does not invoke other components, and is not exercised by any tests.", "business_intent": "No functional role identified due to lack of usage.", "keywords": ["unused", "orphan", "no dependencies", "no tests"], "summary_hash": "e012e5823573", "cached_at": "2026-02-08T06:44:42+00:00"}

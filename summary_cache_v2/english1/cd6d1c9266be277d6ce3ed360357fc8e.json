@@ -1,1 +1,0 @@
-{"summary": "The function is not referenced by any other code and is not exercised by tests, indicating it may be dead code or a placeholder.", "business_intent": "No active business behavior; possibly an unused utility or stub.", "keywords": ["unused", "dead code", "placeholder"], "summary_hash": "e2b142b5e488", "cached_at": "2026-02-09T03:46:02+00:00"}

@@ -1,1 +1,0 @@
-{"summary": "Manages a collection of workspace objects using a last‑in‑first‑out ordering.", "business_intent": "Provide push, pop, and peek operations to track active workspaces within an application.", "keywords": ["stack", "workspace management", "LIFO", "collection", "state tracking"], "summary_hash": "a509e8b942b3", "cached_at": "2026-02-08T16:49:54+00:00"}

@@ -1,1 +1,0 @@
-{"summary": "Implements a custom string representation for the class instances.", "business_intent": "Facilitates readable output of object state for debugging, logging, or user display.", "keywords": ["string representation", "debugging", "logging", "object display", "__str__"], "summary_hash": "303843cdbe11", "cached_at": "2026-02-08T23:12:06+00:00"}

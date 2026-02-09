@@ -1,1 +1,0 @@
-{"summary": "The function is not referenced by any other code and is not exercised by tests, indicating it is currently unused.", "business_intent": "No observable business behavior can be determined because the function has no callers and lacks test coverage.", "keywords": [], "summary_hash": "a18dd6e35d05", "cached_at": "2026-02-09T08:32:49+00:00"}

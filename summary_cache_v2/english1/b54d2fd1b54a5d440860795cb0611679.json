@@ -1,1 +1,0 @@
-{"summary": "The component is isolated with no callers or callees and is not exercised by tests.", "business_intent": "Provides a standalone utility that is currently unused within the codebase.", "keywords": ["unused", "orphan", "dead code", "isolated", "no tests"], "summary_hash": "3cd2a9b3e51f", "cached_at": "2026-02-08T06:37:33+00:00"}

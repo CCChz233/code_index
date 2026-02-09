@@ -1,1 +1,0 @@
-{"summary": "Represents a neural network model with basic initialization and a forward pass helper.", "business_intent": "Enable creation and execution of a simple neural network for inference or training tasks.", "keywords": ["neural network", "model", "initialization", "forward pass", "deep learning"], "summary_hash": "9ac82a2affe7", "cached_at": "2026-02-08T08:08:58+00:00"}

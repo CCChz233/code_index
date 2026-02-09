@@ -1,1 +1,0 @@
-{"summary": "Provides automated tests that verify backup vaults are correctly encrypted and function as intended.", "business_intent": "Validate encryption compliance and reliability of backup storage solutions.", "keywords": ["backup", "vault", "encryption", "test", "validation", "security"], "summary_hash": "0275f2af98e7", "cached_at": "2026-02-08T18:23:06+00:00"}

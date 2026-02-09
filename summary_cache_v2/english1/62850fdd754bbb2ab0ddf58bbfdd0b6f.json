@@ -1,1 +1,0 @@
-{"summary": "The component has no incoming or outgoing calls, indicating it is currently unused or isolated.", "business_intent": "No business logic is exercised; the code may be dead, a placeholder, or awaiting integration.", "keywords": ["unused", "dead code", "no callers", "no callees", "isolated"], "summary_hash": "9ec1ee4f9541", "cached_at": "2026-02-08T19:04:52+00:00"}

@@ -1,1 +1,0 @@
-{"summary": "The function is isolated with no callers or callees and is not exercised by any tests.", "business_intent": "Provides a self-contained utility or placeholder behavior without interacting with other components.", "keywords": ["standalone", "utility", "unused", "no external calls", "not tested"], "summary_hash": "10ba91f430a1", "cached_at": "2026-02-08T08:03:17+00:00"}

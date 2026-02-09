@@ -1,1 +1,0 @@
-{"summary": "A test suite that verifies the correct counting of blocked documents using helper methods.", "business_intent": "Validate that the system accurately counts documents that have been blocked.", "keywords": ["test", "count", "block", "documents", "verification", "helper"], "summary_hash": "1128f2e61c40", "cached_at": "2026-02-08T12:05:01+00:00"}

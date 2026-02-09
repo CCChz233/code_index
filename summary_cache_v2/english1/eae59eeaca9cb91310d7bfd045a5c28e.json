@@ -1,1 +1,0 @@
-{"summary": "Represents a purchase order, encapsulating its attributes and providing a string representation.", "business_intent": "Model an order within a commerce system to track items, quantities, pricing, and status.", "keywords": ["order", "e-commerce", "entity", "model", "string representation"], "summary_hash": "0f35055673aa", "cached_at": "2026-02-08T23:51:00+00:00"}

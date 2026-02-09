@@ -1,1 +1,0 @@
-{"summary": "The component has no callers, no callees, and is not covered by tests, indicating it is currently isolated and its purpose is unclear.", "business_intent": "Unable to determine the business intent due to lack of usage and test information.", "keywords": ["isolated", "unused", "no tests"], "summary_hash": "4808acf26277", "cached_at": "2026-02-08T15:24:01+00:00"}

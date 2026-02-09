@@ -1,1 +1,0 @@
-{"summary": "The function is isolated with no callers or callees, indicating it is not integrated into the application flow.", "business_intent": "Provides a standalone capability that is currently unused within the system.", "keywords": ["unused", "orphan", "dead code", "no dependencies"], "summary_hash": "5c115051c8a2", "cached_at": "2026-02-08T18:01:12+00:00"}

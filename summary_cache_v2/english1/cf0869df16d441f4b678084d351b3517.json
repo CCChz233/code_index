@@ -1,1 +1,0 @@
-{"summary": "The function is defined but not invoked anywhere in the codebase and has no external dependencies.", "business_intent": "Currently unused; may be intended for future functionality or as a utility component.", "keywords": ["unused", "standalone", "placeholder", "no callers", "no callees"], "summary_hash": "80f07d31f28c", "cached_at": "2026-02-09T02:34:07+00:00"}

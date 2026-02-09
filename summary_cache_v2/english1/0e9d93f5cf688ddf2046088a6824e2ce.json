@@ -1,1 +1,0 @@
-{"summary": "The function is not called by any other code and does not invoke other functions; it is also not exercised by automated tests.", "business_intent": "No active business purpose detected; appears to be unused or placeholder code.", "keywords": [], "summary_hash": "cea8826b168b", "cached_at": "2026-02-08T07:28:09+00:00"}

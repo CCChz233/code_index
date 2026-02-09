@@ -1,1 +1,0 @@
-{"summary": "The component is isolated with no callers, no callees, and is not exercised by tests.", "business_intent": "Provides a self‑contained functionality that is currently not integrated into the application flow.", "keywords": ["isolated", "unused", "standalone", "no dependencies", "not tested"], "summary_hash": "038a376d9dfb", "cached_at": "2026-02-09T07:01:32+00:00"}

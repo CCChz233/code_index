@@ -1,1 +1,0 @@
-{"summary": "No callers or callees are recorded for this function, and it is not exercised by tests.", "business_intent": "The purpose of the function cannot be inferred from usage; it may be a standalone utility or dead code.", "keywords": ["unused", "orphan", "utility", "no-usage"], "summary_hash": "4e2206357fd8", "cached_at": "2026-02-09T01:00:55+00:00"}

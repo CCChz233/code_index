@@ -1,1 +1,0 @@
-{"summary": "No code context is available; the function appears to have no callers or callees and is not exercised by tests.", "business_intent": "Potentially an unused or placeholder utility with no current business impact.", "keywords": ["unused", "dead code", "no callers", "no tests"], "summary_hash": "55adc6754fdf", "cached_at": "2026-02-08T18:06:48+00:00"}

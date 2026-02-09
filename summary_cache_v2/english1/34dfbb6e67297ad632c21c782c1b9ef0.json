@@ -1,1 +1,0 @@
-{"summary": "A self-contained module that implements core business functionality without external calls or dependencies.", "business_intent": "Execute the primary business operation independently as a standalone component.", "keywords": ["standalone", "business logic", "self-contained", "utility"], "summary_hash": "f6807e75a6f1", "cached_at": "2026-02-09T06:49:12+00:00"}

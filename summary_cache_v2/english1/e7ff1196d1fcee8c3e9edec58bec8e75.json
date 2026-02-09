@@ -1,1 +1,0 @@
-{"summary": "A lightweight thread class that launches a helper operation in a separate execution context.", "business_intent": "Enable non-blocking execution of a simple task by running it on its own thread.", "keywords": ["thread", "asynchronous", "helper", "execution", "concurrency"], "summary_hash": "a9a60f4c7529", "cached_at": "2026-02-09T01:31:41+00:00"}

@@ -1,1 +1,0 @@
-{"summary": "A test suite that validates SSL configuration and connectivity for MongoDB instances.", "business_intent": "Ensure MongoDB deployments are securely configured with SSL/TLS to protect data in transit.", "keywords": ["MongoDB", "SSL", "TLS", "testing", "security", "instance verification"], "summary_hash": "3f2612beab46", "cached_at": "2026-02-08T18:48:12+00:00"}

@@ -1,1 +1,0 @@
-{"summary": "The function is defined but never invoked and does not call any other functions.", "business_intent": "Potential placeholder or incomplete implementation with no current business impact.", "keywords": ["unused function", "dead code", "no callers", "no callees"], "summary_hash": "d3b20ccd714c", "cached_at": "2026-02-09T09:29:35+00:00"}

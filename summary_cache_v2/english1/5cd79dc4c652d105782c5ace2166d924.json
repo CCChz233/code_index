@@ -1,1 +1,0 @@
-{"summary": "A standalone function that is not referenced by any other code and is not exercised by tests.", "business_intent": "No observable business intent due to lack of usage; likely a leftover or utility awaiting integration.", "keywords": [], "summary_hash": "a9cf897faff0", "cached_at": "2026-02-08T07:42:37+00:00"}

@@ -1,1 +1,0 @@
-{"summary": "Offers utility methods to persist and restore the application's setup state.", "business_intent": "Enable reliable saving and resuming of configuration or operational data during setup processes.", "keywords": ["setup", "save", "resume", "helper", "persistence", "state management"], "summary_hash": "328e4e8ae0f3", "cached_at": "2026-02-08T15:53:20+00:00"}

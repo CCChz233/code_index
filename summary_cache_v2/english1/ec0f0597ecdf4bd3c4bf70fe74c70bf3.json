@@ -1,1 +1,0 @@
-{"summary": "The component appears to be unused and not covered by tests, with no callers or callees identified.", "business_intent": "No clear business purpose can be determined from the available information.", "keywords": ["unused", "orphan", "no tests", "no dependencies"], "summary_hash": "d17cc3332186", "cached_at": "2026-02-09T03:13:18+00:00"}

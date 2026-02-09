@@ -1,1 +1,0 @@
-{"summary": "Provides a base formset class for test forms with a simple cleaning helper.", "business_intent": "Offer a reusable validation component for test formsets to ensure consistent data cleaning across tests.", "keywords": ["formset", "validation", "clean", "base class", "testing", "helper"], "summary_hash": "fc290c994eaf", "cached_at": "2026-02-08T22:55:51+00:00"}

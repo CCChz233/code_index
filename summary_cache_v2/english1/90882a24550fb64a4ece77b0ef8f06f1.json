@@ -1,1 +1,0 @@
-{"summary": "The function is defined but never invoked within the codebase and has no external references.", "business_intent": "Potentially a placeholder or leftover utility that currently has no impact on business logic.", "keywords": ["unused", "orphan", "dead code", "placeholder"], "summary_hash": "4d5b512f18f5", "cached_at": "2026-02-08T18:57:46+00:00"}

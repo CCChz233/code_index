@@ -1,1 +1,0 @@
-{"summary": "The function is defined but has no callers, does not call other functions, and is not exercised by any tests.", "business_intent": "None (dead code, currently unused)", "keywords": ["unused", "dead code", "no callers", "no tests"], "summary_hash": "0199d6e87e5d", "cached_at": "2026-02-09T03:22:07+00:00"}

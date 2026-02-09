@@ -1,1 +1,0 @@
-{"summary": "A self-contained routine that is not invoked by any other code and does not call other functions.", "business_intent": "Offers an isolated utility operation that can be used independently when needed.", "keywords": ["standalone", "utility", "no dependencies", "isolated"], "summary_hash": "a15922fc1f4b", "cached_at": "2026-02-09T07:48:42+00:00"}

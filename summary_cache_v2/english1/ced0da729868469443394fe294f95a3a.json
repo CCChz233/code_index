@@ -1,1 +1,0 @@
-{"summary": "No callers or callees are recorded and the function is not exercised by tests, indicating it may be unused or isolated.", "business_intent": "Unclear; the function appears to have no external interactions, suggesting it could be dead code or a placeholder.", "keywords": [], "summary_hash": "b126275ead6d", "cached_at": "2026-02-08T16:21:53+00:00"}

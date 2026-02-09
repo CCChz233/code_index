@@ -1,1 +1,0 @@
-{"summary": "Encapsulates the logic to verify that a specific AWS KMS key is currently enabled.", "business_intent": "Ensures encryption keys are active for compliance and security purposes.", "keywords": ["AWS", "KMS", "key", "enabled", "status", "compliance", "security", "inspection"], "summary_hash": "1b344fdc8210", "cached_at": "2026-02-08T17:49:15+00:00"}

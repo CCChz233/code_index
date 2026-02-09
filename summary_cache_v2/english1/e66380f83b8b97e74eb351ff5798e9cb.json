@@ -1,1 +1,0 @@
-{"summary": "The code appears to be unused with no callers or callees and not exercised by tests, indicating it may be dead or placeholder code.", "business_intent": "None (no functional behavior is invoked)", "keywords": ["dead code", "unused", "placeholder", "no callers", "no tests"], "summary_hash": "dd894e9c03f9", "cached_at": "2026-02-08T07:29:30+00:00"}

@@ -1,1 +1,0 @@
-{"summary": "The function is defined but not referenced by any other code and is not exercised by tests.", "business_intent": "No clear business purpose identified; likely an unused utility or placeholder.", "keywords": ["unused", "placeholder", "orphan"], "summary_hash": "5ab17a0b0b94", "cached_at": "2026-02-09T01:44:26+00:00"}

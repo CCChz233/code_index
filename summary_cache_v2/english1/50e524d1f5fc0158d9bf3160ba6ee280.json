@@ -1,1 +1,0 @@
-{"summary": "The code defines a function that is not referenced by any other code and is not exercised by tests.", "business_intent": "Provides a utility that may be intended for future use but currently has no impact on the application.", "keywords": ["unused", "orphan function", "dead code", "utility"], "summary_hash": "b43546eb194f", "cached_at": "2026-02-08T23:37:59+00:00"}

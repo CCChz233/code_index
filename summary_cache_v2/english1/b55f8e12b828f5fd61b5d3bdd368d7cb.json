@@ -1,1 +1,0 @@
-{"summary": "Utility class that assists in locating components within test suites.", "business_intent": "Enables test code to find and reference UI or system components efficiently during automated testing.", "keywords": ["test", "component", "locator", "helper", "automation"], "summary_hash": "e7eb9bc4c6fa", "cached_at": "2026-02-08T10:50:06+00:00"}

@@ -1,1 +1,0 @@
-{"summary": "The function is isolated with no callers or callees and is not referenced by any tests.", "business_intent": "Provides a standalone capability that is currently not integrated into the application workflow.", "keywords": ["isolated", "unused", "standalone", "no dependencies"], "summary_hash": "75e7d9dc990a", "cached_at": "2026-02-08T15:03:11+00:00"}

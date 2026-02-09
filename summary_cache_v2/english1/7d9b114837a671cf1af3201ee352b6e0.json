@@ -1,1 +1,0 @@
-{"summary": "A filter component that selects artifacts based on their unique identifier.", "business_intent": "Enable querying or retrieving artifacts by specifying one or more artifact IDs.", "keywords": ["artifact", "filter", "identifier", "id", "query", "selection"], "summary_hash": "da2b78fb6461", "cached_at": "2026-02-08T12:55:56+00:00"}

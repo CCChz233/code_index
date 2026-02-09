@@ -1,1 +1,0 @@
-{"summary": "Represents an exception raised when an account configuration operation fails.", "business_intent": "Allows the application to detect and handle errors that occur during account setup or configuration.", "keywords": ["error", "exception", "configuration", "account", "setup", "failure"], "summary_hash": "bdf8305f239c", "cached_at": "2026-02-09T03:50:18+00:00"}

@@ -1,1 +1,0 @@
-{"summary": "A logging filter that permits log records only when the application's debug mode is disabled.", "business_intent": "Prevent debug or development log messages from being emitted in production environments.", "keywords": ["logging", "filter", "debug", "production", "Django", "settings"], "summary_hash": "2c49bfde0f50", "cached_at": "2026-02-08T21:09:10+00:00"}

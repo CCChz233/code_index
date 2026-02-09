@@ -1,1 +1,0 @@
-{"summary": "Utility class that performs simple GET requests to retrieve and search items within a JSON list structure.", "business_intent": "Enable easy fetching and filtering of list data stored in JSON via HTTP GET operations.", "keywords": ["GET", "JSON", "list search", "helper", "retrieval", "API"], "summary_hash": "2a2d1171c1d4", "cached_at": "2026-02-09T07:37:23+00:00"}

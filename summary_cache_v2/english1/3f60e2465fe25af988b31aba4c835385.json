@@ -1,1 +1,0 @@
-{"summary": "A self-contained function that implements a specific operation without relying on other code components.", "business_intent": "Provide an independent utility that can be invoked directly to perform its task.", "keywords": ["utility", "standalone", "independent", "self-contained"], "summary_hash": "584f80e3db22", "cached_at": "2026-02-08T05:56:47+00:00"}

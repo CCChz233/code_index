@@ -1,1 +1,0 @@
-{"summary": "Executes an update operation through a simple helper run method.", "business_intent": "Offers a command‑style interface to trigger update actions on target resources.", "keywords": ["update", "command", "run", "helper", "execution"], "summary_hash": "f82a7585cd09", "cached_at": "2026-02-09T09:05:14+00:00"}

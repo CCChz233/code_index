@@ -1,1 +1,0 @@
-{"summary": "Encapsulates the data and validation logic for a user registration form.", "business_intent": "Collects user registration details and ensures they meet required criteria before account creation.", "keywords": ["registration", "form", "validation", "user", "input", "account", "data"], "summary_hash": "86eb938cc940", "cached_at": "2026-02-09T07:48:43+00:00"}

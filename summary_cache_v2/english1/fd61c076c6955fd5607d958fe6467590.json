@@ -1,1 +1,0 @@
-{"summary": "The code element appears to be unused, with no callers, no callees, and not exercised by tests.", "business_intent": "No functional role identified; likely dead code or placeholder awaiting implementation.", "keywords": ["unused", "orphan", "dead code", "placeholder", "no callers"], "summary_hash": "6e3baf692781", "cached_at": "2026-02-08T05:37:27+00:00"}

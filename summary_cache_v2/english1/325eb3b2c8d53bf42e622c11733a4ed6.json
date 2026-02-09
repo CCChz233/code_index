@@ -1,1 +1,0 @@
-{"summary": "Defines a utility routine that is not referenced by any other code or tests.", "business_intent": "Encapsulates a specific operation for potential reuse, but currently remains unused in the application.", "keywords": ["utility", "unused", "standalone", "function", "potential reuse"], "summary_hash": "ec8855b007b0", "cached_at": "2026-02-08T22:23:31+00:00"}

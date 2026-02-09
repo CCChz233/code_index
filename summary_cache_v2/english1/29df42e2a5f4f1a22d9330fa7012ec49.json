@@ -1,1 +1,0 @@
-{"summary": "A test suite offering a simple helper to verify storage account name handling.", "business_intent": "Validate that storage account naming rules are correctly enforced through unit testing.", "keywords": ["testing", "storage account", "name validation", "helper", "unit test"], "summary_hash": "fae517ceab7c", "cached_at": "2026-02-08T18:31:13+00:00"}

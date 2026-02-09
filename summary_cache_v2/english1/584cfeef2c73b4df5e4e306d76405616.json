@@ -1,1 +1,0 @@
-{"summary": "The function appears to be dead code with no callers and not exercised by any tests.", "business_intent": "None (dead code)", "keywords": ["unused", "dead code", "no callers", "not tested"], "summary_hash": "a45d7d0d349e", "cached_at": "2026-02-08T15:22:24+00:00"}

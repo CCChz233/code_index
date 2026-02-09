@@ -1,1 +1,0 @@
-{"summary": "Empty function with no callers or callees, not exercised by tests.", "business_intent": "No operational behavior; serves as a placeholder or stub.", "keywords": ["empty", "placeholder", "no-op", "unimplemented"], "summary_hash": "777ff5d21755", "cached_at": "2026-02-08T22:57:29+00:00"}

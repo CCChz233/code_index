@@ -1,1 +1,0 @@
-{"summary": "A self-contained routine that executes its core logic without interacting with other components.", "business_intent": "Encapsulate a specific computation for reuse within the codebase.", "keywords": ["utility", "standalone", "no external calls", "reusable"], "summary_hash": "566a78b4ff5a", "cached_at": "2026-02-09T03:18:18+00:00"}

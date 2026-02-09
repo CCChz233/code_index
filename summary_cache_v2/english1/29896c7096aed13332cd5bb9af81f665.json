@@ -1,1 +1,0 @@
-{"summary": "A subclass that defines a custom string representation for its instances.", "business_intent": "Provide a human‑readable description of the object to support logging, debugging, and user‑facing output.", "keywords": ["custom __str__", "string representation", "debugging", "logging", "display"], "summary_hash": "2692a561bf18", "cached_at": "2026-02-08T22:23:58+00:00"}

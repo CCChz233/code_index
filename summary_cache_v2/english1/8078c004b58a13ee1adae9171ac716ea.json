@@ -1,1 +1,0 @@
-{"summary": "Manages the addition and persistence of a photo within the system.", "business_intent": "Provides functionality to upload and store images so that they can be later accessed or displayed.", "keywords": ["photo upload", "image storage", "save operation", "persistence", "media handling"], "summary_hash": "217a84aa240c", "cached_at": "2026-02-09T07:47:01+00:00"}

@@ -1,1 +1,0 @@
-{"summary": "The function appears to be unused and not invoked anywhere in the codebase.", "business_intent": "No business functionality is exercised; the code may be dead or placeholder.", "keywords": ["unused", "dead code", "no callers", "no callees"], "summary_hash": "9dd5e0594560", "cached_at": "2026-02-08T11:02:57+00:00"}

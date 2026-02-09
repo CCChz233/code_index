@@ -1,1 +1,0 @@
-{"summary": "The function is a standalone piece of code with no callers or callees and is not exercised by tests.", "business_intent": "It appears to be a utility or placeholder awaiting integration into the application logic.", "keywords": ["standalone", "unused", "orphan", "utility", "integration"], "summary_hash": "54531ba191d2", "cached_at": "2026-02-08T22:52:10+00:00"}

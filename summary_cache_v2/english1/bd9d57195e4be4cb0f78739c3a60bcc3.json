@@ -1,1 +1,0 @@
-{"summary": "Provides utility functions to perform HTTP GET requests and retrieve book information in JSON format.", "business_intent": "Enable applications to fetch and process book data from external services.", "keywords": ["books", "json", "http", "get", "helper", "api", "fetch", "data"], "summary_hash": "069ca8e050d5", "cached_at": "2026-02-09T07:43:55+00:00"}

@@ -1,1 +1,0 @@
-{"summary": "Defines a custom exception type for representing errors that occur while interacting with the Gemini service.", "business_intent": "Enable precise error handling and reporting for Gemini API integrations.", "keywords": ["exception", "error handling", "Gemini", "API", "custom error"], "summary_hash": "ff8096c67923", "cached_at": "2026-02-08T06:56:28+00:00"}

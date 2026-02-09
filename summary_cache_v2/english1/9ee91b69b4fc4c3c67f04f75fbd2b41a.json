@@ -1,1 +1,0 @@
-{"summary": "Implements a helper that executes module actions within a given context.", "business_intent": "Provides a simple interface for invoking module functionality, streamlining automation workflows.", "keywords": ["action", "module", "execute", "helper", "ansible", "automation"], "summary_hash": "e0d2d30647cd", "cached_at": "2026-02-08T17:14:55+00:00"}

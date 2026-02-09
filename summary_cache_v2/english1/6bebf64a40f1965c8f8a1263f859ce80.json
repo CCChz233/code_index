@@ -1,1 +1,0 @@
-{"summary": "Encapsulates application data and provides controlled access to system information.", "business_intent": "Maintain and update the system configuration/state within the model layer.", "keywords": ["model", "system information", "setter", "data encapsulation", "configuration"], "summary_hash": "20a2f92fe75b", "cached_at": "2026-02-08T18:58:02+00:00"}

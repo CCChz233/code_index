@@ -1,1 +1,0 @@
-{"summary": "Provides an endpoint that returns a collection of mailbox messages.", "business_intent": "Expose a read‑only API for clients to fetch the user's mailbox messages.", "keywords": ["mailbox", "messages", "list", "view", "API", "retrieve", "endpoint", "GET"], "summary_hash": "ed03889a6992", "cached_at": "2026-02-09T04:40:49+00:00"}

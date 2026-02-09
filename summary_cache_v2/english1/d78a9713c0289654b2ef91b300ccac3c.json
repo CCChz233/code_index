@@ -1,1 +1,0 @@
-{"summary": "Encapsulates a command entity providing a meaningful textual representation.", "business_intent": "To model a command that can be identified, logged, or processed by converting it to a readable string.", "keywords": ["command", "object", "string representation", "encapsulation", "toString"], "summary_hash": "8551f2b37e69", "cached_at": "2026-02-08T23:49:43+00:00"}

@@ -1,1 +1,0 @@
-{"summary": "Provides read‑only API endpoints to retrieve a user's public books collection.", "business_intent": "Allow external clients to fetch the list of books that a user has made publicly available.", "keywords": ["books", "public", "GET", "API", "retrieve", "user", "read‑only", "endpoint"], "summary_hash": "efa4a7730b58", "cached_at": "2026-02-09T07:45:49+00:00"}

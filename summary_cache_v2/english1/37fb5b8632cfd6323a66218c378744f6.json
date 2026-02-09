@@ -1,1 +1,0 @@
-{"summary": "A test utility class offering simple helper methods to validate values during unit tests.", "business_intent": "Support automated testing by providing concise value-checking functionality for test cases.", "keywords": ["testing", "helper", "value validation", "unit test", "utility"], "summary_hash": "a5290bd8d1ac", "cached_at": "2026-02-08T10:45:35+00:00"}

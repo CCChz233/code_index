@@ -1,1 +1,0 @@
-{"summary": "The component has no incoming calls, does not invoke other components, and is not covered by automated tests, indicating it is currently unused within the codebase.", "business_intent": "No observable business functionality due to lack of integration and testing.", "keywords": [], "summary_hash": "f5a5aeabb5e3", "cached_at": "2026-02-08T22:29:13+00:00"}

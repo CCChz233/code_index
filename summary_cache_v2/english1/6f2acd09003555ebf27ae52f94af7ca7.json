@@ -1,1 +1,0 @@
-{"summary": "The code segment has no callers or callees and is not exercised by tests, indicating it is currently unused.", "business_intent": "Potentially dead or placeholder functionality with no defined business purpose.", "keywords": [], "summary_hash": "3ca3f694b5b4", "cached_at": "2026-02-08T16:27:23+00:00"}

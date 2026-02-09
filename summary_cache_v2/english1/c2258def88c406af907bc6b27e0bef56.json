@@ -1,1 +1,0 @@
-{"summary": "A standalone function that is defined but never invoked within the codebase.", "business_intent": "Potentially intended for future use or leftover from previous implementations; currently has no impact on business logic.", "keywords": ["unused", "orphan", "dead code", "placeholder"], "summary_hash": "650cbda56ac6", "cached_at": "2026-02-09T01:20:50+00:00"}

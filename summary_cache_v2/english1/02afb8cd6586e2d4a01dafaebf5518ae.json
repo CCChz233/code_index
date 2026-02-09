@@ -1,1 +1,0 @@
-{"summary": "Encapsulates a barrier confirmation message intended for transmission to a client.", "business_intent": "Notify the client that a synchronization barrier has been reached or confirmed.", "keywords": ["barrier", "confirmation", "client", "response", "message", "serialization", "state"], "summary_hash": "12404a84be1a", "cached_at": "2026-02-08T23:40:38+00:00"}

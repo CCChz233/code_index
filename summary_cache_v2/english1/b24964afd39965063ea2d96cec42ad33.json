@@ -1,1 +1,0 @@
-{"summary": "No functional information is available; the component has no callers, does not invoke other components, and is not covered by tests.", "business_intent": "No business intent can be determined from the available context.", "keywords": ["unused", "no callers", "no tests"], "summary_hash": "0bef438a1300", "cached_at": "2026-02-09T08:35:44+00:00"}

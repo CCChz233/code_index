@@ -1,1 +1,0 @@
-{"summary": "Encapsulates a command object that registers subcommands and runs a conversion operation.", "business_intent": "Provide a command-line interface for converting data between formats.", "keywords": ["command", "subcommand", "conversion", "CLI", "execution", "registration"], "summary_hash": "3fec728ad5c3", "cached_at": "2026-02-09T08:06:54+00:00"}

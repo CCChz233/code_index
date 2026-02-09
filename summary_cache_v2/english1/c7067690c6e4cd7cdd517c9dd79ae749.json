@@ -1,1 +1,0 @@
-{"summary": "Provides a helper to execute actions within a module context.", "business_intent": "Enables streamlined execution of Ansible actions by encapsulating common execution logic for reuse across plugins.", "keywords": ["action", "execution", "helper", "module", "ansible", "plugin"], "summary_hash": "e0d2d30647cd", "cached_at": "2026-02-08T17:14:36+00:00"}

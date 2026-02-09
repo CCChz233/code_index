@@ -1,1 +1,0 @@
-{"summary": "No functions are invoked or defined; the code has no callers or callees.", "business_intent": "None - there is no operational behavior to analyze.", "keywords": ["no calls", "unused code", "no interaction"], "summary_hash": "8ba90b184449", "cached_at": "2026-02-08T15:06:42+00:00"}

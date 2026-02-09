@@ -1,1 +1,0 @@
-{"summary": "A standalone function that is not invoked by any other code and has no test coverage.", "business_intent": "Provides a specific utility or calculation that is currently unused within the application.", "keywords": ["unused", "standalone", "utility", "no callers", "no tests"], "summary_hash": "44ecc808d0f5", "cached_at": "2026-02-08T23:02:24+00:00"}

@@ -1,1 +1,0 @@
-{"summary": "The code segment has no callers, no callees, and is not invoked by any tests, indicating it is currently unused within the codebase.", "business_intent": "No active business functionality is performed by this code at present.", "keywords": ["unused", "no calls", "dead code", "inactive"], "summary_hash": "0f9ab242f8a5", "cached_at": "2026-02-09T10:41:03+00:00"}

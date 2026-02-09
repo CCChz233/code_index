@@ -1,1 +1,0 @@
-{"summary": "Provides a simple test helper to verify whether a user exists in the system.", "business_intent": "Ensures that user records are present, supporting automated quality checks and preventing missing user errors.", "keywords": ["test", "user", "existence", "validation", "helper"], "summary_hash": "acd332ad7eb6", "cached_at": "2026-02-08T18:17:53+00:00"}

@@ -1,1 +1,0 @@
-{"summary": "A standalone utility function that is not invoked by any other code and lacks associated tests.", "business_intent": "Offer a reusable operation that can be called manually when needed, without integration into existing workflows.", "keywords": ["utility", "standalone", "unused", "no tests"], "summary_hash": "4f93a5c92fe8", "cached_at": "2026-02-08T16:08:49+00:00"}

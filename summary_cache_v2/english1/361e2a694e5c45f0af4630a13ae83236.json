@@ -1,1 +1,0 @@
-{"summary": "Utility class offering helper functions to test database write operations.", "business_intent": "Support automated testing of data persistence by providing simple write helpers for database-related unit tests.", "keywords": ["test", "database", "write", "helper", "unit test", "persistence"], "summary_hash": "e99b5776d2e5", "cached_at": "2026-02-09T07:52:58+00:00"}

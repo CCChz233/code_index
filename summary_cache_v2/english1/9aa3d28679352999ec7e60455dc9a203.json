@@ -1,1 +1,0 @@
-{"summary": "Exception class indicating an invalid Cassandra configuration.", "business_intent": "Provides a specific error type to signal and handle misconfiguration of Cassandra settings in the application.", "keywords": ["Cassandra", "configuration", "invalid", "exception", "error handling"], "summary_hash": "3123a68af71d", "cached_at": "2026-02-09T00:13:24+00:00"}

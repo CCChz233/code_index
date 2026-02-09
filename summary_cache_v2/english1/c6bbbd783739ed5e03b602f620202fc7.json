@@ -1,1 +1,0 @@
-{"summary": "A template node that renders the current timezone for use in a custom template tag.", "business_intent": "Allow templates to dynamically display the user's current timezone.", "keywords": ["template node", "timezone", "render", "custom tag", "current timezone", "Django", "helper"], "summary_hash": "03cb98895635", "cached_at": "2026-02-08T21:14:58+00:00"}

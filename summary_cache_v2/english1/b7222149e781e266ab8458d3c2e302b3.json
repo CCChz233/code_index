@@ -1,1 +1,0 @@
-{"summary": "The function is not referenced by any other code and is not exercised by tests, indicating it is currently unused.", "business_intent": "Potential dead or orphan code that may be removed or needs integration.", "keywords": ["unused", "dead code", "orphan", "no callers", "no tests"], "summary_hash": "f5684ac0d0d1", "cached_at": "2026-02-08T23:11:06+00:00"}

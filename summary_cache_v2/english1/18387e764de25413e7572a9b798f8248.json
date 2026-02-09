@@ -1,1 +1,0 @@
-{"summary": "The function appears to be isolated with no callers or callees and is not exercised by tests, indicating it is currently unused within the codebase.", "business_intent": "No active business functionality; the function is presently dormant or placeholder.", "keywords": [], "summary_hash": "05fab8f0cb1d", "cached_at": "2026-02-08T15:34:50+00:00"}

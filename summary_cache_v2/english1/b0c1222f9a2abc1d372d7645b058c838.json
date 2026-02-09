@@ -1,1 +1,0 @@
-{"summary": "The function is defined but not referenced anywhere in the codebase and is not exercised by tests.", "business_intent": "Potential dead or orphan code that may be removed or integrated into the application.", "keywords": ["unused", "dead code", "orphan function"], "summary_hash": "e52aa4dc63b5", "cached_at": "2026-02-09T04:04:33+00:00"}

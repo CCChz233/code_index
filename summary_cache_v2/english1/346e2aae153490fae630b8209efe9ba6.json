@@ -1,1 +1,0 @@
-{"summary": "The function is defined but not referenced by any other code and is not exercised by tests.", "business_intent": "Provides a standalone utility that may be intended for future use or manual invocation.", "keywords": ["isolated", "unused", "utility", "no callers", "no tests"], "summary_hash": "b8991a012473", "cached_at": "2026-02-09T10:53:52+00:00"}

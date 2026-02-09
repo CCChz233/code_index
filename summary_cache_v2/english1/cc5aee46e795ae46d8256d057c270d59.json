@@ -1,1 +1,0 @@
-{"summary": "The code appears to be an unused placeholder with no callers or callees and not exercised by tests.", "business_intent": "No functional behavior; serves as a stub or future implementation point.", "keywords": ["unused", "placeholder", "no-op", "stub"], "summary_hash": "31deff32dddd", "cached_at": "2026-02-09T01:32:05+00:00"}

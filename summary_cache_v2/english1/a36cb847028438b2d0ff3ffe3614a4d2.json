@@ -1,1 +1,0 @@
-{"summary": "No callers or callees are detected and the function is not exercised by tests, indicating it is currently unused within the codebase.", "business_intent": "Undetermined, as the function lacks integration points and no observable behavior can be inferred.", "keywords": [], "summary_hash": "9878936f66e8", "cached_at": "2026-02-09T01:03:24+00:00"}

@@ -1,1 +1,0 @@
-{"summary": "Provides a filter that selects deployment schedules based on their active status.", "business_intent": "Allow callers to retrieve only active (or inactive) deployment schedules when querying the data store.", "keywords": ["deployment schedule", "active flag", "filter", "query", "helper"], "summary_hash": "61e3700af93e", "cached_at": "2026-02-08T12:54:14+00:00"}

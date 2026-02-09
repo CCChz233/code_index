@@ -1,1 +1,0 @@
-{"summary": "Implements a command that displays information about experiments to the user.", "business_intent": "Enable users to view details of experiments via a command-line interface.", "keywords": ["show", "experiments", "command", "display", "CLI", "run", "helper"], "summary_hash": "e3907a71aca4", "cached_at": "2026-02-09T09:08:35+00:00"}

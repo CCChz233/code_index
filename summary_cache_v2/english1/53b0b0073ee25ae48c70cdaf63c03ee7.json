@@ -1,1 +1,0 @@
-{"summary": "The module is isolated with no external callers or callees, indicating self-contained functionality.", "business_intent": "Provides internal logic or definitions without interacting with other components.", "keywords": ["standalone", "no external calls", "self-contained"], "summary_hash": "0fba005d3055", "cached_at": "2026-02-09T01:33:12+00:00"}

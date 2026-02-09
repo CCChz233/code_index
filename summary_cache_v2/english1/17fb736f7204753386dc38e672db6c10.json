@@ -1,1 +1,0 @@
-{"summary": "The code component has no callers or callees and is not exercised by tests, indicating it is currently unused.", "business_intent": "No observable business functionality due to lack of integration; the component appears to be dormant or a placeholder.", "keywords": [], "summary_hash": "68a551ac3d15", "cached_at": "2026-02-08T10:20:01+00:00"}

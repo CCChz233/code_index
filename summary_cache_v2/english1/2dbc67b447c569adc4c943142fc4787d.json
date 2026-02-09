@@ -1,1 +1,0 @@
-{"summary": "A minimal placeholder class used in tests to represent a dummy dependency.", "business_intent": "Facilitate testing of lazy dependency loading by providing a simple stand‑in object.", "keywords": ["dummy", "placeholder", "test", "mock", "lazy dependency", "stub"], "summary_hash": "52c7ac3ef9cd", "cached_at": "2026-02-08T12:00:27+00:00"}

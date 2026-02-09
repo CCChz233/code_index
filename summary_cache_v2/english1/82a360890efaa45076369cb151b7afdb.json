@@ -1,1 +1,0 @@
-{"summary": "A self-contained function that executes its logic independently without being invoked by other code or tests.", "business_intent": "Provide a standalone utility operation that can be used directly when needed.", "keywords": ["utility", "standalone", "no dependencies", "isolated"], "summary_hash": "475367b19fa6", "cached_at": "2026-02-09T06:12:14+00:00"}

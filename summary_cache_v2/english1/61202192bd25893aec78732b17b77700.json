@@ -1,1 +1,0 @@
-{"summary": "A callable utility class used in tests to apply a function or operation, mimicking map behavior.", "business_intent": "Facilitate testing of mapping logic by providing a simple callable object.", "keywords": ["callable", "test", "map", "utility", "function", "wrapper"], "summary_hash": "a20a87d59313", "cached_at": "2026-02-08T10:57:14+00:00"}

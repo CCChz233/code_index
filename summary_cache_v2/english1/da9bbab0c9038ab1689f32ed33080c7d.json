@@ -1,1 +1,0 @@
-{"summary": "The code defines a function that is not invoked by any other code and is not exercised by tests.", "business_intent": "Potential utility function awaiting integration; currently no business behavior is exercised.", "keywords": ["unused", "standalone", "unreferenced", "placeholder"], "summary_hash": "f311d133620c", "cached_at": "2026-02-08T15:11:23+00:00"}

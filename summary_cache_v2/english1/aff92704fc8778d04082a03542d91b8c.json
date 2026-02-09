@@ -1,1 +1,0 @@
-{"summary": "Provides a custom test check that scans configuration data using a helper method.", "business_intent": "Validate custom configuration files during testing to ensure they meet expected criteria.", "keywords": ["custom check", "configuration scan", "test validation", "helper method", "utility"], "summary_hash": "076e3853ba35", "cached_at": "2026-02-08T19:08:12+00:00"}

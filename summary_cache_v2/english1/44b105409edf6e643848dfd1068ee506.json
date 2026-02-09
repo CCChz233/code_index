@@ -1,1 +1,0 @@
-{"summary": "The component has no observed usage; it is not invoked by any callers, nor does it call other components, and it is not exercised by tests.", "business_intent": "Undetermined due to lack of interaction data; the intended purpose cannot be inferred.", "keywords": [], "summary_hash": "154b99e49c7c", "cached_at": "2026-02-08T05:09:05+00:00"}

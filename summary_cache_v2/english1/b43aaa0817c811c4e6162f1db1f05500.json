@@ -1,1 +1,0 @@
-{"summary": "The component is not referenced anywhere in the codebase and is not exercised by tests.", "business_intent": "Identify and possibly remove dead or orphaned code to reduce maintenance overhead.", "keywords": ["unused", "dead code", "orphan", "no calls", "unreferenced"], "summary_hash": "8d804112ca43", "cached_at": "2026-02-08T09:43:14+00:00"}

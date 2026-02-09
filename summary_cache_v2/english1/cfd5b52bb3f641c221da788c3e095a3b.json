@@ -1,1 +1,0 @@
-{"summary": "The function is defined but not called by any other code and has no test coverage.", "business_intent": "It appears to be a placeholder or utility that is currently unused and may need integration or removal.", "keywords": ["unused", "orphan", "no tests", "dead code"], "summary_hash": "455b2586d007", "cached_at": "2026-02-09T02:43:15+00:00"}

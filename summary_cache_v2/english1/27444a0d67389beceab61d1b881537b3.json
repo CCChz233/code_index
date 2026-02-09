@@ -1,1 +1,0 @@
-{"summary": "This code element is isolated: it neither calls other functions nor is called by any part of the codebase.", "business_intent": "Provides a self‑contained utility or placeholder that currently has no active usage.", "keywords": ["isolated", "standalone", "unused", "utility", "dead code"], "summary_hash": "3042c49ed4cf", "cached_at": "2026-02-08T22:15:46+00:00"}

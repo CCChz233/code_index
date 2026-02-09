@@ -1,1 +1,0 @@
-{"summary": "A standalone function that is defined but not referenced by any other code or tests.", "business_intent": "Provides a utility that could be used for specific operations, but currently remains unused within the application.", "keywords": ["unused", "standalone", "utility", "dead code"], "summary_hash": "b8bbb3ad1679", "cached_at": "2026-02-08T06:33:45+00:00"}

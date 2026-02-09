@@ -1,1 +1,0 @@
-{"summary": "A test suite that validates the Payjoin payment workflow using a simple helper method.", "business_intent": "To confirm that Payjoin transactions are processed correctly during trial or development testing.", "keywords": ["testing", "Payjoin", "payment", "verification", "helper", "trial"], "summary_hash": "130c7764c5d1", "cached_at": "2026-02-08T06:13:03+00:00"}

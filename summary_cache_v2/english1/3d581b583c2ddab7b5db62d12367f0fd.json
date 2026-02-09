@@ -1,1 +1,0 @@
-{"summary": "Provides utility methods for testing value handling in image conversion workflows.", "business_intent": "Facilitates unit testing of data preparation steps before converting objects to PIL images.", "keywords": ["testing", "helper", "values", "image conversion", "PIL", "unit test"], "summary_hash": "f734ae7b4135", "cached_at": "2026-02-08T10:42:58+00:00"}

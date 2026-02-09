@@ -1,1 +1,0 @@
-{"summary": "Encapsulates the color information for a tag and provides access to the stored color value.", "business_intent": "Enable consistent retrieval of tag colors for display in user interfaces or reporting.", "keywords": ["tag", "color", "getter", "attribute", "UI", "display", "representation"], "summary_hash": "fc52d20b8cd1", "cached_at": "2026-02-08T12:58:18+00:00"}

@@ -1,1 +1,0 @@
-{"summary": "No usage information is available for this code element; it has no callers or callees and is not exercised by tests.", "business_intent": "The purpose of the code is unclear as it appears to be unused within the codebase.", "keywords": ["unused", "orphan", "no calls", "isolated"], "summary_hash": "f12afddfd61b", "cached_at": "2026-02-09T01:56:35+00:00"}

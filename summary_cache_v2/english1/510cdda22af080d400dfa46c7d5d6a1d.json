@@ -1,1 +1,0 @@
-{"summary": "Encapsulates a credit history entity and offers a simple method to serialize its contents.", "business_intent": "Store and expose a user's credit history data for reporting, analysis, or downstream processing.", "keywords": ["credit", "history", "record", "serialization", "dump", "export"], "summary_hash": "e8dd5bf92029", "cached_at": "2026-02-09T00:33:33+00:00"}

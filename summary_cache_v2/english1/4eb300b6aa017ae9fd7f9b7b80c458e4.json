@@ -1,1 +1,0 @@
-{"summary": "No callers or callees are detected and the function is not exercised by tests, indicating it is currently unused within the codebase.", "business_intent": "Undetermined due to lack of usage context; the function's purpose cannot be inferred.", "keywords": [], "summary_hash": "2df04ecc34af", "cached_at": "2026-02-08T22:38:37+00:00"}

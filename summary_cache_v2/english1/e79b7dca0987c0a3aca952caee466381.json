@@ -1,1 +1,0 @@
-{"summary": "A lightweight class that overrides a helper method to return a fixed placeholder string.", "business_intent": "Provides a simple overridden helper for testing, mocking, or demonstration purposes.", "keywords": ["override", "helper", "placeholder", "string", "simple", "mock"], "summary_hash": "a3dd7af9b7f5", "cached_at": "2026-02-08T20:33:58+00:00"}

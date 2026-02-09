@@ -1,1 +1,0 @@
-{"summary": "The code defines a function that is not invoked anywhere and has no external dependencies.", "business_intent": "Placeholder or unused functionality with no current business impact.", "keywords": ["unused", "dead code", "no callers", "isolated", "no external calls"], "summary_hash": "602aeebd5ea8", "cached_at": "2026-02-08T09:14:57+00:00"}

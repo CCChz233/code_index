@@ -1,1 +1,0 @@
-{"summary": "The code defines a standalone component that is not referenced by any other part of the system and has no test coverage.", "business_intent": "No active business functionality; likely dead or placeholder code.", "keywords": ["unused", "dead code", "standalone", "no callers", "no callees"], "summary_hash": "529b6dc04784", "cached_at": "2026-02-09T00:15:02+00:00"}

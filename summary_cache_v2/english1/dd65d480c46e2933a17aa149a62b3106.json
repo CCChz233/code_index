@@ -1,1 +1,0 @@
-{"summary": "Provides helper methods used in unit tests to verify transitive extension behavior.", "business_intent": "Facilitate testing of transitive inheritance or extension mechanisms within the codebase.", "keywords": ["test", "transitive", "extend", "helper", "unit testing", "inheritance"], "summary_hash": "b9669b66bb6b", "cached_at": "2026-02-08T19:45:50+00:00"}

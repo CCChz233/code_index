@@ -1,1 +1,0 @@
-{"summary": "The function is not called by any other code and does not have any test coverage, indicating it is currently unused.", "business_intent": "No active business behavior can be determined as the function is isolated and not invoked.", "keywords": [], "summary_hash": "65e4255b8b50", "cached_at": "2026-02-08T07:56:01+00:00"}

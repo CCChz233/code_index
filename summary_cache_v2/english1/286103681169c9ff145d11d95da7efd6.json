@@ -1,1 +1,0 @@
-{"summary": "Encapsulates a callable entity that can be evaluated to produce a result.", "business_intent": "Offer a reusable component for computing or retrieving values based on input parameters.", "keywords": ["function", "evaluation", "helper", "utility", "computation"], "summary_hash": "04faaba47a4b", "cached_at": "2026-02-08T20:28:08+00:00"}

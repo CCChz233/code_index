@@ -1,1 +1,0 @@
-{"summary": "The code defines a standalone function that is not referenced by any other code and is not exercised by tests.", "business_intent": "No active business functionality; the function appears to be unused or a placeholder.", "keywords": ["unused", "standalone", "function", "no tests", "orphan"], "summary_hash": "21c0de6aa469", "cached_at": "2026-02-09T08:48:41+00:00"}

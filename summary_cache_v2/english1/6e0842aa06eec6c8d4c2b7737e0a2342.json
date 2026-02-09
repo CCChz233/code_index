@@ -1,1 +1,0 @@
-{"summary": "The component has no callers and does not call any other components, indicating it is currently unused within the codebase.", "business_intent": "Identify and possibly remove or repurpose dead code to improve maintainability.", "keywords": ["unused", "dead code", "orphan", "no dependencies"], "summary_hash": "4acd4a934b86", "cached_at": "2026-02-08T05:43:31+00:00"}

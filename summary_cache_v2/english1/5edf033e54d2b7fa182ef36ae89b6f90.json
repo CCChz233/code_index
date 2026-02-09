@@ -1,1 +1,0 @@
-{"summary": "Defines an AWS CDK stack that provisions a Lambda function and its associated resources.", "business_intent": "Automate the deployment of serverless compute to support application functionality.", "keywords": ["AWS CDK", "Lambda", "Infrastructure as Code", "Stack", "Serverless", "Deployment"], "summary_hash": "405f075b29a8", "cached_at": "2026-02-08T16:44:57+00:00"}

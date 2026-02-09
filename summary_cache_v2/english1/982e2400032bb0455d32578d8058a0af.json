@@ -1,1 +1,0 @@
-{"summary": "The function is defined but not invoked by any other code and lacks test coverage.", "business_intent": "None (the function currently has no active role in the application).", "keywords": ["unused", "orphan", "no callers", "no tests"], "summary_hash": "3d05285e3ba3", "cached_at": "2026-02-09T03:43:18+00:00"}

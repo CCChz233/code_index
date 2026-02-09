@@ -1,1 +1,0 @@
-{"summary": "The component is a standalone unit with no external calls and does not invoke other components.", "business_intent": "Serves as an isolated utility or placeholder that is currently unused in the application.", "keywords": ["isolated", "unused", "dead code", "standalone"], "summary_hash": "7acd6d423742", "cached_at": "2026-02-08T21:38:32+00:00"}

@@ -1,1 +1,0 @@
-{"summary": "Provides a simple helper function to perform inspection tasks within tests.", "business_intent": "Supports automated testing by offering utility methods that examine or validate test conditions.", "keywords": ["test", "inspection", "helper", "utility", "validation"], "summary_hash": "4b0a82d078ff", "cached_at": "2026-02-08T11:46:39+00:00"}

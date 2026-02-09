@@ -1,1 +1,0 @@
-{"summary": "The component is currently unused; it has no callers, no callees, and is not exercised by any tests.", "business_intent": "None (the code is not integrated into any workflow)", "keywords": ["unused", "orphan", "no-calls", "not-tested"], "summary_hash": "dcb6d1b21bd1", "cached_at": "2026-02-08T22:30:56+00:00"}

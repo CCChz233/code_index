@@ -1,1 +1,0 @@
-{"summary": "Represents an error raised when a requested key cannot be found.", "business_intent": "To notify callers that a provided key does not exist, enabling appropriate handling of missing-key situations.", "keywords": ["exception", "missing key", "error handling", "validation", "lookup failure"], "summary_hash": "4094b863fd00", "cached_at": "2026-02-09T07:54:25+00:00"}

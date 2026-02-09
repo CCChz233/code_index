@@ -1,1 +1,0 @@
-{"summary": "Utility class providing a simple helper to detect NaN values.", "business_intent": "Enable quick verification of NaN presence in data during testing or validation workflows.", "keywords": ["nan", "test", "helper", "validation", "data", "utility"], "summary_hash": "36bdcbb1bc35", "cached_at": "2026-02-08T05:14:59+00:00"}

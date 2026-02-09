@@ -1,1 +1,0 @@
-{"summary": "Provides an endpoint that processes POST requests to create new configuration flows.", "business_intent": "Enable external clients to initiate configuration workflows through a web API.", "keywords": ["view", "configuration", "flow", "create", "POST", "API", "endpoint", "manager"], "summary_hash": "c89f481406c4", "cached_at": "2026-02-09T04:03:02+00:00"}

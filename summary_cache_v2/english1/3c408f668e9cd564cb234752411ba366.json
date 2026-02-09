@@ -1,1 +1,0 @@
-{"summary": "Encapsulates metadata for a specific activity type, exposing its configuration keys and kind identifier.", "business_intent": "Enable the system to classify and configure different activities based on their type.", "keywords": ["activity", "type", "metadata", "configuration", "kind", "helper"], "summary_hash": "5c1c05487038", "cached_at": "2026-02-09T09:25:21+00:00"}

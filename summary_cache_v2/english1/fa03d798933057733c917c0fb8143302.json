@@ -1,1 +1,0 @@
-{"summary": "The component is not referenced by any other parts of the system and is not exercised by tests.", "business_intent": "No observable business functionality as it is currently orphaned and unused.", "keywords": ["unused", "orphan", "no calls", "dead code"], "summary_hash": "a149c1e190d3", "cached_at": "2026-02-09T02:47:40+00:00"}

@@ -1,1 +1,0 @@
-{"summary": "A placeholder class intended to hold and manage session-related data within an application.", "business_intent": "Provide a container for storing and accessing user session state throughout the system.", "keywords": ["session", "container", "state", "storage", "placeholder"], "summary_hash": "2018dfffa62f", "cached_at": "2026-02-08T05:17:47+00:00"}

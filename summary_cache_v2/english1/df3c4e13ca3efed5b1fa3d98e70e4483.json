@@ -1,1 +1,0 @@
-{"summary": "The code defines a standalone component that is not referenced by other parts of the system.", "business_intent": "Provides a specific functionality intended for independent use or future integration, without current dependencies.", "keywords": ["standalone", "utility", "unused", "potential"], "summary_hash": "ce6726db81fc", "cached_at": "2026-02-09T02:27:44+00:00"}

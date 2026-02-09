@@ -1,1 +1,0 @@
-{"summary": "Manages fetching and updating data from a RESTful source.", "business_intent": "Enable applications to obtain and refresh external data via HTTP calls.", "keywords": ["REST", "data retrieval", "update", "API", "client", "fetch"], "summary_hash": "68de7e1fe132", "cached_at": "2026-02-09T04:30:02+00:00"}

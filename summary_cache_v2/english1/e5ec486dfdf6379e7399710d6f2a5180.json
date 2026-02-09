@@ -1,1 +1,0 @@
-{"summary": "The component is not referenced by any other parts of the system and is not exercised by tests, indicating it is currently unused.", "business_intent": "No active business intent can be determined because the code is not invoked in any workflow.", "keywords": [], "summary_hash": "78d886f9711f", "cached_at": "2026-02-08T13:35:24+00:00"}

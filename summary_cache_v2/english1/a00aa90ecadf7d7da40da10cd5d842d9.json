@@ -1,1 +1,0 @@
-{"summary": "The code unit is isolated with no callers, no callees, and is not exercised by any tests, providing no observable behavior or business intent from the available context.", "business_intent": "Undetermined due to lack of usage information.", "keywords": [], "summary_hash": "522acfc47935", "cached_at": "2026-02-08T14:56:50+00:00"}

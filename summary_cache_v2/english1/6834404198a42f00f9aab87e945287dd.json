@@ -1,1 +1,0 @@
-{"summary": "A base class offering generic cleaning utilities for subclasses.", "business_intent": "Provide reusable data‑cleaning functionality that can be inherited and extended by derived classes.", "keywords": ["cleaning", "helper", "utility", "inheritance", "base class"], "summary_hash": "e11db96b1128", "cached_at": "2026-02-08T23:37:02+00:00"}

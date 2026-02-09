@@ -1,1 +1,0 @@
-{"summary": "Encapsulates a BQL version identifier and provides a readable string representation.", "business_intent": "Expose the BQL system's version information for logging, compatibility verification, and user display.", "keywords": ["BQL", "version", "identifier", "string representation", "metadata"], "summary_hash": "fe2334cd12e3", "cached_at": "2026-02-08T17:06:24+00:00"}

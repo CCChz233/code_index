@@ -1,1 +1,0 @@
-{"summary": "The function is defined but has no callers and is not exercised by tests, indicating it is currently unused.", "business_intent": "Likely intended as a utility or future feature, but presently has no active role in the application.", "keywords": ["unused", "placeholder", "utility"], "summary_hash": "a90bfa10d96b", "cached_at": "2026-02-08T22:22:41+00:00"}

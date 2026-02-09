@@ -1,1 +1,0 @@
-{"summary": "The code segment has no callers or callees and is not exercised by tests, indicating it is currently unused or isolated.", "business_intent": "No active business functionality; likely a placeholder or dead code awaiting integration.", "keywords": ["unused", "placeholder", "dead code"], "summary_hash": "8431bfb73003", "cached_at": "2026-02-08T13:33:06+00:00"}

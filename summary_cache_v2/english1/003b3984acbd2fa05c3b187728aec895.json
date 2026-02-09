@@ -1,1 +1,0 @@
-{"summary": "The component has no callers, no callees, and is not exercised by any tests, indicating it is currently isolated and unused.", "business_intent": "No active business behavior; the code is orphaned with no functional interactions.", "keywords": ["unused", "orphan", "no-calls", "no-tests"], "summary_hash": "e2f0d5dbb4cc", "cached_at": "2026-02-09T10:33:51+00:00"}

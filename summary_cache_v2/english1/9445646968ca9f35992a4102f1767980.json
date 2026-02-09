@@ -1,1 +1,0 @@
-{"summary": "The component has no external interactions and is not exercised by tests.", "business_intent": "Standalone utility with no current usage.", "keywords": ["standalone", "unused", "no-calls", "no-tests"], "summary_hash": "f984f54a7e92", "cached_at": "2026-02-08T12:29:18+00:00"}

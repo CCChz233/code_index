@@ -1,1 +1,0 @@
-{"summary": "Offers a simple helper method to perform cleanup operations.", "business_intent": "Enables the application to execute routine cleaning tasks, such as removing temporary data or resetting state, in a concise and reusable way.", "keywords": ["cleanup", "helper", "utility", "run", "maintenance"], "summary_hash": "cc7bfe6a196a", "cached_at": "2026-02-08T23:13:33+00:00"}

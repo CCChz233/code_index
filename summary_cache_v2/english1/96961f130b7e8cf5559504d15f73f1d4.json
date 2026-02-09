@@ -1,1 +1,0 @@
-{"summary": "Provides utilities to examine and validate module configuration data.", "business_intent": "Helps maintain correct module setups by scanning configuration files for errors or inconsistencies.", "keywords": ["module", "configuration", "scan", "validation", "utility", "helper"], "summary_hash": "a288756c0953", "cached_at": "2026-02-08T19:07:34+00:00"}

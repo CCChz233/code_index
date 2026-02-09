@@ -1,1 +1,0 @@
-{"summary": "The code element is isolated with no callers, no callees, and is not covered by tests, indicating it is currently unused.", "business_intent": "No business intent can be determined as the element is not invoked anywhere.", "keywords": [], "summary_hash": "e332ad30478b", "cached_at": "2026-02-09T02:17:22+00:00"}

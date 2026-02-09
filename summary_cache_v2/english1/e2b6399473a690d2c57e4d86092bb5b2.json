@@ -1,1 +1,0 @@
-{"summary": "A test suite that validates the logging behavior of the AppSync component.", "business_intent": "Confirm that logging is correctly emitted and captured during AppSync operations to aid debugging and monitoring.", "keywords": ["testing", "AppSync", "logging", "unit test", "validation"], "summary_hash": "aa1639e6edff", "cached_at": "2026-02-08T18:24:47+00:00"}

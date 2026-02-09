@@ -1,1 +1,0 @@
-{"summary": "A standalone utility function defined in the codebase but not referenced by any other components.", "business_intent": "Offers a reusable operation that can be invoked by future code to perform a specific task.", "keywords": ["utility", "standalone", "function", "reusable"], "summary_hash": "9d5647504bf1", "cached_at": "2026-02-08T14:48:44+00:00"}

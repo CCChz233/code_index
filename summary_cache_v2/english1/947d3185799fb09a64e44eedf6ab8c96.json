@@ -1,1 +1,0 @@
-{"summary": "The function appears to be unused, with no callers, no callees, and it is not exercised by any tests.", "business_intent": "It likely serves as a standalone utility or placeholder awaiting integration into the application.", "keywords": ["utility", "placeholder", "unused", "standalone"], "summary_hash": "e9fda9173729", "cached_at": "2026-02-08T06:50:48+00:00"}

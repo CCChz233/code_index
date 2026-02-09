@@ -1,1 +1,0 @@
-{"summary": "The component is defined but not referenced or invoked anywhere in the codebase, and it is not exercised by any tests.", "business_intent": "Potential placeholder or unused functionality with no observable business behavior.", "keywords": ["unused", "orphan", "no references", "no tests"], "summary_hash": "66ff37d9f6d1", "cached_at": "2026-02-08T10:46:23+00:00"}

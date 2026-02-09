@@ -1,1 +1,0 @@
-{"summary": "The function is not called by any other code and does not call other functions, indicating it is currently unused.", "business_intent": "None (dead or placeholder code)", "keywords": ["unused", "dead code", "no callers", "no callees"], "summary_hash": "83d859aa6754", "cached_at": "2026-02-09T02:03:26+00:00"}

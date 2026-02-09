@@ -1,1 +1,0 @@
-{"summary": "Provides functionality to retrieve author information through a simple GET operation.", "business_intent": "Fetch author details from an external source or API for use in the application.", "keywords": ["author", "data retrieval", "GET request", "API helper", "information access"], "summary_hash": "a4e150520055", "cached_at": "2026-02-09T07:41:16+00:00"}

@@ -1,1 +1,0 @@
-{"summary": "A self-contained function that implements a specific operation but is not referenced by any other code or tests.", "business_intent": "Encapsulate reusable logic for potential future use without current integration.", "keywords": ["utility", "standalone", "unused", "potential", "logic"], "summary_hash": "6b614f3ab6d1", "cached_at": "2026-02-08T18:31:41+00:00"}

@@ -1,1 +1,0 @@
-{"summary": "A callable component that transforms encoded input into its original form.", "business_intent": "Enable decoding of data streams or strings within applications.", "keywords": ["decode", "callable", "transformation", "parser", "deserialization", "data processing"], "summary_hash": "23ebac4674bb", "cached_at": "2026-02-09T11:54:38+00:00"}

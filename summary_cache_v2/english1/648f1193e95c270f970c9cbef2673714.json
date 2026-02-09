@@ -1,1 +1,0 @@
-{"summary": "The component appears to be an isolated utility with no external callers or callees and is not exercised by tests.", "business_intent": "Provides internal functionality that is currently unused within the codebase.", "keywords": ["unused", "utility", "internal", "no callers", "no callees"], "summary_hash": "90ab14827618", "cached_at": "2026-02-09T02:13:18+00:00"}

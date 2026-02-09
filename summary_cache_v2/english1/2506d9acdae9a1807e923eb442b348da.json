@@ -1,1 +1,0 @@
-{"summary": "The module/function is not referenced by any other code and is not covered by tests, indicating it is currently unused.", "business_intent": "No specific business intent can be determined without usage context.", "keywords": ["unused", "isolated", "no tests"], "summary_hash": "5a6cdb372ae9", "cached_at": "2026-02-09T08:38:23+00:00"}

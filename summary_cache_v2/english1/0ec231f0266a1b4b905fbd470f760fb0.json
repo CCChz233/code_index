@@ -1,1 +1,0 @@
-{"summary": "A test suite that validates the encryption settings and behavior of backup vaults.", "business_intent": "To ensure backup vaults are properly encrypted, meeting security and compliance requirements.", "keywords": ["backup", "vault", "encryption", "test", "validation", "security", "compliance"], "summary_hash": "055053ce2ce5", "cached_at": "2026-02-08T18:56:45+00:00"}

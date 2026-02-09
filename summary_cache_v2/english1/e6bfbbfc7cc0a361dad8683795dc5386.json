@@ -1,1 +1,0 @@
-{"summary": "The routine is defined but never invoked within the application and is not covered by any automated tests.", "business_intent": "Likely a placeholder or future functionality that currently remains dead code.", "keywords": ["unused", "dead code", "placeholder", "no callers", "no tests"], "summary_hash": "a3333bcf8312", "cached_at": "2026-02-09T02:50:55+00:00"}

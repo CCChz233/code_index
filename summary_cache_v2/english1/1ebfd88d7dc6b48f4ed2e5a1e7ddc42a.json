@@ -1,1 +1,0 @@
-{"summary": "A test utility class that renders an error card component for verification purposes.", "business_intent": "Provide a simple rendering helper to generate error card UI elements during automated tests.", "keywords": ["error", "card", "render", "test", "helper", "UI", "component"], "summary_hash": "26ea785d462e", "cached_at": "2026-02-08T08:37:57+00:00"}

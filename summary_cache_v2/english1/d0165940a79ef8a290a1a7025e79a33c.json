@@ -1,1 +1,0 @@
-{"summary": "The component is not referenced anywhere and has no external callers or callees.", "business_intent": "None, as the component is isolated and not utilized.", "keywords": ["unused", "orphan", "no-calls", "isolated"], "summary_hash": "7a3a6321ebb3", "cached_at": "2026-02-09T05:46:46+00:00"}

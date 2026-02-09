@@ -1,1 +1,0 @@
-{"summary": "Manages simple retrieval operations by providing a helper method to fetch data or resources.", "business_intent": "Enable other components to obtain needed information quickly without dealing with low-level access details.", "keywords": ["retrieve", "helper", "manager", "access", "fetch"], "summary_hash": "305727c71d58", "cached_at": "2026-02-08T20:32:53+00:00"}

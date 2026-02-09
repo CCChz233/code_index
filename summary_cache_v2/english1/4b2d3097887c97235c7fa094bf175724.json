@@ -1,1 +1,0 @@
-{"summary": "The function has no callers, is not invoked by any tests, and its purpose cannot be determined from the available information.", "business_intent": "Unable to ascertain; appears to be an orphan utility with no current usage.", "keywords": ["unused", "orphan", "no callers", "no tests"], "summary_hash": "b769dc440379", "cached_at": "2026-02-09T02:38:18+00:00"}

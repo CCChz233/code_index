@@ -1,1 +1,0 @@
-{"summary": "Provides helper functions to handle HTTP requests for retrieving and adding seed entries.", "business_intent": "Expose simple API endpoints that allow clients to fetch a list of seeds and submit new seeds.", "keywords": ["seed", "list", "retrieve", "add", "http", "api", "helper"], "summary_hash": "43f2396aa928", "cached_at": "2026-02-09T07:40:34+00:00"}

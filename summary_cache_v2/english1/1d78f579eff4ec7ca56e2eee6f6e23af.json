@@ -1,1 +1,0 @@
-{"summary": "A collection that stores boolean values and evaluates their logical conjunction.", "business_intent": "Facilitate aggregation of multiple conditions or flags to quickly determine if all are satisfied.", "keywords": ["boolean", "list", "logical AND", "conjunction", "aggregation", "conditions"], "summary_hash": "2677ef57854a", "cached_at": "2026-02-08T12:57:39+00:00"}

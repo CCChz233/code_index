@@ -1,1 +1,0 @@
-{"summary": "The code defines a function that is not invoked by any other part of the system and has no test coverage.", "business_intent": "Potential utility or placeholder awaiting integration; currently no active business behavior.", "keywords": ["unused", "orphan", "standalone", "placeholder"], "summary_hash": "7e8d3ed65950", "cached_at": "2026-02-09T06:53:28+00:00"}

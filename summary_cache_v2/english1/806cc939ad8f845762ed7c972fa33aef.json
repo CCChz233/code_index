@@ -1,1 +1,0 @@
-{"summary": "The function is defined but has no callers or callees, indicating it is currently unused within the codebase.", "business_intent": "Potential utility or placeholder functionality that is not currently invoked.", "keywords": ["unused", "dead code", "standalone", "no callers", "no callees"], "summary_hash": "c4f3148d7914", "cached_at": "2026-02-08T18:08:32+00:00"}

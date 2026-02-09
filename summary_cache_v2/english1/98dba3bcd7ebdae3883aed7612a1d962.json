@@ -1,1 +1,0 @@
-{"summary": "A utility class that provides a simple forwarding helper used in testing scenarios.", "business_intent": "Facilitate the forwarding of data or calls within test code to simplify test setup and execution.", "keywords": ["test", "utility", "forwarding", "helper", "module"], "summary_hash": "91afca6ef39d", "cached_at": "2026-02-08T10:58:41+00:00"}

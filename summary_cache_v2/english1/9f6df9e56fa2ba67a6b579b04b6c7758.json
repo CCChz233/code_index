@@ -1,1 +1,0 @@
-{"summary": "Encapsulates a user review, storing its details and providing a readable string representation.", "business_intent": "To model and manage customer feedback for products or services within the application.", "keywords": ["review", "entity", "string representation", "feedback", "model"], "summary_hash": "13ac4b4e3853", "cached_at": "2026-02-08T22:08:32+00:00"}

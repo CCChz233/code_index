@@ -1,1 +1,0 @@
-{"summary": "Test class that verifies the presence of a healthcheck endpoint in the application.", "business_intent": "Ensure the service provides a healthcheck endpoint for monitoring and reliability.", "keywords": ["healthcheck", "test", "endpoint", "verification", "monitoring"], "summary_hash": "8cff17e02d19", "cached_at": "2026-02-08T18:17:37+00:00"}

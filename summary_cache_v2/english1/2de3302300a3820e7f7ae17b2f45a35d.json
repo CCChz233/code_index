@@ -1,1 +1,0 @@
-{"summary": "A function defined in the codebase that is not invoked by any other component and is not covered by tests.", "business_intent": "Intended to provide a specific capability, but currently remains unused within the application.", "keywords": ["orphan", "unused", "potential", "function"], "summary_hash": "e4142615703b", "cached_at": "2026-02-09T03:49:47+00:00"}

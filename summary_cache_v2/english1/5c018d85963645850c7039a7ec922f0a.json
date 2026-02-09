@@ -1,1 +1,0 @@
-{"summary": "Provides functionality to create loan records via a POST operation.", "business_intent": "Enable clients to submit new loan applications or loan data to the system.", "keywords": ["loan", "creation", "POST", "API", "helper", "submission"], "summary_hash": "645853c5c291", "cached_at": "2026-02-09T07:44:53+00:00"}

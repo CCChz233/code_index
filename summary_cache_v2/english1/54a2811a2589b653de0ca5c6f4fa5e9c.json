@@ -1,1 +1,0 @@
-{"summary": "Provides a helper to calculate the preferred size of UI elements or components.", "business_intent": "Assist layout managers or rendering systems in determining appropriate dimensions for visual items.", "keywords": ["delegate", "size hint", "UI", "layout", "helper", "preferred size"], "summary_hash": "595f9e3bbbe6", "cached_at": "2026-02-08T08:28:17+00:00"}

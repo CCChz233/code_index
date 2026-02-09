@@ -1,1 +1,0 @@
-{"summary": "Encapsulates a group of statements and provides an iterator to traverse them.", "business_intent": "To store and manage multiple statements so they can be processed sequentially.", "keywords": ["statement", "collection", "iterator", "sequence", "container", "iteration", "management"], "summary_hash": "0424931ac1d0", "cached_at": "2026-02-09T08:32:53+00:00"}

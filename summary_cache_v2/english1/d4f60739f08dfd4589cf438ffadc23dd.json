@@ -1,1 +1,0 @@
-{"summary": "Exception indicating that a required schema identifier was not supplied.", "business_intent": "Enforces the presence of a schema ID during schema operations to prevent invalid or ambiguous processing.", "keywords": ["exception", "schema", "validation", "missing identifier", "error handling"], "summary_hash": "e00f3e318645", "cached_at": "2026-02-09T07:29:05+00:00"}

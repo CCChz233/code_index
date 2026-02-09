@@ -1,1 +1,0 @@
-{"summary": "The code element is not referenced by any other components and does not invoke other functions, indicating it is currently unused.", "business_intent": "No active business functionality; likely dead or placeholder code.", "keywords": ["unused", "dead code", "no callers", "no callees"], "summary_hash": "0bcda6c0dc8e", "cached_at": "2026-02-08T09:45:09+00:00"}

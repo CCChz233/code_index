@@ -1,1 +1,0 @@
-{"summary": "A test class providing helper methods for verifying memory-related selection functionality.", "business_intent": "Support automated testing of item selection logic that involves memory or state tracking.", "keywords": ["test", "unit test", "helper", "memory", "selection", "verification"], "summary_hash": "9a74e1ec8bdc", "cached_at": "2026-02-08T10:19:05+00:00"}

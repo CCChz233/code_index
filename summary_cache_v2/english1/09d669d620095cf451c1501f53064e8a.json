@@ -1,1 +1,0 @@
-{"summary": "A test suite that validates the minimum SKU configuration for an application service.", "business_intent": "Ensure that the application service is provisioned with at least the required SKU level.", "keywords": ["test", "app service", "sku", "minimum", "validation", "unit test"], "summary_hash": "aad30f14c73e", "cached_at": "2026-02-08T18:37:30+00:00"}

@@ -1,1 +1,0 @@
-{"summary": "Contains a lightweight helper used to verify Zipf distribution behavior in tests.", "business_intent": "Support automated testing of components that rely on Zipf's law or Zipf-distributed data.", "keywords": ["zipf", "testing", "helper", "unit test", "distribution"], "summary_hash": "9ea6c301dcd3", "cached_at": "2026-02-08T19:57:12+00:00"}

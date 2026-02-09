@@ -1,1 +1,0 @@
-{"summary": "The function is defined but not referenced by any other code and does not call other functions.", "business_intent": "No active business behavior; the function appears to be unused or a placeholder.", "keywords": ["unused", "standalone", "no callers", "no callees"], "summary_hash": "54518ec1b03d", "cached_at": "2026-02-09T05:41:19+00:00"}

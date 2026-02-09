@@ -1,1 +1,0 @@
-{"summary": "The component is isolated, having no incoming or outgoing calls and is not covered by automated tests.", "business_intent": "No clear business purpose can be determined due to lack of usage context.", "keywords": ["standalone", "unused", "no callers", "no callees", "not tested"], "summary_hash": "df3480df0558", "cached_at": "2026-02-09T04:37:09+00:00"}

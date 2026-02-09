@@ -1,1 +1,0 @@
-{"summary": "A test suite that verifies MySQL databases are configured to reject public network connections.", "business_intent": "Validate security compliance by ensuring MySQL instances are not exposed to the internet.", "keywords": ["MySQL", "public access", "security", "compliance", "test", "disabled"], "summary_hash": "30849889f4fc", "cached_at": "2026-02-08T19:08:57+00:00"}

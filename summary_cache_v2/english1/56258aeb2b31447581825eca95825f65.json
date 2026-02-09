@@ -1,1 +1,0 @@
-{"summary": "The component is defined but not referenced anywhere in the codebase and is not exercised by tests.", "business_intent": "Identify and possibly remove or integrate the unused functionality to improve code maintainability.", "keywords": ["unused", "dead code", "refactor", "cleanup"], "summary_hash": "4e5251e1a624", "cached_at": "2026-02-08T21:44:26+00:00"}

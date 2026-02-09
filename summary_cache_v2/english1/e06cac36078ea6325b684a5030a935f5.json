@@ -1,1 +1,0 @@
-{"summary": "The unit is isolated with no callers or callees, suggesting it is not currently used within the application.", "business_intent": "May represent dead code or a placeholder for future functionality.", "keywords": ["unused", "dead code", "no callers", "isolated"], "summary_hash": "251090966f9b", "cached_at": "2026-02-08T19:58:32+00:00"}

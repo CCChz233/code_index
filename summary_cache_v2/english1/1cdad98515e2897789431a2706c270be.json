@@ -1,1 +1,0 @@
-{"summary": "The component appears isolated with no callers, no callees, and is not exercised by tests, suggesting it may be dead code or a placeholder.", "business_intent": "No business intent identified due to lack of integration or usage.", "keywords": [], "summary_hash": "b7743be3699d", "cached_at": "2026-02-09T04:09:27+00:00"}

@@ -1,1 +1,0 @@
-{"summary": "No callers or callees are recorded and the component is not exercised by tests, indicating it is currently unused or isolated.", "business_intent": "Cannot determine the business purpose without additional code or documentation.", "keywords": [], "summary_hash": "985200fbf3ef", "cached_at": "2026-02-09T00:16:12+00:00"}

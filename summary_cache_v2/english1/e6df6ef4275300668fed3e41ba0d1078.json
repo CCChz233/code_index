@@ -1,1 +1,0 @@
-{"summary": "A standalone code unit that is not invoked by any other component and has no test coverage.", "business_intent": "No active business functionality; the code appears to be dead or placeholder logic.", "keywords": ["orphan", "unused", "no-calls", "no-tests", "dead-code"], "summary_hash": "99c5f2cc6eb4", "cached_at": "2026-02-08T22:14:26+00:00"}

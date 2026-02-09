@@ -1,1 +1,0 @@
-{"summary": "Provides a static utility for performing simple HTTP GET requests.", "business_intent": "Simplify and centralize GET request handling for other parts of the system.", "keywords": ["static", "helper", "GET", "HTTP", "request", "utility", "network", "client", "wrapper"], "summary_hash": "8a4edf30c74c", "cached_at": "2026-02-09T07:46:01+00:00"}

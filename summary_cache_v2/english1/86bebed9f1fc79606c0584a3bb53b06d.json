@@ -1,1 +1,0 @@
-{"summary": "Test module for client regression context processors, containing utilities to support test cases.", "business_intent": "Ensure that context processors function correctly within client regression tests.", "keywords": ["testing", "context processors", "client regression", "unit tests", "helper"], "summary_hash": "7982d9299b1f", "cached_at": "2026-02-09T00:50:54+00:00"}

@@ -1,1 +1,0 @@
-{"summary": "The function has no callers or callees and is not exercised by tests, indicating it is currently isolated and possibly unused.", "business_intent": "Potential internal utility or placeholder awaiting integration.", "keywords": ["isolated", "unused", "utility", "placeholder"], "summary_hash": "794a15edb25b", "cached_at": "2026-02-08T16:17:51+00:00"}

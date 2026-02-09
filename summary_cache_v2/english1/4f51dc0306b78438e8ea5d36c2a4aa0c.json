@@ -1,1 +1,0 @@
-{"summary": "Handles a basic GET request, serving as a simple helper endpoint.", "business_intent": "Provide a lightweight HTTP GET endpoint for health checks or basic information retrieval.", "keywords": ["GET", "helper", "endpoint", "HTTP", "controller", "health check", "simple"], "summary_hash": "3a1504f65800", "cached_at": "2026-02-09T07:29:10+00:00"}

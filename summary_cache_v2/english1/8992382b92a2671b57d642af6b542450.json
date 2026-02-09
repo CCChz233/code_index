@@ -1,1 +1,0 @@
-{"summary": "The code defines a self-contained function that is not invoked by any other components and has no test coverage.", "business_intent": "Implements a specific utility or calculation that is currently unused within the system.", "keywords": ["standalone", "unused", "utility", "no dependencies"], "summary_hash": "d1b86534055c", "cached_at": "2026-02-09T04:43:44+00:00"}

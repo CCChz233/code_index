@@ -1,1 +1,0 @@
-{"summary": "The function appears to be unused; it has no callers, does not call other functions, and is not exercised by tests, indicating no observable business behavior.", "business_intent": "None (unused code)", "keywords": [], "summary_hash": "2bca6c7108d5", "cached_at": "2026-02-08T06:22:33+00:00"}

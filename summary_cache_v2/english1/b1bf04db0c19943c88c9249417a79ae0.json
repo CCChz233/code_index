@@ -1,1 +1,0 @@
-{"summary": "Provides utility methods to perform HTTP GET requests for reading data from external sources.", "business_intent": "Enable applications to retrieve remote resources or API data in a simple, reusable way.", "keywords": ["GET", "HTTP", "request", "fetch", "read", "helper", "client", "network"], "summary_hash": "80fbbf2d4bcd", "cached_at": "2026-02-09T07:38:33+00:00"}

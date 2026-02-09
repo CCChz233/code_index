@@ -1,1 +1,0 @@
-{"summary": "The module shows no incoming or outgoing calls and is not covered by tests, indicating it is currently unused.", "business_intent": "No active business functionality detected; the code appears dormant or placeholder.", "keywords": ["unused", "dead code", "no calls", "no test coverage"], "summary_hash": "2f919abb914c", "cached_at": "2026-02-09T05:19:45+00:00"}

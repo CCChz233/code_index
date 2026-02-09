@@ -1,1 +1,0 @@
-{"summary": "Encapsulates a point in time and provides a human‑readable string representation.", "business_intent": "Enable easy handling and display of time values within applications.", "keywords": ["time", "string representation", "formatting", "datetime", "utility"], "summary_hash": "bfef5764df64", "cached_at": "2026-02-08T22:59:42+00:00"}

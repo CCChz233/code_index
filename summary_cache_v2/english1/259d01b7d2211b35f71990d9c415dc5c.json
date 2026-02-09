@@ -1,1 +1,0 @@
-{"summary": "The code defines a component that is not referenced by any other parts of the system and is not exercised by tests.", "business_intent": "Potential placeholder or dead code with no current functional impact.", "keywords": ["unused", "orphan", "dead code", "placeholder"], "summary_hash": "212cc5ce0686", "cached_at": "2026-02-09T04:51:52+00:00"}

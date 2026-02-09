@@ -1,1 +1,0 @@
-{"summary": "A test suite that validates the functionality of reading a work pool component.", "business_intent": "Ensure that the work pool reading logic operates correctly by executing a simple helper test.", "keywords": ["unit test", "work pool", "read operation", "validation", "helper"], "summary_hash": "b084acf3d05b", "cached_at": "2026-02-08T12:19:07+00:00"}

@@ -1,1 +1,0 @@
-{"summary": "A lightweight view class that handles GET requests using a simple helper method.", "business_intent": "Expose a basic endpoint to retrieve information or perform a simple operation in a web application.", "keywords": ["view", "GET", "helper", "simple", "endpoint", "request handling", "web"], "summary_hash": "46effae47c54", "cached_at": "2026-02-08T22:34:37+00:00"}

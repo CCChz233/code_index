@@ -1,1 +1,0 @@
-{"summary": "Provides unit tests for verifying that model checkpoints can be reloaded correctly.", "business_intent": "Validate the reliability of checkpoint loading to prevent errors during model restoration.", "keywords": ["testing", "checkpoint", "reload", "validation", "model", "unit test"], "summary_hash": "87ae0ccd66a0", "cached_at": "2026-02-08T08:04:15+00:00"}

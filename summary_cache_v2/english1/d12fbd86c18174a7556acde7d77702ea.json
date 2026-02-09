@@ -1,1 +1,0 @@
-{"summary": "The component is defined but not referenced anywhere in the codebase, indicating it is currently unused.", "business_intent": "No observable business behavior because the component is not invoked by any other code or tests.", "keywords": ["unused", "orphan", "dead code", "no calls"], "summary_hash": "9ea488832b6e", "cached_at": "2026-02-09T03:20:20+00:00"}

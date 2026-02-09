@@ -1,1 +1,0 @@
-{"summary": "The function is defined but not referenced by any other code and is not exercised by tests.", "business_intent": "No observable business behavior; appears to be an unused or placeholder component.", "keywords": ["unused", "orphan", "standalone", "no references"], "summary_hash": "5038b8cde0ea", "cached_at": "2026-02-09T03:24:24+00:00"}

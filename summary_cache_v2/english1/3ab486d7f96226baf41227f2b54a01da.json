@@ -1,1 +1,0 @@
-{"summary": "The code is isolated with no callers, no callees, and is not exercised by any tests.", "business_intent": "Potential dead or standalone utility code that is currently unused within the codebase.", "keywords": ["unused", "orphan", "no callers", "no callees", "not tested"], "summary_hash": "9b5a8ffa280d", "cached_at": "2026-02-08T23:36:51+00:00"}

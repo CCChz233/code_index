@@ -1,1 +1,0 @@
-{"summary": "The code element is isolated with no callers, no callees, and is not exercised by any tests.", "business_intent": "Currently has no active business role; it appears to be dead or placeholder code awaiting integration.", "keywords": ["orphan", "unused", "no-calls", "untested", "dead-code"], "summary_hash": "2782b3a62c39", "cached_at": "2026-02-08T11:19:35+00:00"}
