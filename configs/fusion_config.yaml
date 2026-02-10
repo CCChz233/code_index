@@ -1,0 +1,48 @@
+repos_root: /path/to/locbench_repos
+output_folder: /path/to/output_fusion
+dataset_path: /path/to/Loc-Bench_V1.jsonl
+
+# mapper_type: ast | graph
+mapper_type: ast
+target_granularity: file
+
+top_k:
+  files: 20
+  modules: 20
+  entities: 50
+  blocks: 50
+
+aligner:
+  type: sum_decay
+  top_n: 5
+  decay: 0.5
+
+fusion:
+  type: rrf
+  rrf_k: 60
+
+sources:
+  - name: dense
+    type: dense
+    index_dir: /path/to/dense_index_{strategy}
+    model_name: <set_to_dense_model_name>
+    top_k: 50
+    max_length: 4096
+    trust_remote_code: false
+    gpu_id: 0
+    force_cpu: false
+
+  - name: sparse
+    type: sparse
+    index_dir: /path/to/sparse_index_{strategy}
+    top_k: 50
+
+  - name: summary
+    type: summary
+    index_dir: /path/to/summary_index
+    model_name: <set_to_summary_model_name>
+    top_k: 80
+    max_length: 512
+    trust_remote_code: false
+    gpu_id: 0
+    force_cpu: false
