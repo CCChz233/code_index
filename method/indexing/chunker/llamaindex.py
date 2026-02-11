@@ -1,4 +1,5 @@
 import logging
+import os
 from typing import Dict, List
 
 import torch
@@ -7,7 +8,6 @@ from method.indexing.core.block import Block, ChunkResult
 from method.indexing.chunker.base import BaseChunker
 from method.indexing.chunker.collect import collect_blocks
 from method.indexing.chunker.llama_utils import (
-    build_context_enhanced_content,
     _get_or_calculate_line_numbers,
 )
 
@@ -51,19 +51,13 @@ def collect_llamaindex_code_blocks(
     try:
         reader = SimpleDirectoryReader(
             input_dir=repo_path,
-            exclude=[
-                "**/test/**",
-                "**/tests/**",
-                "**/test_*.py",
-                "**/*_test.py",
-            ],
             filename_as_id=True,
             required_exts=[".py"],
             recursive=True,
         )
         docs = reader.load_data()
         if not docs:
-            print(f'\n[DEBUG] {repo_path}: No documents loaded (after exclusions)')
+            print(f'\n[DEBUG] {repo_path}: No documents loaded')
             logger.warning(f"No documents loaded from {repo_path} (after exclusions)")
             return []
         print(f'\n[DEBUG] {repo_path}: Loaded {len(docs)} documents')
@@ -136,18 +130,14 @@ def collect_llamaindex_code_blocks(
         else:
             previous_chunk_end_by_file[file_path] = max(prev_end, end_line * 80)
 
-        content = build_context_enhanced_content(
-            file_path=file_path,
-            original_content=content_text,
-            start_line=start_line,
-        )
+        rel_path = os.path.relpath(file_path, repo_path)
 
         blocks.append(
             Block(
-                file_path=file_path,
+                file_path=rel_path,
                 start=start_line,
                 end=end_line,
-                content=content,
+                content=content_text,
                 block_type="llamaindex_code",
             )
         )
@@ -174,12 +164,6 @@ def collect_llamaindex_sentence_blocks(
     try:
         reader = SimpleDirectoryReader(
             input_dir=repo_path,
-            exclude=[
-                "**/test/**",
-                "**/tests/**",
-                "**/test_*.py",
-                "**/*_test.py",
-            ],
             filename_as_id=True,
             required_exts=[".py"],
             recursive=True,
@@ -234,18 +218,14 @@ def collect_llamaindex_sentence_blocks(
         else:
             previous_chunk_end_by_file[file_path] = max(prev_end, end_line * 80)
 
-        content = build_context_enhanced_content(
-            file_path=file_path,
-            original_content=content_text,
-            start_line=start_line,
-        )
+        rel_path = os.path.relpath(file_path, repo_path)
 
         blocks.append(
             Block(
-                file_path=file_path,
+                file_path=rel_path,
                 start=start_line,
                 end=end_line,
-                content=content,
+                content=content_text,
                 block_type="llamaindex_sentence",
             )
         )
@@ -268,12 +248,6 @@ def collect_llamaindex_token_blocks(
     try:
         reader = SimpleDirectoryReader(
             input_dir=repo_path,
-            exclude=[
-                "**/test/**",
-                "**/tests/**",
-                "**/test_*.py",
-                "**/*_test.py",
-            ],
             filename_as_id=True,
             required_exts=[".py"],
             recursive=True,
@@ -329,18 +303,14 @@ def collect_llamaindex_token_blocks(
         else:
             previous_chunk_end_by_file[file_path] = max(prev_end, end_line * 80)
 
-        content = build_context_enhanced_content(
-            file_path=file_path,
-            original_content=content_text,
-            start_line=start_line,
-        )
+        rel_path = os.path.relpath(file_path, repo_path)
 
         blocks.append(
             Block(
-                file_path=file_path,
+                file_path=rel_path,
                 start=start_line,
                 end=end_line,
-                content=content,
+                content=content_text,
                 block_type="llamaindex_token",
             )
         )
@@ -365,12 +335,6 @@ def collect_llamaindex_semantic_blocks(
     try:
         reader = SimpleDirectoryReader(
             input_dir=repo_path,
-            exclude=[
-                "**/test/**",
-                "**/tests/**",
-                "**/test_*.py",
-                "**/*_test.py",
-            ],
             filename_as_id=True,
             required_exts=[".py"],
             recursive=True,
@@ -430,18 +394,14 @@ def collect_llamaindex_semantic_blocks(
         else:
             previous_chunk_end_by_file[file_path] = max(prev_end, end_line * 80)
 
-        content = build_context_enhanced_content(
-            file_path=file_path,
-            original_content=content_text,
-            start_line=start_line,
-        )
+        rel_path = os.path.relpath(file_path, repo_path)
 
         blocks.append(
             Block(
-                file_path=file_path,
+                file_path=rel_path,
                 start=start_line,
                 end=end_line,
-                content=content,
+                content=content_text,
                 block_type="llamaindex_semantic",
             )
         )

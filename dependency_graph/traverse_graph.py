@@ -204,6 +204,11 @@ class RepoDependencySearcher:
             etype: i for i, etype in enumerate(VALID_EDGE_TYPES)
         }
 
+    def has_node(self, nid, include_test=False):
+        if not include_test and is_test_file(nid):
+            return False
+        return nid in self.G
+
     def subgraph(self, nids):
         return self.G.subgraph(nids)
 

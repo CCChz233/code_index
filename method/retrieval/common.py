@@ -33,7 +33,7 @@ def rank_files(
         block_meta = metadata[block_idx]
         file_path = block_meta["file_path"]
         cleaned_path = clean_file_path(file_path, repo_name)
-        file_scores[cleaned_path] = file_scores.get(cleaned_path, 0.0) + float(score)
+        file_scores[cleaned_path] = max(file_scores.get(cleaned_path, 0.0), float(score))
 
     ranked = sorted(file_scores.items(), key=lambda x: x[1], reverse=True)
     return [f for f, _ in ranked[:top_k_files]]

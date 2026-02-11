@@ -244,7 +244,7 @@ def parse_args():
     parser.add_argument("--llamaindex_language", type=str, default="python", help="Language for llamaindex_code")
     parser.add_argument("--llamaindex_chunk_lines", type=int, default=40, help="CodeSplitter chunk lines")
     parser.add_argument("--llamaindex_chunk_lines_overlap", type=int, default=15, help="CodeSplitter overlap")
-    parser.add_argument("--llamaindex_max_chars", type=int, default=800, help="CodeSplitter max chars")
+    parser.add_argument("--llamaindex_max_chars", type=int, default=1500, help="CodeSplitter max chars")
 
     parser.add_argument("--llamaindex_chunk_size", type=int, default=1024, help="LlamaIndex chunk size")
     parser.add_argument("--llamaindex_chunk_overlap", type=int, default=200, help="LlamaIndex chunk overlap")

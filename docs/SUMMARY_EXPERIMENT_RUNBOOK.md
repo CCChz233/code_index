@@ -138,3 +138,58 @@ sqlite/summary.db
 1. 小规模（1-2 个 repo） → 验证链路  
 2. 中规模（10-20 repo） → 观察吞吐  
 3. 全量（LocBench 全库）  
+
+---
+
+## 7. 使用 summary_v2 / summary_runs 跑测评
+
+若索引构建在 `index_v2/summary_v2/summary_runs/<run_id>` 下（例如用 `run_summary.sh` 构建），测评时需让 `--index_dir` 指向该 run 的 **summary_index_function_level** 目录（每 repo 一个子目录，内含 `summary.jsonl`、`dense/` 等）。
+
+### 7.1 确认索引已完整
+索引目录应为：`index_v2/summary_v2/summary_runs/<run_id>/summary_index_function_level/`，其下每个 repo 目录内需有：
+- `summary.jsonl`
+- `dense/embeddings.pt`、`dense/index_map.json`
+
+若只有 `repos/<repo>/intermediate/sqlite/summary.db` 而没有 `repos/<repo>/output/summary.jsonl`，说明只跑了 Generator，需先跑一次 Indexer（同一 `run_id`）再测评：
+```bash
+STAGE=indexer bash run_summary.sh
+# 或显式指定 run_id（与构建时一致）：
+# python method/indexing/batch_build_summary_index.py ... --index_dir .../index_v2/summary_v2 --run_id 20260211T044455Z --stage indexer ...
+```
+
+### 7.2 仅测评（索引已构建好）
+在 `code_index` 目录下执行（将 `<run_id>` 换成你的 run，如 `20260211T044455Z`）：
+
+```bash
+cd /home/chaihongzheng/workspace/locbench/code_index
+export PYTHONPATH="$(pwd):$PYTHONPATH"
+
+python method/cli/run_eval.py \
+  --index_type summary \
+  --dataset_path /home/chaihongzheng/workspace/locbench/data/Loc-Bench_V1_dataset.jsonl \
+  --index_dir /home/chaihongzheng/workspace/locbench/code_index/index_v2/summary_v2/summary_runs/<run_id>/summary_index_function_level \
+  --output_folder /home/chaihongzheng/workspace/locbench/code_index/output_eval/summary_v2 \
+  --model_name /home/chaihongzheng/workspace/locbench/LocAgent/models/CodeRankEmbed \
+  --trust_remote_code \
+  --repos_root /home/chaihongzheng/workspace/locbench/repos/locbench_repos \
+  --top_k_docs 50 \
+  --top_k_files 20 \
+  --top_k_modules 20 \
+  --top_k_entities 50 \
+  --max_length 512 \
+  --batch_size 8 \
+  --mapper_type ast \
+  --gpu_id 0
+```
+
+结果会写入：`output_eval/summary_v2/summary_results.jsonl`（或脚本打印的路径）。
+
+### 7.3 用 eval_summary.sh 跑 summary_v2 测评
+`eval_summary.sh` 支持通过环境变量 `INDEX_DIR` 指定测评用的索引目录（覆盖默认的 `INDEX_ROOT/summary_index_function_level`）。将下面 `<run_id>` 换成实际 run（如 `20260211T044455Z`）：
+
+```bash
+cd /home/chaihongzheng/workspace/locbench/code_index
+RUN_BUILD=0 INDEX_DIR="$(pwd)/index_v2/summary_v2/summary_runs/<run_id>/summary_index_function_level" bash eval_summary.sh
+```
+
+评测结果仍写入脚本中配置的 `OUTPUT_EVAL`（默认 `output_eval/summary_index`）。

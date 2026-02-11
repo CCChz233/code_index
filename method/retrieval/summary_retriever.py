@@ -181,13 +181,13 @@ def main() -> None:
                 continue
             top_docs.append((doc, float(scores[idx])))
 
-        # File ranking by score aggregation
+        # File ranking by max score (avoids bias toward large files with many docs)
         file_scores: Dict[str, float] = {}
         for doc, score in top_docs:
             file_path = doc.get("file_path")
             if not file_path:
                 continue
-            file_scores[file_path] = file_scores.get(file_path, 0.0) + score
+            file_scores[file_path] = max(file_scores.get(file_path, 0.0), score)
         found_files = [f for f, _ in sorted(file_scores.items(), key=lambda x: x[1], reverse=True)[: args.top_k_files]]
 
         # Module docs by score

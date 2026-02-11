@@ -560,12 +560,27 @@ class Indexer:
         nodes = self.storage.load_nodes(updated_since=updated_since)
         edges = self.storage.load_edges(updated_since=updated_since)
 
-        dense_nodes = [n for n in nodes if not (n.summary.metadata or {}).get("is_placeholder")]
+        # Include ALL nodes in dense embedding (not just non-placeholders).
+        # For non-placeholders: embed summary + business_intent (aligns with natural-language queries).
+        # For placeholders: embed qualified_name (enables name-based matching as fallback).
+        dense_nodes = nodes
 
         # Dense vectors (Chroma + optional flat files)
         embeddings = None
         if self.embedder:
-            texts = [n.summary.summary for n in dense_nodes]
+            texts = []
+            for n in dense_nodes:
+                meta = n.summary.metadata or {}
+                is_placeholder = meta.get("is_placeholder", False)
+                if is_placeholder:
+                    texts.append(meta.get("qualified_name", "") or n.stable_id)
+                else:
+                    summary = n.summary.summary or ""
+                    business_intent = n.summary.business_intent or ""
+                    if summary or business_intent:
+                        texts.append(f"{summary}\n{business_intent}".strip())
+                    else:
+                        texts.append(meta.get("qualified_name", "") or n.stable_id)
             if texts:
                 embeddings = self.embedder(texts)
                 metadatas = [{"file_path": n.file_path, "type": n.type} for n in dense_nodes]

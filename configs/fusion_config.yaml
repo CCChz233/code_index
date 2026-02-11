@@ -1,6 +1,6 @@
-repos_root: /path/to/locbench_repos
-output_folder: /path/to/output_fusion
-dataset_path: /path/to/Loc-Bench_V1.jsonl
+repos_root: /home/chaihongzheng/workspace/locbench/repos/locbench_repos
+output_folder: /home/chaihongzheng/workspace/locbench/code_index/output/fusion
+dataset_path: /home/chaihongzheng/workspace/locbench/data/Loc-Bench_V1_dataset.jsonl
 
 # mapper_type: ast | graph
 mapper_type: ast
@@ -24,25 +24,25 @@ fusion:
 sources:
   - name: dense
     type: dense
-    index_dir: /path/to/dense_index_{strategy}
-    model_name: <set_to_dense_model_name>
+    index_dir: /home/chaihongzheng/workspace/locbench/code_index/index_v2/llamaindex_code/dense_index_llamaindex_code
+    model_name: /home/chaihongzheng/workspace/locbench/IR-based/models/CodeRankEmbed
     top_k: 50
     max_length: 4096
-    trust_remote_code: false
-    gpu_id: 0
+    trust_remote_code: true
+    gpu_id: 1
     force_cpu: false
 
   - name: sparse
     type: sparse
-    index_dir: /path/to/sparse_index_{strategy}
+    index_dir: /home/chaihongzheng/workspace/locbench/code_index/index_v2/BM25_llamaindex_code/sparse_index_llamaindex_code
     top_k: 50
 
   - name: summary
     type: summary
-    index_dir: /path/to/summary_index
-    model_name: <set_to_summary_model_name>
+    index_dir: /home/chaihongzheng/workspace/locbench/code_index/index_v2/summary/summary_index_function_level
+    model_name: /home/chaihongzheng/workspace/locbench/IR-based/models/CodeRankEmbed
     top_k: 80
     max_length: 512
-    trust_remote_code: false
+    trust_remote_code: true
     gpu_id: 0
     force_cpu: false

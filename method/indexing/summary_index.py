@@ -33,11 +33,12 @@ except ImportError as exc:  # pragma: no cover
 
 
 DEFAULT_SUMMARY_PROMPT = (
-    "You are a senior code analyst. Given the context below, output ONLY a JSON object with keys: "
+    "You are a senior code analyst. Analyze the function source code below and output ONLY a JSON object with keys: "
     "`summary`, `business_intent`, `keywords` (list).\n"
     "Constraints:\n"
+    "- Read the code carefully and describe what it actually does.\n"
     "- Do NOT mention any specific caller/callee names.\n"
-    "- Focus on business intent and behavior.\n"
+    "- Focus on business intent and behavior based on the actual implementation.\n"
     "- Use {language}.\n"
     "- Output ONLY the raw JSON object. Do NOT include any explanation, reasoning, or markdown formatting.\n\n"
     "Context:\n"
@@ -726,14 +727,14 @@ def _rank_nodes(
 
 
 def _build_context_summary(called_by: Sequence[str], calls: Sequence[str]) -> str:
-    callers_count = len(called_by)
-    callees_count = len(calls)
-    called_by_tests = any(_is_test_node(nid) for nid in called_by)
-    return (
-        f"callers_count: {callers_count}\n"
-        f"callees_count: {callees_count}\n"
-        f"called_by_tests: {called_by_tests}\n"
-    )
+    parts: List[str] = []
+    if called_by:
+        names = ", ".join(str(n) for n in called_by[:8])
+        parts.append(f"called_by ({len(called_by)}): {names}")
+    if calls:
+        names = ", ".join(str(n) for n in calls[:8])
+        parts.append(f"calls ({len(calls)}): {names}")
+    return "\n".join(parts) + "\n" if parts else ""
 
 
 def _load_cache_entry(cache_dir: Optional[str], cache_key: str) -> Optional[Dict[str, Any]]:
@@ -879,7 +880,22 @@ def _collect_function_docs(
             called_by = _rank_nodes(callers, target_module=module_path, stats=graph_stats, top_k=top_k_callers)
             calls = _rank_nodes(callees, target_module=module_path, stats=graph_stats, top_k=top_k_callees)
 
-        context_str = _build_context_summary(called_by, calls)
+        # ---- build context that the LLM actually sees ----
+        # Truncate very long functions to keep prompts within context window
+        _MAX_CODE_LINES_FOR_PROMPT = 150
+        code_lines_all = raw_code.splitlines()
+        if len(code_lines_all) > _MAX_CODE_LINES_FOR_PROMPT:
+            code_for_prompt = "\n".join(code_lines_all[:_MAX_CODE_LINES_FOR_PROMPT]) + "\n# ... (truncated)"
+        else:
+            code_for_prompt = raw_code
+
+        graph_context = _build_context_summary(called_by, calls)
+        context_str = (
+            f"function: {qualified_name}\n"
+            f"code:\n```python\n{code_for_prompt}\n```\n"
+        )
+        if graph_context:
+            context_str += f"\n{graph_context}"
 
         normalized_source = _normalize_code(raw_code)
         content_hash = _sha1(normalized_source)
@@ -1956,11 +1972,22 @@ def build_summary_index(
     _save_summary_jsonl(out_dir / "summary.jsonl", all_docs)
     save_nodes_as_hierarchical_json(all_docs, out_dir / "summary_ast")
 
-    dense_docs = [doc for doc in all_docs if not doc.get("is_placeholder")]
-    dense_texts = [
-        f"{doc.get('qualified_name','')}\n{doc.get('business_intent','')}\n{doc.get('summary','')}"
-        for doc in dense_docs
-    ]
+    # Include ALL docs in dense embedding (not just non-placeholders).
+    # For non-placeholders: embed summary + business_intent (aligns with natural-language queries).
+    # For placeholders: embed qualified_name (enables name-based matching as fallback).
+    dense_docs = all_docs
+    dense_texts = []
+    for doc in dense_docs:
+        if doc.get("is_placeholder"):
+            dense_texts.append(doc.get("qualified_name", "") or doc.get("id", ""))
+        else:
+            summary = doc.get("summary", "")
+            business_intent = doc.get("business_intent", "")
+            if summary or business_intent:
+                dense_texts.append(f"{summary}\n{business_intent}".strip())
+            else:
+                dense_texts.append(doc.get("qualified_name", "") or doc.get("id", ""))
+    
 
     if dense_docs:
         tokenizer = AutoTokenizer.from_pretrained(model_name, trust_remote_code=trust_remote_code)

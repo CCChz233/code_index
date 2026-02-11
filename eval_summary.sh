@@ -10,13 +10,13 @@ export PYTHONPATH="$(cd "$(dirname "$0")" && pwd):${PYTHONPATH:-}"
 
 # ==== 配置区（按需修改） ====
 REPOS_ROOT="/home/chaihongzheng/workspace/locbench/repos/locbench_repos"
-INDEX_ROOT="/home/chaihongzheng/workspace/locbench/code_index/index_v2/summary"
+INDEX_ROOT="/home/chaihongzheng/workspace/locbench/code_index/index_v2/summary/summary_index_function_level"
 GRAPH_INDEX_DIR="/home/chaihongzheng/workspace/locbench/code_index/graph_index"
 SUMMARY_CACHE_DIR="/home/chaihongzheng/workspace/locbench/code_index/summary_cache"
 LOG_DIR="/home/chaihongzheng/workspace/locbench/code_index/logs/summary_index"
 
 DATASET_PATH="/home/chaihongzheng/workspace/locbench/data/Loc-Bench_V1_dataset.jsonl"
-OUTPUT_EVAL="/home/chaihongzheng/workspace/locbench/code_index/output_eval/summary_index"
+OUTPUT_EVAL="/home/chaihongzheng/workspace/locbench/code_index/output_eval/summary_index_v1"
 
 EMBED_MODEL="/home/chaihongzheng/workspace/locbench/LocAgent/models/CodeRankEmbed"
 
@@ -31,6 +31,7 @@ EMBED_GPU_IDS="${EMBED_GPU_IDS:-4,5,6,7}"
 RESUME_FAILED="${RESUME_FAILED:-0}"
 PROGRESS_STYLE="${PROGRESS_STYLE:-rich}"
 STAGE="${STAGE:-both}"
+SKIP_EXISTING="${SKIP_EXISTING:-1}"
 
 # 评测配置
 GPU_ID="${GPU_ID:-0}"
@@ -49,6 +50,9 @@ if [[ "${RUN_BUILD}" == "1" ]]; then
   if [[ "${RESUME_FAILED}" == "1" ]]; then
     EXTRA_FLAGS="--resume_failed"
   fi
+  if [[ "${SKIP_EXISTING}" == "1" ]]; then
+    EXTRA_FLAGS="${EXTRA_FLAGS} --skip_existing"
+  fi
 
   python method/indexing/batch_build_summary_index.py \
     --repo_path "${REPOS_ROOT}" \
@@ -63,7 +67,7 @@ if [[ "${RUN_BUILD}" == "1" ]]; then
     --summary_llm_api_key "${OPENAI_API_KEY}" \
     --summary_cache_dir "${SUMMARY_CACHE_DIR}" \
     --summary_cache_policy read_write \
-    --summary_cache_miss empty \
+    --summary_cache_miss skip \
     --summary_language Chinese \
     --num_processes "${NUM_PROCESSES}" \
     --gpu_ids "${EMBED_GPU_IDS}" \
@@ -72,15 +76,17 @@ if [[ "${RUN_BUILD}" == "1" ]]; then
     --log_dir "${LOG_DIR}" \
     --progress_style "${PROGRESS_STYLE}" \
     --stage "${STAGE}" \
-    --skip_existing \
     ${EXTRA_FLAGS}
 fi
 
 # === 评测 ===
+# 若使用 summary_v2/summary_runs 构建的索引，可设置 INDEX_DIR 指向该 run 的 summary_index_function_level，例如：
+#   INDEX_DIR="$(pwd)/index_v2/summary_v2/summary_runs/20260211T044455Z/summary_index_function_level" RUN_BUILD=0 bash eval_summary.sh
+EVAL_INDEX_DIR="${INDEX_DIR:-${INDEX_ROOT}/summary_index_function_level}"
 python method/cli/run_eval.py \
   --index_type summary \
   --dataset_path "${DATASET_PATH}" \
-  --index_dir "${INDEX_ROOT}/summary_index_function_level" \
+  --index_dir "${EVAL_INDEX_DIR}" \
   --output_folder "${OUTPUT_EVAL}" \
   --model_name "${EMBED_MODEL}" \
   --trust_remote_code \
