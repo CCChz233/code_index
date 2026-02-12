@@ -28,6 +28,7 @@ from multiprocessing import Value
 from method.indexing.encoder.dense import embed_blocks_coderank as _embed_blocks_coderank
 from method.indexing.core.index_builder import IndexBuilder
 from method.indexing.utils.file import set_file_scan_options
+from method.core.embedding import POOLING_CHOICES
 
 # Optional YAML config support
 try:
@@ -134,6 +135,7 @@ def embed_blocks(
     batch_size: int,
     device: torch.device,
     ir_context_tokens: int = 256,
+    pooling: str = "first_non_pad",
     show_progress: bool = False,
     progress_desc: str = "Blocks",
 ) -> torch.Tensor:
@@ -146,6 +148,7 @@ def embed_blocks(
         batch_size=batch_size,
         device=device,
         ir_context_tokens=ir_context_tokens,
+        pooling=pooling,
         show_progress=show_progress,
         progress_desc=progress_desc,
     )
@@ -280,6 +283,7 @@ def run(
                     "max_length": args.max_length,
                     "batch_size": args.batch_size,
                     "ir_context_tokens": args.ir_function_context_tokens,
+                    "pooling": args.pooling,
                     "show_progress": show_block_progress,
                     "progress_desc": "Blocks",
                 },
@@ -394,6 +398,13 @@ def main():
                        help="Chunking strategy")
     parser.add_argument("--max_length", type=int, default=1024,
                        help="Maximum sequence length")
+    parser.add_argument(
+        "--pooling",
+        type=str,
+        default="first_non_pad",
+        choices=list(POOLING_CHOICES),
+        help="Pooling strategy for dense embeddings.",
+    )
     parser.add_argument("--batch_size", type=int, default=8,
                        help="Batch size for embedding")
     parser.add_argument("--block_size", type=int, default=15,

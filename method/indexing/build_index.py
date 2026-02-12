@@ -16,6 +16,7 @@ from transformers import AutoTokenizer, AutoModel
 from dependency_graph import RepoEntitySearcher
 from dependency_graph.build_graph import NODE_TYPE_FUNCTION, NODE_TYPE_CLASS
 
+from method.core.embedding import POOLING_CHOICES
 from method.indexing.core.block import Block
 from method.indexing.encoder.dense import embed_blocks_coderank
 from method.indexing.core.index_builder import IndexBuilder
@@ -143,6 +144,13 @@ def parse_args():
     )
 
     parser.add_argument("--max_length", type=int, default=512, help="Max tokens for encoding.")
+    parser.add_argument(
+        "--pooling",
+        type=str,
+        default="first_non_pad",
+        choices=list(POOLING_CHOICES),
+        help="Pooling strategy for dense embeddings.",
+    )
     parser.add_argument("--batch_size", type=int, default=8, help="Batch size for encoding.")
     parser.add_argument("--block_size", type=int, default=15, help="Used for fixed/function strategies.")
     parser.add_argument("--window_size", type=int, default=20, help="Used for sliding strategy.")
@@ -321,6 +329,7 @@ def main():
         batch_size=args.batch_size,
         device=device,
         ir_context_tokens=args.ir_context_tokens,
+        pooling=args.pooling,
         show_progress=True,
         progress_desc="Embedding blocks",
     )

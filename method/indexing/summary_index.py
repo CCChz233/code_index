@@ -21,6 +21,7 @@ except Exception:  # pragma: no cover
 
 from dependency_graph import RepoDependencySearcher
 from dependency_graph.build_graph import EDGE_TYPE_INVOKES, NODE_TYPE_CLASS, NODE_TYPE_FUNCTION
+from method.core.embedding import extract_last_hidden_state, pool_hidden_states
 from method.indexing.chunker.function import collect_function_blocks
 from method.indexing.core.llm_factory import get_llm
 from method.indexing.encoder.sparse import build_bm25_matrix
@@ -1747,6 +1748,7 @@ def _embed_texts(
     max_length: int,
     batch_size: int,
     device: torch.device,
+    pooling: str = "first_non_pad",
 ) -> torch.Tensor:
     model.eval()
     outputs: List[torch.Tensor] = []
@@ -1763,11 +1765,8 @@ def _embed_texts(
         attention_mask = enc["attention_mask"].to(device)
         with torch.no_grad():
             out = model(input_ids=input_ids, attention_mask=attention_mask)
-            if isinstance(out, (tuple, list)):
-                token_embeddings = out[0]
-            else:
-                token_embeddings = out.last_hidden_state
-            sent_emb = token_embeddings[:, 0]
+            token_embeddings = extract_last_hidden_state(out)
+            sent_emb = pool_hidden_states(token_embeddings, attention_mask, pooling=pooling)
             sent_emb = torch.nn.functional.normalize(sent_emb, p=2, dim=1)
             outputs.append(sent_emb.cpu())
     return torch.cat(outputs, dim=0) if outputs else torch.empty((0, 0))

@@ -8,6 +8,7 @@ from method.indexing.core.block import Block, ChunkResult
 from method.indexing.chunker.base import BaseChunker
 from method.indexing.chunker.collect import collect_blocks
 from method.indexing.chunker.llama_utils import (
+    build_context_enhanced_content,
     _get_or_calculate_line_numbers,
 )
 
@@ -131,13 +132,18 @@ def collect_llamaindex_code_blocks(
             previous_chunk_end_by_file[file_path] = max(prev_end, end_line * 80)
 
         rel_path = os.path.relpath(file_path, repo_path)
+        content = build_context_enhanced_content(
+            file_path=rel_path,
+            original_content=content_text,
+            start_line=start_line,
+        )
 
         blocks.append(
             Block(
                 file_path=rel_path,
                 start=start_line,
                 end=end_line,
-                content=content_text,
+                content=content,
                 block_type="llamaindex_code",
             )
         )
@@ -219,13 +225,18 @@ def collect_llamaindex_sentence_blocks(
             previous_chunk_end_by_file[file_path] = max(prev_end, end_line * 80)
 
         rel_path = os.path.relpath(file_path, repo_path)
+        content = build_context_enhanced_content(
+            file_path=rel_path,
+            original_content=content_text,
+            start_line=start_line,
+        )
 
         blocks.append(
             Block(
                 file_path=rel_path,
                 start=start_line,
                 end=end_line,
-                content=content_text,
+                content=content,
                 block_type="llamaindex_sentence",
             )
         )
@@ -304,13 +315,18 @@ def collect_llamaindex_token_blocks(
             previous_chunk_end_by_file[file_path] = max(prev_end, end_line * 80)
 
         rel_path = os.path.relpath(file_path, repo_path)
+        content = build_context_enhanced_content(
+            file_path=rel_path,
+            original_content=content_text,
+            start_line=start_line,
+        )
 
         blocks.append(
             Block(
                 file_path=rel_path,
                 start=start_line,
                 end=end_line,
-                content=content_text,
+                content=content,
                 block_type="llamaindex_token",
             )
         )
@@ -395,13 +411,18 @@ def collect_llamaindex_semantic_blocks(
             previous_chunk_end_by_file[file_path] = max(prev_end, end_line * 80)
 
         rel_path = os.path.relpath(file_path, repo_path)
+        content = build_context_enhanced_content(
+            file_path=rel_path,
+            original_content=content_text,
+            start_line=start_line,
+        )
 
         blocks.append(
             Block(
                 file_path=rel_path,
                 start=start_line,
                 end=end_line,
-                content=content_text,
+                content=content,
                 block_type="llamaindex_semantic",
             )
         )

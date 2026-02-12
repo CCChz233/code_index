@@ -11,6 +11,7 @@ import torch
 from transformers import AutoTokenizer, AutoModel
 from tqdm import tqdm
 
+from method.core.embedding import POOLING_CHOICES, extract_last_hidden_state, pool_hidden_states
 from method.mapping import ASTBasedMapper, GraphBasedMapper
 from method.retrieval.common import (
     instance_id_to_repo_name,
@@ -33,12 +34,13 @@ def dense_block_scores(
     max_length: int,
     device: torch.device,
     top_k: int,
+    pooling: str = "first_non_pad",
 ) -> List[Tuple[int, float]]:
     encoded = tokenizer(
         query_text,
         truncation=True,
         max_length=max_length,
-        padding="max_length",
+        padding=False,
         return_tensors="pt",
     )
     input_ids = encoded["input_ids"].to(device)
@@ -46,8 +48,8 @@ def dense_block_scores(
 
     with torch.no_grad():
         outputs = model(input_ids=input_ids, attention_mask=attn_mask)
-        token_embeddings = outputs[0]
-        query_emb = token_embeddings[:, 0]
+        token_embeddings = extract_last_hidden_state(outputs)
+        query_emb = pool_hidden_states(token_embeddings, attn_mask, pooling=pooling)
         query_emb = torch.nn.functional.normalize(query_emb, p=2, dim=1)
 
     query_emb = query_emb.squeeze(0)
@@ -70,7 +72,14 @@ def main():
 
     parser.add_argument("--model_name", type=str, required=True)
     parser.add_argument("--trust_remote_code", action="store_true")
-    parser.add_argument("--max_length", type=int, default=4096)
+    parser.add_argument("--max_length", type=int, default=1024)
+    parser.add_argument(
+        "--pooling",
+        type=str,
+        default="first_non_pad",
+        choices=list(POOLING_CHOICES),
+        help="Pooling strategy for dense query embeddings.",
+    )
 
     parser.add_argument("--top_k_blocks", type=int, default=50)
     parser.add_argument("--top_k_files", type=int, default=20)
@@ -138,6 +147,7 @@ def main():
                 args.max_length,
                 device,
                 args.top_k_blocks,
+                pooling=args.pooling,
             )
 
             sparse_raw = bm25_scores(query_text, tf_matrix, vocab, idf, doc_len, avgdl, k1, b)

@@ -18,6 +18,7 @@ import torch
 from transformers import AutoTokenizer, AutoModel
 from tqdm import tqdm
 
+from method.core.embedding import POOLING_CHOICES, extract_last_hidden_state, pool_hidden_states
 from method.mapping import ASTBasedMapper, GraphBasedMapper
 from method.retrieval.common import (
     instance_id_to_repo_name,
@@ -35,42 +36,30 @@ def embed_texts(
     max_length: int,
     batch_size: int,
     device: torch.device,
+    pooling: str = "first_non_pad",
 ) -> torch.Tensor:
     """CodeRankEmbed 专用的文本 embedding 函数"""
-    from torch.utils.data import Dataset, DataLoader
-
-    class TextDataset(Dataset):
-        def __init__(self, items: List[str]):
-            self.items = items
-
-        def __len__(self):
-            return len(self.items)
-
-        def __getitem__(self, idx: int):
-            encoded = tokenizer(
-                self.items[idx],
-                truncation=True,
-                max_length=max_length,
-                padding="max_length",
-                return_tensors="pt",
-            )
-            return encoded["input_ids"].squeeze(0), encoded["attention_mask"].squeeze(0)
-
-    ds = TextDataset(texts)
-    loader = DataLoader(ds, batch_size=batch_size, shuffle=False, num_workers=0)
     model.eval()
     outs: List[torch.Tensor] = []
     with torch.no_grad():
-        for input_ids, attn_mask in loader:
-            input_ids = input_ids.to(device)
-            attn_mask = attn_mask.to(device)
+        for i in range(0, len(texts), batch_size):
+            batch = texts[i : i + batch_size]
+            encoded = tokenizer(
+                batch,
+                truncation=True,
+                max_length=max_length,
+                padding=True,
+                return_tensors="pt",
+            )
+            input_ids = encoded["input_ids"].to(device)
+            attn_mask = encoded["attention_mask"].to(device)
             # CodeRankEmbed 使用 AutoModel
             outputs = model(input_ids=input_ids, attention_mask=attn_mask)
-            token_embeddings = outputs[0]
-            sent_emb = token_embeddings[:, 0]  # [CLS] token
+            token_embeddings = extract_last_hidden_state(outputs)
+            sent_emb = pool_hidden_states(token_embeddings, attn_mask, pooling=pooling)
             sent_emb = torch.nn.functional.normalize(sent_emb, p=2, dim=1)
             outs.append(sent_emb.cpu())
-    return torch.cat(outs, dim=0)
+    return torch.cat(outs, dim=0) if outs else torch.empty((0, 0))
 
 
 from method.utils import clean_file_path
@@ -136,8 +125,15 @@ def main():
                        help="Number of top modules to retrieve")
     parser.add_argument("--top_k_entities", type=int, default=50,
                        help="Number of top entities to retrieve")
-    parser.add_argument("--max_length", type=int, default=4096,
+    parser.add_argument("--max_length", type=int, default=1024,
                        help="Maximum sequence length")
+    parser.add_argument(
+        "--pooling",
+        type=str,
+        default="first_non_pad",
+        choices=list(POOLING_CHOICES),
+        help="Pooling strategy for dense query embeddings.",
+    )
     parser.add_argument("--batch_size", type=int, default=8,
                        help="Batch size for embedding")
 
@@ -233,7 +229,15 @@ def main():
                 continue
 
             # 编码查询
-            query_embedding = embed_texts([query_text], model, tokenizer, args.max_length, 1, device)[0]
+            query_embedding = embed_texts(
+                [query_text],
+                model,
+                tokenizer,
+                args.max_length,
+                1,
+                device,
+                pooling=args.pooling,
+            )[0]
 
             # 计算相似度（临时移到 GPU）
             query_emb_gpu = query_embedding.to(device)

@@ -8,6 +8,7 @@ import numpy as np
 import torch
 from transformers import AutoModel, AutoTokenizer
 
+from method.core.embedding import extract_last_hidden_state, pool_hidden_states
 from method.retrieval.common import load_index
 from method.retrieval.sparse_retriever import load_sparse_index, bm25_scores
 from method.retrieval.summary_retriever import load_summary_index
@@ -77,20 +78,21 @@ def _embed_query(
     tokenizer: AutoTokenizer,
     max_length: int,
     device: torch.device,
+    pooling: str = "first_non_pad",
 ) -> torch.Tensor:
     encoded = tokenizer(
         text,
         truncation=True,
         max_length=max_length,
-        padding="max_length",
+        padding=False,
         return_tensors="pt",
     )
     input_ids = encoded["input_ids"].to(device)
     attn_mask = encoded["attention_mask"].to(device)
     with torch.no_grad():
         outputs = model(input_ids=input_ids, attention_mask=attn_mask)
-        token_embeddings = outputs[0]
-        query_emb = token_embeddings[:, 0]
+        token_embeddings = extract_last_hidden_state(outputs)
+        query_emb = pool_hidden_states(token_embeddings, attn_mask, pooling=pooling)
         query_emb = torch.nn.functional.normalize(query_emb, p=2, dim=1)
     return query_emb.squeeze(0)
 
@@ -181,7 +183,8 @@ class DenseSource(BaseSource):
         self.index_dir = config["index_dir"]
         self.model_name = config["model_name"]
         self.trust_remote_code = bool(config.get("trust_remote_code", False))
-        self.max_length = int(config.get("max_length", 4096))
+        self.max_length = int(config.get("max_length", 1024))
+        self.pooling = str(config.get("pooling", "first_non_pad"))
         self.top_k = int(config.get("top_k", 50))
         self.gpu_id = int(config.get("gpu_id", 0))
         self.force_cpu = bool(config.get("force_cpu", False))
@@ -197,7 +200,14 @@ class DenseSource(BaseSource):
         device = _device(self.force_cpu, self.gpu_id)
         tokenizer, model = self.model_cache.get(self.model_name, self.trust_remote_code, device)
 
-        query_emb = _embed_query(query_text, model, tokenizer, self.max_length, device)
+        query_emb = _embed_query(
+            query_text,
+            model,
+            tokenizer,
+            self.max_length,
+            device,
+            pooling=self.pooling,
+        )
         sims = torch.matmul(query_emb.unsqueeze(0), embeddings.to(device).t()).squeeze(0).cpu()
         k = min(self.top_k, sims.numel())
         if k <= 0:
@@ -275,6 +285,7 @@ class SummarySource(BaseSource):
         self.model_name = config["model_name"]
         self.trust_remote_code = bool(config.get("trust_remote_code", False))
         self.max_length = int(config.get("max_length", 512))
+        self.pooling = str(config.get("pooling", "first_non_pad"))
         self.top_k = int(config.get("top_k", 80))
         self.gpu_id = int(config.get("gpu_id", 0))
         self.force_cpu = bool(config.get("force_cpu", False))
@@ -290,7 +301,14 @@ class SummarySource(BaseSource):
         device = _device(self.force_cpu, self.gpu_id)
         tokenizer, model = self.model_cache.get(self.model_name, self.trust_remote_code, device)
 
-        query_emb = _embed_query(query_text, model, tokenizer, self.max_length, device)
+        query_emb = _embed_query(
+            query_text,
+            model,
+            tokenizer,
+            self.max_length,
+            device,
+            pooling=self.pooling,
+        )
         scores = torch.matmul(embeddings.to(device), query_emb).cpu().tolist()
         top_indices = sorted(range(len(scores)), key=lambda i: scores[i], reverse=True)[: self.top_k]
 

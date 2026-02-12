@@ -4,6 +4,7 @@ import torch
 from torch.utils.data import DataLoader
 from tqdm import tqdm
 
+from method.core.embedding import extract_last_hidden_state, pool_hidden_states
 from method.indexing.core.block import Block
 from method.indexing.core.dataset import BlockDataset
 
@@ -16,6 +17,7 @@ def embed_blocks_coderank(
     batch_size: int,
     device: torch.device,
     ir_context_tokens: int = 256,
+    pooling: str = "first_non_pad",
     show_progress: bool = False,
     progress_desc: str = "Blocks",
 ) -> torch.Tensor:
@@ -43,8 +45,8 @@ def embed_blocks_coderank(
                 attn_mask = attn_mask.to(device)
 
                 outputs = model(input_ids=input_ids, attention_mask=attn_mask)
-                token_embeddings = outputs[0]
-                sent_emb = token_embeddings[:, 0]
+                token_embeddings = extract_last_hidden_state(outputs)
+                sent_emb = pool_hidden_states(token_embeddings, attn_mask, pooling=pooling)
 
                 sent_emb = torch.nn.functional.normalize(sent_emb, p=2, dim=1)
                 outs.append(sent_emb.cpu())
