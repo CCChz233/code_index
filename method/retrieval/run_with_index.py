@@ -12,7 +12,7 @@ import os.path as osp
 import re
 import sys
 from pathlib import Path
-from typing import List, Dict, Tuple
+from typing import List, Dict, Tuple, Optional
 
 import torch
 from transformers import AutoTokenizer, AutoModel
@@ -125,6 +125,13 @@ def main():
                        help="Number of top modules to retrieve")
     parser.add_argument("--top_k_entities", type=int, default=50,
                        help="Number of top entities to retrieve")
+    parser.add_argument(
+        "--file_score_agg",
+        type=str,
+        default="sum",
+        choices=["sum", "max"],
+        help="How to aggregate block scores to file scores.",
+    )
     parser.add_argument("--max_length", type=int, default=1024,
                        help="Maximum sequence length")
     parser.add_argument(
@@ -144,6 +151,12 @@ def main():
     parser.add_argument("--repos_root", type=str,
                        default="/workspace/locbench/repos/locbench_repos",
                        help="Root directory of repositories")
+    parser.add_argument(
+        "--graph_index_dir",
+        type=str,
+        default="",
+        help="Graph index directory (required when mapper_type=graph).",
+    )
 
     # 其他参数
     parser.add_argument("--gpu_id", type=int, default=0,
@@ -180,18 +193,24 @@ def main():
     if args.mapper_type == "ast":
         mapper = ASTBasedMapper(args.repos_root)
     else:
-        mapper = GraphBasedMapper(args.repos_root)
+        if not args.graph_index_dir:
+            raise ValueError("mapper_type=graph requires --graph_index_dir")
+        mapper = GraphBasedMapper(args.graph_index_dir)
 
     results = []
 
     # 缓存索引（避免重复加载）
-    index_cache: Dict[str, Tuple[torch.Tensor, List[dict]]] = {}
+    index_cache: Dict[str, Tuple[Optional[torch.Tensor], Optional[List[dict]]]] = {}
 
     def get_cached_index(repo_name: str):
         if repo_name not in index_cache:
-            embeddings, metadata = load_index(repo_name, args.index_dir)
-            # 索引保留在 CPU，避免 GPU 内存不足
-            index_cache[repo_name] = (embeddings, metadata)
+            try:
+                embeddings, metadata = load_index(repo_name, args.index_dir)
+            except FileNotFoundError:
+                index_cache[repo_name] = (None, None)
+            else:
+                # 索引保留在 CPU，避免 GPU 内存不足
+                index_cache[repo_name] = (embeddings, metadata)
         return index_cache[repo_name]
 
     # 处理统计
@@ -226,6 +245,13 @@ def main():
             query_text = get_problem_text(instance)
             if not query_text:
                 print(f"Warning: No query text found for instance {instance_id}")
+                results.append({
+                    "instance_id": instance_id,
+                    "found_files": [],
+                    "found_modules": [],
+                    "found_entities": [],
+                    "raw_output_loc": [],
+                })
                 continue
 
             # 编码查询
@@ -256,7 +282,13 @@ def main():
                 block_scores = list(zip(top_k_indices.tolist(), top_k_values.tolist()))
 
                 # 获取文件级别结果
-                found_files = rank_files(block_scores, metadata, args.top_k_files, repo_name)
+                found_files = rank_files(
+                    block_scores,
+                    metadata,
+                    args.top_k_files,
+                    repo_name,
+                    file_score_agg=args.file_score_agg,
+                )
 
                 # 映射代码块到函数/模块
                 # 清理 top_blocks 中的 file_path，使其与 GT 格式一致

@@ -104,8 +104,10 @@ def main():
     parser.add_argument("--top_k_files", type=int, default=20)
     parser.add_argument("--top_k_modules", type=int, default=20)
     parser.add_argument("--top_k_entities", type=int, default=50)
+    parser.add_argument("--file_score_agg", type=str, default="sum", choices=["sum", "max"])
     parser.add_argument("--mapper_type", type=str, default="ast", choices=["ast", "graph"])
     parser.add_argument("--repos_root", type=str, required=True)
+    parser.add_argument("--graph_index_dir", type=str, default="")
 
     args = parser.parse_args()
 
@@ -117,7 +119,9 @@ def main():
     if args.mapper_type == "ast":
         mapper = ASTBasedMapper(args.repos_root)
     else:
-        mapper = GraphBasedMapper(args.repos_root)
+        if not args.graph_index_dir:
+            raise ValueError("mapper_type=graph requires --graph_index_dir")
+        mapper = GraphBasedMapper(args.graph_index_dir)
 
     index_cache: Dict[str, Tuple] = {}
 
@@ -153,7 +157,13 @@ def main():
                 top_k_indices = top_idx[order]
                 block_scores = list(zip(top_k_indices.tolist(), top_scores[order].tolist()))
 
-                found_files = rank_files(block_scores, metadata, args.top_k_files, repo_name)
+                found_files = rank_files(
+                    block_scores,
+                    metadata,
+                    args.top_k_files,
+                    repo_name,
+                    file_score_agg=args.file_score_agg,
+                )
 
                 top_blocks = []
                 for idx, _ in block_scores:

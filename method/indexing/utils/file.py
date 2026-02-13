@@ -1,6 +1,6 @@
 import fnmatch
 from pathlib import Path
-from typing import Iterable, List, Optional, Set
+from typing import Any, Dict, Iterable, List, Optional, Set
 
 CODE_SUFFIXES = {".py"}
 _DEFAULT_SKIP_PATTERNS = [
@@ -53,6 +53,20 @@ def _resolve_max_file_size_mb(max_file_size_mb: Optional[float]) -> Optional[flo
     if max_file_size_mb is not None:
         return max_file_size_mb
     return _RUNTIME_MAX_FILE_SIZE_MB if _RUNTIME_MAX_FILE_SIZE_MB is not None else _DEFAULT_MAX_FILE_SIZE_MB
+
+
+def get_file_scan_options(
+    *,
+    suffixes: Optional[Set[str]] = None,
+    skip_patterns: Optional[Iterable[str]] = None,
+    max_file_size_mb: Optional[float] = None,
+) -> Dict[str, Any]:
+    """Return effective file scan options after applying runtime overrides."""
+    return {
+        "suffixes": sorted(_resolve_suffixes(suffixes)),
+        "skip_patterns": _resolve_skip_patterns(skip_patterns),
+        "max_file_size_mb": _resolve_max_file_size_mb(max_file_size_mb),
+    }
 
 
 def _is_skipped(path: Path, repo_root: Path, patterns: List[str]) -> bool:

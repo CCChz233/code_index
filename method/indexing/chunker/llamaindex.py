@@ -1,6 +1,6 @@
 import logging
 import os
-from typing import Dict, List
+from typing import Dict, List, Optional
 
 import torch
 
@@ -11,6 +11,7 @@ from method.indexing.chunker.llama_utils import (
     build_context_enhanced_content,
     _get_or_calculate_line_numbers,
 )
+from method.indexing.utils.file import get_file_scan_options
 
 try:
     from llama_index.core import SimpleDirectoryReader
@@ -49,14 +50,16 @@ def collect_llamaindex_code_blocks(
         logger.error("LlamaIndex is not available; install llama-index to use llamaindex_code strategy.")
         return []
 
+    required_exts, exclude_patterns, max_file_size_mb = _get_reader_scan_options()
     try:
         reader = SimpleDirectoryReader(
             input_dir=repo_path,
             filename_as_id=True,
-            required_exts=[".py"],
+            required_exts=required_exts,
+            exclude=exclude_patterns,
             recursive=True,
         )
-        docs = reader.load_data()
+        docs = _filter_docs_by_size(reader.load_data(), max_file_size_mb, logger)
         if not docs:
             print(f'\n[DEBUG] {repo_path}: No documents loaded')
             logger.warning(f"No documents loaded from {repo_path} (after exclusions)")
@@ -167,14 +170,16 @@ def collect_llamaindex_sentence_blocks(
         logger.error("LlamaIndex is not available; install llama-index to use llamaindex_sentence strategy.")
         return []
 
+    required_exts, exclude_patterns, max_file_size_mb = _get_reader_scan_options()
     try:
         reader = SimpleDirectoryReader(
             input_dir=repo_path,
             filename_as_id=True,
-            required_exts=[".py"],
+            required_exts=required_exts,
+            exclude=exclude_patterns,
             recursive=True,
         )
-        docs = reader.load_data()
+        docs = _filter_docs_by_size(reader.load_data(), max_file_size_mb, logger)
     except Exception as e:
         logger.error(f"Failed to read repo {repo_path}: {e}")
         return []
@@ -256,14 +261,16 @@ def collect_llamaindex_token_blocks(
         logger.error("LlamaIndex is not available; install llama-index to use llamaindex_token strategy.")
         return []
 
+    required_exts, exclude_patterns, max_file_size_mb = _get_reader_scan_options()
     try:
         reader = SimpleDirectoryReader(
             input_dir=repo_path,
             filename_as_id=True,
-            required_exts=[".py"],
+            required_exts=required_exts,
+            exclude=exclude_patterns,
             recursive=True,
         )
-        docs = reader.load_data()
+        docs = _filter_docs_by_size(reader.load_data(), max_file_size_mb, logger)
     except Exception as e:
         logger.error(f"Failed to read repo {repo_path}: {e}")
         return []
@@ -348,14 +355,16 @@ def collect_llamaindex_semantic_blocks(
         logger.error("HuggingFaceEmbedding is not available; install LlamaIndex HuggingFace embeddings to use llamaindex_semantic strategy.")
         return []
 
+    required_exts, exclude_patterns, max_file_size_mb = _get_reader_scan_options()
     try:
         reader = SimpleDirectoryReader(
             input_dir=repo_path,
             filename_as_id=True,
-            required_exts=[".py"],
+            required_exts=required_exts,
+            exclude=exclude_patterns,
             recursive=True,
         )
-        docs = reader.load_data()
+        docs = _filter_docs_by_size(reader.load_data(), max_file_size_mb, logger)
     except Exception as e:
         logger.error(f"Failed to read repo {repo_path}: {e}")
         return []
@@ -495,3 +504,37 @@ class LlamaIndexSemanticChunker(BaseChunker):
             repo_path, buffer_size=self.buffer_size, model_name=self.model_name
         )
         return ChunkResult(blocks=blocks, metadata={}, aux={})
+
+
+def _get_reader_scan_options() -> tuple[list[str], list[str], Optional[float]]:
+    scan_options = get_file_scan_options()
+    required_exts = scan_options.get("suffixes") or [".py"]
+    exclude_patterns = scan_options.get("skip_patterns") or []
+    max_file_size_mb = scan_options.get("max_file_size_mb")
+    return list(required_exts), list(exclude_patterns), max_file_size_mb
+
+
+def _filter_docs_by_size(docs: List, max_file_size_mb: Optional[float], logger: logging.Logger) -> List:
+    if max_file_size_mb is None:
+        return docs
+
+    max_bytes = max_file_size_mb * 1024 * 1024
+    filtered: List = []
+    skipped = 0
+    for doc in docs:
+        file_path = doc.metadata.get("file_path", "") or doc.metadata.get("file_name", "")
+        if not file_path:
+            filtered.append(doc)
+            continue
+        try:
+            if os.path.getsize(file_path) > max_bytes:
+                skipped += 1
+                continue
+        except OSError:
+            # If file stat fails, keep the document to avoid data loss.
+            pass
+        filtered.append(doc)
+
+    if skipped:
+        logger.info("Skipped %d documents over max_file_size_mb=%.3f", skipped, max_file_size_mb)
+    return filtered

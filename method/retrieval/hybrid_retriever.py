@@ -85,6 +85,7 @@ def main():
     parser.add_argument("--top_k_files", type=int, default=20)
     parser.add_argument("--top_k_modules", type=int, default=20)
     parser.add_argument("--top_k_entities", type=int, default=50)
+    parser.add_argument("--file_score_agg", type=str, default="sum", choices=["sum", "max"])
 
     parser.add_argument("--fusion", type=str, default="rrf", choices=["rrf", "weighted"])
     parser.add_argument("--rrf_k", type=int, default=60)
@@ -93,6 +94,7 @@ def main():
 
     parser.add_argument("--mapper_type", type=str, default="ast", choices=["ast", "graph"])
     parser.add_argument("--repos_root", type=str, required=True)
+    parser.add_argument("--graph_index_dir", type=str, default="")
     parser.add_argument("--gpu_id", type=int, default=0)
     parser.add_argument("--force_cpu", action="store_true")
 
@@ -109,7 +111,9 @@ def main():
     if args.mapper_type == "ast":
         mapper = ASTBasedMapper(args.repos_root)
     else:
-        mapper = GraphBasedMapper(args.repos_root)
+        if not args.graph_index_dir:
+            raise ValueError("mapper_type=graph requires --graph_index_dir")
+        mapper = GraphBasedMapper(args.graph_index_dir)
 
     dense_cache: Dict[str, Tuple] = {}
     sparse_cache: Dict[str, Tuple] = {}
@@ -167,7 +171,13 @@ def main():
 
             fused = fused[: args.top_k_blocks]
 
-            found_files = rank_files(fused, metadata, args.top_k_files, repo_name)
+            found_files = rank_files(
+                fused,
+                metadata,
+                args.top_k_files,
+                repo_name,
+                file_score_agg=args.file_score_agg,
+            )
 
             top_blocks = []
             for idx, _ in fused:

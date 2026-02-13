@@ -26,14 +26,21 @@ def rank_files(
     metadata: List[dict],
     top_k_files: int,
     repo_name: str,
+    file_score_agg: str = "sum",
 ) -> List[str]:
-    """根据代码块分数聚合到文件级别"""
+    """根据代码块分数聚合到文件级别。"""
+    if file_score_agg not in {"sum", "max"}:
+        raise ValueError(f"Unknown file_score_agg: {file_score_agg}")
+
     file_scores: Dict[str, float] = {}
     for block_idx, score in block_scores:
         block_meta = metadata[block_idx]
         file_path = block_meta["file_path"]
         cleaned_path = clean_file_path(file_path, repo_name)
-        file_scores[cleaned_path] = max(file_scores.get(cleaned_path, 0.0), float(score))
+        if file_score_agg == "max":
+            file_scores[cleaned_path] = max(file_scores.get(cleaned_path, 0.0), float(score))
+        else:
+            file_scores[cleaned_path] = file_scores.get(cleaned_path, 0.0) + float(score)
 
     ranked = sorted(file_scores.items(), key=lambda x: x[1], reverse=True)
     return [f for f, _ in ranked[:top_k_files]]

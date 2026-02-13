@@ -190,11 +190,27 @@ class ASTBasedMapper(BlockMapper):
                 
                 if block_start < 0 or block_end < 0:
                     continue
-                
-                # 代码块使用 0-indexed，AST 使用 1-indexed，需要转换
-                # 将代码块行号转换为 1-indexed（AST 格式）
-                ast_start = block_start + 1
-                ast_end = block_end + 1
+
+                # Some chunkers may emit 0-indexed or 1-indexed line numbers.
+                # Try both and keep the one that matches more AST lines.
+                candidate_ranges = [(block_start + 1, block_end + 1)]
+                if block_start >= 1 and block_end >= 1:
+                    candidate_ranges.append((block_start, block_end))
+
+                best_range = candidate_ranges[0]
+                best_hits = -1
+                for candidate_start, candidate_end in candidate_ranges:
+                    candidate_start = max(1, int(candidate_start))
+                    candidate_end = max(candidate_start, int(candidate_end))
+                    hits = 0
+                    for line_num in range(candidate_start, candidate_end + 1):
+                        if line_num in line_map:
+                            hits += 1
+                    if hits > best_hits:
+                        best_hits = hits
+                        best_range = (candidate_start, candidate_end)
+
+                ast_start, ast_end = best_range
                 
                 # 收集代码块范围内的所有实体
                 block_entities = set()
