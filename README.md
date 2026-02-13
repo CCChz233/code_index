@@ -107,6 +107,19 @@ python method/retrieval/run_with_index.py \
   --repos_root /path/to/repos_root
 ```
 
+### Dense 检索（多步收敛版）
+```bash
+python method/retrieval/run_with_index_convergent.py \
+  --dataset_path /path/to/Loc-Bench_V1_dataset.jsonl \
+  --index_dir /path/to/index_root/dense_index_ir_function \
+  --output_folder /path/to/output_eval_convergent \
+  --model_name /path/to/embedding_model \
+  --repos_root /path/to/repos_root \
+  --convergence_mode prf \
+  --max_steps 3
+```
+详细对照实验与逻辑说明见 `docs/DENSE_MULTI_STEP_CONVERGENCE_DESIGN.md`。
+
 ### Sparse 检索（BM25）
 ```bash
 python method/retrieval/sparse_retriever.py \
@@ -186,6 +199,10 @@ index_root/sparse_index_{strategy}/{repo}/metadata.jsonl
 - `DESIGN.md`：总体架构设计
 - `IMPLEMENTATION_PLAN.md`：实现计划与阶段状态
 - `TESTING.md`：测试与验证
+- `docs/DENSE_MULTI_STEP_CONVERGENCE_DESIGN.md`：Dense 多步收敛测评方案
+- `docs/CROSS_ENCODER_RERANKING_DESIGN.md`：Cross-Encoder 重排设计方案
+- `docs/UNIFIED_RETRIEVER_PIPELINE_DESIGN.md`：单脚本大一统检索器设计
+- `docs/UNIFIED_RETRIEVER_RUNBOOK.md`：单脚本大一统检索器操作手册
 
 ---
 
