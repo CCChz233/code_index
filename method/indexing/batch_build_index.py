@@ -486,7 +486,7 @@ def main():
                        help="CodeSplitter: 每个代码块的行数")
     parser.add_argument("--llamaindex_chunk_lines_overlap", type=int, default=15,
                        help="CodeSplitter: 代码块之间的重叠行数")
-    parser.add_argument("--llamaindex_max_chars", type=int, default=1500,
+    parser.add_argument("--llamaindex_max_chars", type=int, default=800,
                        help="CodeSplitter: 每个代码块的最大字符数")
 
     # LlamaIndex 通用参数（用于 sentence/token/semantic）

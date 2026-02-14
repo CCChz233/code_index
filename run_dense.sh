@@ -1,7 +1,7 @@
 export PYTHONPATH="$(cd "$(dirname "$0")" && pwd):${PYTHONPATH:-}"
 python method/indexing/batch_build_index.py \
   --repo_path /home/chaihongzheng/workspace/locbench/repos/locbench_repos \
-  --index_dir /home/chaihongzheng/workspace/locbench/code_index/index_v2/llamaindex_cls \
+  --index_dir /home/chaihongzheng/workspace/locbench/code_index/index_v2/dense_llamaindex_new \
   --model_name /home/chaihongzheng/workspace/locbench/LocAgent/models/CodeRankEmbed \
   --strategy llamaindex_code \
   --num_processes 3 \
@@ -9,8 +9,7 @@ python method/indexing/batch_build_index.py \
   --trust_remote_code \
   --llamaindex_chunk_lines 40 \
   --llamaindex_chunk_lines_overlap 15 \
-  --llamaindex_max_chars 800 \
-  --pooling cls 
+  --llamaindex_max_chars 800 
 
 python method/indexing/batch_build_index.py \
   --repo_path /home/chaihongzheng/workspace/locbench/repos/locbench_repos \
