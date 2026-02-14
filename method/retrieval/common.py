@@ -46,15 +46,57 @@ def rank_files(
     return [f for f, _ in ranked[:top_k_files]]
 
 
-def load_index(repo_name: str, index_dir: str) -> Tuple[torch.Tensor, List[dict]]:
-    """加载预建的索引"""
-    index_path = Path(index_dir) / repo_name / "embeddings.pt"
-    metadata_path = Path(index_dir) / repo_name / "metadata.jsonl"
+def load_index(repo_name: str, index_dir: str, strategy: str = "") -> Tuple[torch.Tensor, List[dict]]:
+    """加载预建的索引
 
-    if not index_path.exists():
-        raise FileNotFoundError(f"Index file not found: {index_path}")
-    if not metadata_path.exists():
-        raise FileNotFoundError(f"Metadata file not found: {metadata_path}")
+    构建脚本将索引保存在 {index_dir}/dense_index_{strategy}/{repo_name}/ 下，
+    因此加载时需要匹配相同的目录层级。
+
+    查找顺序:
+      1. {index_dir}/dense_index_{strategy}/{repo_name}/  （如果指定了 strategy）
+      2. {index_dir}/{repo_name}/                          （向后兼容 / 用户已手动拼好路径）
+      3. {index_dir}/dense_index_*/{repo_name}/            （自动发现）
+    """
+    candidates: list[Path] = []
+
+    # 优先: 带 strategy 的精确路径
+    if strategy:
+        candidates.append(Path(index_dir) / f"dense_index_{strategy}" / repo_name)
+
+    # 向后兼容: 直接路径
+    candidates.append(Path(index_dir) / repo_name)
+
+    # 自动发现: 扫描 dense_index_* 子目录
+    base = Path(index_dir)
+    if base.is_dir():
+        for sub in sorted(base.iterdir()):
+            if sub.is_dir() and sub.name.startswith("dense_index_"):
+                candidates.append(sub / repo_name)
+
+    # 去重并保留顺序
+    seen = set()
+    unique_candidates: list[Path] = []
+    for c in candidates:
+        key = str(c)
+        if key not in seen:
+            seen.add(key)
+            unique_candidates.append(c)
+
+    index_path = None
+    metadata_path = None
+    for candidate in unique_candidates:
+        _idx = candidate / "embeddings.pt"
+        _meta = candidate / "metadata.jsonl"
+        if _idx.exists() and _meta.exists():
+            index_path = _idx
+            metadata_path = _meta
+            break
+
+    if index_path is None or metadata_path is None:
+        tried = [str(c) for c in unique_candidates]
+        raise FileNotFoundError(
+            f"Index not found for repo '{repo_name}'. Tried: {tried}"
+        )
 
     try:
         embeddings = torch.load(index_path, map_location="cpu", weights_only=True)

@@ -41,7 +41,13 @@ class BlockDataset(Dataset):
         return input_ids, attention_mask
 
     def _encode_default(self, b: Block) -> Tuple[torch.Tensor, torch.Tensor, int, bool]:
-        text = f"file path: {b.file_path}\nlines: {b.start}-{b.end}\n\n{b.content}"
+        # 如果 content 已经包含上下文信息（由 build_context_enhanced_content 生成，
+        # 以 "File:" 开头），则直接使用，避免重复拼入 file_path / lines 导致
+        # token 预算浪费和实际代码被截断。
+        if b.content.startswith("File:"):
+            text = b.content
+        else:
+            text = f"file path: {b.file_path}\nlines: {b.start}-{b.end}\n\n{b.content}"
         enc = self.tokenizer(
             text,
             truncation=True,

@@ -116,6 +116,11 @@ def main():
     parser.add_argument("--trust_remote_code", action="store_true",
                        help="Allow execution of model repository code")
 
+    # 索引策略（用于定位正确的子目录）
+    parser.add_argument("--strategy", type=str, default="",
+                       help="Chunking strategy used during indexing (e.g. llamaindex_code). "
+                            "Used to locate the dense_index_{strategy}/ subdirectory.")
+
     # 检索参数
     parser.add_argument("--top_k_blocks", type=int, default=50,
                        help="Number of top blocks to retrieve")
@@ -205,7 +210,7 @@ def main():
     def get_cached_index(repo_name: str):
         if repo_name not in index_cache:
             try:
-                embeddings, metadata = load_index(repo_name, args.index_dir)
+                embeddings, metadata = load_index(repo_name, args.index_dir, strategy=args.strategy)
             except FileNotFoundError:
                 index_cache[repo_name] = (None, None)
             else:
