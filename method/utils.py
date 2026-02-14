@@ -299,7 +299,10 @@ def clean_file_path(file_path: str, repo_name: str) -> str:
         str: 清理后的相对路径
     """
     # 处理类似 'workspace/LocAgent//uxarray/grid/grid.py' 的路径
-    repo_pattern = repo_name.replace('_', '[_/]')
+    # Escape each segment individually so that regex metacharacters in
+    # repo names (e.g. dots) don't cause unexpected matches.
+    escaped_parts = [re.escape(part) for part in repo_name.split('_')]
+    repo_pattern = '[_/]'.join(escaped_parts)
     match = re.search(rf'{repo_pattern}/(.+)$', file_path, re.IGNORECASE)
     if match:
         return match.group(1)

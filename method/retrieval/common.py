@@ -109,6 +109,13 @@ def load_index(repo_name: str, index_dir: str, strategy: str = "") -> Tuple[torc
             if line.strip():
                 metadata.append(json.loads(line))
 
+    if embeddings.shape[0] != len(metadata):
+        raise ValueError(
+            f"Index corrupted for repo '{repo_name}': "
+            f"embeddings has {embeddings.shape[0]} rows but metadata has {len(metadata)} entries. "
+            f"Please rebuild the index."
+        )
+
     return embeddings, metadata
 
 

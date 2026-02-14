@@ -6,6 +6,7 @@ Single entrypoint for baseline / PRF / global_local / rerank combinations.
 
 import argparse
 import json
+import logging
 import os
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
@@ -25,6 +26,8 @@ from method.retrieval.common import (
 )
 from method.retrieval.fusion.rrf import fuse_rrf
 from method.utils import clean_file_path
+
+logger = logging.getLogger(__name__)
 
 
 def embed_texts(
@@ -48,6 +51,17 @@ def embed_texts(
                 padding=True,
                 return_tensors="pt",
             )
+            # Warn if any text was truncated
+            for j, text in enumerate(batch):
+                token_count = encoded["attention_mask"][j].sum().item()
+                if token_count >= max_length:
+                    orig_tokens = len(tokenizer.encode(text, add_special_tokens=True))
+                    if orig_tokens > max_length:
+                        logger.warning(
+                            "Query text truncated from %d to %d tokens (%.0f%% lost)",
+                            orig_tokens, max_length,
+                            (orig_tokens - max_length) / orig_tokens * 100,
+                        )
             input_ids = encoded["input_ids"].to(device)
             attn_mask = encoded["attention_mask"].to(device)
             outputs = model(input_ids=input_ids, attention_mask=attn_mask)
@@ -111,6 +125,7 @@ class CrossEncoderReranker:
         ).to(device)
         self.model.eval()
         self._file_cache: Dict[str, List[str]] = {}
+        self._file_cache_max_size: int = 2000
 
     def _resolve_file_path(self, repos_root: str, repo_name: str, rel_file_path: str) -> Optional[Path]:
         repo_root = Path(repos_root) / repo_name
@@ -132,6 +147,12 @@ class CrossEncoderReranker:
                 lines = f.read().splitlines()
         except OSError:
             return None
+
+        # Evict oldest entries when cache is full
+        if len(self._file_cache) >= self._file_cache_max_size:
+            evict_keys = list(self._file_cache.keys())[: self._file_cache_max_size // 4]
+            for k in evict_keys:
+                del self._file_cache[k]
 
         self._file_cache[key] = lines
         return lines
@@ -280,6 +301,7 @@ def rank_raw_files(
     block_scores: List[Tuple[int, float]],
     metadata: List[dict],
     top_k_files: int,
+    repo_name: str,
     *,
     file_score_agg: str,
 ) -> List[str]:
@@ -291,6 +313,7 @@ def rank_raw_files(
         file_path = metadata[block_idx].get("file_path", "")
         if not file_path:
             continue
+        file_path = clean_file_path(file_path, repo_name)
         if file_score_agg == "max":
             file_scores[file_path] = max(file_scores.get(file_path, 0.0), float(score))
         else:
@@ -303,11 +326,15 @@ def rank_raw_files(
 def build_candidate_indices_from_files(
     metadata: List[dict],
     seed_files: List[str],
+    repo_name: str,
 ) -> torch.Tensor:
     seed_set = set(seed_files)
     if not seed_set:
         return torch.empty((0,), dtype=torch.long)
-    idx_list = [idx for idx, item in enumerate(metadata) if item.get("file_path", "") in seed_set]
+    idx_list = [
+        idx for idx, item in enumerate(metadata)
+        if clean_file_path(item.get("file_path", ""), repo_name) in seed_set
+    ]
     if not idx_list:
         return torch.empty((0,), dtype=torch.long)
     return torch.tensor(idx_list, dtype=torch.long)
@@ -333,16 +360,6 @@ def select_feedback_blocks(
         selected.append((idx, float(score)))
         selected_ids.add(idx)
         file_counter[file_path] = file_counter.get(file_path, 0) + 1
-        if len(selected) >= feedback_top_m:
-            return selected
-
-    if len(selected) >= feedback_top_m:
-        return selected
-
-    for idx, score in block_scores:
-        if idx in selected_ids:
-            continue
-        selected.append((idx, float(score)))
         if len(selected) >= feedback_top_m:
             break
 
@@ -372,7 +389,9 @@ def update_query_embedding(
     centroid = torch.nn.functional.normalize(centroid.unsqueeze(0), p=2, dim=1).squeeze(0)
 
     base_weight = max(0.0, 1.0 - alpha - beta)
-    q_next = base_weight * q_cur + alpha * centroid + beta * q0
+    # q0 anchors with base_weight, centroid provides feedback, q_cur carries
+    # limited momentum via beta — prevents multi-round drift from q0.
+    q_next = base_weight * q0 + alpha * centroid + beta * q_cur
     q_next = torch.nn.functional.normalize(q_next.unsqueeze(0), p=2, dim=1).squeeze(0)
     return q_next
 
@@ -397,6 +416,7 @@ def iterative_block_retrieval(
     metadata: List[dict],
     args: argparse.Namespace,
     retrieve_top_k: int,
+    repo_name: str = "",
 ) -> Tuple[List[Tuple[int, float]], int]:
     if retrieve_top_k <= 0:
         return [], 0
@@ -459,9 +479,10 @@ def iterative_block_retrieval(
                 block_scores,
                 metadata,
                 args.top_k_seed_files,
+                repo_name,
                 file_score_agg=args.file_score_agg,
             )
-            candidate_indices = build_candidate_indices_from_files(metadata, seed_files)
+            candidate_indices = build_candidate_indices_from_files(metadata, seed_files, repo_name)
             if candidate_indices.numel() == 0:
                 candidate_indices = None
 
@@ -527,7 +548,18 @@ def maybe_rerank(
             metadata=metadata,
             repos_root=args.repos_root,
         )
-        return reranked_head + tail, True, False
+        # Assign tail items monotonically decreasing scores below the min
+        # reranked head score so that score semantics stay consistent when
+        # downstream aggregation (e.g. sum/max) mixes head and tail.
+        if reranked_head:
+            min_rerank_score = min(s for _, s in reranked_head)
+        else:
+            min_rerank_score = 0.0
+        adjusted_tail = [
+            (idx, min_rerank_score - (i + 1) * 1e-6)
+            for i, (idx, _) in enumerate(tail)
+        ]
+        return reranked_head + adjusted_tail, True, False
     except Exception as e:
         if args.rerank_fail_open:
             print(f"[WARN] Rerank failed for {repo_name}: {e}. Fallback to stage-1 ranking.")
@@ -785,6 +817,10 @@ def main() -> None:
     rerank_applied = 0
     rerank_failed = 0
 
+    # Cache the current repo's GPU tensor to avoid repeated .to(device)
+    _gpu_cache_repo: Optional[str] = None
+    _gpu_cache_tensor: Optional[torch.Tensor] = None
+
     for instance in tqdm(dataset, desc="Processing instances"):
         instance_id = instance.get("instance_id", "")
         repo_name = instance_id_to_repo_name(instance_id)
@@ -831,7 +867,12 @@ def main() -> None:
                 pooling=args.pooling,
             )[0]
 
-            embeddings_gpu = embeddings.to(device)
+            # Reuse cached GPU tensor for the same repo
+            if repo_name != _gpu_cache_repo:
+                _gpu_cache_tensor = embeddings.to(device)
+                _gpu_cache_repo = repo_name
+            embeddings_gpu = _gpu_cache_tensor
+
             block_scores, rounds_used = iterative_block_retrieval(
                 query_embedding=query_embedding,
                 embeddings_cpu=embeddings,
@@ -839,6 +880,7 @@ def main() -> None:
                 metadata=metadata,
                 args=args,
                 retrieve_top_k=retrieve_top_k,
+                repo_name=repo_name,
             )
             if rounds_used > 0:
                 convergence_rounds_total += rounds_used
